@@ -138,6 +138,22 @@ body {
     background-color: var(--theme-lightgrey);
 }
 
+.form-container input[type="radio"] {
+    margin:15px 10px;
+}
+
+select{
+    display: block;
+    border-radius: 5px;
+    padding: 5px 17px;
+    border: hidden;
+    height: 40px;
+    width: 100%;
+    background-color: var(--theme-lightgrey); 
+    margin-bottom: 20px;
+    color: rgb(126, 122, 122);
+}
+
 .form .OTP {
     letter-spacing: 4px;
 }
