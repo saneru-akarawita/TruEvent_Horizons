@@ -1,0 +1,10 @@
+User Roles
+------------------
+
+1 - Super Admin
+2 - Admin
+3 - Customer
+4 - Hotel Manager
+5 - Deco Company
+6 - Band Manager
+7 - Photography Company
