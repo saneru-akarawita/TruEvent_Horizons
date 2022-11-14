@@ -29,17 +29,17 @@ class Session
 
    public static function validateSession($accessibleUsers)
    {
-      if (!self::hasLoggedIn())
-      {
-         redirect('pages/accessDenied');
-      }
-      else
+      if (Session::hasLoggedIn())
       {
          $status = in_array(self::getUser("type"), $accessibleUsers);
          if (!$status)
          {
             redirect('pages/accessDenied');
          }
+      }
+
+      else{
+         redirect('pages/notFound');
       }
    }
 
