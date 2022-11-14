@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/logo/miniIcon.ico">
-   <title>TruEvent Horizons - Admin Register</title>
+   <title>TruEvent Horizons - Service Provider Register</title>
 </head>
 
 <body>
@@ -24,25 +24,68 @@
       <a href="<?php echo URLROOT ?>" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
       
       <div class="reg-container form-container contentBox">
-         <form action="<?php echo URLROOT; ?>/admin/register" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/serviceprovider/register" method="post" class="form">
             <h1 class="title">Sign Up</h1>
 
             <div class="row">
                <div class="column">
                   <div class="text-group">
-                     <label class="label" for="name">Name</label>
-                     <input type="text" name="fname" placeholder="Your first name here" value="<?php echo $data['fname']; ?>" maxlength="35" />
-                     <span class="error"><?php echo $data['fname_error']; ?></span>
+                     <label class="label" for="companyname">Company Name</label>
+                     <input type="text" name="company_name" placeholder="Your company name"  maxlength="100" />
+                     <span class="error"><?php echo $data['companyname_error']; ?></span>
                   </div>
                </div>
-               <div class="column spec">
+               <div class="column">
                   <div class="text-group">
-                     <input type="text" name="lname" placeholder="Your last name here" value="<?php echo $data['lname']; ?>" maxlength="35">
-                     <span class="error"><?php echo $data['lname_error']; ?></span>
+                     <label class="label" for="business_id">Business Reg. Number</label>
+                     <input type="text" name="business_id" placeholder="Your business registration no"  maxlength="25">
+                     <span class="error"><?php echo $data['business_id_error']; ?></span>
                   </div>
                </div>
             </div>
 
+            <div class="row">
+                <div class="column">
+                   <div class="text-group">
+                      <label class="label" for="district">District</label>
+                      <input type="text" name="district" placeholder="Enter district here" maxlength="25">
+                      <span class="error"><?php echo $data['district_error']; ?></span>
+                   </div>
+                </div>
+                <div class="column">
+                   <div class="text-group">
+                      <label class="label" for="contactno">Contact No</label>
+                      <input type="text" name="contactno" placeholder="Enter contact number" maxlength="10">
+                      <span class="error"><?php echo $data['contactno_error']; ?></span>
+                   </div>
+                </div>
+             </div>
+
+
+             <div class="row">
+                <div class="column">
+                        <label class="label" for="service_type">Service Type</label>
+                        <select name = "service_type" class="dropdownmenu" id="service_type"> 
+                                <option value="">Select a service type</option>
+                              <option value = 4>Hotel</option>
+                              <option value = 5>Decoration</option>
+                              <option value = 6>Band</option>
+                              <option value = 7>Photography</option>
+                        </select>
+                        <span class="error"><?php echo $data['service_type_error']; ?></span>
+                </div>
+                <div class="column">
+                   <div class="text-group" id="travel_flag" >
+                      <label class="label" for="contactno">Do you wish to travel?</label> <br>
+                         Yes
+                         <input type="radio"  name="travel_flag" value = 1>
+                         No
+                         <input type="radio"  name="travel_flag" value = 0 checked=true>     
+                         <span class="error"><?php echo $data['travel_flag_error']; ?></span>
+                   </div>
+                </div>
+             </div>
+           
             <div class="row row-last">
                <div class="text-group">
                   <label class="label" for="email">Email Address</label>
@@ -84,10 +127,9 @@
                </div>
             </div>
 
-
             <hr>
 
-            Account Details:<br><br>
+            Account Details:<br><br><br>
             <div class="row">
                <div class="column">
                   <div class="text-group">
@@ -133,5 +175,17 @@
 </body>
 
 <script src="<?php echo URLROOT ?>/public/js/countdown.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#service_type").change(function () {
+            if ($(this).val() == "hotel") {
+                $("#travel_flag").hide();
+            } else {
+                $("#travel_flag").show();
+            }
+        });
+    });
+</script>
 
 </html>
