@@ -232,12 +232,11 @@ class User extends Controller
    private function createUserSession($user)
    {
       Session::setBundle(
-         'user',
+         "user",
          [
             "email" => $user->email,
             "type" => $user->user_type,
-            "password" => $user->password
-            
+            "password" => $user->password  
          ]
       );
    }

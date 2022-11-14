@@ -18,7 +18,7 @@
 
 <body>
     <div class="main-container">
-        <a href="<?php echo URLROOT ?>">
+        <a href="<?php echo URLROOT ?>/user/signin">
             <img src="<?php echo URLROOT ?>/public/logo/logo.png" alt="logo" class="top-left-logo">
         </a>
         <a href="<?php echo URLROOT ?>" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x"></i></a>

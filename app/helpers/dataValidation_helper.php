@@ -16,4 +16,16 @@ function validateEmail($value)
    return $emptyCheckResponse;
 }
 
+function validateContactno($phone){
+
+   $emptyCheckResponse = emptyCheck($phone);
+
+   if(!preg_match('/^[0-9]{10}+$/', $phone)) {
+     return "Invalid Phone Number";
+   }
+
+   return $emptyCheckResponse;
+}
+
+
 ?>

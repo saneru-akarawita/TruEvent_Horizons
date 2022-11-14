@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/logo/miniIcon.ico">
-   <title>TruEvent Horizons - Admin Register</title>
+   <title>TruEvent Horizons - Customer Register</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
       <a href="<?php echo URLROOT ?>" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
       
       <div class="reg-container form-container contentBox">
-         <form action="<?php echo URLROOT; ?>/admin/register" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/customer/register" method="post" class="form">
             <h1 class="title">Sign Up</h1>
 
             <div class="row">
@@ -39,6 +39,23 @@
                   <div class="text-group">
                      <input type="text" name="lname" placeholder="Your last name here" value="<?php echo $data['lname']; ?>" maxlength="35">
                      <span class="error"><?php echo $data['lname_error']; ?></span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="contactno">Contact Number</label>
+                     <input type="text" name="contactno" placeholder="Enter contact number here" value="<?php echo $data['contactno']; ?>" maxlength="10">
+                     <span class="error"><?php echo $data['contactno_error']; ?></span>
+                  </div>
+               </div>
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="district">District</label>
+                     <input type="text" name="district" placeholder="Enter the district" value="<?php echo $data['district']; ?>" >
+                     <span class="error"><?php echo $data['district_error']; ?></span>
                   </div>
                </div>
             </div>
@@ -83,44 +100,7 @@
                   </div>
                </div>
             </div>
-
-
-            <hr>
-
-            Account Details:<br><br>
-            <div class="row">
-               <div class="column">
-                  <div class="text-group">
-                     <label class="label" for="accnumber">Account Number</label>
-                     <input type="text" name="accnumber" placeholder="Enter account number here" maxlength="25">
-                     <span class="error"><?php echo $data['accNumber_error']; ?></span>
-                  </div>
-               </div>
-               <div class="column">
-                  <div class="text-group">
-                     <label class="label" for="accname">Account Holder Name</label>
-                     <input type="text" name="accname" placeholder="Enter account holder name" >
-                     <span class="error"><?php echo $data['accName_error']; ?></span>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="column">
-                  <div class="text-group">
-                     <label class="label" for="bank">Bank</label>
-                     <input type="text" name="bank" placeholder="Bank" >
-                     <span class="error"><?php echo $data['bank_error']; ?></span>
-                  </div>
-               </div>
-               <div class="column">
-                  <div class="text-group">
-                     <label class="label" for="branch">Branch</label>
-                     <input type="text" name="branch" placeholder="Branch" >
-                     <span class="error"><?php echo $data['branch_error']; ?></span>
-                  </div>
-               </div>
-            </div>
-
+        
             <div class="footer-container">
                <button type="submit" name="action" value="register" class="btn btn-filled btn-theme-purple">Register</button>
                <p>Already have an account? <a href="<?php echo URLROOT ?>/user/signin">Sign in</a></p>

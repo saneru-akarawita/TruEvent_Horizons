@@ -18,7 +18,7 @@
 
 <body>
    <div class="main-container">
-      <a href="<?php echo URLROOT ?>">
+      <a href="<?php echo URLROOT ?>/user/signin" >
          <img src="<?php echo URLROOT ?>/public/logo/logo.png" alt="logo" class="top-left-logo">
       </a>
       <a href="<?php echo URLROOT ?>" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
@@ -65,7 +65,6 @@
 
             <div class="footer-container">
                <button type="submit" name="action" value="save" class="btn btn-filled btn-theme-purple">Save Changes</button>
-               <p>Don't have an account? <a href="<?php echo URLROOT ?>/customer/register">Register Here</a></p>
             </div>
 
          </form>
