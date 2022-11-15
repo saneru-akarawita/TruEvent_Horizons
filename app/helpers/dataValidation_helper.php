@@ -27,5 +27,15 @@ function validateContactno($phone){
    return $emptyCheckResponse;
 }
 
+function validatePrice($price){
+
+   $emptyCheckResponse = emptyCheck($price);
+
+   if (!preg_match('/^(0|[1-9]\d*)(\.\d{2})?$/', $price)) {
+      return "Invalid Price Format";
+   }
+   return $emptyCheckResponse;
+}
+
 
 ?>

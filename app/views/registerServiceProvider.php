@@ -31,14 +31,14 @@
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="companyname">Company Name</label>
-                     <input type="text" name="company_name" placeholder="Your company name"  maxlength="100" />
+                     <input type="text" name="company_name" placeholder="Your company name" value="<?php echo $data['company_name'] ?>" maxlength="100" />
                      <span class="error"><?php echo $data['companyname_error']; ?></span>
                   </div>
                </div>
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="business_id">Business Reg. Number</label>
-                     <input type="text" name="business_id" placeholder="Your business registration no"  maxlength="25">
+                     <input type="text" name="business_id" placeholder="Your business registration no" value="<?php echo $data['business_id'] ?>"  maxlength="25">
                      <span class="error"><?php echo $data['business_id_error']; ?></span>
                   </div>
                </div>
@@ -48,14 +48,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="district">District</label>
-                      <input type="text" name="district" placeholder="Enter district here" maxlength="25">
+                      <input type="text" name="district" placeholder="Enter district here" value="<?php echo $data['district'] ?>" maxlength="25">
                       <span class="error"><?php echo $data['district_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="contactno">Contact No</label>
-                      <input type="text" name="contactno" placeholder="Enter contact number" maxlength="10">
+                      <input type="text" name="contactno" placeholder="Enter contact number" value="<?php echo $data['contactno'] ?>" maxlength="10">
                       <span class="error"><?php echo $data['contactno_error']; ?></span>
                    </div>
                 </div>
@@ -179,7 +179,7 @@
 <script type="text/javascript">
     $(function () {
         $("#service_type").change(function () {
-            if ($(this).val() == "hotel") {
+            if ($(this).val() == 4) {
                 $("#travel_flag").hide();
             } else {
                 $("#travel_flag").show();
