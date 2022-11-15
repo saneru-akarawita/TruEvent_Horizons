@@ -8,21 +8,8 @@ class Packages extends Controller
 
    public function viewAllPackages()
    {
-
-      // $serviceNames = $this->packageModel->getServiceDetails();
-      // $serviceTypes = $this->packageModel->getServiceTypeDetails();
-      // $sDetails = $this->packageModel->getServiceDetailsWithFilters($sID, $sType, $sStatus);
-
-      $GetServicesArray = [
-         // 'services' => $sDetails,
-         // 'selectedSID' => $sID,
-         // 'selectedType' => $sType,
-         // 'selectedStatus' => $sStatus,
-         // 'sNameList' => $serviceNames,
-         // 'sTypeList' => $serviceTypes,
-      ];
-
-      $this->view('admin/view-packages',  $GetServicesArray);
+      $result = $this->packageModel->getPackageDetails();
+      $this->view('admin/view-packages',  $result);
    }
 
    public function addNewPackage()
@@ -35,6 +22,7 @@ class Packages extends Controller
             'pcode' => trim($_POST['pcode']),
             'name' => trim($_POST['name']),
             'price' => trim($_POST['price']),
+            'package_type'=>trim($_POST['package_type']),
             'bands' => isset($_POST['bands']) ? trim($_POST['bands']) : trim($notfound),
             'decorations' => isset($_POST['decorations']) ? trim($_POST['decorations']) : trim($notfound),
             'photography' => isset($_POST['photography']) ? trim($_POST['photography']) : trim($notfound),
@@ -52,6 +40,7 @@ class Packages extends Controller
             // Validate everything
             $data['pcode_error'] = emptyCheck($data['pcode']);
             $data['name_error'] = emptyCheck($data['name']);
+            $data['package_type_error'] = emptyCheck($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){
@@ -59,7 +48,7 @@ class Packages extends Controller
             }
 
             if (
-               empty($data['pcode_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['bands_error'])
+               empty($data['pcode_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['bands_error']) && empty($data['package_type_error'])
             )
             {
                 
@@ -90,12 +79,14 @@ class Packages extends Controller
             'pcode' => '',
             'name' => '',
             'price' => '',
+            'package_type'=>'',
             'bands' => '',
             'decorations' => '',
             'photography' => '',
 
             'pcode_error' => '',
             'name_error' => '',
+            'package_type_error'=>'',
             'price_error' => '',
             'bands_error' => '',
             'decorations_error' => '',
@@ -106,8 +97,12 @@ class Packages extends Controller
       }
    }
 
-   public function viewEachPackage($id){
-
+   public function viewEachPackage(){
+         if(isset($_GET['package_id'])){
+            $id=$_GET['package_id'];
+            $result = $this->packageModel->getPackageDetailsByPackageID($id);
+            $this->view('admin/view-each-package', $result);
+         }
    }
 
    public function editPackage($id){
