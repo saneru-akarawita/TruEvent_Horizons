@@ -269,7 +269,7 @@ class User extends Controller
                redirect('photoDashboard/home');
                break;
             default:
-               redirect('home');
+               redirect('User/signin');
                break;
          }
       }
@@ -315,7 +315,7 @@ class User extends Controller
    {
       Session::clear('user');
       session_destroy();
-      redirect('home');
+      redirect('User/signin');
    }
 
    // public function getUserHeaderImg()
