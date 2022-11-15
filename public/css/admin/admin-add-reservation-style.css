@@ -282,7 +282,7 @@ img.logo {
 
 .home-offer {
     text-align: center;
-
+    background-color: var(--light-bg);
 }
 
 .home-offer .content {
@@ -302,7 +302,9 @@ img.logo {
     padding: 1rem 0;
 }
 
-
+.packages{
+    background-color: var(--light-bg);
+}
 
 .packages .box-container {
     display: grid;
@@ -349,6 +351,9 @@ img.logo {
     padding: 1rem 0;
 }
 
+.add-packages{
+    background-color: #dfdede;
+}
 
 .packages .load-more {
     text-align: center;
@@ -412,27 +417,6 @@ form.add-package-form .flex .inputBox span {
     font-size: 1.6rem;
     color: var(--light-black);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -532,54 +516,6 @@ form.add-package-form .flex .inputBox span {
     background-color: rgb(223, 17, 17);
     color: #fff;
 }
-
-
-.packages .box-container .box1 {
-    border: var(--border);
-    box-shadow: var(--box-shadow);
-    background: var(--white);
-    width:600px;
-    height: 400px;
-    margin-left: 420px;
-    border-radius: 10px;
-    background-color: rgb(223, 211, 223);
-}
-
-
-.packages .box-container .box1 ol li{
-    font-size: 1.5rem;
-    color: var(--black);
-    margin-left: 50px;
-    display: inline-flex;
-    font-weight: bold;
-}
-
-.packages .box-container .box1 .form-control{
-    font-size: 1.5rem;
-    color: var(--black);
-    color:black;
-    font-weight: lighter;
-}
-
-.packages .box-container .box1 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 85%;
-    margin-left: 50px;
-}
-  
-  td, th {
-    border: 1px solid #e800b2;
-    text-align: left;
-    padding: 8px;
-    font-size:14px;
-    text-align: center;
-  }
-
-
-
-
-
 
 
 /* media queries */

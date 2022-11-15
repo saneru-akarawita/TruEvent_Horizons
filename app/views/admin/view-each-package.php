@@ -1,13 +1,3 @@
-<?php require_once "controllerAdminFunction.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email == false || $password == false){
-    header('Location: login.php');
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +10,8 @@ if($email == false || $password == false){
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- custom css file link -->
-        <link rel="stylesheet" href="./css/admin-add-reservation-style.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/each-package-style.css">
 
     </head>
     <body>
@@ -28,14 +19,14 @@ if($email == false || $password == false){
 
 <!-- header section starts -->
 <section class="header">
-<img src="images/logo/logo.jpg" alt="logo" class="logo">
-<a href="admin-home.php" class="dashboard">Dashboard</a>
+<img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.jpg" alt="logo" class="logo">
+<a href="home" class="dashboard">Dashboard</a>
 
 <nav class="navbar">
-    <a href="admin-home.php">Home</a>
-    <a href="packages.php">Packages</a>
-    <a href="admin-add-packages.php">Add Packages</a>
-    <a href="logout-user.php">Logout</a>
+    <a href="home">Home</a>
+    <a href="viewpackages">Packages</a>
+    <a href="addpackages">Add Packages</a>
+    <a href="logout">Logout</a>
 </nav>
 
 <!-- Gives a Menu Button -->
@@ -48,48 +39,59 @@ if($email == false || $password == false){
     <h1 class="heading-title">
         Package Details
     </h1>
-    <div class="box-container">
-    <div class="box1">
-        <?php
+    <ul class="grid">
+            <li class="grid__item">
+                <a href="#" class="card" style="width:400px;">
+                    <div class="card__image">
+                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image5.jpg" alt="" />
+                    </div>
+                    <article class="card__content">
+                    <h3 class="card__title"><?= $data->package_type;?> Package</h3><br><br>
+                    <div class="card__body">
+                        <table class="data-table">
+                            <tr>
+                                <td><b>Package ID</b></td>
+                                <td>: <?= $data->package_id;?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Package Code</b></td>
+                                <td>: <?= $data->package_code;?></td>
+                            </tr>
+                            <tr>
+                                <td><b>Price</b></td>
+                                <td>: <?= $data->price;?> LKR</td>
+                            </tr>
+                        </table>
+                    </div>
+                    </article>
+                </a>
+            </li>
 
-            if(isset($_GET['package_id'])) {
-                $package_id = mysqli_real_escape_string($con, $_GET['package_id']);
-                $query = "SELECT * FROM packagedetails WHERE package_id='{$package_id}' ";
-                $result = mysqli_query($con, $query);
-
-                if(mysqli_num_rows($result) > 0) {
-                    $packagedata = mysqli_fetch_array($result);
-        ?>
-            <ol style="margin-top:25px;">
-                <li style="margin-top:15px;">Package Name :-  <p class="form-control"><?=$packagedata['package_name'];?> </p> </li><br>
-                <li style="margin-top:15px;">Package Code :-  <p class="form-control"><?=$packagedata['package_code'];?> </p> </li><br>
-                <li style="margin-top:15px;">Price :-  <p class="form-control"><?=$packagedata['price'];?> </p> </li><br>
-                
-                <br><br>
-                <p style="text-decoration:underline; margin-left: 50px; font-weight: bold; font-size: 1.5rem;">Services Included</p><br><br>
-                <table>
-                    <tr>
-                        <th>Band Option</th>
-                        <th>Decoration Option</th>
-                        <th>Photography Option</th>
-                    </tr>
-                    <tr>
-                        <td><?php if($packagedata['band_choice']) echo $packagedata['band_choice']; else echo "not-included";?></td>
-                        <td><?php if($packagedata['deco_choice']) echo $packagedata['deco_choice']; else echo "not-included";?></td>
-                        <td><?php if($packagedata['photo_choice']) echo $packagedata['photo_choice']; else echo "not-included";?></td>
-                    </tr>
-                </table>
-            </ol>
-        <?php 
-            }
-            else {
-                echo "<h4>No Such Id Found</h4>";
-            }
-        }
-        ?>
-    </div>
-    </div>
-
+            <li class="grid__item">
+                <a href="#" class="card" style="height: 100px;">
+                    <br><br>
+                    <label style="margin-left: 25px; font-weight: bold;">Services Included:</label>
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Band Option</th>
+                                <th>Decoration Option</th>
+                                <th>Photography Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?php if($data->band_choice) echo $data->band_choice; else echo "not-included";?></td>
+                                <td><?php if($data->deco_choice) echo $data->deco_choice; else echo "not-included";?></td>
+                                <td><?php if($data->photo_choice) echo $data->photo_choice; else echo "not-included";?></td>
+                            </tr>
+                        </tbody>
+                    </table>   
+                </a>
+                <br><br><br>
+                <input type="button" class="backbutton" style="float:right; margin-right:40%" value="Go back!" onclick="history.back()">          
+            </li>
+        </ul>
 </section>
 
 <!-- Packages Section Ends -->
@@ -101,9 +103,9 @@ if($email == false || $password == false){
     <div class="box-container">
         <div class="box">
             <h3>Quick Access</h3>
-        <a href="admin-home.php"><i class="fas fa-angle-right"></i>  Home</a>
-        <a href="packages.php"><i class="fas fa-angle-right"></i> Packages</a>
-        <a href="admin-add-packages.php"><i class="fas fa-angle-right"></i> Add Packages</a>
+        <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
+        <a href="viewpackages"><i class="fas fa-angle-right"></i> Packages</a>
+        <a href="addpackages"><i class="fas fa-angle-right"></i> Add Packages</a>
         </div>
 
         <div class="box">
@@ -136,6 +138,6 @@ if($email == false || $password == false){
 
 </section>
 
-    <script src="./js/adminscript.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/admin/adminscript.js"></script>
     </body>
 </html>

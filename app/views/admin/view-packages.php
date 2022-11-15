@@ -42,35 +42,20 @@
             </h1>
             <div class="box-container">
 
-                <?php 
-                    $query = "SELECT * FROM adminpackagedetails";
-                    $result = mysqli_query($con, $query);
-
-                    if(mysqli_num_rows($result) > 0)
-                    {
-                        foreach($result as $packagedetails)
-                        {
-                ?>
-                            <div class="box">
-                                <div class="image">
-                                <?php echo "<img src = '".URLROOT."/public/images/admin/admin-add-packages/image".rand(4,9).".jpg'>";?>
-                                </div>
-                                <div class="content">
-                                    <h3><?= $packagedetails['package_name']; ?> </h3>
-                                    <p>Plan your <?= $packagedetails['package_name']; ?> </p>
-                                        <a href="./view-each-package.php?package_id=<?=$packagedetails['package_id']; ?>" class="viewButton" style="text-decoration:none">View</a>
-                                        <a href="./edit-packages.php?package_id=<?=$packagedetails['package_id']; ?>" class="editButton" style="text-decoration:none">Edit</a>
-                                        <a href="./delete-package.php?package_id=<?=$packagedetails['package_id']; ?>" class="deleteButton" style="text-decoration:none">Delete</a>
-                                </div>
-                            </div>
-                <?php
-                        }
-                    }
-                    else
-                    {
-                        echo "<h3> No Services Found </h4>";
-                    }
-                ?>
+                <?php foreach ($data as $pDetails) : ?>
+                    <div class="box">
+                        <div class="image">
+                            <?php echo "<img src = '".URLROOT."/public/images/admin/admin-add-packages/image".rand(4,9).".jpg'>";?>
+                        </div>
+                        <div class="content">
+                            <h3 style="font-size:medium"><?= $pDetails->package_name; ?> </h3>
+                            <p style="font-size:small" >Plan your <?= $pDetails->package_type; ?> </p><br>
+                                <a href="viewEachPackage?package_id=<?=$pDetails->package_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a>
+                                <a href="editPackage?package_id=<?=$pDetails->package_id; ?>" class="editButton" name="editaction" value="edit" style="text-decoration:none">Edit</a>
+                                <a href="deletePackage?package_id=<?=$pDetails->package_id; ?>" class="deleteButton" name="deleteaction" value="delete" style="text-decoration:none">Delete</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
 
             </div>
 

@@ -10,7 +10,9 @@
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- custom css file link -->
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
 
 
     </head>
@@ -42,65 +44,84 @@
 
 <!-- Add package starts -->
 <section class="add-packages">
-    <h1 class="heading-title">
-        Add Packages
-    </h1>
-    <form action="<?php echo URLROOT; ?>/packages/addNewPackage" method="POST" class="add-package-form">
-
-        <div class="flex">
-            <div class = "form-section">
-                <div class="inputBox">
-                    <span>Package Code:</span>
-                    <input type="int" placeholder="Enter Package Code" name="pcode" value="<?php echo $data['pcode']; ?>">
-                    <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['pcode_error']; ?></span>
-                </div>
-
-                <div class="inputBox">
-                    <span>Package Name:</span>
-                    <input type="text" placeholder="Enter Package Name" name="name" value="<?php echo $data['name']; ?>">
-                    <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['name_error']; ?></span>
-                </div>
-
-
-                <div class="inputBox">
-                    <span>Price:</span>
-                    <input type="int" placeholder="Enter Package Price" name="price" value="<?php echo $data['price']; ?>">
-                    <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['price_error']; ?></span>
+   <h1 class="heading-title" >
+      Add Packages
+   </h1>
+<div class="reg-container form-container contentBox">
+         <form action="<?php echo URLROOT; ?>/packages/addNewPackage" method="post" class="form">
+            <div class="row">
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="pcode">Package Code</label>
+                     <input type="text" name="pcode" placeholder="Enter Package Code" value="<?php echo $data['pcode'] ?>" maxlength="20" />
+                     <span class="error"><?php echo $data['pcode_error']; ?></span>
+                  </div>
+               </div>
+               <div class="column">
+                        <label class="label" for="package_type">Package Type</label>
+                        <select name = "package_type" class="dropdownmenu" id="package_type"> 
+                              <option value="">Select a package type</option>
+                              <option value = "Birthday">Birthday Package</option>
+                              <option value = "Anniversary">Anniversary Package</option>
+                              <option value = "Coparate Event">Coparate Package</option>
+                              <option value = "Graduation Party">Graduation Party Package</option>
+                              <option value = "Get-Together">Get-Together Package</option>
+                              <option value = "General Event">General Package</option>
+                        </select>
+                        <span class="error"><?php echo $data['package_type_error']; ?></span>
                 </div>
             </div>
-       
-            <div class="form-section">
 
-                <div class="title">
-                        <span>Services Included</span>
-                </div>   
-                
-                <div class="inputBox">
-                    <span>Bands:</span>
-                <input type="Text" placeholder="Bands" name="bands" value="<?php echo $data['bands']; ?>">
-                <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['bands_error']; ?></span>
+            <div class="row">
+                <div class="column">
+                   <div class="text-group">
+                      <label class="label" for="name">Package Name</label>
+                      <input type="text" name="name" placeholder="Enter Package Name" value="<?php echo $data['name'] ?>" maxlength="100">
+                      <span class="error"><?php echo $data['name_error']; ?></span>
+                   </div>
                 </div>
-
-                <div class="inputBox">
-                    <span>Decorations:</span>
-                    <input type="Text" placeholder="Decorations" name="decorations" value="<?php echo $data['decorations']; ?>">
-                    <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['decorations_error']; ?></span>
+                <div class="column">
+                   <div class="text-group">
+                      <label class="label" for="price">Price</label>
+                      <input type="text" name="price" placeholder="Enter Package Price" value="<?php echo $data['price'] ?>" maxlength="15">
+                      <span class="error"><?php echo $data['price_error']; ?></span>
+                   </div>
                 </div>
+             </div>
+            
+             <hr>
 
-                <div class="inputBox">
-                    <span>Photography:</span>
-                    <input type="Text" placeholder="Photography" name="photography" value="<?php echo $data['photography']; ?>">
-                    <span class="error" style="display: block; font-size: 13px; color: red;"><?php echo $data['photography_error']; ?></span>
-                </div>
-
+            Services Included:<br><br><br>
+            <div class="row">
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="bands">Bands:</label>
+                     <input type="text" name="bands" placeholder="band option" maxlength="25">
+                     <span class="error"><?php echo $data['bands_error']; ?></span>
+                  </div>
+               </div>
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="decorations">Decorations:</label>
+                     <input type="text" name="decorations" placeholder="decoration option" >
+                     <span class="error"><?php echo $data['decorations_error']; ?></span>
+                  </div>
+               </div>
+               <div class="column">
+                  <div class="text-group">
+                     <label class="label" for="photography">Photography:</label>
+                     <input type="text" name="photography" placeholder="Photography option" >
+                     <span class="error"><?php echo $data['photography_error']; ?></span>
+                  </div>
+               </div>
+            </div>
+    
+            <div class="footer-container">
+               <button type="submit" name="action" value="addpackage" class="btn btn-filled btn-theme-purple">Add Package</button>
             </div>
 
-        </div>
-
-        </div>
-        <button type="submit" name="action" value="addpackage" class="btn" style="margin-left:45%">Add Package</button>
-
-    </form>
+         </form>
+      </div>
 </section>
 <!-- Add package ends -->
 
