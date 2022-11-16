@@ -1,0 +1,287 @@
+/* -----This is stylesheet is for custom icons----------- */
+
+/* ------------------------------------------------------ */
+/* --------------STYLES ADDED BY DEVIN -------------------*/
+/* ------------------------------------------------------ */
+
+/* <i class=""></i> */
+
+/* Custom menu icon */
+.ci {
+   display: block;
+}
+
+.sidenav-icon {
+   height: 26px;
+   width: 26px;
+}
+
+.toast-icon {
+   height: 25px;
+   width: 25px;
+}
+
+.toast-close {
+   height: 20px;
+   width: 20px;
+}
+
+.table-icon {
+   display: inline-block;
+   height: 20px;
+   width: 20px;
+}
+
+
+.footer-icon {
+   display: inline-block;
+   height: 20px;
+   width: 20px;
+}
+
+.input-icon {
+   height: 20px;
+   width: 20px;
+}
+
+.dOverview-icon {
+   height: 24px;
+   width: 24px;
+}
+
+/* Custom close icon */
+.ci-x-white {
+   background: url(../../public/svg/x-white.svg);
+   background-size: contain;
+}
+
+.ci-x-black {
+   background: url(../../public/svg/x-black.svg);
+   background-size: contain;
+}
+
+.ci-menu-white {
+   background: url(../../public/svg/menu-white.svg);
+   height: 32px;
+   width: 32px;
+   background-size: contain;
+}
+
+
+.ci-elements {
+   background: url(../../public/svg/element-equal.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-receipt {
+   background: url(../../public/svg/receipt-2.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-people {
+   background: url(../../public/svg/people.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-briefcase {
+   background: url(../../public/svg/briefcase.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-refresh-left {
+   background: url(../../public/svg/refresh-left-square.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-save-remove {
+   background: url(../../public/svg/save-remove.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-tasks {
+   background: url(../../public/svg/task-square.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-calendar {
+   background: url(../../public/svg/menu-board.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+
+}
+
+.ci-trash {
+   background: url(../../public/svg/trash.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-trash-disable {
+   background: url(../../public/svg/trash-disable.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-edit {
+   background: url(../../public/svg/edit.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-edit-disable {
+   background: url(../../public/svg/edit-disable.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-view-more {
+   background: url(../../public/svg/view-more.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+.ci-view-more-disable {
+   background: url(../../public/svg/view-more-disable.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-overview {
+   background: url(../../public/svg/overview.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-analytics {
+   background: url(../../public/svg/analytics.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-3dots-vertical {
+   background: url(../../public/svg/3dots-vertical.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-3dots-horizontal {
+   background: url(../../public/svg/3dots-horizontal.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-sysLog {
+   background: url(../../public/svg/systemLog.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-sysCreateAcc {
+   background: url(../../public/svg/sysCreateAcc.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+/* home page footer icons */
+.ci-location {
+   background: url(../../public/svg/location.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-mail {
+   background: url(../../public/svg/mail.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-call {
+   background: url(../../public/svg/call.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-success-white {
+   background: url(../../public/svg/success-white.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-warning-white {
+   background: url(../../public/svg/warning-white.svg);
+   background-repeat: no-repeat;
+   background-size: auto;
+}
+
+.ci-pwdView {
+   background: url(../../public/svg/eye.svg);
+   background-repeat: no-repeat;
+   background-size: auto;
+
+}
+
+.ci-pwdHide {
+   background: url(../../public/svg/eye-slash.svg);
+   background-repeat: no-repeat;
+   background-size: auto;
+}
+
+.ci-arrowCircleLeft {
+   background: url(../../public/svg/arrow-circle-left.svg);
+   background-repeat: no-repeat;
+   background-size: auto;
+}
+
+.ci-arrowCircleRight {
+   background: url(../../public/svg/arrow-circle-right.svg);
+   background-repeat: no-repeat;
+   background-size: auto;
+}
+
+/* ------------------------------------------------------ */
+/* -----------END OF STYLES ADDED BY DEVIN ---------------*/
+/* ------------------------------------------------------ */
+
+
+
+
+
+
+/* ------------------------------------------------------ */
+/* ----------- STYLES ADDED BY RAVINDU -------------------*/
+/* ------------------------------------------------------ */
+
+.ci-close-salon {
+   background: url(../../public/svg/key.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-rates {
+   background: url(../../public/svg/percentage.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-salaries {
+   background: url(../../public/svg/dollar-square.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+.ci-resources {
+   background: url(../../public/svg/3d-rotate.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+}
+
+
+/* ------------------------------------------------------ */
+/* ----------- END OF STYLES ADDED BY RAVINDU ------------*/
+/* ------------------------------------------------------ */
