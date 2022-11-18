@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Details</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,33 +32,23 @@
         </section>
 
 
-        <div class="topic">
-            SERVICE DETAILS - DECORATION
+        <div class="wrapper">
+            <div class="product-img">
+              <img src="<?php echo URLROOT ?>/public/images/deco company/deco-add-services/deco1.jpg" height="100%" max-width="100%">
+            </div>
+            <div class="product-info">
+              <div class="product-text">
+                <h1><?= $data->service_name;?></h1><br>
+                <h2>Occasion: <?= $data->occasion;?></h2>
+                <p>Theme: <?= $data->theme;?></p><br>
+                <p><?= $data->description;?></p><br><br><br>
+                <span><?= $data->price;?> LKR</span>
+              <div class="product-price-btn">
+                <button type="button" onclick="history.back()">Back</button>
+              </div>
+              </div>
+            </div>
         </div>
-
-        <!-- <img src="img1.jpg" class="pic" alt=""> -->
-        
-        <div class="container">
-            <div class="name">
-                Service Name: <?= $data->service_name;?>
-            </div>
-            <div class="location">
-                 Occasion:  <?= $data->occasion;?>
-            </div>
-            <div class="des">
-                Description: <?= $data->description;?>
-            </div>
-            <div class="para">
-                Theme: <?= $data->theme;?>
-            </div>
-            <div class="price">
-                Price: <?= $data->price;?> LKR
-            </div>
-
-        </div>
-
-
-
 
 
         <!-- footer start -->
@@ -108,6 +99,6 @@
 <!-- footer ends -->
     
 
-    <script src="<?php echo URLROOT ?>/public/js/deco company/decoscript.js"></script>    
+    <script src="<?php echo URLROOT ?>/public/js/hotel manager/hotelscript.js"></script>    
 </body>
 </html>
