@@ -13,9 +13,16 @@
             if(file_exists('../app/views/'.$view.'.php')){
                 require_once '../app/views/'.$view.'.php';
             }
-            else {
-                die('Corresponding view does not exist!');
+            else
+            {
+                //Page not found
+                redirect('pages/notFound');
             }
+        }
+
+        public function notFound()
+        {
+            redirect('pages/notFound');
         }
     }
 ?>
