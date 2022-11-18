@@ -1,4 +1,8 @@
-
+.product-text td{
+    font-weight: 600;
+    font-size: 16px;
+    padding: 2px 0;
+}
 
 .description{
     font-family: 'Bentham', serif;
@@ -34,9 +38,8 @@ body {
   
   .product-img {
     float: left;
-    width:40%;
-    /* height: 420px;
-    width: 473px; */
+    width: 40%;
+    height: 500px;
   }
   
   .product-img img {
@@ -44,7 +47,7 @@ body {
   }
   
   .product-info {
-    height: 420px;
+    height: 500px;
     width: 60%;
     border-radius: 0 7px 7px 0;
     background-color: #ffffff;
@@ -62,12 +65,13 @@ body {
   }
   
   .product-text h1,
-  .product-price-btn p {
+  .product-price-btn p,
+  .product-text td {
     font-family: 'Bentham', serif;
   }
   
   .product-text h2 {
-    margin: 0 0 47px 38px;
+    margin: 0 0 20px 38px;
     font-size: 13px;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
@@ -91,7 +95,7 @@ body {
     width: 150px;
     margin-top: 25px;
     position: relative;
-    margin:auto;
+    margin: auto;
   }
   
   .product-price-btn p {
@@ -826,20 +830,20 @@ form.add-package-form .flex .inputBox span {
     font-weight: lighter;
 }
 
-.packages .box-container .box1 table {
+/* .packages .box-container .box1 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 85%;
     margin-left: 50px;
-}
+} */
   
-  td, th {
+  /* td, th {
     border: 1px solid #e800b2;
     text-align: left;
     padding: 8px;
     font-size:14px;
     text-align: center;
-  }
+  } */
 
 
 
