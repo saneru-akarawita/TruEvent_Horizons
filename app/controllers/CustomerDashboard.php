@@ -20,7 +20,7 @@ class CustomerDashboard extends Controller
 
     public function viewreservationlog()
    {
-      redirect('Packages/addNewPackage');
+      redirect('CustomerReservation/viewReservationLog');
    }
 
    public function viewpackages()

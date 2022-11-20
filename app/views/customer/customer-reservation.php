@@ -29,6 +29,7 @@
             <a href="home">Home</a>
             <a href="#">Services</a>
             <a href="#">Packages</a>
+            <a href="viewreservationlog">Reservation Log</a>
             <a href="logout">Logout</a>
         </nav>
 
@@ -42,7 +43,7 @@
         <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
 
         <div class="ser-container form-container contentBox">
-            <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
+            <form action="<?php echo URLROOT; ?>/customerReservation/viewReservationLog" method="post" class="form">
                 <h1 class="title">Add Reservation</h1>
 
                 <div class="column display-flex-jcsb">

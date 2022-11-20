@@ -121,11 +121,9 @@ class CustomerReservation extends Controller
    }
 
    public function viewReservationLog(){
-         if(isset($_GET['service_id'])){
-            $id=$_GET['service_id'];
-            $result = $this->decoModel->getDecoServiceDetailsByServiceID($id);
-            $this->view('decoCompany/viewoneservice', $result);
-         }
+      $result = $this->reservationModel->getReservationDetails();
+      $this->view('customer/reservationlog', $result);
+
    }
 
    public function editReservation($id){
