@@ -3,6 +3,7 @@ class CustomerReservation extends Controller
 {
    public function __construct()
    {
+      Session::validateSession([3]);
       $this->reservationModel = $this->model('ReservationModel');
    }
 

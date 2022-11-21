@@ -3,6 +3,7 @@ class DecoService extends Controller
 {
    public function __construct()
    {
+      Session::validateSession([5]);
       $this->decoModel = $this->model('DecoModel');
    }
 

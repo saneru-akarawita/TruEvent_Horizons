@@ -3,6 +3,7 @@ class Superadmin extends Controller
 {
    public function __construct()
    {
+      Session::validateSession([1]);
       $this->userModel = $this->model('UserModel');
    }
 

@@ -6,7 +6,7 @@ class HotelDashboard extends Controller
 {
    public function __construct()
    {
-      
+      Session::validateSession([4]);
    }
 
    public function home()

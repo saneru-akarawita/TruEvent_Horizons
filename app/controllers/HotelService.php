@@ -3,6 +3,7 @@ class HotelService extends Controller
 {
    public function __construct()
    {
+      Session::validateSession([4]);
       $this->hotelModel = $this->model('HotelModel');
    }
 
