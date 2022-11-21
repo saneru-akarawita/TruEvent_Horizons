@@ -6,7 +6,7 @@ class DecoDashboard extends Controller
 {
    public function __construct()
    {
-      
+      Session::validateSession([5]);
    }
 
    public function home()

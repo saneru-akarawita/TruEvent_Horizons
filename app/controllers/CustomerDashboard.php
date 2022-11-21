@@ -6,7 +6,7 @@ class CustomerDashboard extends Controller
 {
    public function __construct()
    {
-      
+      Session::validateSession([3]);
    }
 
    public function home()

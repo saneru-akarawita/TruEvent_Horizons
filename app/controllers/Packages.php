@@ -3,6 +3,7 @@ class Packages extends Controller
 {
    public function __construct()
    {
+      Session::validateSession([2]);
       $this->packageModel = $this->model('PackageModel');
    }
 

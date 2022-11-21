@@ -236,6 +236,8 @@ class User extends Controller
          [
             "email" => $user->email,
             "type" => $user->user_type,
+            //"id" => $this->getUserData($user)[0],
+            //"name" =>  $this->getUserData($user)[1],
             "password" => $user->password  
          ]
       );
@@ -288,7 +290,7 @@ class User extends Controller
          case 3:
          case 4:
          case 5:
-            return $this->staffModel->getStaffUserData($user->mobileNo);
+            return $this->staffModel->getStaffUserData($user->email);
             break;
          case 6:
             //return $this->customerModel->getCustomerUserData($user->mobileNo);

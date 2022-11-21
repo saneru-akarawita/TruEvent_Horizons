@@ -39,7 +39,7 @@ class Session
       }
 
       else{
-         redirect('pages/notFound');
+         redirect('pages/accessDenied');
       }
    }
 
@@ -55,9 +55,6 @@ class Session
    {
       switch ($dataName)
       {
-         case "name":
-            return Self::get("user")["name"];
-
          case "type":
             return Self::get("user")["type"];
 
@@ -79,6 +76,14 @@ class Session
 
          case "password":
             return Self::get("user")["password"];
+         
+         // case "name":
+         //    return Self::get("user")["name"];
+
+         // case "id":
+         //    return Self::get("user")["id"];
+
+
          default:
             echo "Invalid Parameter";
             break;
