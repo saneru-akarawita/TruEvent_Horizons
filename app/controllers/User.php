@@ -6,6 +6,8 @@ class User extends Controller
    {
       $this->userModel = $this->model('UserModel');
       $this->OTPModel = $this->model('OTPManagementModel');
+      $this->customerModel = $this->model('CustomerModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
    }
 
    public function signin()
@@ -236,8 +238,8 @@ class User extends Controller
          [
             "email" => $user->email,
             "type" => $user->user_type,
-            //"id" => $this->getUserData($user)[0],
-            //"name" =>  $this->getUserData($user)[1],
+            "id" => $this->getUserData($user)[0],
+            "name" =>  $this->getUserData($user)[1],
             "password" => $user->password  
          ]
       );
@@ -283,17 +285,24 @@ class User extends Controller
 
    public function getUserData($user)
    {
-      switch ($user->userType)
+      switch ($user->user_type)
       {
          case 1:
          case 2:
          case 3:
+            return $this->customerModel->getCustomerUserData($user->email);
+            break;
          case 4:
+            return $this->serviceProviderModel->getServiceProviderUserData($user->email);
+            break;
          case 5:
-            return $this->staffModel->getStaffUserData($user->email);
+            return $this->serviceProviderModel->getServiceProviderUserData($user->email);
             break;
          case 6:
-            //return $this->customerModel->getCustomerUserData($user->mobileNo);
+            return $this->serviceProviderModel->getServiceProviderUserData($user->email);
+            break;
+         case 7:
+            return $this->serviceProviderModel->getServiceProviderUserData($user->email);
             break;
          default:
             return [null, null];

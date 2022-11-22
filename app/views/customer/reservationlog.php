@@ -84,10 +84,15 @@
                                         <td><?= $rvdetails->spType; ?></td>
                                         <td><?= $rvdetails->spName; ?></td>
                                         <td>
-                                            <span class="status purple"></span>
+                                            <?php if($rvdetails->status == "pending") $color="orange"; else $color="green";?>
+                                            <span class="status <?php echo $color?>"></span>
                                             <?= $rvdetails->status; ?>
                                         </td>
-                                        <td><?= $rvdetails->payment; ?></td>
+                                        <td>
+                                            <?php if($rvdetails->payment == "not-paid") $color="red"; else $color="green";?>
+                                            <span class="status <?php echo $color?>"></span>
+                                            <?= $rvdetails->payment; ?>
+                                        </td>
                                         <td>
                                             <div class="action-button">
                                                 <a href="#" class="buttone">edit</a>
@@ -151,10 +156,15 @@
                                         <td><?= $rvdetails->packageType; ?></td>
                                         <td><?= $rvdetails->packageName; ?></td>
                                         <td>
-                                            <span class="status purple"></span>
+                                            <?php if($rvdetails->status == "pending") $color="orange"; else $color="green";?>
+                                            <span class="status <?php echo $color?>"></span>
                                             <?= $rvdetails->status; ?>
                                         </td>
-                                        <td><?= $rvdetails->payment; ?></td>
+                                        <td>
+                                            <?php if($rvdetails->payment == "not-paid") $color="red"; else $color="green";?>
+                                            <span class="status <?php echo $color?>"></span>
+                                            <?= $rvdetails->payment; ?>
+                                        </td>
                                         <td>
                                             <div class="action-button">
                                                 <a href="#" class="buttone">edit</a>

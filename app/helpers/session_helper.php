@@ -77,11 +77,11 @@ class Session
          case "password":
             return Self::get("user")["password"];
          
-         // case "name":
-         //    return Self::get("user")["name"];
+         case "name":
+            return Self::get("user")["name"];
 
-         // case "id":
-         //    return Self::get("user")["id"];
+         case "id":
+            return Self::get("user")["id"];
 
 
          default:

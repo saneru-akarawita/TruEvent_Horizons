@@ -14,6 +14,7 @@ class ReservationModel extends Model
                 'eventName' => $data['event_name'],
                 'rvDate' => $data['rvdate'],
                 'rvTime' => $data['rvtime'],
+                'customer_id' => $data['customer_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     
@@ -28,6 +29,7 @@ class ReservationModel extends Model
                 'eventName' => $data['event_name'],
                 'rvDate' => $data['rvdate'],
                 'rvTime' => $data['rvtime'],
+                'customer_id' => 3,
                 'status'=> "pending",
                 'payment' => "not-paid"
     
@@ -46,6 +48,13 @@ class ReservationModel extends Model
     public function getReservationDetailsByReservationID($id)
     {
         $results = $this->getSingle("customerrvdetails", "*", ['service_id' => $id]);
+
+        return $results;
+    }
+
+    public function getReservationsByCustomer($customerID)
+    {
+        $results = $this->getResultSet("customerrvdetails", "*", ['customer_id' => $customerID]);
 
         return $results;
     }
