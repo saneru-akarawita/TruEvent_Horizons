@@ -43,7 +43,7 @@
         <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
 
         <div class="ser-container form-container contentBox">
-            <form action="<?php echo URLROOT; ?>/customerReservation/viewReservationLog" method="post" class="form">
+            <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
                 <h1 class="title">Add Reservation</h1>
 
                 <div class="column display-flex-jcsb">

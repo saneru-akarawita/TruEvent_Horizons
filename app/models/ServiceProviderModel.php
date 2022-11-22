@@ -26,5 +26,12 @@ class ServiceProviderModel extends Model
       return $result;
    }
 
+   public function getServiceProviderUserData($email)
+   {
+      $results = $this->getSingle("serviceprovideruser", "*", ['email' => $email]);
+
+      return [$results->business_id, $results->company_name, $results->sp_category];
+   }
+
 
 }

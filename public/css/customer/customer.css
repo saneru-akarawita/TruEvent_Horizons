@@ -524,20 +524,16 @@ tr td:last-child {
 }
 
 
-
-
-
-
-.status .purple {
-    background: #8e44ad;
+.status.green {
+    background:green;
 }
 
-.status .pink {
-    background: pink;
-}
-
-.status .orange {
+.status.orange {
     background: orange;
+}
+
+.status.red {
+    background: red;
 }
 
 

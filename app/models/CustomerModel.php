@@ -20,5 +20,12 @@ class CustomerModel extends Model
       return $result;
    }
 
+   public function getCustomerUserData($email)
+   {
+      $results = $this->getSingle("customeruser", "*", ['email' => $email]);
+
+      return [$results->customer_id, $results->fname . " " . $results->lname];
+   }
+
 
 }

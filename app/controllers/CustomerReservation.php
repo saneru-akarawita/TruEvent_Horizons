@@ -25,6 +25,7 @@ class CustomerReservation extends Controller
                'event_name' => trim($_POST['event_name']),
                'rvdate' => trim($_POST['rvdate']),
                'rvtime' => trim($_POST['rvtime']),
+               'customer_id' => Session::getUser("id"),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -46,6 +47,7 @@ class CustomerReservation extends Controller
                'event_name' => trim($_POST['event_name']),
                'rvdate' => trim($_POST['rvdate']),
                'rvtime' => trim($_POST['rvtime']),
+               'customer_id' => Session::getUser("id"),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -76,11 +78,11 @@ class CustomerReservation extends Controller
                 
                $this->reservationModel->beginTransaction();
                $this->reservationModel->addReservation($data);
+
+               Toast::setToast(1, "Service Added Successfully!!!", '');
                $this->reservationModel->commit();
 
-               Toast::setToast(1, "Service Added Successfully!!!", "");
-
-               //redirect('customer/customer-reservation');
+               redirect('CustomerReservation/viewReservationLog');
                
             }
             else
@@ -122,8 +124,10 @@ class CustomerReservation extends Controller
    }
 
    public function viewReservationLog(){
-      $result = $this->reservationModel->getReservationDetails();
-      $this->view('customer/reservationlog', $result);
+      $customerID = Session::getUser("id");
+      $reservationsList = $this->reservationModel->getReservationsByCustomer($customerID);
+      //$result = $this->reservationModel->getReservationDetails();
+      $this->view('customer/reservationlog', $reservationsList);
 
    }
 
