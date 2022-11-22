@@ -13,7 +13,8 @@ class HotelModel extends Model
             'max_crowd' => $data['max_crowd'],
             'hall_type' => $data['hall_type'],
             'ac_status' => $data['ac_status'],
-            'other_facilities' => $data['other_facilities']
+            'other_facilities' => $data['other_facilities'],
+            'service_provider_id' => $data['service_provider_id']
 
          ]);
     }
@@ -28,6 +29,13 @@ class HotelModel extends Model
     public function getHotelServiceDetailsByServiceID($id)
     {
         $results = $this->getSingle("hotelservicedetails", "*", ['service_id' => $id]);
+
+        return $results;
+    }
+
+    public function getServicesByServiceProvider($serviceproviderID)
+    {
+        $results = $this->getResultSet("hotelservicedetails", "*", ['service_provider_id' => $serviceproviderID]);
 
         return $results;
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 04:08 PM
+-- Generation Time: Nov 22, 2022 at 06:53 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.10
 
@@ -87,10 +87,26 @@ CREATE TABLE `customerrvdetails` (
   `rvType` varchar(10) NOT NULL,
   `spType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `spName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `packageType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `packageName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `status` varchar(10) NOT NULL,
-  `payment` varchar(10) NOT NULL
+  `payment` varchar(10) NOT NULL,
+  `customer_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `customerrvdetails`
+--
+
+INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `packageType`, `packageName`, `status`, `payment`, `customer_id`) VALUES
+(11, '25th Birthday - Saneru', '2022-11-25', '21:45:00', 'service', 'Hotel', 'Birthday', NULL, NULL, 'pending', 'not-paid', 1),
+(12, '10th Anniversary - Hansika', '2022-11-25', '21:45:00', 'package', NULL, NULL, 'Anniversary', '10th Anniversary Celebration', 'pending', 'not-paid', 1),
+(13, 'Get together party', '2022-11-16', '11:30:00', 'service', 'Decoration', 'Harini Deco', NULL, NULL, 'pending', 'not-paid', 2),
+(14, 'Perera\'s Farewell Party', '2022-11-30', '18:00:00', 'package', NULL, NULL, 'Coparate Event', 'Farewell Party', 'pending', 'not-paid', 2),
+(15, 'High School Graduation batch 19', '2022-12-25', '16:00:00', 'package', NULL, NULL, 'Graduation Party', 'Graduation', 'pending', 'not-paid', 1),
+(16, 'Sachin\'s Wedding', '2022-12-05', '09:00:00', 'service', 'Photography', 'Red Ants', NULL, NULL, 'pending', 'not-paid', 2),
+(17, 'Pamith\'s Birthday', '2022-11-20', '19:30:00', 'service', 'Photography', 'Red Ants', NULL, NULL, 'pending', 'not-paid', 1),
+(22, 'manjula\'s retirement party', '2022-12-12', '18:30:00', 'package', NULL, NULL, 'Coparate Event', 'Farewell Party', 'pending', 'not-paid', 3);
 
 -- --------------------------------------------------------
 
@@ -113,7 +129,9 @@ CREATE TABLE `customeruser` (
 --
 
 INSERT INTO `customeruser` (`customer_id`, `fname`, `lname`, `email`, `contact_no`, `district`, `join_date`) VALUES
-(1, 'Chirasi', 'Amaya', 'chirasiamaya99@gmail.com', '0711351868', 'Matara', '2022-11-14 14:47:17');
+(1, 'Chirasi', 'Amaya', 'chirasiamaya99@gmail.com', '0711351868', 'Matara', '2022-11-14 14:47:17'),
+(2, 'Saneru', 'Akarawita', '2020cs007@stu.ucsc.cmb.ac.lk', '0770338069', 'Colombo', '2022-11-21 19:58:35'),
+(3, 'Chandika', 'Akarawita', 'chandika68@gmail.com', '0777471495', 'Colombo', '2022-11-22 08:37:16');
 
 -- --------------------------------------------------------
 
@@ -127,15 +145,17 @@ CREATE TABLE `decoservicedetails` (
   `occasion` varchar(255) NOT NULL,
   `theme` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` text NOT NULL,
-  `description` longtext NOT NULL
+  `description` longtext NOT NULL,
+  `service_provider_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `decoservicedetails`
 --
 
-INSERT INTO `decoservicedetails` (`service_id`, `service_name`, `occasion`, `theme`, `price`, `description`) VALUES
-(7, 'Get together Celebration', 'Birthday', 'Purple', '3000', 'This is a sample description');
+INSERT INTO `decoservicedetails` (`service_id`, `service_name`, `occasion`, `theme`, `price`, `description`, `service_provider_id`) VALUES
+(7, 'Get together Celebration', 'Birthday', 'Purple', '3000', 'This is a sample description', 2),
+(8, 'Get together Celebration', 'Anniversary', 'Outdoor', '4800.00', 'this is a sample description', 4);
 
 -- --------------------------------------------------------
 
@@ -153,18 +173,20 @@ CREATE TABLE `hotelservicedetails` (
   `max_crowd` int NOT NULL,
   `ac_status` int NOT NULL,
   `price` text NOT NULL,
-  `other_facilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
+  `other_facilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `service_provider_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `hotelservicedetails`
 --
 
-INSERT INTO `hotelservicedetails` (`service_id`, `service_type`, `hall_image`, `hall_name`, `location`, `hall_type`, `max_crowd`, `ac_status`, `price`, `other_facilities`) VALUES
-(21, 'Birthday Parties', 0x696d6167652e6a7067, 'Grand Kandian Hall', '4th Floor East Wing', 'indoor', 250, 1, '4500.00', 'DJ Included'),
-(22, 'Anniversary Parties', 0x7369676e75702e6a7067, 'Grand South Hall', '1th Floor West Wing', 'outdoor', 100, 0, '3000.00', 'Canapy Cover Included'),
-(23, 'Welcome Parties', 0x686f6d65207061676520696d6167652e6a7067, 'Margeritta Hall', 'Ground Floor', 'indoor', 500, 0, '2500.00', 'DJ Included'),
-(24, 'Night Functions', 0x686f6d65207061676520696d6167652e6a7067, 'Margeritta Hall', 'Ground Floor', 'outdoor', 600, 1, '5500.00', 'DJ Included');
+INSERT INTO `hotelservicedetails` (`service_id`, `service_type`, `hall_image`, `hall_name`, `location`, `hall_type`, `max_crowd`, `ac_status`, `price`, `other_facilities`, `service_provider_id`) VALUES
+(21, 'Birthday Parties', 0x696d6167652e6a7067, 'Grand Kandian Hall', '4th Floor East Wing', 'indoor', 250, 1, '4500.00', 'DJ Included', 3),
+(22, 'Anniversary Parties', 0x7369676e75702e6a7067, 'Grand South Hall', '1th Floor West Wing', 'outdoor', 100, 0, '3000.00', 'Canapy Cover Included', 3),
+(23, 'Welcome Parties', 0x686f6d65207061676520696d6167652e6a7067, 'Margeritta Hall', 'Ground Floor', 'indoor', 500, 0, '2500.00', 'DJ Included', 3),
+(24, 'Night Functions', 0x686f6d65207061676520696d6167652e6a7067, 'Margeritta Hall', 'Ground Floor', 'outdoor', 600, 1, '5500.00', 'DJ Included', 3),
+(25, 'Night Functions', 0x436c617373204469616772616d2e64726177696f202831292e706e67, 'Golden Crown Hall', 'First floor', 'indoor', 500, 1, '5000.00', 'Dance Floor, Decoration', 5);
 
 -- --------------------------------------------------------
 
@@ -186,6 +208,7 @@ CREATE TABLE `otpverification` (
 --
 
 CREATE TABLE `serviceprovideruser` (
+  `service_provider_id` int NOT NULL,
   `business_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -204,10 +227,12 @@ CREATE TABLE `serviceprovideruser` (
 -- Dumping data for table `serviceprovideruser`
 --
 
-INSERT INTO `serviceprovideruser` (`business_id`, `company_name`, `email`, `contact_no`, `district`, `sp_category`, `account_no`, `account_name`, `bank`, `branch`, `travel_flag`, `join_date`) VALUES
-('ABC3323', 'Akarawita Pvt.', 'temp2@gmail.com', '0777471495', 'Colombo', '6', '23456789', 'S.U. Akarawita', 'Seylan Bank', 'Kottawa', 1, '2022-11-14 19:35:45'),
-('DECO3343', 'Harini Decoration', 'harinij@gmail.com', '0775511542', 'Galle', '5', '12345678', 'Harini Jayawardhana', 'Peoples bank', 'Galle', 1, '2022-11-16 12:01:40'),
-('STR0025', 'Udawatta Stores', 'tempemail@gmail.com', '0773739428', 'Kaluthara', '4', '12345678', 'Udawatta Stores', 'Sampath Bank', 'Kaluthara', 0, '2022-11-14 19:24:59');
+INSERT INTO `serviceprovideruser` (`service_provider_id`, `business_id`, `company_name`, `email`, `contact_no`, `district`, `sp_category`, `account_no`, `account_name`, `bank`, `branch`, `travel_flag`, `join_date`) VALUES
+(1, 'ABC3323', 'Akarawita Pvt.', 'temp2@gmail.com', '0777471495', 'Colombo', '6', '23456789', 'S.U. Akarawita', 'Seylan Bank', 'Kottawa', 1, '2022-11-14 19:35:45'),
+(2, 'DECO3343', 'Harini Decoration', 'harinij@gmail.com', '0775511542', 'Galle', '5', '12345678', 'Harini Jayawardhana', 'Peoples bank', 'Galle', 1, '2022-11-16 12:01:40'),
+(3, 'STR0025', 'Udawatta Stores', 'tempemail@gmail.com', '0773739428', 'Kaluthara', '4', '12345678', 'Udawatta Stores', 'Sampath Bank', 'Kaluthara', 0, '2022-11-14 19:24:59'),
+(4, 'DEC0012', 'Sanduni Decoration', 'sanduni321@gmail.com', '0775566543', 'Colombo', '5', '12348765', 'Sanduni Aaloka', 'Seylan Bank', 'Maharagama', 1, '2022-11-22 11:13:06'),
+(5, 'HOT1234', 'Hilton', 'hilton123@gmail.com', '0112456789', 'Colombo', '4', '87654321', 'Hilton Hotels', 'Peoples Bank', 'Colombo 07', 0, '2022-11-22 11:21:24');
 
 -- --------------------------------------------------------
 
@@ -240,8 +265,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`email`, `password`, `fail_attempts`, `user_type`, `vstatus`) VALUES
 ('2020cs007@stu.ucsc.cmb.ac.lk', '$2y$10$fOi2VY9/XkkkZmflMwAj/OSLzUvm1GDPysjQvT7IdDf0pErrBp23S', 0, 3, 'verified'),
+('chandika68@gmail.com', '$2y$10$QkcZGXp1MvsQpVQdtDRuHO0rjFw0tTK88fVIjImc5V7Qfckt12VNi', 0, 3, 'verified'),
 ('chirasiamaya99@gmail.com', '$2y$10$iuMwgzLyOgIbownFPFRgfea2j0ZSipLlgONX/IZcTxblq3TqZQkhW', 0, 3, 'verified'),
 ('harinij@gmail.com', '$2y$10$YPNev1P0QBJlK1HnwrP60.E28VfmIM3sJrx//AqALqpHLHtbt11uS', 0, 5, 'verified'),
+('hilton123@gmail.com', '$2y$10$ECaoMqD4VKKzzP.B15G9suApUaOSuorKrLBZ94nMgckd1Y/EPagfy', 0, 4, 'verified'),
+('sanduni321@gmail.com', '$2y$10$R47aEezHX9mUSShQjLI2E.8.gKORsr./a5q.9GWT.vgYt/hGizXs2', 0, 5, 'verified'),
 ('saneru.akarawita@gmail.com', '$2y$10$MQCWL4TMo64UnvVn4hTdkutNdrDR6sF/8tQYsTe89vjuIW0B8VATm', 0, 2, 'verified'),
 ('superadmin@gmail.com', '$2y$10$7Gpx/uJ9Z.IaIFHjuu7y6eBjwMpvDxIExc2NAuhfodK/wHDC86PnG', 0, 1, 'verified'),
 ('temp2@gmail.com', '$2y$10$6y1UzJIqJ1g4gUM1TfZSeey/.UB/LKC96jpWSd5LkT8oahjtvlgf6', 0, 6, 'verified'),
@@ -268,7 +296,8 @@ ALTER TABLE `adminuser`
 -- Indexes for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
-  ADD PRIMARY KEY (`rv_id`);
+  ADD PRIMARY KEY (`rv_id`),
+  ADD KEY `customer_id FK` (`customer_id`);
 
 --
 -- Indexes for table `customeruser`
@@ -281,13 +310,15 @@ ALTER TABLE `customeruser`
 -- Indexes for table `decoservicedetails`
 --
 ALTER TABLE `decoservicedetails`
-  ADD PRIMARY KEY (`service_id`);
+  ADD PRIMARY KEY (`service_id`),
+  ADD KEY `decodeet to service provider user FK on service provider id` (`service_provider_id`);
 
 --
 -- Indexes for table `hotelservicedetails`
 --
 ALTER TABLE `hotelservicedetails`
-  ADD PRIMARY KEY (`service_id`);
+  ADD PRIMARY KEY (`service_id`),
+  ADD KEY `hotel service deet to service provider user FK on SP ID` (`service_provider_id`);
 
 --
 -- Indexes for table `otpverification`
@@ -299,7 +330,7 @@ ALTER TABLE `otpverification`
 -- Indexes for table `serviceprovideruser`
 --
 ALTER TABLE `serviceprovideruser`
-  ADD PRIMARY KEY (`business_id`,`email`),
+  ADD PRIMARY KEY (`service_provider_id`,`business_id`,`email`),
   ADD KEY `FK on email users-spuser` (`email`);
 
 --
@@ -334,25 +365,31 @@ ALTER TABLE `adminuser`
 -- AUTO_INCREMENT for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
-  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `customeruser`
 --
 ALTER TABLE `customeruser`
-  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `decoservicedetails`
 --
 ALTER TABLE `decoservicedetails`
-  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hotelservicedetails`
 --
 ALTER TABLE `hotelservicedetails`
-  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `serviceprovideruser`
+--
+ALTER TABLE `serviceprovideruser`
+  MODIFY `service_provider_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -365,10 +402,28 @@ ALTER TABLE `adminuser`
   ADD CONSTRAINT `FK on email users-adminuser` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `customerrvdetails`
+--
+ALTER TABLE `customerrvdetails`
+  ADD CONSTRAINT `customer_id FK` FOREIGN KEY (`customer_id`) REFERENCES `customeruser` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `customeruser`
 --
 ALTER TABLE `customeruser`
   ADD CONSTRAINT `FK on email users-customeruser` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `decoservicedetails`
+--
+ALTER TABLE `decoservicedetails`
+  ADD CONSTRAINT `decodeet to service provider user FK on service provider id` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceprovideruser` (`service_provider_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hotelservicedetails`
+--
+ALTER TABLE `hotelservicedetails`
+  ADD CONSTRAINT `hotel service deet to service provider user FK on SP ID` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceprovideruser` (`service_provider_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `serviceprovideruser`
