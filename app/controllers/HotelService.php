@@ -9,7 +9,8 @@ class HotelService extends Controller
 
    public function viewAllServices()
    {
-      $result = $this->hotelModel->getHotelServiceDetails();
+      $serviceproviderID = Session::getUser("id");
+      $result = $this->hotelModel->getServicesByServiceProvider($serviceproviderID);
       $this->view('hotelManager/view-services-more',  $result);
    }
 
@@ -30,6 +31,7 @@ class HotelService extends Controller
             'hall_type' => trim($_POST['hall_type']),
             'ac_status'=>trim($_POST['ac_status']),
             'other_facilities' => trim($_POST['other_facilities']),
+            'service_provider_id' => Session::getUser("id"),
 
             'event_name_error' => '',
             'hotel_image_error'=>'',
@@ -93,6 +95,7 @@ class HotelService extends Controller
             'hall_type' => '',
             'ac_status'=>'',
             'other_facilities' => '',
+            'service_provider_id' => '',
 
             'event_name_error' => '',
             'hotel_image_error'=>'',

@@ -30,7 +30,7 @@ class ServiceProviderModel extends Model
    {
       $results = $this->getSingle("serviceprovideruser", "*", ['email' => $email]);
 
-      return [$results->business_id, $results->company_name, $results->sp_category];
+      return [$results->service_provider_id, $results->company_name, $results->sp_category];
    }
 
 

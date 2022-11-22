@@ -9,7 +9,8 @@ class DecoService extends Controller
 
    public function viewAllServices()
    {
-      $result = $this->decoModel->getDecoServiceDetails();
+      $serviceproviderID = Session::getUser("id");
+      $result = $this->decoModel->getServicesByServiceProvider($serviceproviderID);
       $this->view('decoCompany/serviceslist',  $result);
    }
 
@@ -26,6 +27,7 @@ class DecoService extends Controller
             'description'=>trim($_POST['description']),
             'occasion' => trim($_POST['occasion']),
             'theme' => trim($_POST['theme']),
+            'service_provider_id' => Session::getUser("id"),
 
             'name_error' => '',
             'description_error'=>'',
@@ -77,6 +79,7 @@ class DecoService extends Controller
             'description'=>'',
             'occasion' => '',
             'theme' => '',
+            'service_provider_id' => '',
 
             'name_error' => '',
             'description_error'=>'',
@@ -104,6 +107,7 @@ class DecoService extends Controller
    public function deleteService($id){
 
    }
+
 
    public function home()
    {
