@@ -128,6 +128,7 @@
     .form-container input[type="text"],
     .form-container input[type="number"],
     .form-container input[type="date"],
+    .form-container input[type="password"],
     .form-container input[type="file"]{
         display: block;
         border-radius: 5px;
