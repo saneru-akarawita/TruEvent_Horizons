@@ -16,6 +16,14 @@
     background-color: #ffffff;
 }
 
+.ser-container,
+.reset-container {
+    width: 650px;
+    height: fit-content;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 @media (max-width: 768px) {
 
     .reg-container,

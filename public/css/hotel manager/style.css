@@ -619,4 +619,11 @@ footer p {
   left: 30px;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 
