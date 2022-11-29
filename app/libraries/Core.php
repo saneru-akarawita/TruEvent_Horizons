@@ -10,12 +10,15 @@
             $url = $this->getURL();
 
             // Look in controllers for the first value
-            if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
+            if (isset($url[0]))
             {
-                // Set the controller if exists
-                $this->currentController = ucwords($url[0]);
-                // Unset the 0th value
-                unset($url[0]);
+                if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
+                {
+                    // Set the controller if exists
+                    $this->currentController = ucwords($url[0]);
+                    // Unset the 0th value
+                    unset($url[0]);
+                }
             }
 
             // Require the controller

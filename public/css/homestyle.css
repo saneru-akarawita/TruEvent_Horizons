@@ -1,0 +1,156 @@
+.mainbody{
+        margin-top: -8px;
+        margin-left: -8px;
+        width: 101.05%;
+        height: 900px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url(../../public/images/home/home\ page\ image.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background: linear-gradient(104.19deg, rgba(0, 0, 0, 0.5) 26.57%, rgba(248, 76, 220, 0.305) 51.58%, rgba(0, 0, 0, 0.5) 77.11%), url(../../public/images/home/home\ page\ image.jpg);
+}
+
+header{
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        background: rgba(13, 12, 12, 0.38);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.36);
+        height: 90px
+
+}
+
+.logo1{
+        width: auto;
+        height: 100px;
+        margin-top: 35px;
+        margin-left: 50px;
+}
+
+.menuitems, .loginbar {
+       list-style-type: none;
+       display: inline-flex; 
+       
+}
+
+.menuitems{
+        margin-top: 55px;
+}
+
+.loginbar{
+        margin-top:-1px;
+        margin-right:50px
+}
+li{
+        margin-left: 50px;
+        color: whitesmoke;
+}
+
+.heading h1{
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 68px;
+        line-height: 70px;
+        letter-spacing: 5px;
+        display: flex;
+        align-items: center;
+        color: #FFFFFF;
+        margin-top: 110px;
+        margin-left: 50px;
+}
+
+.forcustomer{
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 30px;
+        color: #FFFFFF;
+        width: 35%;
+        letter-spacing: 1px;
+        margin-left: 50px;
+}
+
+.signupbtncustomer{
+        filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
+        color: black;
+        width:40%;
+        background-color:rgb(188, 185, 185) ;
+        border-radius: 10px;
+        padding:15px;
+        font-size: 20px;
+        letter-spacing: 1px;
+}
+.forsp{
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 30px;
+        color: #FFFFFF;
+        width: 35%;
+        letter-spacing: 1px;
+        margin-left: 50px; 
+        float: right; 
+        
+}
+
+.signupbtnsp{
+        filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
+        color: black;
+        width:40%;
+        background-color:rgb(188, 185, 185) ;
+        border-radius: 10px;
+        padding:15px;
+        font-size: 20px;
+        letter-spacing: 1px;    
+}
+.aboutus{
+        display: inline-flex;
+        margin-bottom: 50px;
+}
+.aboutusdetails h2{
+        font-weight: 600;
+        font-size: 40px;
+        text-align: center;
+}
+
+.aboutus p{
+        font-size: 20px;
+        line-height: 30px;
+        margin-left: 100px;
+        margin-top: 20px;
+        width: 60%;
+        float: right;
+        text-align: justify;
+}
+
+.aboutusimg img{
+        width:350px;
+        height: auto;
+        margin-left: 80px;
+
+}
+
+
+
+
+
+/* -----------------------------------footer--------------------------------------- */
+  
+
+
+    .packages .box-container .box{
+        padding: 2rem;
+        text-align: center;
+        
+    }
+    
+    
+    .packages .box-container .box .content h3 {
+        font-size: 2.5rem;
+        color: var(--black);
+    }
+    
+    .packages .box-container .box .content p {
+        font-size: 1.5rem;
+        color: var(--light-black);
+        line-height: 2;
+        padding: 1rem 0;
+    }

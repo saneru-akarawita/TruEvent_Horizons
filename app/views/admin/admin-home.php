@@ -8,7 +8,14 @@
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Montserrat Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/dashboardpanel.css">
         <!-- custom css file link -->
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css"/>
 
@@ -17,7 +24,7 @@
     <body>
 
 <!-- header section starts -->
-<section class="header">
+<section class="header" style="height:fit-content;">
 <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.jpg" alt="logo" class="logo">
 <a href="home" class="dashboard">Dashboard</a>
 
@@ -75,8 +82,64 @@
 
 </div>
 </section>
-
+<br>
 <!-- home sesction ends -->
+<main class="main-container">
+        <div class="main-title">
+          <!-- <p class="font-weight-bold">DASHBOARD</p> -->
+        </div>
+
+        <div class="main-cards">
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">PRODUCTS</p>
+              <span class="material-icons-outlined text-blue">inventory_2</span>
+            </div>
+            <span class="text-primary font-weight-bold">249</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">PURCHASE ORDERS</p>
+              <span class="material-icons-outlined text-orange">add_shopping_cart</span>
+            </div>
+            <span class="text-primary font-weight-bold">83</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">SALES ORDERS</p>
+              <span class="material-icons-outlined text-green">shopping_cart</span>
+            </div>
+            <span class="text-primary font-weight-bold">79</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">INVENTORY ALERTS</p>
+              <span class="material-icons-outlined text-red">notification_important</span>
+            </div>
+            <span class="text-primary font-weight-bold">56</span>
+          </div>
+
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <p class="chart-title">Top 5 Products</p>
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <p class="chart-title">Purchase and Sales Orders</p>
+            <div id="area-chart"></div>
+          </div>
+
+        </div>
+</main>
+
 
 
 
@@ -198,6 +261,7 @@
 
 
     <!-- custom js file link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/admin/adminscript.js"></script>
     </body>
 </html>
