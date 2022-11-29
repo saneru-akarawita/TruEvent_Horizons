@@ -144,6 +144,10 @@ class AdminDashboard extends Controller
       //}
    }
 
+   public function reviewComplaints(){
+      $this->view('admin/reviewComplaints');
+   }
+
    public function logout()
    {
       redirect('User/signout');
