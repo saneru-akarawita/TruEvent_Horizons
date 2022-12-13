@@ -7,6 +7,8 @@ class CustomerDashboard extends Controller
    public function __construct()
    {
       Session::validateSession([3]);
+      $this->decoModel = $this->model('DecoModel');
+      $this->hotelModel = $this->model('HotelModel');
    }
 
    public function home()
@@ -30,8 +32,10 @@ class CustomerDashboard extends Controller
 
    public function viewservices()
    {
-      $result = $this->decoModel->getDecoServiceDetails();
-      $this->view('decoCompany/serviceslist',  $result);
+      $result1 = $this->decoModel->getDecoServiceDetails();
+      $result2 = $this->hotelModel->getHotelServiceDetails();
+      $result = $result1 + $result2;
+      $this->view('customer/services',  $result);
    }
 
    public function profileSettings()
