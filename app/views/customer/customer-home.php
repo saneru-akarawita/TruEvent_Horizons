@@ -25,7 +25,7 @@
 
         <nav class="navbar">
             <a href="home">Home</a>
-            <a href="#">Services</a>
+            <a href="viewservices">Services</a>
             <a href="#">Packages</a>
             <a href="viewreservationlog">Reservation Log</a>
             <a href="addreservation">Add Reservation</a>
@@ -96,7 +96,7 @@
                 <div class="content">
                     <h3>Anniversary Package</h3>
                     <p>Plan your anniversary</p>
-                    <p style="font: size 5rem;color: var(--black);">$750</p>
+                    <p style="font: size 5rem;color: var(--black);">Rs. 7500</p>
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                 <div class="content">
                     <h3>Birthdy Package</h3>
                     <p>Enjoy your birthdays</p>
-                    <p style="font: size 5rem;color: var(--black);">$850</p>
+                    <p style="font: size 5rem;color: var(--black);">Rs. 8500</p>
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                 <div class="content">
                     <h3>Fair Wells Package</h3>
                     <p>Have Fun</p>
-                    <p style="font: size 5rem;color: var(--black);">$550</p>
+                    <p style="font: size 5rem;color: var(--black);">Rs. 5500</p>
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
