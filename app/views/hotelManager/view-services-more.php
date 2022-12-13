@@ -19,8 +19,8 @@
     
         <nav class="navbar">
             <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
+            <a href="viewservices">Venues</a>
+            <a href="addservices">Add Venues</a>
             <a href="logout">Logout</a>
         </nav>
     
@@ -72,7 +72,7 @@
 
 <!-- <-------------------------------------------------------View Services More Start------------------------------------------------------->   
 <section class="home-packages">
-    <h1 class="heading-title">Services Included</h1>
+    <h1 class="heading-title">Your Available Venues</h1>
 
     <div class="box-container">
         <?php foreach ($data as $hsDetails) : ?>
