@@ -1,46 +1,154 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class EMAIL
 {
    public static function sendEmailVerifySMS($email, $OTP)
    {
 
-        $subject = "Email Verify Code";
-        $message = "Your E-mail Verification code is $OTP";
-        $sender = "From: eventplanning41@outlook.com";
+        $mail = new PHPMailer(TRUE);
+        $mail->isSMTP();
+        $mail->Malier="smtp";
 
-        if(mail($email, $subject, $message, $sender))
-          return true;
-        else
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
+        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+        $mail->Port       = 587;                        
+
+        try {
+
+          $mail->setFrom("eventplanning41@outlook.com");
+
+          $mail->addAddress($email);
+
+          $mail->Subject = "Email Verify Code";
+
+          $mail->Body = "Your E-mail Verification code is $OTP";
+
+          if(!$mail->send()){
+            return false;
+          }
+          else{
+            return true;
+          }
+        }
+
+        catch (Exception $e)
+        {
+          // echo $e->errorMessage();
           return false;
+        }
+
+        catch (\Exception $e)
+        {
+          // echo $e->getMessage();
+          return false;
+        }
+
    }
 
    
 
    public static function sendPasswordResetSMS($email, $OTP)
    {
-        $subject = "Password Reset Code";
-        $message = "Your password reset code is $OTP";
-        $sender = "From: eventplanning41@outlook.com";
 
-        if(mail($email, $subject, $message, $sender))
-          return true;
-        else
+        $mail = new PHPMailer(TRUE);
+        $mail->isSMTP();
+        $mail->Malier="smtp";
+
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
+        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+        $mail->Port       = 587;                        
+
+        try {
+
+          $mail->setFrom("eventplanning41@outlook.com");
+
+          $mail->addAddress($email);
+
+          $mail->Subject = "Password Reset Code";
+
+          $mail->Body = "Your password reset code is $OTP";
+
+          if(!$mail->send()){
+            return false;
+          }
+          else{
+            return true;
+          }
+        }
+
+        catch (Exception $e)
+        {
+          // echo $e->errorMessage();
           return false;
+        }
+
+        catch (\Exception $e)
+        {
+          // echo $e->getMessage();
+          return false;
+        }
+
     }
 
-    public static function sendAdminRgisterFormEmail($email)
+   public static function sendAdminRgisterFormEmail($email)
    {
-        $subject = "Admin Registration Link";
-        $message = "Please use the following link to register as an admin in the system. \n\n
-                     http://localhost/TruEvent_Horizons/admin/register";
-        $sender = "From: eventplanning41@outlook.com";
 
-        if(mail($email, $subject, $message, $sender))
-          return true;
-        else
+        $mail = new PHPMailer(TRUE);
+        $mail->isSMTP();
+        $mail->Malier="smtp";
+
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
+        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+        $mail->Port       = 587;                        
+
+        try {
+
+          $mail->setFrom("eventplanning41@outlook.com");
+
+          $mail->addAddress($email);
+
+          $mail->Subject = "Admin Registration Link";
+
+          $mail->Body = "Please use the following link to register as an admin in the system. \n\n
+          http://localhost/TruEvent_Horizons/admin/register";
+
+          if(!$mail->send()){
+            return false;
+          }
+          else{
+            return true;
+          }
+        }
+
+        catch (Exception $e)
+        {
+          // echo $e->errorMessage();
           return false;
+        }
+
+        catch (\Exception $e)
+        {
+          // echo $e->getMessage();
+          return false;
+        }
+
     }
 
 }

@@ -41,7 +41,7 @@ function showSlides(n) {
 // BAR CHART
 var barChartOptions = {
     series: [{
-      data: [10, 8, 6, 4, 2]
+      data: [10, 8, 1, 1]
     }],
     chart: {
       type: 'bar',
@@ -54,8 +54,7 @@ var barChartOptions = {
       "#246dec",
       "#cc3c43",
       "#367952",
-      "#f5b74f",
-      "#4f35a1"
+      "#f5b74f"
     ],
     plotOptions: {
       bar: {
@@ -72,7 +71,7 @@ var barChartOptions = {
       show: false
     },
     xaxis: {
-      categories: ["Laptop", "Phone", "Monitor", "Headphones", "Camera"],
+      categories: ["Hotels", "Decoration", "Bands", "Photography"],
     },
     yaxis: {
       title: {
@@ -88,10 +87,10 @@ var barChartOptions = {
   // AREA CHART
   var areaChartOptions = {
     series: [{
-      name: 'Purchase Orders',
+      name: 'Services',
       data: [31, 40, 28, 51, 42, 109, 100]
     }, {
-      name: 'Sales Orders',
+      name: 'Packages',
       data: [11, 32, 45, 32, 34, 52, 41]
     }],
     chart: {
@@ -115,13 +114,13 @@ var barChartOptions = {
     yaxis: [
       {
         title: {
-          text: 'Purchase Orders',
+          text: 'Services',
         },
       },
       {
         opposite: true,
         title: {
-          text: 'Sales Orders',
+          text: 'Packages',
         },
       },
     ],

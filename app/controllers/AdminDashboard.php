@@ -6,7 +6,7 @@ class AdminDashboard extends Controller
 {
    public function __construct()
    {
-      //Session::validateSession([2]);
+      Session::validateSession([2]);
    }
 
    public function home()

@@ -15,7 +15,7 @@
     <!-- header section starts -->
     <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
-        <a href="#" class="dashboard">Decoration</a>
+        <a href="#" class="dashboard">Hotels</a>
     
         <nav class="navbar">
             <a href="home">Home</a>

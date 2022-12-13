@@ -93,34 +93,34 @@
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">PRODUCTS</p>
+              <p class="text-primary">Total Number of Services</p>
               <span class="material-icons-outlined text-blue">inventory_2</span>
             </div>
-            <span class="text-primary font-weight-bold">249</span>
+            <span class="text-primary font-weight-bold">21</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">PURCHASE ORDERS</p>
+              <p class="text-primary">Total Number of Customers</p>
               <span class="material-icons-outlined text-orange">add_shopping_cart</span>
             </div>
-            <span class="text-primary font-weight-bold">83</span>
+            <span class="text-primary font-weight-bold">5</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">SALES ORDERS</p>
+              <p class="text-primary">Total Number of Service Providers</p>
               <span class="material-icons-outlined text-green">shopping_cart</span>
             </div>
-            <span class="text-primary font-weight-bold">79</span>
+            <span class="text-primary font-weight-bold">6</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">INVENTORY ALERTS</p>
+              <p class="text-primary">Ongoing Reservations</p>
               <span class="material-icons-outlined text-red">notification_important</span>
             </div>
-            <span class="text-primary font-weight-bold">56</span>
+            <span class="text-primary font-weight-bold">3</span>
           </div>
 
         </div>
@@ -128,12 +128,12 @@
         <div class="charts">
 
           <div class="charts-card">
-            <p class="chart-title">Top 5 Products</p>
+            <p class="chart-title">Number of Service Providers</p>
             <div id="bar-chart"></div>
           </div>
 
           <div class="charts-card">
-            <p class="chart-title">Purchase and Sales Orders</p>
+            <p class="chart-title">Purchasing of Services and Packages</p>
             <div id="area-chart"></div>
           </div>
 

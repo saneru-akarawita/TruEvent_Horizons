@@ -22,7 +22,7 @@
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form">
-            <h1 class="title">Add Service</h1>
+            <h1 class="title">Add Venue/Location</h1>
 
             
                   <div class="text-group">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="column">
                    <div class="text-group">
-                     <label class="label" for="location">Location</label>
+                     <label class="label" for="location">Location (Floor/Wing etc.)</label>
                      <input type="text" name="location" placeholder="Enter location here" value="<?php echo $data['location']; ?>" maxlength="25">
                      <span class="error"><?php echo $data['location_error']; ?></span>
                    </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="column">
                    <div class="text-group">
-                      <label class="label" for="price">Price</label>
+                      <label class="label" for="price">Price Per Head (Rs.)</label>
                       <input type="text" name="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25">
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>

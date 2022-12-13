@@ -67,11 +67,13 @@
                                         <td>Other Facilities </td>
                                         <td>: <?= $data->other_facilities;?></td>
                                 </tr>
+                                <tr>
+                                        <td>** Food Menu will be discussed and decided manually</td>
+                                </tr>
                                 </table>
                         </div>
-                        <br><br>
+                        <br>
                         <div class="product-price-btn">
-                                <p><span><?= $data->price;?> LKR</span></p>
                                 <button type="button" onclick="history.back()">Back</button>
                         </div>
 

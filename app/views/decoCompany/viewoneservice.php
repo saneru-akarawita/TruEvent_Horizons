@@ -42,7 +42,7 @@
                 <h2>Occasion: <?= $data->occasion;?></h2>
                 <p>Theme: <?= $data->theme;?></p><br>
                 <p><?= $data->description;?></p><br><br><br>
-                <span><?= $data->price;?> LKR</span>
+                <span style="margin-left:45px"><?= $data->price;?> LKR</span>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>
               </div>
