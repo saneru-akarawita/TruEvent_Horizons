@@ -47,7 +47,7 @@
             </div>
             <div class="content">
                 <h3 style="font-size:medium"><?= $dsDetails->service_name; ?> </h3>
-                <p style="font-size:small" >Plan your <?= $dsDetails->occasion; ?> </p><br>
+                <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
                 <a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a>
                 <a href="editService?service_id=<?=$dsDetails->service_id; ?>" class="editButton" name="editaction" value="edit" style="text-decoration:none">Edit</a>
                 <a href="deleteService?service_id=<?=$dsDetails->service_id; ?>" class="deleteButton" name="deleteaction" value="delete" style="text-decoration:none">Delete</a>

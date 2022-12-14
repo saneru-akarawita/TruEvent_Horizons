@@ -135,7 +135,7 @@
             <div class="content">
                 <h3>Special For Birthday Parties</h3>
                 <p>Colourful</p>
-                <p style="font: size 5rem;color: var(--black);">$750</p>
+                <!-- <p style="font: size 5rem;color: var(--black);">Rs. 7500</p> -->
                 <a href="viewservices" class="btn">More Details</a>
             </div>
         </div>
@@ -148,7 +148,7 @@
             <div class="content">
                 <h3>For Special Night Functions</h3>
                 <p>Christmas</p>
-                <p style="font: size 5rem;color: var(--black);">$850</p>
+                <!-- <p style="font: size 5rem;color: var(--black);">Rs. 8500</p> -->
                 <a href="viewservices" class="btn">More Details</a>
             </div>
         </div>
@@ -161,7 +161,7 @@
             <div class="content">
                 <h3>For Special Anniversary Parties</h3>
                 <p>Have Fun</p>
-                <p style="font: size 5rem;color: var(--black);">$550</p>
+                <!-- <p style="font: size 5rem;color: var(--black);">Rs. 5500</p> -->
                 <a href="viewservices" class="btn">More Details</a>
             </div>
         </div>

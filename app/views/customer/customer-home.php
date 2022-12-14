@@ -96,7 +96,7 @@
                 <div class="content">
                     <h3>Anniversary Package</h3>
                     <p>Plan your anniversary</p>
-                    <p style="font: size 5rem;color: var(--black);">Rs. 7500</p>
+                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 7500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                 <div class="content">
                     <h3>Birthdy Package</h3>
                     <p>Enjoy your birthdays</p>
-                    <p style="font: size 5rem;color: var(--black);">Rs. 8500</p>
+                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 8500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                 <div class="content">
                     <h3>Fair Wells Package</h3>
                     <p>Have Fun</p>
-                    <p style="font: size 5rem;color: var(--black);">Rs. 5500</p>
+                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 5500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                 <div class="content">
                     <h3>Hotel Service</h3>
                     <p>Last Minute Deals Find Your Next Getaway</p>
-                    <a href="#" class="btn">View Service</a>
+                    <a href="viewservices#hotels" class="btn">View Service</a>
                 </div>
             </div>
 
@@ -163,7 +163,7 @@
                 <div class="content">
                     <h3>Decoration Company</h3>
                     <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <a href="#" class="btn">View Service</a>
+                    <a href="viewservices#decorations" class="btn">View Service</a>
                 </div>
             </div>
 
@@ -175,7 +175,7 @@
                 <div class="content">
                     <h3>Band Company</h3>
                     <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <a href="#" class="btn">View Service</a>
+                    <a href="viewservices#bands" class="btn">View Service</a>
                 </div>
             </div>
 
@@ -187,7 +187,7 @@
                 <div class="content">
                     <h3>Photography Company</h3>
                     <p>Make Your Event More Memorable with the best captures</p>
-                    <a href="#" class="btn">View Service</a>
+                    <a href="viewservices#photography" class="btn">View Service</a>
                 </div>
             </div>
 
