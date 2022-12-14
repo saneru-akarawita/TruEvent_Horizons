@@ -43,11 +43,6 @@
 
     <!-- header section ends -->
 
-
-    <!-- <div class="heading" style="background:url() no-repeat">
-<h1>Packages</h1>
-</div> -->
-
     <?php $data0=$data[0];?>
     <?php $data1=$data[1];?>
     <?php $data2=$data[2];?>
@@ -76,7 +71,7 @@
                     <div class="content">
                         <h3><?= $hsDetails->service_type; ?></h3>
                         <p><?=$spName;?> - <?=$hsDetails->hall_name?></p>
-                        <a href="services" class="btn">View Service</a>
+                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>" class="btn">Make Reservation</a>
                         <!-- <a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
                     </div>
                 </div>
@@ -84,7 +79,7 @@
             <?php endforeach; ?>
 
             
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image10.jpg" alt="">
                 </div>
@@ -93,51 +88,47 @@
                     <p>Last Minute Deals Find Your Next Getaway</p>
                     <a href="services" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image11.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Cinnamon Hotels</h3>
                     <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="services" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Ramada Hotels</h3>
                     <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
                     <a href="services" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image14.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Shangri La Hotels</h3>
                     <p>Make Your Event More Memorable with special chinese cuisine</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="services" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
     
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
 
     <!-- Hotel Section Ends -->
@@ -150,9 +141,9 @@
         <h1 class="heading-title"> Decorations</h1>
 
         <div class="box-container">
-            <?php foreach ($data1 as $hsDetails) : ?>
+            <?php foreach ($data1 as $dcDetails) : ?>
 
-                <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
+                <?php $serviceProviderID = $dcDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) :?>
                     <?php if($spdetails->service_provider_id == $serviceProviderID){ ?>
@@ -164,58 +155,53 @@
                         <?php echo "<img src = '".URLROOT."/public/images/customer/admin-add-packages/image".rand(10,14).".jpg'>";?>
                     </div>
                     <div class="content">
-                        <h3><?= $hsDetails->service_name; ?></h3>
+                        <h3><?= $dcDetails->service_name; ?></h3>
                         <p>Provided by <?=$spName?></p>
-                        <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
-                        <a href="services.php" class="btn">View Service</a>
+                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$dcDetails->service_name?>&service_type=<?php echo 'Decoration'?>" class="btn">Make Reservation</a>
                     </div>
                 </div>
             <?php endforeach; ?>
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image11.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Decoration Company</h3>
                     <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Band Company</h3>
                     <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
                     <a href="packages.php" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="box">
+            <!-- <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image13.jpg" alt="">
                 </div>
                 <div class="content">
                     <h3>Photography Company</h3>
                     <p>Make Your Event More Memorable</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn">View Service</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
         </div>
 
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
 
     <!-- Decoration Section Ends -->

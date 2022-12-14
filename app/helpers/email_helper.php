@@ -13,18 +13,19 @@ class EMAIL
         $mail = new PHPMailer(TRUE);
         $mail->isSMTP();
         $mail->Malier="smtp";
-
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
-        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->Username   = 'horizonstruevent@gmail.com';                     //SMTP username
+        $mail->Password   = 'avecpbwgsrvmbwrb';                               //SMTP password
         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
         $mail->Port       = 587;                        
 
+        //rbdncimifduyqubp
+
         try {
 
-          $mail->setFrom("eventplanning41@outlook.com");
+          $mail->setFrom("horizonstruevent@gmail.com");
 
           $mail->addAddress($email);
 
@@ -66,14 +67,14 @@ class EMAIL
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
-        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->Username   = 'horizonstruevent@gmail.com';                     //SMTP username
+        $mail->Password   = 'avecpbwgsrvmbwrb';                               //SMTP password
         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
         $mail->Port       = 587;                        
 
         try {
 
-          $mail->setFrom("eventplanning41@outlook.com");
+          $mail->setFrom("horizonstruevent@gmail.com");
 
           $mail->addAddress($email);
 
@@ -113,14 +114,14 @@ class EMAIL
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'abudupunuradha123@gmail.com';                     //SMTP username
-        $mail->Password   = 'rbdncimifduyqubp';                               //SMTP password
+        $mail->Username   = 'horizonstruevent@gmail.com';                     //SMTP username
+        $mail->Password   = 'avecpbwgsrvmbwrb';                               //SMTP password
         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
         $mail->Port       = 587;                        
 
         try {
 
-          $mail->setFrom("eventplanning41@outlook.com");
+          $mail->setFrom("horizonstruevent@gmail.com");
 
           $mail->addAddress($email);
 
