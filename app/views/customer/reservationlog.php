@@ -27,7 +27,7 @@
 
         <nav class="navbar">
             <a href="home">Home</a>
-            <a href="#">Services</a>
+            <a href="viewservices">Services</a>
             <a href="#">Packages</a>
             <a href="addreservation">Add Reservation</a>
             <a href="logout">Logout</a>

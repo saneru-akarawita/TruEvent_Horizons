@@ -27,7 +27,7 @@
 
         <nav class="navbar">
             <a href="home">Home</a>
-            <a href="#">Services</a>
+            <a href="viewservices">Services</a>
             <a href="#">Packages</a>
             <a href="viewreservationlog">Reservation Log</a>
             <a href="logout">Logout</a>
@@ -49,16 +49,16 @@
                 <div class="column display-flex-jcsb">
                     <div class="column">
                         Service
-                        <input type="radio" name="rv_type" id="service" value="service">
+                        <input type="radio" class="rv_type" name="rv_type" id="service" value="service">
                     </div>
                     <div class="column">
-                        <input type="radio" name="rv_type" id="package" value="package">
+                        <input type="radio" class="rv_type" name="rv_type" id="package" value="package">
                         Package
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="column">
+                    <div class="column" id="service-details-col">
                         <label class="label" for="service_type">Service Details</label>
                         <select name="service_type" class="dropdownmenu" id="service-details" disabled required>
                             <option value="">Service Provider Type</option>
@@ -68,7 +68,7 @@
                             <option value="Photography">Photography Service</option>
                         </select>
                     </div>
-                    <div class="column">
+                    <div class="column" id="package-details-col">
                         <label class="label" for="hall_type">Pacakage Details</label>
                         <select name="package_type" class="dropdownmenu" id="package-details" disabled required>
                             <option value="">Package Type</option>
@@ -83,11 +83,11 @@
                 </div>
 
                 <div class="column display-flex-jcsb">
-                    <div class="column">
-                        <label for="name">Service Name</label>
+                    <div class="column" id="service-name-col">
+                        <label for="name" >Service Name</label>
                         <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" disabled required>
                     </div>
-                    <div class="column">
+                    <div class="column" id="package-name-col">
                         <label for="event name">Pacakage Name</label>
                         <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" disabled required>
                     </div>
@@ -166,6 +166,24 @@
 
     <!-- custom js file link -->
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".rv_type").change(function () {
+                if ($(this).val() == 'service') {
+                    $("#package-name-col").hide();
+                    $("#package-details-col").hide();
+                    $("#service-details-col").show();
+                    $("#service-name-col").show();
+                } else if ($(this).val() == 'package') {
+                    $("#service-name-col").hide();
+                    $("#service-details-col").hide();
+                    $("#package-name-col").show();
+                    $("#package-details-col").show();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

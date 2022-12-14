@@ -26,7 +26,7 @@
 
         <nav class="navbar">
             <a href="home">Home</a>
-            <a href="services">Services</a>
+            <a href="viewservices">Services</a>
             <a href="#">Packages</a>
             <a href="viewreservationlog">Reservation Log</a>
             <a href="addreservation">Add Reservation</a>
@@ -48,11 +48,42 @@
 <h1>Packages</h1>
 </div> -->
 
+    <?php $data0=$data[0];?>
+    <?php $data1=$data[1];?>
+    <?php $data2=$data[2];?>
     <!-- Hotel Section  starts -->
-    <section class="home-packages">
+
+    <section class="home-packages" id="hotels">
+
         <h1 class="heading-title"> Hotels</h1>
 
         <div class="box-container">
+
+            
+            <?php foreach ($data2 as $hsDetails) : ?>
+
+                <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) :?>
+                    <?php if($spdetails->service_provider_id == $serviceProviderID){ ?>
+                        <?php $spName = $spdetails->company_name; }?>
+                <?php endforeach; ?>
+
+                <div class="box">
+                    <div class="image">
+                        <?php echo "<img src = '".URLROOT."/public/images/customer/admin-add-packages/image".rand(10,14).".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $hsDetails->service_type; ?></h3>
+                        <p><?=$spName;?> - <?=$hsDetails->hall_name?></p>
+                        <a href="services" class="btn">View Service</a>
+                        <!-- <a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+            
             <div class="box">
                 <div class="image">
                     <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image10.jpg" alt="">
@@ -60,7 +91,6 @@
                 <div class="content">
                     <h3>Kingsbury</h3>
                     <p>Last Minute Deals Find Your Next Getaway</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
                     <a href="services" class="btn">View Service</a>
                 </div>
             </div>
@@ -106,11 +136,7 @@
 
 
         </div>
-
-        </div>
-
-
-
+    
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
 
@@ -119,22 +145,32 @@
 
     <!-- Decoration Starts -->
 
+    <section class="home-packages" id="decorations">
 
-    <section class="home-packages">
         <h1 class="heading-title"> Decorations</h1>
 
         <div class="box-container">
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image10.jpg" alt="">
+            <?php foreach ($data1 as $hsDetails) : ?>
+
+                <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) :?>
+                    <?php if($spdetails->service_provider_id == $serviceProviderID){ ?>
+                        <?php $spName = $spdetails->company_name; }?>
+                <?php endforeach; ?>
+
+                <div class="box">
+                    <div class="image">
+                        <?php echo "<img src = '".URLROOT."/public/images/customer/admin-add-packages/image".rand(10,14).".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $hsDetails->service_name; ?></h3>
+                        <p>Provided by <?=$spName?></p>
+                        <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
+                        <a href="services.php" class="btn">View Service</a>
+                    </div>
                 </div>
-                <div class="content">
-                    <h3>Hotel Service</h3>
-                    <p>Last Minute Deals Find Your Next Getaway</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
-                    <a href="services.php" class="btn">View Service</a>
-                </div>
-            </div>
+            <?php endforeach; ?>
 
 
             <div class="box">
@@ -175,12 +211,9 @@
                 </div>
             </div>
 
-
         </div>
 
         </div>
-
-
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
@@ -192,7 +225,8 @@
     <!-- Music Band Starts -->
 
 
-    <section class="home-packages">
+    <section class="home-packages" id ="bands">
+
         <h1 class="heading-title"> Music Band</h1>
 
         <div class="box-container">
@@ -252,8 +286,6 @@
 
         </div>
 
-
-
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
 
@@ -263,7 +295,8 @@
     <!-- Photography Section  Starts -->
 
 
-    <section class="home-packages">
+    <section class="home-packages" id="photography">
+
         <h1 class="heading-title"> Photography</h1>
 
         <div class="box-container">
@@ -318,11 +351,9 @@
                 </div>
             </div>
 
-
         </div>
 
         </div>
-
 
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->

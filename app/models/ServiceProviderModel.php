@@ -33,5 +33,11 @@ class ServiceProviderModel extends Model
       return [$results->service_provider_id, $results->company_name, $results->sp_category];
    }
 
+   public function getServiceProviderDetails()
+   {
+      $results = $this->getResultSet("serviceprovideruser", "*", []);
+      return $results;
+   }
+
 
 }

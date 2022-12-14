@@ -9,6 +9,7 @@ class CustomerDashboard extends Controller
       Session::validateSession([3]);
       $this->decoModel = $this->model('DecoModel');
       $this->hotelModel = $this->model('HotelModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
    }
 
    public function home()
@@ -32,9 +33,11 @@ class CustomerDashboard extends Controller
 
    public function viewservices()
    {
-      $result1 = $this->decoModel->getDecoServiceDetails();
-      $result2 = $this->hotelModel->getHotelServiceDetails();
-      $result = $result1 + $result2;
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->decoModel->getDecoServiceDetails();
+      $result3 = $this->hotelModel->getHotelServiceDetails();
+      
+      $result = array($result1, $result2, $result3);
       $this->view('customer/services',  $result);
    }
 

@@ -19,20 +19,26 @@ class DecoService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
+         $checkbox1=$_POST['decoration'];  
+            $chk="";  
+            foreach($checkbox1 as $chk1)  
+               {  
+                  $chk .= $chk1.",";  
+               }  
 
          $data = [
 
             'name' => trim($_POST['service_name']),
             'price' => trim($_POST['price']),
-            'description'=>trim($_POST['description']),
-            'occasion' => trim($_POST['occasion']),
+            'decoration'=>$chk,
+            'other_deco' => trim($_POST['other_deco']),
             'theme' => trim($_POST['theme']),
             'service_provider_id' => Session::getUser("id"),
 
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
-            'occasion_error' => '',
+            'other_deco_error' => '',
             'theme_error' => ''
          ];
 
@@ -40,13 +46,11 @@ class DecoService extends Controller
          {
             // Validate everything
             $data['name_error'] = emptyCheck($data['name']);
-            $data['description_error'] = emptyCheck($data['description']);
             $data['price_error'] = validatePrice($data['price']);
-            $data['occasion_error'] = emptyCheck($data['occasion']);
             $data['theme_error'] = emptyCheck($data['theme']);
 
             if (
-               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['description_error']) && empty($data['occasion_error'])
+               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error'])
             )
             {
                 
@@ -61,7 +65,7 @@ class DecoService extends Controller
             }
             else
             {
-               $this->view('decoCompany/addservice', $data);
+               $this->view('decoCompany/addservices', $data);
             }
          }
          else
@@ -76,19 +80,17 @@ class DecoService extends Controller
          $data = [
             'name' => '',
             'price' => '',
-            'description'=>'',
-            'occasion' => '',
+            'decoration'=>'',
+            'other_deco' => '',
             'theme' => '',
             'service_provider_id' => '',
 
             'name_error' => '',
-            'description_error'=>'',
             'price_error' => '',
-            'occasion_error' => '',
             'theme_error' => ''
          ];
 
-         $this->view('decoCompany/addservice', $data);
+         $this->view('decoCompany/addservices', $data);
       }
    }
 
