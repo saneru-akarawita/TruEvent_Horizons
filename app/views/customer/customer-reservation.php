@@ -43,6 +43,69 @@
         <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
 
         <div class="ser-container form-container contentBox">
+
+        <?php if($data[0]=='Hotel'||$data[0]=='Band'||$data[0]=='Decoration'||$data[0]=='Photography'){?>
+
+            <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
+                <h1 class="title">Add Reservation</h1>
+
+                <div class="column display-flex-jcsb">
+                    <div class="column">
+                        Service
+                        <input type="radio" class="rv_type" name="rv_type" id="service" value="service" checked>
+                    </div>
+                    <div class="column">
+                        <input type="radio" class="rv_type" name="rv_type" id="package" value="package" disabled>
+                        Package
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column" id="service-details-col">
+                        <label class="label" for="service_type">Service Details</label>
+                        <select name="service_type" class="dropdownmenu" id="service-details" required>
+                            <option value="">Service Provider Type</option>
+                            <option value="Hotel" <?php if($data[0]=='Hotel') echo 'selected'?>>Hotel Service</option>
+                            <option value="Decoration" <?php if($data[0]=='Decoration') echo 'selected'?>>Decoration Service</option>
+                            <option value="Band" <?php if($data[0]=='Band') echo 'selected'?>>Band Service</option>
+                            <option value="Photography" <?php if($data[0]=='Photography') echo 'selected'?>>Photography Service</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="column display-flex-jcsb">
+                    <div class="column" id="service-name-col">
+                        <label for="name" >Service Name</label>
+                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required>
+                    </div>
+                </div>
+                <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
+                <div class="text-group">
+                    <label for="event name">Event Name</label>
+                    <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" >
+                    <span class="error"><?php echo $data[2]['event_name_error']; ?></span>
+                </div>
+
+                <div class="text-group">
+                    <label for="rvdate">Reservation Date</label>
+                    <input class="rvdate" type="date" name="rvdate" placeholder="Select the Date" style="text-transform: none;" >
+                    <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
+                </div>
+
+                <div class="text-group">
+                    <label for="rvtime">Reservation Time</label><br>
+                    <input class="rvtime" type="time" name="rvtime" capture>
+                    <span class="error"><?php echo $data[2]['rvtime_error']; ?></span>
+                </div>
+
+                <div class="footer-container">
+                    <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>
+                </div>
+
+            </form>
+
+        <?php }else{?>
+
             <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
                 <h1 class="title">Add Reservation</h1>
 
@@ -96,19 +159,19 @@
                 <div class="text-group">
                     <label for="event name">Event Name</label>
                     <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" >
-                    <span class="error"><?php echo $data['event_name_error']; ?></span>
+                    <span class="error"><?php echo $data[1]['event_name_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
                     <input class="rvdate" type="date" name="rvdate" placeholder="Select the Date" style="text-transform: none;" >
-                    <span class="error"><?php echo $data['rvdate_error']; ?></span>
+                    <span class="error"><?php echo $data[1]['rvdate_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvtime">Reservation Time</label><br>
                     <input class="rvtime" type="time" name="rvtime" capture>
-                    <span class="error"><?php echo $data['rvtime_error']; ?></span>
+                    <span class="error"><?php echo $data[1]['rvtime_error']; ?></span>
                 </div>
 
                 <div class="footer-container">
@@ -116,6 +179,9 @@
                 </div>
 
             </form>
+
+        <?php }?>
+
         </div>
     </div>
 
