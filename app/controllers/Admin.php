@@ -142,7 +142,7 @@ class Admin extends Controller
                   //System log
                   if (Session::getUser("email"))
                   {
-                     Toast::setToast(1, "Customer account created Successful!", '');
+                     Toast::setToast(1, "Admin account created Successful!", '');
                   }
                   else
                   {

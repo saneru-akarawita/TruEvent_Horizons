@@ -36,6 +36,12 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "flex";
 }
 
+setInterval(() => {
+  plusSlides(1);
+}, 3000);
+
+
+
 // ---------- CHARTS ----------
 
 // BAR CHART
