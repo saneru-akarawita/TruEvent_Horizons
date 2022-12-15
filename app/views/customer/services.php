@@ -70,10 +70,10 @@
                         <?php echo "<img src = '" . URLROOT . "/public/images/customer/admin-add-packages/image" . rand(14, 17) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
-                        <h3><?= $hsDetails->service_type; ?></h3>
-                        <p><?= $spName; ?> - <?= $hsDetails->hall_name ?></p>
-                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $hsDetails->hall_name ?>&service_type=<?php echo 'Hotel' ?>" class="btn">Make Reservation</a>
-                        <!-- <a href="viewEachService?service_id=<?= $hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
+                        <h3><?=$spName;?></h3>
+                        <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
+                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>" class="btn">Make Reservation</a>
+                        <!-- <a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
                     </div>
                 </div>
 
