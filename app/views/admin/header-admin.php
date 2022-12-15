@@ -30,7 +30,7 @@
                                                 <ul>
                                                         <li><a href="viewservices">View Services</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="">Review Complaints</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/adminDashboard/reviewComplaints">Review Complaints</a></li>
 
                                                 </ul>
                                         </div>

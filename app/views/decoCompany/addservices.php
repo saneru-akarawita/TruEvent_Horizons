@@ -24,7 +24,7 @@
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/decoService/addNewService" method="post" class="form">
-            <h1 class="title" style="font-size:3rem;">Add Service</h1>
+            <h1 class="title" style="font-size:3rem;">Add Decoration</h1>
 
             
                   <div class="text-group">

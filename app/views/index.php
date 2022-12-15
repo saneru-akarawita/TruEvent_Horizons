@@ -169,16 +169,18 @@
                         <img src="<?php echo URLROOT ?>/public/images/home/aboutus.jpg" alt="About Us Image">
                 </div>
                 <p>
-                        In a period where we are progressively overwhelmed with data and it’s trying to get a message over, ‘Organization Name’ adopts an insightful and aesthetic strategy to create critical encounters that work up feelings, discussions, and shareable minutes.
+                Our event planning management system is a Web Application that allows customers and service providers to come together and plan and manage events, parties, 
+                and other gatherings. The system typically includes features such as a user-friendly interface, a calendar for scheduling events, and tools 
+                for coordinating with service providers and vendors. With an event planning management system, customers can easily plan and manage their 
+                events, while service providers can use the platform to showcase their services and connect with potential clients. By bringing customers 
+                and service providers together in one place, an event planning management system can make it easier to plan and execute successful events.
+                <br>
 
-                        ‘Organization Name’ has some expertise in delivering inventive, advanced, and bleeding-edge events, utilizing a center conviction that narrating drives our innovative methodology. Established by pioneers in the diversion and event generation industry with broad specialized aptitude.
-                        
-                        ‘Organization Name’ ‘s assorted group likewise incorporates foundations in theater, media, and brand promoting. Through its profound experience and innumerable preparations, ‘Organization Name’ comprehends that to genuinely connect with a visitor, thoughts must be completely acknowledged down to the littlest detail.
-                        
-                        So whether our innovative group concocts a driven idea or our scene authority finds an undiscovered space, we get it going — and visitors will leave motivated.
-                        
-                        We are ‘Organization Name’.
-                  
+                TruEvent Horizons offers packages for customers who are looking to use our event planning management system to find and connect with service providers. 
+                These packages typically include access to the platform, as well as a range of tools and features that make it easy to plan and manage events. Depending
+                 on the package, customers may have access to a calendar for scheduling events, tools for coordinating with service providers and vendors, and other features 
+                 that can help make their events a success. By choosing one of our packages, customers can take advantage of the convenience and ease of our event planning 
+                 management system to plan and execute their events with confidence.
                 </p>
         </div>
 </div>
@@ -189,17 +191,20 @@
         <div class="ourservice">
                 
                 <p>
-                        In a period where we are progressively overwhelmed with data and it’s trying to get a message over, ‘Organization Name’ adopts an insightful and aesthetic strategy to create critical encounters that work up feelings, discussions, and shareable minutes.
+                TruEvent Horizons is an event planning management system that provides services for four main user categories: hotel managers, decoration companies, music bands, 
+                and photography companies. The system allows these service providers to showcase their services and connect with potential clients, helping them to grow their 
+                businesses and reach new customers. Customers, in turn, can use TruEvent Horizons to easily plan and manage their events, choosing from a range of service providers 
+                and vendors to create the perfect event. With its user-friendly interface and powerful event planning tools, TruEvent Horizons makes it easy for customers and service 
+                providers to come together and plan and execute successful events.
+                <br>
 
-                        ‘Organization Name’ has some expertise in delivering inventive, advanced, and bleeding-edge events, utilizing a center conviction that narrating drives our innovative methodology. Established by pioneers in the diversion and event generation industry with broad specialized aptitude.
-                        
-                        ‘Organization Name’ ‘s assorted group likewise incorporates foundations in theater, media, and brand promoting. Through its profound experience and innumerable preparations, ‘Organization Name’ comprehends that to genuinely connect with a visitor, thoughts must be completely acknowledged down to the littlest detail.
-                        
-                        So whether our innovative group concocts a driven idea or our scene authority finds an undiscovered space, we get it going — and visitors will leave motivated.
-                        
-                        We are ‘Organization Name’.
-                  
+                TruEvent Horizons offers packages for customers who are looking to use our event planning management system to find and connect with service providers. 
+                These packages typically include access to the platform, as well as a range of tools and features that make it easy to plan and manage events. Depending
+                 on the package, customers may have access to a calendar for scheduling events, tools for coordinating with service providers and vendors, and other features 
+                 that can help make their events a success. By choosing one of our packages, customers can take advantage of the convenience and ease of our event planning 
+                 management system to plan and execute their events with confidence.
                 </p>
+
                 <div class="serviceimg">
                 <img src="<?php echo URLROOT ?>/public/images/home/ourservices.jpg" alt="our services Image">
                 </div>

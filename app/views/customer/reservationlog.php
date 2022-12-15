@@ -61,7 +61,7 @@
                         <table width="98%" style="margin-left:20px;">
                             <thead>
                                 <tr>
-                                    <td>Reservation ID</td>
+                                    <!-- <td>Reservation ID</td> -->
                                     <td>Event Name</td>
                                     <td>Date</td>
                                     <td>Time</td>
@@ -78,7 +78,7 @@
                             <?php foreach ($data as $rvdetails) : ?>
                                 <?php if($rvdetails->rvType =='service') { ?>
                                     <tr>
-                                        <td><center><?= $rvdetails->rv_id; ?></center></td>
+                                        <!-- <td><center><?= $rvdetails->rv_id; ?></center></td> -->
                                         <td><?= $rvdetails->eventName; ?></td>
                                         <td><?= $rvdetails->rvDate; ?></td>
                                         <td><?= $rvdetails->rvTime; ?></td>
@@ -98,7 +98,7 @@
                                             <div class="action-button">
                                                 <a href="#" class="buttone">edit</a>
                                                 /
-                                                <a href="#" class="buttond">delete</a>
+                                                <a href="#" class="buttond">Cancel</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -131,7 +131,7 @@
                         <table width="98%" style="margin-left:20px;">
                             <thead>
                                 <tr>
-                                    <td>Reservation ID</td>
+                                    <!-- <td>Reservation ID</td> -->
                                     <td>Event Name</td>
                                     <td>Date</td>
                                     <td>Time</td>
@@ -150,7 +150,7 @@
                             <?php foreach ($data as $rvdetails) : ?>
                                 <?php if($rvdetails->rvType =='package') { ?>
                                     <tr>
-                                        <td><center><?= $rvdetails->rv_id; ?></center></td>
+                                        <!-- <td><center><?= $rvdetails->rv_id; ?></center></td> -->
                                         <td><?= $rvdetails->eventName; ?></td>
                                         <td><?= $rvdetails->rvDate; ?></td>
                                         <td><?= $rvdetails->rvTime; ?></td>
@@ -170,7 +170,7 @@
                                             <div class="action-button">
                                                 <a href="#" class="buttone">edit</a>
                                                 /
-                                                <a href="#" class="buttond">delete</a>
+                                                <a href="#" class="buttond">Cancel</a>
                                             </div>
                                         </td>
                                     </tr>

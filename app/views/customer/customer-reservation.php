@@ -124,7 +124,7 @@
                 <div class="row">
                     <div class="column" id="service-details-col">
                         <label class="label" for="service_type">Service Details</label>
-                        <select name="service_type" class="dropdownmenu" id="service-details" disabled required>
+                        <select name="service_type" class="dropdownmenu" id="service-details" required >
                             <option value="">Service Provider Type</option>
                             <option value="Hotel">Hotel Service</option>
                             <option value="Decoration">Decoration Service</option>
@@ -133,8 +133,8 @@
                         </select>
                     </div>
                     <div class="column" id="package-details-col">
-                        <label class="label" for="hall_type">Pacakage Details</label>
-                        <select name="package_type" class="dropdownmenu" id="package-details" disabled required>
+                        <label class="label" for="hall_type">Package Details</label>
+                        <select name="package_type" class="dropdownmenu" id="package-details"  required >
                             <option value="">Package Type</option>
                             <option value = "Birthday">Birthday Package</option>
                             <option value = "Anniversary">Anniversary Package</option>
