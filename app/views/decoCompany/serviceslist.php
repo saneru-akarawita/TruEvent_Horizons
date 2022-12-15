@@ -50,9 +50,9 @@
             <div class="content">
                 <h3 style="font-size:medium"><?= $dsDetails->service_name; ?> </h3>
                 <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
-                <a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a>
-                <a href="editService?service_id=<?=$dsDetails->service_id; ?>" class="editButton" name="editaction" value="edit" style="text-decoration:none">Edit</a>
-                <a href="deleteService?service_id=<?=$dsDetails->service_id; ?>" class="deleteButton" name="deleteaction" value="delete" style="text-decoration:none">Delete</a>
+                <button class="viewButton" style="margin-left:-4px;"><a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
+                <button class="editButton"><a href="editService?service_id=<?=$dsDetails->service_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
+                <button class="deleteButton"><a href="deleteService?service_id=<?=$dsDetails->service_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
             </div>
         </div>
     <?php endforeach; ?>

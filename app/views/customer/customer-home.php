@@ -53,7 +53,6 @@
                     <div class="content">
                         <span>Exclusive Events,Priceless Memories</span>
                         <h3>Celebrate</h3>
-                        <a href="#" class="btn">View Packages</a>
                     </div>
                 </div>
 
@@ -61,7 +60,6 @@
                     <div class="content">
                         <span>Exclusive Events,Priceless Memories</span>
                         <h3>Discover</h3>
-                        <a href="#" class="btn">View Packages</a>
                     </div>
                 </div>
 
@@ -69,7 +67,6 @@
                     <div class="content">
                         <span>Exclusive Events,Priceless Memories</span>
                         <h3>'Make your event Memorable</h3>
-                        <a href="#" class="btn">View Packages</a>
                     </div>
                 </div>
             </div>

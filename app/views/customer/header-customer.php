@@ -32,6 +32,8 @@
                                                         <li><a href="addReservation">Add Reservation</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
                                                         <li><a href="viewReservationLog">Reservation Log</a></li>
+                                                        <li><a href="viewReservationLog">Provide Feedbacks</a></li>
+
                                                 </ul>
                                         </div>
                                 </li>
@@ -42,6 +44,8 @@
                                                         <li><a href="addReservation">Add Reservation</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
                                                         <li><a href="viewReservationLog">Reservation Log</a></li>
+                                                        <li><a href="viewReservationLog">Provide Feedbacks</a></li>
+
                                                 </ul>
                                         </div>
                                 </li>

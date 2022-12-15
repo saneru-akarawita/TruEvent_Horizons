@@ -8,17 +8,61 @@
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css" />
+   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style1.css" />
+
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png">
+   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/header-hotel.css">
+   <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
+
    <title>TruEvent Horizons - Hotel Manager Add Service</title>
 </head>
 
 <body>
+
+<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+
+<!-- -------------------------------------header for hotel-------------------------------------------------- -->
+
+<!-- <div class="headerdetails">
+        <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" style="width:8rem; height:auto; margin-left:20px;" alt="logo" class="logo">
+       <div class="searchbar">
+                <input type="text">
+                <i class="fa-solid fa-magnifying-glass" style="margin-left: 10px;"></i>
+        </div>
+                <div class="menu-bar">
+                        <ul>
+                        
+                                <li><a href="home">Home</a>
+                                <li><a href="">Services</a>
+                                        <div class="sub-menu1">
+                                                <ul>
+                                                        <li><a href="viewservices">View Venues</a></li>
+                                                        <li><a href="addservices">Add Venues</a></li>
+                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="">Reservation Log</a></li>
+                                                </ul>
+                                        </div>
+                                </li>
+                                <li><a href="">Payment</a></li>
+                                <li><a href="">Reports</a></li> 
+                                <li><a href="logout">Logout</a></li>
+                                
+                                <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
+                                <li><a href=""> <i class="fa-solid fa-comment"></i></a></li>
+                           
+                        </ul>
+                
+                </div>
+       
+        </div>  -->
+
+
    <div class="main-container">
-      <a href="#">
+      <!-- <a href="#">
          <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png" alt="logo" class="top-left-logo">
       </a>
-      <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
+      <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form">
@@ -116,6 +160,56 @@
       </div>
    </div>
 
+
+   <!-- <-------------------------------------------------------Home Page Services End-------------------------------------------------------> 
+
+        <!-- footer start -->
+        <section class="footer">
+            <div class="overlay"></div>
+            <div class="box-container">
+                <div class="box">
+                    <h3>Quick Access</h3>
+                <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
+                <a href="viewservices"><i class="fas fa-angle-right"></i> Services</a>
+                <a href="addservices"><i class="fas fa-angle-right"></i> Add Services</a>
+                </div>
+        
+                <div class="box">
+                    <h3>Extra</h3>
+                <a href="#"><i class="fas fa-angle-right"></i>  About US</a>
+                <a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
+                <a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
+                </div>
+        
+                <div class="box">
+                    <h3>Contact Us</h3>
+                <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
+                <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
+                <a href="#"><i class="fas fa-map"></i> Colombo</a>
+        
+        
+                </div>
+               
+                <div class="box">
+                    <h3>Follow US</h3>
+                <a href="#"><i class="fab fa-facebook"></i>  facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+                <a href="#"><i class="fab fa-linkedin"></i>  linkedin</a>
+        
+                </div>
+            </div>
+        
+            
+        
+            <div class="credit">
+                Created By <span>TruEvent</span> | All Rights Reserved
+            </div>
+        
+        </section>
+        
+        
+        <!-- footer ends -->
+    <script src="<?php echo URLROOT ?>/public/js/hotel manager/hotelscript.js"></script>
 </body>
 
 </html>
