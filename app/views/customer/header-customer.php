@@ -24,7 +24,7 @@
                 <div class="menu-bar">
                         <ul>
                         
-                                <li><a href="home">Home</a>
+                                <li style="margin-left:35px;><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
@@ -57,11 +57,23 @@
                                                         <li><a href="">Payment Log</a></li>
                                                 </ul>
                                         </div></li> 
-                                <li><a href="logout">Logout</a></li>
+        
                                 <!-- <div class="icons"> -->
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
-                                <li><a href=""> <i class="fa-solid fa-comment"></i></a></li>
-                                <!-- </div> -->    
+                                <li><a href=""> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
+                                <!-- </div> --> 
+                                <li class="nr_li dd_main">
+                                        <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px;">
+                                        <div class="sub-menu1">
+                                                <ul>
+                                                        <li><i class="fa-solid fa-gear"></i><a href="viewservices">Profile Settings</a></li>
+                                                        <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
+                                                </ul>
+                                        </div>                
+                                </li>
+                                <li style="margin-top:12px; margin-left:-35px;">User Name</li> 
+                                <hr size="1px">
+                                <p style="margin-top:40px; margin-left:-95px">User role</p>   
                         </ul>
                 
                 </div>
