@@ -5,6 +5,8 @@ class Packages extends Controller
    {
       Session::validateSession([2]);
       $this->packageModel = $this->model('PackageModel');
+      $this->decoModel = $this->model('DecoModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
    }
 
    public function viewAllPackages()
@@ -76,6 +78,9 @@ class Packages extends Controller
       else
       {
 
+         $decoresult = $this->decoModel->getDecoServiceDetails();
+         $spresult = $this->serviceProviderModel->getServiceProviderDetails();
+
          $data = [
             'pcode' => '',
             'name' => '',
@@ -94,7 +99,9 @@ class Packages extends Controller
             'photography_error' => ''
          ];
 
-         $this->view('admin/admin-add-packages', $data);
+         $result = array($data, $decoresult, $spresult);
+
+         $this->view('admin/admin-add-packages', $result);
       }
    }
 
