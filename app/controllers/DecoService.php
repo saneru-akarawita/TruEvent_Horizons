@@ -23,7 +23,7 @@ class DecoService extends Controller
             $chk="";  
             foreach($checkbox1 as $chk1)  
                {  
-                  $chk .= $chk1.",";  
+                  $chk .= $chk1.", ";  
                }  
 
          $data = [
