@@ -421,6 +421,9 @@
   
   
   
+.buttonContainer{
+    display: inline-flex;
+}
 .viewButton , .editButton ,.deleteButton{
     text-align: center;
     width: 65px;
@@ -431,6 +434,7 @@
     border:none; 
     padding: 10px;
     margin-left: 22px;
+    
 }
 
 .viewButton{

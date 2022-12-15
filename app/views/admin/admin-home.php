@@ -55,7 +55,7 @@
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Celebrate</h3>
-                <a href="viewpackages" class="btn">View Packages</a>
+                <!-- <a href="viewpackages" class="btn">View Packages</a> -->
                 </div>     
             </div>
 
@@ -63,7 +63,7 @@
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Discover</h3>
-                <a href="viewpackages" class="btn">View Packages</a>
+                <!-- <a href="viewpackages" class="btn">View Packages</a> -->
                 </div>
             </div>
     
@@ -71,7 +71,7 @@
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
                     <h3>'Make your event Memorable</h3>
-                    <a href="viewpackages" class="btn">View Packages</a>
+                    <!-- <a href="viewpackages" class="btn">View Packages</a> -->
             </div>
         </div>
     </div>
@@ -156,7 +156,6 @@
             <div class="content">
                 <h3>Anniversary Package</h3>
                 <p>Plan your anniversary</p>
-                <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
                 <a href="viewpackages" class="btn">View Package</a>
             </div>
         </div>
@@ -169,7 +168,6 @@
             <div class="content">
                 <h3>Birthdy Package</h3>
                 <p>Enjoy your birthdays</p>
-                <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                 <a href="viewpackages" class="btn">View Package</a>
             </div>
         </div>
@@ -182,7 +180,6 @@
             <div class="content">
                 <h3>Fair Wells Package</h3>
                 <p>Have Fun</p>
-                <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
                 <a href="viewpackages" class="btn">View Package</a>
             </div>
         </div>

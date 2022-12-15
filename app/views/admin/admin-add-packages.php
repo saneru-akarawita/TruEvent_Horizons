@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
 <style>
    a{
-      font-size:18px;
+      font-size:16px;
       @font-face{
          src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
       }  
