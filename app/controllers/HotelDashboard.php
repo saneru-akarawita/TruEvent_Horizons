@@ -144,6 +144,7 @@ class HotelDashboard extends Controller
       //}
    }
 
+
    public function logout()
    {
       redirect('User/signout');

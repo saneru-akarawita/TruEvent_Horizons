@@ -168,6 +168,35 @@ class CustomerDashboard extends Controller
       $this->view('customer/customer_feedback','');
    }
 
+   public function addAccountDetails()
+   {
+      $this->view('customer/add-account-details', '');
+   }
+
+   public function advancePaymentSuccess()
+   {
+      $this->view('customer/advance-payment-success', '');
+   }
+
+   public function chat()
+   {
+      $this->view('customer/chat', '');
+   }
+
+   public function makeAdvancePayment()
+   {
+      $this->view('customer/make-advance-payment', '');
+   }
+
+   public function makeFullPayment()
+   {
+      $this->view('customer/make-full-payment', '');
+   }
+
+   public function totalPaymentSuccess()
+   {
+      $this->view('customer/total-payment-success', '');
+   }
 
    public function logout()
    {
