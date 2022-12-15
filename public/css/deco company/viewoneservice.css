@@ -44,8 +44,8 @@ body {
   }
   
   .product-info {
-    height: 420px;
-    width: 60%;
+    height: auto;
+    width: auto;
     border-radius: 0 7px 7px 0;
     background-color: #ffffff;
   }

@@ -61,8 +61,8 @@
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="pcode">Package Code</label>
-                     <input type="text" name="pcode" placeholder="Enter Package Code" value="<?php echo $data['pcode'] ?>" maxlength="20" />
-                     <span class="error"><?php echo $data['pcode_error']; ?></span>
+                     <input type="text" name="pcode" placeholder="Enter Package Code" value="<?php echo $data[0]['pcode'] ?>" maxlength="20" />
+                     <span class="error"><?php echo $data[0]['pcode_error']; ?></span>
                   </div>
                </div>
                <div class="column">
@@ -76,7 +76,7 @@
                               <option value = "Get-Together">Get-Together Package</option>
                               <option value = "General Event">General Package</option>
                         </select>
-                        <span class="error"><?php echo $data['package_type_error']; ?></span>
+                        <span class="error"><?php echo $data[0]['package_type_error']; ?></span>
                 </div>
             </div>
 
@@ -84,15 +84,15 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="name">Package Name</label>
-                      <input type="text" name="name" placeholder="Enter Package Name" value="<?php echo $data['name'] ?>" maxlength="100">
-                      <span class="error"><?php echo $data['name_error']; ?></span>
+                      <input type="text" name="name" placeholder="Enter Package Name" value="<?php echo $data[0]['name'] ?>" maxlength="100">
+                      <span class="error"><?php echo $data[0]['name_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price</label>
-                      <input type="text" name="price" placeholder="Enter Package Price" value="<?php echo $data['price'] ?>" maxlength="15">
-                      <span class="error"><?php echo $data['price_error']; ?></span>
+                      <input type="text" name="price" placeholder="Enter Package Price" value="<?php echo $data[0]['price'] ?>" maxlength="15">
+                      <span class="error"><?php echo $data[0]['price_error']; ?></span>
                    </div>
                 </div>
              </div>
@@ -105,21 +105,37 @@
                   <div class="text-group">
                      <label class="label" for="bands">Bands:</label>
                      <input type="text" name="bands" placeholder="band option" maxlength="25">
-                     <span class="error"><?php echo $data['bands_error']; ?></span>
+                     <span class="error"><?php echo $data[0]['bands_error']; ?></span>
                   </div>
                </div>
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="decorations">Decorations:</label>
-                     <input type="text" name="decorations" placeholder="decoration option" >
-                     <span class="error"><?php echo $data['decorations_error']; ?></span>
+                     <select name = "decorations" class="dropdownmenu" id="decorations"> 
+                              <option value="">Select a package type</option>
+                              <?php foreach ($data[1] as $decodetails) :?>
+
+                                 <?php $spname = "";
+                                       $spid = $decodetails->service_provider_id; ?>
+
+                                 <?php foreach ($data[2] as $spdetails) :
+                                    if($spdetails->service_provider_id ==$spid ){
+                                       $spname = $spdetails->company_name;
+                                     }?>
+                                 <?php endforeach; ?>
+
+                                 <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>"><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
+
+                              <?php endforeach; ?>
+                     </select>
+                     <span class="error"><?php echo $data[0]['decorations_error']; ?></span>
                   </div>
                </div>
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="photography">Photography:</label>
                      <input type="text" name="photography" placeholder="Photography option" >
-                     <span class="error"><?php echo $data['photography_error']; ?></span>
+                     <span class="error"><?php echo $data[0]['photography_error']; ?></span>
                   </div>
                </div>
             </div>
