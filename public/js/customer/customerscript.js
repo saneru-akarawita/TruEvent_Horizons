@@ -26,7 +26,7 @@ function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("slide");
 
-    console.log(slides);
+
 
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
@@ -35,6 +35,10 @@ function showSlides(n) {
     }
     slides[slideIndex - 1].style.display = "flex";
 }
+
+setInterval(() => {
+    plusSlides(1);
+}, 3000);
 
 
 const service = document.getElementById('service');

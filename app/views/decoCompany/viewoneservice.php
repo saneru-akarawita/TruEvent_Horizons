@@ -41,8 +41,8 @@
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
                 <h2>Theme: <?= $data->theme;?></h2>
-                <p>Decoration items: <?= $data->decoration_item;?></p><br>
-                <p><?= $data->other_decoration;?></p><br><br><br>
+                <p>Decoration items:<br><?= $data->decoration_item;?></p>
+                <p><?= $data->other_decoration;?></p><br>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>

@@ -69,6 +69,20 @@
                         <h3>'Make your event Memorable</h3>
                     </div>
                 </div>
+
+
+                <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image23.jpg) no-repeat; display:none;">
+                    <div class="content">
+                        <span>Exclusive Events,Priceless Memories</span>
+                        <h3>Pool Party</h3>
+                        <a href="#" class="btn">View Packages</a>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
         </div>
 

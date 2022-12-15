@@ -41,6 +41,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/deco1.jpg) no-repeat">
                 <div class="content">
+                <span>Exclusive Events,Priceless Memories</span>
                 <h3>Make Your Event More Beautiful</h3>
                 </div>     
             </div>
@@ -49,15 +50,15 @@
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Discover</h3>
-                <a href="viewservices" class="btn">View Services</a>
+                <!-- <a href="viewservices" class="btn">View Services</a> -->
                 </div>
             </div>
     
             <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/image3.jpg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
-                    <h3>'Make your event Memorable</h3>
-                    <a href="viewservices" class="btn">View Services</a>
+                    <h3>Make your event Memorable</h3>
+                    <!-- <a href="viewservices" class="btn">View Services</a> -->
             </div>
         </div>
     </div>
@@ -127,7 +128,9 @@
 
 
 <section class="home-packages">
+
     <h1 class="heading-title">Your Decorations</h1>
+
 
     <div class="box-container">
         <div class="box">
@@ -138,7 +141,9 @@
                 <h3>Special For Birthday Parties</h3>
                 <p>Colourful</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 7500</p> -->
+
                 <a href="viewservices" class="btn">View All Services</a>
+
             </div>
         </div>
 
@@ -151,7 +156,10 @@
                 <h3>For Special Night Functions</h3>
                 <p>Christmas</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 8500</p> -->
+
                 <a href="viewservices" class="btn">View All Services</a>
+
+
             </div>
         </div>
 
@@ -164,7 +172,9 @@
                 <h3>For Special Anniversary Parties</h3>
                 <p>Have Fun</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 5500</p> -->
+
                 <a href="viewservices" class="btn">View All Services</a>
+
             </div>
         </div>
 
