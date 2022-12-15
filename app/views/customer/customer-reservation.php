@@ -19,9 +19,10 @@
 </head>
 
 <body>
+<?php require APPROOT . "/views/customer/header-customer.php" ?>
 
     <!-- header section starts -->
-    <section class="header">
+    <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
         <a href="home" class="dashboard">Dashboard</a>
 
@@ -31,12 +32,12 @@
             <a href="#">Packages</a>
             <a href="viewreservationlog">Reservation Log</a>
             <a href="logout">Logout</a>
-        </nav>
+        </nav> -->
 
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
 
-    </section>
+    <!-- </section> -->
 
     <div class="main-container">
 

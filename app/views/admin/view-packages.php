@@ -14,9 +14,10 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
     </head>
     <body>
+    <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
         <!-- header section starts -->
-        <section class="header">
+        <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.jpg" alt="logo" class="logo">
         <a href="home" class="dashboard">Dashboard</a>
 
@@ -25,13 +26,13 @@
             <a href="viewpackages">Packages</a>
             <a href="addpackages">Add Packages</a>
             <a href="logout">Logout</a>
-        </nav>
+        </nav> -->
 
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
 
 
-        </section>
+        <!-- </section> -->
 
         <!-- header section ends -->
 
@@ -59,7 +60,7 @@
 
             </div>
 
-            <div class="load-more"> <span class="btn">Load More</span></a></div>
+            
         </section>
 
         <!-- Packages Section Ends -->

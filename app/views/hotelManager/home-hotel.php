@@ -12,8 +12,9 @@
 
 </head>
 <body>
+<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
     <!-- header section starts -->
-    <section class="header">
+    <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
         <a href="#" class="dashboard">Hotels</a>
     
@@ -22,13 +23,13 @@
             <a href="viewservices">Services</a>
             <a href="addservices">Add Services</a>
             <a href="logout">Logout</a>
-        </nav>
+        </nav> -->
     
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
     
     
-        </section>
+        <!-- </section> -->
 
 
         <!-- home section starts -->
@@ -37,27 +38,24 @@
     <a class="next" onclick="plusSlides(1)">❯</a>
     <div class="swiper home-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/image1.jpg) no-repeat">
+            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/hotel3-homepage.jpeg) no-repeat">
                 <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
                     <h3>Celebrate</h3>
-                    <a href="viewservices" class="btn">View Servcies</a>
                 </div>     
             </div>
 
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/image2.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/hotel1-homepage.jpeg) no-repeat; display:none;">
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Discover</h3>
-                <a href="viewservices" class="btn">View Services</a>
                 </div>
             </div>
     
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/image3.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/hotel2-homepage.jpeg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
                     <h3>'Make your event Memorable</h3>
-                    <a href="viewservices" class="btn">View Services</a>
             </div>
         </div>
     </div>
@@ -72,7 +70,7 @@
 
 <!-- <-------------------------------------------------------Home Page Services Start------------------------------------------------------->   
 <section class="home-packages">
-    <h1 class="heading-title">Services Included</h1>
+    <h1 class="heading-title">Your Available Venues</h1>
 
     <div class="box-container">
 
@@ -82,8 +80,7 @@
             </div>
             <div class="content">
                 <h3>Special For Anniversary Parties</h3>
-                <p style="font: size 5rem;color: var(--black);">LKR 250,000</p>
-                <a href="viewservices" class="btn">View Service</a>
+                <a href="viewservices" class="btn" style="margin-top:30px;">View All Services</a>
             </div>
         </div>
 
@@ -93,8 +90,7 @@
                 </div>
                 <div class="content">
                     <h3>Special For Birthday Parties</h3>
-                    <p style="font: size 5rem;color: var(--black);">LKR 200,000</p>
-                    <a href="viewservices" class="btn">View Service</a>
+                    <a href="viewservices" class="btn" style="margin-top:30px;">View All Services</a>
                 </div>
             </div>
 
@@ -104,8 +100,7 @@
                 </div>
                 <div class="content">
                     <h3>For Special Get-Together Parties</h3>
-                    <p style="font: size 5rem;color: var(--black);">LKR 500,000</p>
-                    <a href="viewservices" class="btn">View Service</a>
+                    <a href="viewservices" class="btn" style="margin-top:30px;">View All Services</a>
                 </div>
             </div>
 
@@ -115,8 +110,7 @@
                 </div>
                 <div class="content">
                     <h3>For Special Corporate Parties</h3>
-                    <p style="font: size 5rem;color: var(--black);">LKR 500,000</p>
-                    <a href="viewservices" class="btn">View Service</a>
+                    <a href="viewservices" class="btn" style="margin-top:30px;">View All Services</a>
                 </div>
             </div>
         

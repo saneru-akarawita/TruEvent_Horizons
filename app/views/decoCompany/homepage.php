@@ -12,8 +12,10 @@
 
 </head>
 <body>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
+
     <!-- header section starts -->
-    <section class="header">
+    <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
         <a href="home" class="dashboard">Decoration</a>
     
@@ -23,12 +25,12 @@
             <a href="addservices">Add Services</a>
             <a href="logout">Logout</a>
         </nav>
-    
+     -->
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
     
     
-        </section>
+        <!-- </section> -->
 
 
         <!-- home section starts -->
@@ -125,7 +127,7 @@
 
 
 <section class="home-packages">
-    <h1 class="heading-title">Services Included</h1>
+    <h1 class="heading-title">Your Decorations</h1>
 
     <div class="box-container">
         <div class="box">
@@ -136,7 +138,7 @@
                 <h3>Special For Birthday Parties</h3>
                 <p>Colourful</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 7500</p> -->
-                <a href="viewservices" class="btn">More Details</a>
+                <a href="viewservices" class="btn">View All Services</a>
             </div>
         </div>
 
@@ -149,7 +151,7 @@
                 <h3>For Special Night Functions</h3>
                 <p>Christmas</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 8500</p> -->
-                <a href="viewservices" class="btn">More Details</a>
+                <a href="viewservices" class="btn">View All Services</a>
             </div>
         </div>
 
@@ -162,7 +164,7 @@
                 <h3>For Special Anniversary Parties</h3>
                 <p>Have Fun</p>
                 <!-- <p style="font: size 5rem;color: var(--black);">Rs. 5500</p> -->
-                <a href="viewservices" class="btn">More Details</a>
+                <a href="viewservices" class="btn">View All Services</a>
             </div>
         </div>
 

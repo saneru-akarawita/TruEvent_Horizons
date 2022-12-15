@@ -13,13 +13,21 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
+<style>
+   a{
+      font-size:18px;
+      @font-face{
+         src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+      }  
+   }
 
-
+</style>
     </head>
     <body>
+    <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
 <!-- header section starts -->
-<section class="header">
+<!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.jpg" alt="logo" class="logo">
 <a href="home" class="dashboard">Dashboard</a>
 
@@ -28,13 +36,13 @@
     <a href="viewpackages">Packages</a>
     <a href="addpackages">Add Packages</a>
     <a href="logout">Logout</a>
-</nav>
+</nav> -->
 
 <!-- Gives a Menu Button -->
 <button id="menu-btn" class="fas fa-bars"></button>
 
 
-</section>
+<!-- </section> -->
 
 <!-- header section ends -->
 
