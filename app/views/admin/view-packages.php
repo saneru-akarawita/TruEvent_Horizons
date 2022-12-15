@@ -46,7 +46,7 @@
                 <?php foreach ($data as $pDetails) : ?>
                     <div class="box">
                         <div class="image">
-                            <?php echo "<img src = '".URLROOT."/public/images/admin/admin-add-packages/image".rand(4,9).".jpg'>";?>
+                            <?php echo "<img src = '".URLROOT."/public/images/admin/packages/$pDetails->package_type/".rand(1,1).".jpg'>";?>
                         </div>
                         <div class="content">
                             <h3 style="font-size:medium"><?= $pDetails->package_name; ?> </h3>

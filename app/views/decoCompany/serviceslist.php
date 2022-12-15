@@ -45,7 +45,13 @@
     <?php foreach ($data as $dsDetails) : ?>
         <div class="box">
             <div class="image">
-                <?php echo "<img src = '".URLROOT."/public/images/deco company/deco-add-services/deco".rand(1,4).".jpg'>";?>
+            <?php $directory = getcwd()."/images/deco company/services/$dsDetails->service_name/";
+                $files1 = scandir($directory);
+                $num_files = count($files1) - 2;
+            ?>
+
+                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$dsDetails->service_name/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
+
             </div>
             <div class="content">
                 <h3 style="font-size:medium"><?= $dsDetails->service_name; ?> </h3>
