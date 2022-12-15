@@ -3,7 +3,7 @@
         margin-left: -8px;
         width: 101.05%;
         height: 900px;
-        font-family: Arial, Helvetica, sans-serif;
+        /* font-family: Arial, Helvetica, sans-serif; */
         background-image: url(../images/home\ page\ image.jpg);
         background-repeat: no-repeat;
         background-size: cover;
@@ -16,7 +16,7 @@ header{
         box-sizing: border-box;
         background: rgba(13, 12, 12, 0.38);
         border-bottom: 1px solid rgba(255, 255, 255, 0.36);
-        height: 90px
+        height: 10px;
 
 }
 
@@ -55,52 +55,68 @@ li{
         display: flex;
         align-items: center;
         color: #FFFFFF;
-        margin-top: 110px;
-        margin-left: 50px;
+        margin-top: -700px;
+        margin-left: 70px;
+        margin-bottom: 50px;
 }
 
 .forcustomer{
-        font-weight: 400;
-        font-size: 25px;
-        line-height: 30px;
-        color: #FFFFFF;
         width: 35%;
         letter-spacing: 1px;
-        margin-left: 50px;
+        margin-left: 70px;
+        padding-bottom: 300px;
+}
+
+.forcustomer p{
+        font-weight: 500;
+        font-size: 21.5px;
+        line-height: 30px;
+        color: #FFFFFF;
 }
 
 .signupbtncustomer{
         filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
         color: black;
-        width:40%;
-        background-color:rgb(188, 185, 185) ;
+        width:50%;
+        background: rgb(208,63,251);
+        background: radial-gradient(circle, rgba(208,63,251,1) 0%, rgba(185,43,165,1) 43%, rgba(252,70,107,1) 100%);
         border-radius: 10px;
         padding:15px;
         font-size: 20px;
+        font-weight:600;
         letter-spacing: 1px;
+        margin-top: 20px;
 }
+
 .forsp{
-        font-weight: 400;
-        font-size: 25px;
-        line-height: 30px;
-        color: #FFFFFF;
         width: 35%;
         letter-spacing: 1px;
-        margin-left: 50px; 
+        margin-right: 50px; 
         float: right; 
-        
+        margin-top: -280px;       
+}
+
+.forsp p{
+        font-weight: 500;
+        font-size: 21.5px;
+        line-height: 30px;
+        color: #FFFFFF;
 }
 
 .signupbtnsp{
         filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
         color: black;
-        width:40%;
-        background-color:rgb(188, 185, 185) ;
+        width:50%;
+        background: rgb(208,63,251);
+        background: radial-gradient(circle, rgba(208,63,251,1) 0%, rgba(185,43,165,1) 43%, rgba(252,70,107,1) 100%);
         border-radius: 10px;
         padding:15px;
         font-size: 20px;
-        letter-spacing: 1px;    
+        font-weight:600;
+        letter-spacing: 1px;  
+        margin-top: 20px;  
 }
+
 .aboutus{
         display: inline-flex;
         margin-bottom: 50px;
@@ -109,6 +125,13 @@ li{
         font-weight: 600;
         font-size: 40px;
         text-align: center;
+}
+
+.aboutusdetails{
+        background-color: #F2F1F1;
+        padding-top:80px;
+        width: 101.05%;
+        margin-left: -8px;
 }
 
 .aboutus p{
@@ -128,8 +151,49 @@ li{
 
 }
 
+.signupbtnsp:hover{
+        background-color: #7c067e;
+        color: #FFFFFF;
+}
 
+.signupbtncustomer:hover{
+        background-color:  #7c067e;
+        color:#FFFFFF;
+}
 
+.ourservice{
+        display: inline-flex;
+        margin-bottom: 50px;
+}
+.servicedetails h2{
+        font-weight: 600;
+        font-size: 40px;
+        text-align: center;
+}
+
+.servicedetails{
+        background-color: EFEAEE;
+        padding-top:80px;
+        width: 101.05%;
+        margin-left: -8px;
+}
+
+.ourservice p{
+        font-size: 20px;
+        line-height: 30px;
+        margin-left: 100px;
+        margin-top: 20px;
+        width: 60%;
+        float: right;
+        text-align: justify;
+}
+
+.serviceimg img{
+        width:350px;
+        height: auto;
+        margin-left: 80px;
+
+}
 
 
 /* -----------------------------------footer--------------------------------------- */

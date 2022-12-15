@@ -1,0 +1,292 @@
+.mainbody{
+        margin-top: -8px;
+        margin-left: -8px;
+        width: 101.05%;
+        height: 900px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        background-image: url(../../../images/home/home\ page\ image.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background: linear-gradient(104.19deg, rgba(0, 0, 0, 0.5) 26.57%, rgba(248, 76, 220, 0.305) 51.58%, rgba(0, 0, 0, 0.5) 77.11%), url(../../../images/home/home\ page\ image.jpg);
+}
+
+header{
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        background: rgba(13, 12, 12, 0.38);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.36);
+        height: 10px;
+
+}
+
+.logo1{
+        width: auto;
+        height: 100px;
+        margin-top: 35px;
+        margin-left: 50px;
+}
+
+.menuitems, .loginbar {
+       list-style-type: none;
+       display: inline-flex; 
+       
+}
+
+.menuitems{
+        margin-top: 55px;
+}
+
+.loginbar{
+        margin-top:-1px;
+        margin-right:50px
+}
+li{
+        margin-left: 50px;
+        color: whitesmoke;
+}
+
+.heading h1{
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 68px;
+        line-height: 70px;
+        letter-spacing: 5px;
+        display: flex;
+        align-items: center;
+        color: #FFFFFF;
+        margin-top: -700px;
+        margin-left: 70px;
+        margin-bottom: 50px;
+}
+
+.forcustomer{
+        width: 35%;
+        letter-spacing: 1px;
+        margin-left: 70px;
+        padding-bottom: 300px;
+}
+
+.forcustomer p{
+        font-weight: 500;
+        font-size: 21.5px;
+        line-height: 30px;
+        color: #FFFFFF;
+}
+
+.signupbtncustomer{
+        filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
+        color: black;
+        width:50%;
+        background: rgb(208,63,251);
+        background: radial-gradient(circle, rgba(208,63,251,1) 0%, rgba(185,43,165,1) 43%, rgba(252,70,107,1) 100%);
+        border-radius: 10px;
+        padding:15px;
+        font-size: 20px;
+        font-weight:600;
+        letter-spacing: 1px;
+        margin-top: 20px;
+}
+
+.forsp{
+        width: 35%;
+        letter-spacing: 1px;
+        margin-right: 50px; 
+        float: right; 
+        margin-top: -280px;       
+}
+
+.forsp p{
+        font-weight: 500;
+        font-size: 21.5px;
+        line-height: 30px;
+        color: #FFFFFF;
+}
+
+.signupbtnsp{
+        filter: drop-shadow(0px 4px 4px rgba(237, 232, 232, 0.25));
+        color: black;
+        width:50%;
+        background: rgb(208,63,251);
+        background: radial-gradient(circle, rgba(208,63,251,1) 0%, rgba(185,43,165,1) 43%, rgba(252,70,107,1) 100%);
+        border-radius: 10px;
+        padding:15px;
+        font-size: 20px;
+        font-weight:600;
+        letter-spacing: 1px;  
+        margin-top: 20px;  
+}
+
+.aboutus{
+        display: inline-flex;
+        margin-bottom: 50px;
+}
+.aboutusdetails h2{
+        font-weight: 600;
+        font-size: 40px;
+        text-align: center;
+}
+
+.aboutusdetails{
+        background-color: #F2F1F1;
+        padding-top:80px;
+        width: 101.05%;
+        margin-left: -8px;
+}
+
+.aboutus p{
+        font-size: 20px;
+        line-height: 30px;
+        margin-left: 100px;
+        margin-top: 20px;
+        width: 60%;
+        float: right;
+        text-align: justify;
+}
+
+.aboutusimg img{
+        width:350px;
+        height: auto;
+        margin-left: 80px;
+
+}
+
+.signupbtnsp:hover{
+        background-color: #7c067e;
+        color: #FFFFFF;
+}
+
+.signupbtncustomer:hover{
+        background-color:  #7c067e;
+        color:#FFFFFF;
+}
+
+.ourservice{
+        display: inline-flex;
+        margin-bottom: 50px;
+}
+.servicedetails h2{
+        font-weight: 600;
+        font-size: 40px;
+        text-align: center;
+}
+
+.servicedetails{
+        background-color: EFEAEE;
+        padding-top:80px;
+        width: 101.05%;
+        margin-left: -8px;
+}
+
+.ourservice p{
+        font-size: 20px;
+        line-height: 30px;
+        margin-left: 100px;
+        margin-top: 20px;
+        width: 60%;
+        float: right;
+        text-align: justify;
+}
+
+.serviceimg img{
+        width:350px;
+        height: auto;
+        margin-left: 80px;
+
+}
+
+/* -----------------------------------footer--------------------------------------- */
+  
+.footer {
+        background: url(../../../images/home/image.jpg) no-repeat center center/cover;
+        background-size: cover;
+        background-position: cover;
+        position: relative;
+        height: 400px;
+        margin-top: -8px;
+        margin-left: -8px;
+        width: 101.05%;
+    }
+    
+    .overlay {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5rem 0;
+        top: 0rem !important;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .footer .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 3rem;
+        font-weight: bolder;
+        position: relative;
+        z-index: 0;
+    
+    }
+    
+    .footer .box-container .box h3 {
+        color: white;
+        font-size: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 150px;
+    }
+    
+    .footer .box-container .box a {
+        color: white;
+        font-size: 1.5rem;
+        padding-bottom: 1.5rem;
+        display: block;
+        padding-left: 150px;
+    }
+    
+    .footer .box-container .box a i {
+        color: var(--main-color);
+        padding-right: .5rem;
+        transition: .2s linear;
+    }
+    
+    
+    .footer .box-container .box a:hover i {
+        color: var(--main-color);
+        padding-right: 2rem;
+    }
+    
+    .footer .credit {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: .1rem solid white;
+        font-size: 2rem;
+        color: white;
+        position: relative;
+    
+    }
+    
+    .footer .credit span {
+        color: white;
+    }
+
+    .packages .box-container .box{
+        padding: 2rem;
+        text-align: center;
+        
+    }
+    
+    
+    .packages .box-container .box .content h3 {
+        font-size: 2.5rem;
+        color: var(--black);
+    }
+    
+    .packages .box-container .box .content p {
+        font-size: 1.5rem;
+        color: var(--light-black);
+        line-height: 2;
+        padding: 1rem 0;
+    }
+
+

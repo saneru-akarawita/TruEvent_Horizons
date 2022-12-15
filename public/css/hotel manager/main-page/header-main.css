@@ -1,0 +1,112 @@
+*{
+        padding: 0;
+        margin:0;  
+        box-sizing: border-box;   
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .headerdetails{
+              display: inline-flex;
+              /* background-color: #fff; */
+      }
+      .logo{
+              width: 8rem;
+              position: absolute;
+              top: 0rem;
+              left: 1rem;
+      }
+      
+      .searchbar input{
+              margin-top: 20px;
+              margin-left: 200px;
+              width: 200px;
+              height: 40px;
+              border: 1px solid black;
+              margin-bottom: 20px;
+      }
+      
+      .menu-bar{
+              /* background-color: white; */
+              text-align: center;
+              margin-left: 650px;
+      }
+      
+      .menu-bar ul{
+              display: inline-flex;
+              list-style: none;
+              /* color:black;      */
+              font-weight: 600; 
+      
+      }
+      
+      .menu-bar ul li{
+            width: 130px;
+            margin: 5px;
+            padding: 5px;
+            margin-top: 30px;
+      }
+      
+      .menu-bar ul li a{
+                text-decoration:none;
+                color:whitesmoke;
+        }
+      
+      .active, .menu-bar ul li :hover{
+              background-color: rgb(226, 225, 225);
+              color:#8e44ad;
+              padding-top: 8px;
+              padding-left:8px;
+              padding-right:8px;
+              padding-bottom: 8px;
+              border-radius: 5px;
+      }
+      
+      .menu-bar .fa{
+              margin-right: 5px;
+      
+      }
+      
+      .sub-menu1{
+              display: none;
+      }
+      
+      .menu-bar ul li:hover .sub-menu1{
+              display: block;
+              position: absolute;
+              background-color: rgb(182, 179, 179);
+              color:#8e44ad;
+              margin-top: 5px;
+              width:280px;
+              margin-left: 15px;
+      }
+
+      .sub-menu1 ul li a{
+        color:black;
+}
+
+      .menu-bar ul li:hover .sub-menu1 ul{
+              display: block;
+              margin:5px;
+      }
+      
+      .menu-bar ul li:hover .sub-menu1 ul li{
+              width:220px;
+              padding:10px;
+              border-bottom:1px dotted #fff;
+              border-radius: 0;
+              text-align: left;
+      }
+      .menu-bar ul li:hover .sub-menu1 ul li:last-child{
+              border-bottom: none;
+      }
+      
+      .menu-bar ul li:hover .sub-menu1 ul a:hover{
+        background-color: rgb(232, 227, 227);
+        color:#8e44ad;
+      }
+      
+      .icons li{
+              display: inline-flex;
+              margin-right: 10px;
+      }

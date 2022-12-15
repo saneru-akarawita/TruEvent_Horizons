@@ -242,29 +242,35 @@
     }
     .viewButton , .editButton ,.deleteButton{
         text-align: center;
-        width: 65px;
-        height: auto;
+        width: 78px;
         font-weight: 400;
         font-size: 13px;
         border-radius: 5px;
         border:none; 
-        padding: 10px;
-        margin-left: 22px;
+        padding: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-top: -20px;
     }
     
     .viewButton{
         background-color: green;
         color: #fff;
+        margin: left -20px;
     }
     
     .editButton{
         background-color:rgb(61, 60, 58);
         color: #fff;
+        margin-left: 20px;
+
     }
     
     .deleteButton{
         background-color: rgb(223, 17, 17);
         color: #fff;
+        margin-left: 20px;
+
     }
     
     .home-packages .box-container {
@@ -533,36 +539,6 @@
     
     .footer .credit span {
         color: var(--main-color);
-    }
-    
-    .buttonContainer{
-        display: inline-flex;
-    }
-    .viewButton , .editButton ,.deleteButton{
-        text-align: center;
-        width: 65px;
-        height: auto;
-        font-weight: 400;
-        font-size: 13px;
-        border-radius: 5px;
-        border:none; 
-        padding: 10px;
-        margin-left: 22px;
-    }
-    
-    .viewButton{
-        background-color: green;
-        color: #fff;
-    }
-    
-    .editButton{
-        background-color:rgb(61, 60, 58);
-        color: #fff;
-    }
-    
-    .deleteButton{
-        background-color: rgb(223, 17, 17);
-        color: #fff;
     }
     
     

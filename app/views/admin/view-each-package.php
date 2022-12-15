@@ -16,23 +16,24 @@
     </head>
     <body>
 
+    <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
 <!-- header section starts -->
-<section class="header">
+<!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.jpg" alt="logo" class="logo">
-<a href="home" class="dashboard">Dashboard</a>
+<a href="home" class="dashboard">Dashboard</a> -->
 
-<nav class="navbar">
+<!-- <nav class="navbar">
     <a href="home">Home</a>
     <a href="viewpackages">Packages</a>
     <a href="addpackages">Add Packages</a>
     <a href="logout">Logout</a>
-</nav>
+</nav> -->
 
 <!-- Gives a Menu Button -->
 <button id="menu-btn" class="fas fa-bars"></button>
 
-</section>
+<!-- </section> -->
 
 <!-- Packages Section starts -->
 <section class="packages">

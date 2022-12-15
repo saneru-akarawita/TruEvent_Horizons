@@ -13,9 +13,9 @@
 </head>
 <body>
 <body>
-
+<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
 <!-- header section starts -->
-<section class="header">
+<!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
 <a href="home" class="dashboard">Hotel</a>
 
@@ -24,14 +24,14 @@
 <a href="viewservices">Services</a>
 <a href="addservices">Add Services</a>
 <a href="logout">Logout</a>
-</nav>
+</nav> -->
 
 <!-- Gives a Menu Button -->
-<button id="menu-btn" class="fas fa-bars"></button>
+<!-- <button id="menu-btn" class="fas fa-bars"></button>
 
 
 </section>
-
+ -->
 
 <div class="wrapper">
         <div class="product-img">
@@ -67,14 +67,13 @@
                                         <td>Other Facilities </td>
                                         <td>: <?= $data->other_facilities;?></td>
                                 </tr>
-                                <tr>
-                                        <td>** Food Menu will be discussed and decided manually</td>
-                                </tr>
                                 </table>
+                                <span style="margin-left:45px"><?= $data->price;?> LKR</span>
+                                <p style="margin-top:15px; margin-left:-0.5px">**Food Menu will be discussed and decided manually</p>
                         </div>
                         <br>
                         <div class="product-price-btn">
-                                <button type="button" onclick="history.back()">Back</button>
+                                <button type="button" style="margin-top:-25px;" onclick="history.back()">Back</button>
                         </div>
 
                 </div>
@@ -85,7 +84,7 @@
 
 
 <!-- footer start -->
-<section class="footer">
+<section class="footer" style="margin-top:150px">
 <div class="overlay"></div>
 <div class="box-container">
 <div class="box">

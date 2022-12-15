@@ -15,15 +15,16 @@
 </head>
 
 <body>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
    <div class="main-container">
-      <a href="home">
+      <!-- <a href="home">
          <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png" alt="logo" class="top-left-logo">
-      </a>
-      <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
+      </a> -->
+      <!-- <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/decoService/addNewService" method="post" class="form">
-            <h1 class="title">Add Service</h1>
+            <h1 class="title" style="font-size:3rem;">Add Service</h1>
 
             
                   <div class="text-group">

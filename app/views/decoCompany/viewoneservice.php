@@ -12,9 +12,10 @@
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
 
             <!-- header section starts -->
-    <section class="header">
+    <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
         <a href="home" class="dashboard">Decoration</a>
     
@@ -23,13 +24,13 @@
             <a href="viewservices">Services</a>
             <a href="addservices">Add Services</a>
             <a href="logout">Logout</a>
-        </nav>
+        </nav> -->
     
         <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
+        <!-- <button id="menu-btn" class="fas fa-bars"></button>
     
     
-        </section>
+        </section> -->
 
 
         <div class="wrapper">

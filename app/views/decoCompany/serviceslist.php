@@ -12,8 +12,10 @@
 
 </head>
 <body>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
+
     <!-- header section starts -->
-    <section class="header">
+    <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
         <a href="home" class="dashboard">Decoration</a>
     
@@ -23,12 +25,12 @@
             <a href="addservices">Add Services</a>
             <a href="logout">Logout</a>
         </nav>
-    
+     -->
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
     
     
-        </section>
+        <!-- </section> -->
 
 
 
@@ -36,7 +38,7 @@
 
 
 <section class="packages">
-    <h1 class="heading-title">Services Included</h1>
+    <h1 class="heading-title">Your Decorations</h1>
 
     <div class="box-container">
 
