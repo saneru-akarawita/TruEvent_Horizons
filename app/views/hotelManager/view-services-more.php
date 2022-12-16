@@ -76,7 +76,12 @@
         <?php foreach ($data as $hsDetails) : ?>
             <div class="box" style="height: 400px;">
                 <div class="image">
-                    <?php echo "<img src = '".URLROOT."/public/images/hotel manager/figma images/services/hotel".rand(1,5).".jpg'>";?>
+
+                <?php $directory = getcwd()."/images/hotel manager/services/$hsDetails->service_type/";
+                    $files1 = scandir($directory);
+                    $num_files = count($files1) - 2;
+                ?>
+                    <?php echo "<img src = '".URLROOT."/public/images/hotel manager/services/$hsDetails->service_type/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
                 </div>
                 <div class="content">
                     <h3 style="font-size:medium">Ideal for <?= $hsDetails->service_type; ?> </h3>

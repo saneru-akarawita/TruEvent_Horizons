@@ -53,10 +53,9 @@
         <h1 class="heading-title"> Hotels</h1>
 
         <div class="box-container">
-
-
+            <?php $hcount=0?>
             <?php foreach ($data2 as $hsDetails) : ?>
-
+                <?php $hcount= $hcount+1;?>
                 <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -64,10 +63,9 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-
                 <div class="box">
                     <div class="image">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/admin-add-packages/image" . rand(14, 17) . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . $hcount%5 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?=$spName;?></h3>
@@ -142,8 +140,9 @@
         <h1 class="heading-title"> Decorations</h1>
 
         <div class="box-container">
+            <?php $dcount=0?>
             <?php foreach ($data1 as $dcDetails) : ?>
-
+                <?php $dcount= $dcount+1;?>
                 <?php $serviceProviderID = $dcDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -151,10 +150,9 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-
                 <div class="box">
                     <div class="image">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/admin-add-packages/image" . rand(18, 21) . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>

@@ -60,9 +60,9 @@
                                                 </ul>
                                         </div>                
                                 </li>
-                                <li style="margin-top:12px; margin-left:-35px;">User Name</li> 
+                                <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
                                 <hr size="1px">
-                                <p style="margin-top:40px; margin-left:-95px">User role</p> 
+                                <p style="margin-top:40px; margin-left:-140px;width:max-content"><?= Session::getUser('typeText') ?></p> 
                         </ul>
                 
                 </div>

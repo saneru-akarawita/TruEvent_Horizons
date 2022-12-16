@@ -22,5 +22,12 @@ class AdminModel extends Model
       return $result;
    }
 
+   public function getAdminUserData($email)
+   {
+      $results = $this->getSingle("adminuser", "*", ['email' => $email]);
+
+      return [$results->admin_id, $results->fname . " " . $results->lname];
+   }
+
 
 }

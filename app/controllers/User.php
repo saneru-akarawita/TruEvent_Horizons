@@ -8,6 +8,7 @@ class User extends Controller
       $this->OTPModel = $this->model('OTPManagementModel');
       $this->customerModel = $this->model('CustomerModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
    }
 
    public function signin()
@@ -289,6 +290,8 @@ class User extends Controller
       {
          case 1:
          case 2:
+            return $this->adminModel->getAdminUserData($user->email);
+            break;
          case 3:
             return $this->customerModel->getCustomerUserData($user->email);
             break;
