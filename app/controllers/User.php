@@ -315,7 +315,7 @@ class User extends Controller
 
    public function checkFailedAttempts($email)
    {
-      $allowedMaxFailedAttempts = 5; // consecutive
+      $allowedMaxFailedAttempts = 3; // consecutive
       $currentFailedAttempts = $this->userModel->getFailedAttempts($email);
 
       if ($currentFailedAttempts >= $allowedMaxFailedAttempts)

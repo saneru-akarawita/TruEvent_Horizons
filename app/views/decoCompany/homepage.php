@@ -39,14 +39,14 @@
     <a class="next" onclick="plusSlides(1)">❯</a>
     <div class="swiper home-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/deco1.jpg) no-repeat">
+            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/1.jpg) no-repeat">
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Make Your Event More Beautiful</h3>
                 </div>     
             </div>
 
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/image2.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/2.jpg) no-repeat; display:none;">
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Discover</h3>
@@ -54,7 +54,7 @@
                 </div>
             </div>
     
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/image3.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/deco1.jpg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
                     <h3>Make your event Memorable</h3>
