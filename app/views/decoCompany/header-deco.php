@@ -44,8 +44,8 @@
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Payment</a></li>
-                                <li><a href="">Reports</a></li> 
+                                <li><a href="<?php echo URLROOT ?>/DecoDashboard/payment">Payment</a></li>
+                                <li><a href="<?php echo URLROOT ?>/DecoDashboard/reports">Reports</a></li> 
 
                                 <!-- <div class="icons"> -->
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
