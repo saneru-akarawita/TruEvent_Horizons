@@ -1,0 +1,232 @@
+/* -----------------------------------------Complete Advanced Payment ------------------------------------------------------ */
+.container-displaymsg{
+        height: 10%;
+        width: 40%;
+        background-color: var(--white);
+        box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+        padding: 50px;
+        align-items: center;  
+     }
+    
+     .container-displaymsg h2{
+        margin-left: 20px;
+        font-size: 2.1rem;
+     }
+     .container-displaymsg img{
+        height:100px; 
+        width:auto;
+        margin-top: 50px;
+        margin-left: 200px;
+        margin-bottom: 20px;
+     }
+    
+     .totalpay{
+        width: 25%;
+        height: 70px;
+        font-weight: 600;
+        font-size: 2.5rem;
+        color: white;
+        background-color:#008000;
+        margin-bottom: 20px;
+        margin-top: -850px;
+        margin-left: 80px
+    
+     }
+    
+    
+     /* ----------------------------------Report Generation------------------------------------------------ */
+    
+    .text-group{
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+    
+    .text-group input{
+        margin-top: 15px;
+        margin-left: 45px;
+        color:black;
+        background-color: #D9D9D9;
+        border: 2px solid black;
+        padding: 5px;
+        width: 50%;
+        padding-left: 10px;
+    }
+    
+    .row{
+        display: inline-flex;
+    }
+    
+    .text-group2 input{
+        margin-top: 15px;
+        margin-left: 35px;
+        color:black;
+        background-color: #D9D9D9;
+        border: 2px solid black;
+        padding: 5px;
+        width: 65%;
+        padding-left: 10px;
+    }
+    
+    .text-group2 {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+    
+    
+    .text-group2-1{
+        margin-top: 35px;
+        margin-left: 150px;
+    }
+    
+    .text-group2-1 input{
+        margin-top: 15px;
+        margin-left: 35px;
+        color:black;
+        background-color: #D9D9D9;
+        border: 2px solid black;
+        padding: 5px;
+        width: 73%;
+        padding-left: 10px;
+    }
+    
+    .btn-btn-search{
+        color: white;
+        background-color: black;
+        width:150px;
+        height: 50px;
+        border-radius: 10px;
+        margin-top: 45px;
+        margin-left: 50px;
+    }
+    
+    .totaldetails{
+        display: inline-flex;
+    }
+    
+    
+    .totalres{
+        margin-top: 50px;
+        margin-left: 180px;
+        background-color: #D9D9D9;
+        width: 300px;
+        height:150px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .totalincome{
+        margin-top: 50px;
+        margin-left: 500px;
+        background-color: #D9D9D9;
+        width: 300px;
+        height:150px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .totalres label, .totalincome label{
+        margin-top: 30px;
+        font-size: 2.0rem;
+        font-weight: 700;
+    }
+    
+    .charts{
+        display: inline-flex;
+    }
+    
+    .res{
+        margin-top: 50px;
+        margin-left: 45px;
+        background-color: #D9D9D9;
+        width: 600px;
+        height:450px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .res label, .income label{
+        padding-top:30px;
+        font-size: 2.0rem;
+        font-weight: 700;
+    
+    }
+    
+    .income{
+        margin-top: 50px;
+        margin-left: 200px;
+        background-color: #D9D9D9;
+        width: 600px;
+        height:450px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .tabledetails, .tabledetails2{
+        margin-top: 50px;
+        margin-left: 45px;
+    }
+    
+    .tabledetails h2 , .tabledetails2 h2{
+        margin-bottom: 20px;
+        font-size: 2.0rem;
+    }
+    
+    table{
+        border: solid black 2px;
+        color:black;
+        background-color: #D9D9D9;
+    }
+    
+    .tabledetails th{
+        width: 348px;
+        padding: 5px;
+        height: 50px;
+    }
+    
+    .tabledetails td{
+        width: 348px;
+        padding: 5px;
+        height: 50px;
+    }
+    
+    .main-content{
+        margin-bottom: 50px;
+    }
+    
+    .btn-btn-report{
+        color: white;
+        background-color: #353560;
+        width:250px;
+        height: 50px;
+        border-radius: 10px;
+        margin-top: 45px;
+        margin-left: 680px;
+    }
+    
+    .text-group4{
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+    
+    .text-group4 input{
+        margin-top: 15px;
+        margin-left: 35px;
+        color:black;
+        background-color: #D9D9D9;
+        border: 2px solid black;
+        padding: 5px;
+        width: 20%;
+        padding-left: 10px;
+    }
+    
+    .tabledetails2 th{
+        width: 280px;
+        padding: 5px;
+        height: 50px;
+    }
+    
+    .tabledetails2 td{
+        width: 280px;
+        padding: 5px;
+        height: 50px;
+    }

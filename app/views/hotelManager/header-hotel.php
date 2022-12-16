@@ -34,22 +34,22 @@
                                                         <li><a href="viewservices">View Venues</a></li>
                                                         <li><a href="addservices">Add Venues</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="">Reservation Log</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/HotelDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Payment</a></li>
-                                <li><a href="">Reports</a></li> 
+                                <li><a href="<?php echo URLROOT ?>/HotelDashboard/payment">Payment</a></li>
+                                <li><a href="<?php echo URLROOT ?>/HotelDashboard/reports">Reports</a></li> 
         
                                 <!-- <div class="icons"> -->
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
-                                <li><a href=""> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
+                                <li><a href="<?php echo URLROOT ?>/HotelDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
                                 <li class="nr_li dd_main">
                                         <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px;">
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><i class="fa-solid fa-gear"></i><a href="viewservices">Profile Settings</a></li>
+                                                        <li><i class="fa-solid fa-gear"></i><a href="<?php echo URLROOT ?>/HotelDashboard/profileSettings">Profile Settings</a></li>
                                                         <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
                                                 </ul>
                                         </div>                

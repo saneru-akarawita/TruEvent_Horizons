@@ -148,6 +148,31 @@ class AdminDashboard extends Controller
       $this->view('admin/reviewComplaints');
    }
 
+   public function chat()
+   {
+      $this->view('admin/chat', '');
+   }
+
+   public function payment()
+   {
+      $this->view('admin/payment', '');
+   }
+
+   public function reports()
+   {
+      $this->view('admin/Reports', '');
+   }
+
+   public function reservationLog()
+   {
+      $this->view('admin/Reservationlog', '');
+   }
+
+   public function generateReports()
+   {
+      $this->view('admin/generate-reports', '');
+   }
+
    public function logout()
    {
       redirect('User/signout');
