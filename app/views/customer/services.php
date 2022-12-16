@@ -65,7 +65,7 @@
                 <?php endforeach; ?>
                 <div class="box">
                     <div class="image">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . $hcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . $hcount%7 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?=$spName;?></h3>
