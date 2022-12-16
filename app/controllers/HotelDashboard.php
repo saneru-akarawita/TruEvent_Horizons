@@ -144,6 +144,31 @@ class HotelDashboard extends Controller
       //}
    }
 
+   
+   public function chat()
+   {
+      $this->view('hotelManager/chat', '');
+   }
+
+   public function payment()
+   {
+      $this->view('hotelManager/payment', '');
+   }
+
+   public function reports()
+   {
+      $this->view('hotelManager/Reports', '');
+   }
+
+   public function reservationLog()
+   {
+      $this->view('hotelManager/Reservationlog', '');
+   }
+
+   public function editService()
+   {
+      $this->view('hotelManager/edit-service', '');
+   }
 
    public function logout()
    {

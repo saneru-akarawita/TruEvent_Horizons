@@ -16,7 +16,7 @@
 </head>
 </head>
 <body>
-<?php require APPROOT . "/views/customer/header-customer.php" ?>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
 
     <div class="main-container">
         <div class="container">
@@ -24,7 +24,7 @@
                 <!-- Header -->
                 <div class="header">
                     <div class="userimg">
-                        <img src="<?php echo URLROOT ?>/public/css/images-UI/user.jpg" alt="" class="cover">
+                        <img src="<?php echo URLROOT ?>/public/images/images-UI/user.jpg" alt="" class="cover">
                     </div>
                     <ul class="nav_icons">
                         <li><ion-icon name="scan-circle-outline"></ion-icon></li>
@@ -43,7 +43,7 @@
                 <div class="chatlist">
                     <div class="block active">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img1.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img1.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -58,7 +58,7 @@
     
                     <div class="block unread">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img2.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img2.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -74,7 +74,7 @@
     
                     <div class="block unread">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img3.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img3.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -89,7 +89,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img4.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img4.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img7.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img7.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -117,7 +117,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img8.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img8.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -131,7 +131,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img9.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img9.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -145,7 +145,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img5.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img5.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -159,7 +159,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img6.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img6.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -173,7 +173,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img7.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img7.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -187,7 +187,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img8.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img8.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -201,7 +201,7 @@
                     </div>
                     <div class="block">
                         <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img9.jpg" class="cover" alt="">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img9.jpg" class="cover" alt="">
                         </div>
                         <div class="details">
                             <div class="listHead">
@@ -219,7 +219,7 @@
                 <div class="header">
                     <div class="imgText">
                         <div class="userimg">
-                            <img src="<?php echo URLROOT ?>/public/css/images-UI/img1.jpg" alt="" class="cover">
+                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img1.jpg" alt="" class="cover">
                         </div>
                         <h4>Saneru Akaravita <br><span>online</span></h4>
                     </div>

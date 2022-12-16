@@ -15,7 +15,7 @@
 <body>
  <!-- -------------------------------------header for Admin-------------------------------------------------- -->
 
- <div class="headerdetails">
+ <div class="headerdetails" style="width:101.05%">
         <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
         <div class="searchbar">
                 <input type="text">
@@ -24,7 +24,7 @@
                 <div class="menu-bar">
                         <ul>
                         
-                                <li style="margin-left:35px;"><a href="home">Home</a>
+                                <li style="margin-left:-10px;"><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
@@ -41,8 +41,8 @@
                                                         <li><a href="viewpackages">View Packages</a></li>
                                                         <li><a href="addpackages">Add Packages</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="">Reservation Log</a></li>
-                                                        <li><a href="">Review Complaints</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/adminDashboard/reservationLog">Reservation Log</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/adminDashboard/reviewComplaints">Review Complaints</a></li>
 
                                                 </ul>
                                         </div>
@@ -52,19 +52,19 @@
                                                 <ul>
                                                         <li><a href="">Advance Payment</a></li>
                                                         <li><a href="">Total Payment</a></li>
-                                                        <li><a href="">Payment Log</a></li>
                                                 </ul>
                                         </div></li> 
-        
+
+                                <li><a href="<?php echo URLROOT ?>/adminDashboard/reports">Reports</a>
                                 <!-- <div class="icons"> -->
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
-                                <li><a href=""> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
+                                <li><a href="<?php echo URLROOT ?>/adminDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
                                 <li class="nr_li dd_main">
                                         <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px;">
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><i class="fa-solid fa-gear"></i><a href="viewservices">Profile Settings</a></li>
+                                                        <li><i class="fa-solid fa-gear"></i><a href="<?php echo URLROOT ?>/adminDashboard/profileSettings">Profile Settings</a></li>
                                                         <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
                                                 </ul>
                                         </div>                

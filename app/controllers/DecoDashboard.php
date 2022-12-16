@@ -144,6 +144,26 @@ class DecoDashboard extends Controller
       //}
    }
 
+   public function chat()
+   {
+      $this->view('decoCompany/chat', '');
+   }
+
+   public function payment()
+   {
+      $this->view('decoCompany/payment', '');
+   }
+
+   public function reports()
+   {
+      $this->view('decoCompany/Reports', '');
+   }
+
+   public function reservationLog()
+   {
+      $this->view('decoCompany/Reservationlog', '');
+   }
+
    public function logout()
    {
       redirect('User/signout');
