@@ -37,5 +37,19 @@ function validatePrice($price){
    return $emptyCheckResponse;
 }
 
+function validateDate($date){
+
+   $emptyCheckResponse = emptyCheck($date);
+
+   $now = date("Y-m-d");
+   echo $date;
+   echo $now;
+
+    if($date < $now) {
+        return "date is in the past";
+    }
+   else
+      return $emptyCheckResponse;
+}
 
 ?>

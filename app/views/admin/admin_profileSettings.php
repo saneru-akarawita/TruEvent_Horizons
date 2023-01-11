@@ -54,34 +54,34 @@
                 <div class="column">
                     <br><br>
                     <label class="label" for="fullname">Full Name</label>
-                    <input class="fullname" type="text" id="fullname" name="fullname" placeholder="" disabled>
+                    <input class="fullname" type="text" id="fullname" name="fullname" placeholder="<?=$data->fname?> <?=$data->lname?>" disabled>
                 </div>
             </div>
             <br><br>
             <label for="email">Email</label>
             <div class="row"> 
-                <input class="email" type="text" id="email" name="email" placeholder="" style="width:48%" disabled>
+                <input class="email" type="text" id="email" name="email" placeholder="<?=$data->email?>" style="width:48%; text-transform:none" disabled>
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="accno">Account Number</label>
-                    <input class="accno" type="text" id="accno" name="accno" placeholder="" disabled>
+                    <input class="accno" type="text" id="accno" name="accno" placeholder="<?=$data->acc_no?>" disabled>
                 </div>
                 <div class="column">
                     <label class="accname" for="district">Account Name</label>
-                    <input class="accname" type="text" id="accname" name="accname" placeholder="" disabled>
+                    <input class="accname" type="text" id="accname" name="accname" placeholder="<?=$data->acc_name?>" disabled>
                 </div> 
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="bank">Bank</label>
-                    <input class="bank" type="text" id="bank" name="bank" placeholder="" disabled>
+                    <input class="bank" type="text" id="bank" name="bank" placeholder="<?=$data->bank?>" disabled>
                 </div>
                 <div class="column">
                     <label class="branch" for="branch">Branch</label>
-                    <input class="branch" type="text" id="branch" name="branch" placeholder="" disabled>
+                    <input class="branch" type="text" id="branch" name="branch" placeholder="<?=$data->branch?>" disabled>
                 </div> 
             </div>
 
