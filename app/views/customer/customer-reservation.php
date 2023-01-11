@@ -89,7 +89,7 @@
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
-                    <input class="rvdate" type="date" name="rvdate" placeholder="Select the Date" style="text-transform: none;" >
+                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" >
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
 
@@ -165,7 +165,7 @@
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
-                    <input class="rvdate" type="date" name="rvdate" placeholder="Select the Date" style="text-transform: none;" >
+                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" >
                     <span class="error"><?php echo $data[1]['rvdate_error']; ?></span>
                 </div>
 
@@ -234,6 +234,7 @@
     <!-- custom js file link -->
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".rv_type").change(function () {
@@ -250,6 +251,15 @@
                 }
             });
         });
+    </script>
+    <script language="javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#date_picker').attr('min',today);
     </script>
 </body>
 

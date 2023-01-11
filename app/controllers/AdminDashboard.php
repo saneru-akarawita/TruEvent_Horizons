@@ -7,6 +7,9 @@ class AdminDashboard extends Controller
    public function __construct()
    {
       Session::validateSession([2]);
+      $this->customerModel = $this->model('CustomerModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
    }
 
    public function home()
@@ -139,8 +142,9 @@ class AdminDashboard extends Controller
       //       'oldProfImg' => $profileData->imgPath
 
       //    ];
-
-         $this->view('admin/admin_profileSettings', $data=[]);
+         $profile_id = Session::getUser("id");
+         $profiledata = $this->adminModel->getAdminDetailsByID($profile_id);
+         $this->view('admin/admin_profileSettings', $profiledata);
       //}
    }
 

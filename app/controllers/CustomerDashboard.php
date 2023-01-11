@@ -10,6 +10,7 @@ class CustomerDashboard extends Controller
       $this->decoModel = $this->model('DecoModel');
       $this->hotelModel = $this->model('HotelModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->customerModel = $this->model('CustomerModel');
    }
 
    public function home()
@@ -159,7 +160,9 @@ class CustomerDashboard extends Controller
 
       //    ];
 
-         $this->view('customer/cust_profileSettings', $data=[]);
+         $profile_id = Session::getUser("id");
+         $profiledata = $this->customerModel->getCustomerDetailsByID($profile_id);
+         $this->view('customer/cust_profileSettings', $profiledata);
       //}
    }
 

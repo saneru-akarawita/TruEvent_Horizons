@@ -7,6 +7,10 @@ class HotelDashboard extends Controller
    public function __construct()
    {
       Session::validateSession([4]);
+      $this->reservationModel = $this->model('ReservationModel');
+      $this->customerModel = $this->model('CustomerModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
    }
 
    public function home()
@@ -139,8 +143,9 @@ class HotelDashboard extends Controller
       //       'oldProfImg' => $profileData->imgPath
 
       //    ];
-
-         $this->view('hotelManager/hotel_profileSettings', $data=[]);
+         $profile_id = Session::getUser("id");
+         $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
+         $this->view('hotelManager/hotel_profileSettings', $profiledata);
       //}
    }
 
@@ -162,7 +167,11 @@ class HotelDashboard extends Controller
 
    public function reservationLog()
    {
-      $this->view('hotelManager/Reservationlog', '');
+         $spID = Session::getUser("id");
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result = array($spID, $reservationsList, $customerlist);
+         $this->view('hotelManager/Reservationlog',$result);
    }
 
    public function editService()

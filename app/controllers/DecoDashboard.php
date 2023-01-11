@@ -7,6 +7,11 @@ class DecoDashboard extends Controller
    public function __construct()
    {
       Session::validateSession([5]);
+      $this->reservationModel = $this->model('ReservationModel');
+      $this->customerModel = $this->model('CustomerModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
+
    }
 
    public function home()
@@ -139,8 +144,9 @@ class DecoDashboard extends Controller
       //       'oldProfImg' => $profileData->imgPath
 
       //    ];
-
-         $this->view('decoCompany/deco_profileSettings', $data=[]);
+         $profile_id = Session::getUser("id");
+         $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
+         $this->view('decoCompany/deco_profileSettings', $profiledata);
       //}
    }
 
@@ -161,7 +167,11 @@ class DecoDashboard extends Controller
 
    public function reservationLog()
    {
-      $this->view('decoCompany/Reservationlog', '');
+         $spID = Session::getUser("id");
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result = array($spID, $reservationsList, $customerlist);
+      $this->view('decoCompany/Reservationlog',$result);
    }
 
    public function logout()

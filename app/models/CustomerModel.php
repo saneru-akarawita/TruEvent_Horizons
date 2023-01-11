@@ -27,5 +27,17 @@ class CustomerModel extends Model
       return [$results->customer_id, $results->fname . " " . $results->lname];
    }
 
+   public function getCustomerDetails()
+   {
+      $results = $this->getResultSet("customeruser", "*", []);
+      return $results;
+   }
+
+   public function getCustomerDetailsByID($id)
+   {
+      $results = $this->getSingle("customeruser", "*", ['customer_id' => $id]);
+      return $results;
+   }
+
 
 }

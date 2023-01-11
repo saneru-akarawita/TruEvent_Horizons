@@ -55,23 +55,23 @@
                     <div class="column">
                         <br><br>
                         <label class="label" for="fullname">Full Name</label>
-                        <input class="fullname" type="text" id="fullname" name="fullname" placeholder="" disabled>
+                        <input class="fullname" type="text" id="fullname" name="fullname" placeholder="<?=$data->fname?> <?=$data->lname?>" disabled>
                     </div>
                 </div>
                 <br><br>
                 <label for="email">Email</label>
                 <div class="row"> 
-                    <input class="email" type="text" id="email" name="email" placeholder="" style="width:48%" disabled>
+                    <input class="email" type="text" id="email" name="email" placeholder="<?=$data->email?>" style="width:48%; text-transform:none" disabled>
                 </div>
                 <br><br>
                 <div class="row"> 
                     <div class="column">
                         <label for="contactno">Contact Number</label>
-                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="" disabled>
+                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="<?=$data->contact_no?>" disabled>
                     </div>
                     <div class="column">
                         <label class="district" for="district">District</label>
-                        <input class="district" type="text" id="contactno" name="contactno" placeholder="" disabled>
+                        <input class="district" type="text" id="contactno" name="contactno" placeholder="<?=$data->district?>" disabled>
                     </div> 
                 </div>
 

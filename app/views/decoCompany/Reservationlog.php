@@ -21,7 +21,11 @@
 </head>
 
 <body>
-<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>       
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
+
+<?php $spID = $data[0]; ?>
+<?php $rvdata = $data[1]; ?>
+<?php $cusdata = $data[2]; ?>
  
        <div class="maincontainer">
 
@@ -43,7 +47,7 @@
                                                         <td>Event Name</td>
                                                         <td>Date</td>
                                                         <td>Time</td>
-                                                        <td>Type of Service</td>
+                                                        <td>Event Type</td>
                                                         <td>Customer Name</td>
                                                         <td>Status</td>
                                                         <td>Paid/Not Paid</td>
@@ -53,27 +57,40 @@
                                                         </tr>
                                                 </thead> 	 
                                                 <tbody>
+                                                <?php foreach ($rvdata as $rvDetails) : ?>
+                                                    <?php 
+                                                        $sp_id_arr = explode (",", $rvDetails->sp_id);
+                                                    ?>
+                                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                                    <?php if ($new_sp_id == $spID) { ?>
                                                         <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <td><?= $rvDetails->rv_id; ?></td>
+                                                                <td><?= $rvDetails->eventName; ?></td>
+                                                                <td><?= $rvDetails->rvDate; ?></td>
+                                                                <td><?= $rvDetails->rvTime; ?></td>
+                                                                <td><?php echo ($rvDetails->spName == '') ? $rvDetails->packageType : $rvDetails->spName; ?></td>
+                                                                <?php foreach ($cusdata as $cus) : ?>
+                                                                    <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>
+                                                                        <td><?= $cus->fname; ?> <?= $cus->lname; ?></td>
+                                                                    <?php } ?>
+                                                                <?php endforeach; ?>
                                                                 <td>
-                                                                
+                                                                <?= $rvDetails->status; ?>
                                                                 </td>
                                                                 <td>
-                                                                
+                                                                <?= $rvDetails->payment; ?>
                                                                 </td>
-                                                                <td>
-                                                                <div class="action-button">
+                                                                <td style="justify-content:center">
+                                                                <div class="action-button" style="justify-content:center">
                                                                         <a href="#" class="buttone">edit</a>
                                                                         /
                                                                         <a href="#" class="buttond">delete</a>
                                                                 </div>
                                                                 </td>
                                                         </tr>
+                                                    <?php } ?>
+                                                    <?php endforeach; ?>
+                                                <?php endforeach; ?>
                                                 
                                                 </tbody>
 
@@ -87,7 +104,7 @@
 
                         </div>
 
-                        <div class="recent-grid">
+                        <!-- <div class="recent-grid">
                                 <div class="projects">
                                     <div class="card">
                                         <div class="card-header">
@@ -147,7 +164,7 @@
                         
                             </div>
                 
-                        </div>
+                        </div> -->
                 
 </div>
 

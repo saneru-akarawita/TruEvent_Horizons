@@ -29,5 +29,17 @@ class AdminModel extends Model
       return [$results->admin_id, $results->fname . " " . $results->lname];
    }
 
+   public function getAdminDetails()
+   {
+      $results = $this->getResultSet("adminuser", "*", []);
+      return $results;
+   }
+
+   public function getAdminDetailsByID($id)
+   {
+      $results = $this->getSingle("adminuser", "*", ['admin_id' => $id]);
+      return $results;
+   }
+
 
 }

@@ -39,5 +39,11 @@ class ServiceProviderModel extends Model
       return $results;
    }
 
+   public function getServiceProviderDetailsByID($id)
+   {
+      $results = $this->getSingle("serviceprovideruser", "*", ['service_provider_id' => $id]);
+      return $results;
+   }
+
 
 }
