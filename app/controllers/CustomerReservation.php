@@ -247,8 +247,73 @@ class CustomerReservation extends Controller
 
    }
 
-   public function editReservation($id){
+   public function editReservation(){
+      if(isset($_GET['rv_id'])){
+         $rv_editid=intval(trim($_GET['rv_id']));
+      }
+   
+      if($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+            $data = [
+               'event_name' => trim($_POST['event_name']),
+               'rvdate' => trim($_POST['rvdate']),
+               'rvtime' => trim($_POST['rvtime']),
+               'rv_id' => trim($_POST['rv_id']),
+   
+               'event_name_error' => '',
+               'rvdate_error' => '',
+               'rvtime_error' => ''
+               
+            ];
 
+            if ($_POST['action'] == "editrv")
+            {
+               // Validate everything
+               $data['event_name_error'] = emptyCheck($data['event_name']);
+               $data['rvdate_error'] = emptyCheck($data['rvdate']);
+               $data['rvtime_error'] = emptyCheck($data['rvtime']);
+
+               if (
+                  empty($data['event_name_error']) && empty($data['rvdate_error']) && empty($data['rvtime_error'])
+               )
+               {
+                  echo $data['rv_id'];
+                  $this->reservationModel->beginTransaction();
+                  $this->reservationModel->editReservation($data['rv_id'], $data);
+                  Toast::setToast(1, "Reservation Edited Successfully!!!", '');
+                  $this->reservationModel->commit();
+
+                  redirect('CustomerReservation/viewReservationLog');
+                  
+               }
+               else
+               {
+                  $this->view('customer/edit-service-package', $data);
+               }
+            }
+            else
+            {
+               die("Something went wrong");
+            }
+
+
+      }
+      else
+      {
+            $rvdata = $this->reservationModel->getReservationDetailsByReservationID($rv_editid);
+            $data = [
+               'event_name' => $rvdata->eventName,
+               'rvdate' => $rvdata->rvDate,
+               'rvtime' => $rvdata->rvTime,
+               'rv_id' => $rv_editid,
+               'event_name_error' => '',
+               'rvdate_error' => '',
+               'rvtime_error' => ''
+            ];
+
+            $this->view('customer/edit-service-package', $data);
+
+          }
    }
 
    public function deleteReservation($id){

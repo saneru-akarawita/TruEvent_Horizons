@@ -96,7 +96,7 @@
                                         </td>
                                         <td>
                                             <div class="action-button">
-                                                <a href="#" class="buttone">edit</a>
+                                                <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone">edit</a>
                                                 /
                                                 <a href="#" class="buttond">Cancel</a>
                                             </div>
@@ -168,7 +168,7 @@
                                         </td>
                                         <td>
                                             <div class="action-button">
-                                                <a href="#" class="buttone">edit</a>
+                                                <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone">edit</a>
                                                 /
                                                 <a href="#" class="buttond">Cancel</a>
                                             </div>

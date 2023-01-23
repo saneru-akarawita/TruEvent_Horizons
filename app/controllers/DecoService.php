@@ -102,8 +102,88 @@ class DecoService extends Controller
          }
    }
 
-   public function editService($id){
+   public function editService(){
 
+      if(isset($_GET['service_id'])){
+         $sv_editid=intval(trim($_GET['service_id']));
+      }
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $checkbox1=$_POST['decoration'];  
+            $chk="";  
+            foreach($checkbox1 as $chk1)  
+               {  
+                  $chk .= $chk1.", ";  
+               }  
+
+         $data = [
+
+            'name' => trim($_POST['service_name']),
+            'price' => trim($_POST['price']),
+            'decoration'=>$chk,
+            'other_deco' => trim($_POST['other_deco']),
+            'theme' => trim($_POST['theme']),
+            'sv_id' => trim($_POST['sv_id']),
+
+            'name_error' => '',
+            'description_error'=>'',
+            'price_error' => '',
+            'other_deco_error' => '',
+            'theme_error' => ''
+         ];
+
+         if ($_POST['action'] == "editservice")
+         {
+            // Validate everything
+            $data['name_error'] = emptyCheck($data['name']);
+            $data['price_error'] = validatePrice($data['price']);
+            $data['theme_error'] = emptyCheck($data['theme']);
+
+            if (
+               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error'])
+            )
+            {
+                
+               $this->decoModel->beginTransaction();
+               $this->decoModel->editDecoServicebyID($data['sv_id'], $data);
+               $this->decoModel->commit();
+
+               Toast::setToast(1, "Service Edited Successfully!!!", "");
+
+               redirect('decoService/viewAllServices');
+               
+            }
+            else
+            {
+               $this->view('decoCompany/editservice', $data);
+            }
+         }
+         else
+         {
+            die("Something went wrong");
+         }
+         
+      }
+      else
+      {
+         $svdetails = $this->decoModel->getDecoServiceDetailsByServiceID($sv_editid);
+
+         $data = [
+            'name' => $svdetails->service_name,
+            'price' => $svdetails->price,
+            'decoration'=> $svdetails->decoration_item,
+            'other_deco' => $svdetails->other_decoration,
+            'theme' => $svdetails->theme,
+            'sv_id' => $sv_editid,
+
+            'name_error' => '',
+            'price_error' => '',
+            'theme_error' => ''
+         ];
+
+         $this->view('decoCompany/editservice', $data);
+      }
    }
 
    public function deleteService($id){

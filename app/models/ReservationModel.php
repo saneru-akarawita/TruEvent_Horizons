@@ -47,7 +47,7 @@ class ReservationModel extends Model
 
     public function getReservationDetailsByReservationID($id)
     {
-        $results = $this->getSingle("customerrvdetails", "*", ['service_id' => $id]);
+        $results = $this->getSingle("customerrvdetails", "*", ['rv_id' => $id]);
 
         return $results;
     }
@@ -58,6 +58,18 @@ class ReservationModel extends Model
 
         return $results;
     }
-    
 
+    public function editReservation($rvID, $data){
+
+        $this->update('customerrvdetails', [
+
+            'eventName' => $data['event_name'],
+            'rvDate' => $data['rvdate'],
+            'rvTime' => $data['rvtime']
+            ], 
+            
+            ['rv_id' => $rvID]);
+
+    }
+    
 }

@@ -35,6 +35,19 @@ class DecoModel extends Model
 
         return $results;
     }
+
+    public function editDecoServicebyID($serviceID,$data){
+
+        $this->update('decoservicedetails', [
+
+            'service_name' => $data['name'],
+            'other_decoration' => $data['other_deco'],
+            'theme' => $data['theme'],
+            'price'=>$data['price'],
+            'decoration_item' => $data['decoration']
+
+         ], ['service_id' => $serviceID]);
+    }
     
 
 }
