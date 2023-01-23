@@ -183,69 +183,67 @@ class Customer extends Controller
 
    public function changePassword()
    {
-      // Session::validateSession([3]);
-      // $result = $this->userModel->getUser(Session::getUser("mobileNo"));
-      // $hashedPassword = $result->password;
-      // if ($_SERVER['REQUEST_METHOD'] == 'POST')
-      // {
-      //    $data = [
-      //       'mobileNo' => $result->mobileNo,
-      //       'currentPassword' => trim($_POST['currentPassword']),
-      //       'newPassword1' => trim($_POST['password1']),
-      //       'newPassword2' => trim($_POST['password2']),
-      //       'currentPassword_error' => '',
-      //       'newPassword_error' => '',
-      //       'confirmPassword_error' => ''
-      //    ];
+      Session::validateSession([3]);
+      $result = $this->userModel->getUser(Session::getUser("email"));
+      $hashedPassword = $result->password;
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $data = [
+            'email' => $result->email,
+            'currentPassword' => trim($_POST['currentPassword']),
+            'newPassword1' => trim($_POST['password1']),
+            'newPassword2' => trim($_POST['password2']),
+            'currentPassword_error' => '',
+            'newPassword_error' => '',
+            'confirmPassword_error' => ''
+         ];
 
-      //    $data['currentPassword_error'] = emptyCheck($data['currentPassword']);
-      //    $data['newPassword_error'] = emptyCheck($data['newPassword1']);
-      //    $data['confirmPassword_error'] = emptyCheck($data['newPassword2']);
-      //    if (!empty($data['currentPassword_error']) || !empty($data['newPassword_error']) || !empty($data['confirmPassword_error'])) //have errors
-      //    {
-      //       $this->view('customer/cust_changePassword', $data);
-      //    }
+         $data['currentPassword_error'] = emptyCheck($data['currentPassword']);
+         $data['newPassword_error'] = emptyCheck($data['newPassword1']);
+         $data['confirmPassword_error'] = emptyCheck($data['newPassword2']);
+         if (!empty($data['currentPassword_error']) || !empty($data['newPassword_error']) || !empty($data['confirmPassword_error'])) //have errors
+         {
+            $this->view('customer/cust_profileSettings', $data);
+         }
 
-      //    else //no errors
-      //    {
-      //       if (password_verify($data['currentPassword'], $hashedPassword))
-      //       {
-      //          if ($data['newPassword1'] != $data['newPassword2'])
-      //          {
-      //             $data['confirmPassword_error'] = "New Passwords dont't match";
-      //             $this->view('customer/cust_changePassword', $data);
-      //          }
-      //          if (empty($data['currentPassword_error']) && empty($data['newPassword_error']) && empty($data['confirmPassword_error']))
-      //          {
-      //             $this->userModel->updatePassword($data['mobileNo'], $data['newPassword1']);
-      //             //System log
-      //             Toast::setToast(1, "Password changed successfully", "");
+         else //no errors
+         {
+            if (password_verify($data['currentPassword'], $hashedPassword))
+            {
+               if ($data['newPassword1'] != $data['newPassword2'])
+               {
+                  $data['confirmPassword_error'] = "New Passwords dont't match";
+                  $this->view('customer/cust_profileSettings', $data);
+               }
+               if (empty($data['currentPassword_error']) && empty($data['newPassword_error']) && empty($data['confirmPassword_error']))
+               {
+                  $this->userModel->updatePassword($data['email'], $data['newPassword1']);
+                  Toast::setToast(1, "Password changed successfully", "");
+                  $this->view('customer/cust_profileSettings', $data);
+               }
+            }
+            else
+            {
+               $data['currentPassword_error'] = "Incorrect password";
+               $this->view('customer/cust_profileSettings', $data);
+            }
 
-      //             $this->view('customer/cust_changePassword', $data);
-      //          }
-      //       }
-      //       else
-      //       {
-      //          $data['currentPassword_error'] = "Incorrect password";
-      //          $this->view('customer/cust_changePassword', $data);
-      //       }
-
-      //       $this->view('customer/cust_changePassword', $data);
-      //    }
-      // }
-      // else
-      // {
-      //    $data = [
-      //       'mobileNo' => $result->mobileNo,
-      //       'currentPassword' => '',
-      //       'newPassword1' => '',
-      //       'newPassword2' => '',
-      //       'currentPassword_error' => '',
-      //       'newPassword_error' => '',
-      //       'confirmPassword_error' => ''
-      //    ];
-         $this->view('customer/cust_changePassword', $data=[]);
-      //}
+            $this->view('customer/cust_profileSettings', $data);
+         }
+      }
+      else
+      {
+         $data = [
+            'email' => $result->email,
+            'currentPassword' => '',
+            'newPassword1' => '',
+            'newPassword2' => '',
+            'currentPassword_error' => '',
+            'newPassword_error' => '',
+            'confirmPassword_error' => ''
+         ];
+         $this->view('customer/cust_profileSettings', $data=[]);
+      }
    }
    
 }
