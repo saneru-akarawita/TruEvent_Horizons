@@ -56,5 +56,21 @@ class HotelModel extends Model
         }
     }
     
+    public function editHotelServicebyID($serviceID,$data)
+    {
+
+        $this->update('hotelservicedetails', [
+
+            'service_type' => $data['event_name'],
+            'price' => $data['price'],
+            'hall_name' => $data['hall_name'],
+            'location' => $data['location'],
+            'max_crowd' => $data['max_crowd'],
+            'hall_type' => $data['hall_type'],
+            'ac_status' => $data['ac_status'],
+            'other_facilities' => $data['other_facilities'],
+            
+         ], ['service_id' => $serviceID]);
+    }
 
 }

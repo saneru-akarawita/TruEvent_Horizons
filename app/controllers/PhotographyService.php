@@ -61,7 +61,7 @@ class PhotographyService extends Controller
 
                Toast::setToast(1, "Service Added Successfully!!!", "");
 
-               redirect('photography/viewAllServices');
+               redirect('PhotographyService/viewAllServices');
                
             }
             else
@@ -118,11 +118,11 @@ class PhotographyService extends Controller
    }
    public function addservices()
    {
-      redirect('photography/addNewService');
+      redirect('PhotographyService/addNewService');
    }
    public function viewservices()
    {
-      redirect('photography/viewAllServices');
+      redirect('PhotographyService/viewAllServices');
    }
    public function logout()
    {

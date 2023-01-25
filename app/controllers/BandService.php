@@ -3,7 +3,7 @@ class BandService extends Controller
 {
    public function __construct()
    {
-      Session::validateSession([6]);
+      // Session::validateSession([6]);
       $this->bandModel = $this->model('BandModel');
    }
 
@@ -60,7 +60,7 @@ class BandService extends Controller
 
                Toast::setToast(1, "Service Added Successfully!!!", "");
 
-               redirect('band/viewAllServices');
+               redirect('BandService/viewAllServices');
                
             }
             else
@@ -117,11 +117,11 @@ class BandService extends Controller
    }
    public function addservices()
    {
-      redirect('band/addNewService');
+      redirect('BandService/addNewService');
    }
    public function viewservices()
    {
-      redirect('band/viewAllServices');
+      redirect('BandService/viewAllServices');
    }
    public function logout()
    {
