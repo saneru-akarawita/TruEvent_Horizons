@@ -6,7 +6,7 @@ class BandDashboard extends Controller
 {
    public function __construct()
    {
-      // Session::validateSession([6]);
+      Session::validateSession([6]);
    }
 
    public function home()
@@ -15,134 +15,87 @@ class BandDashboard extends Controller
    }
    public function addservices()
    {
-      redirect('band/addNewService');
+      redirect('BandService/addNewService');
    }
    public function viewservices()
    {
-      redirect('band/viewAllServices');
+      redirect('BandService/viewAllServices');
    }
 
    public function profileSettings()
    {
-      // $customerID = Session::getUser("id");
-      // $profileData = $this->customerModel->getCustomerDetailsByCusID($customerID)[0];
-      // if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'FILES')
-      // {
-      //    if (!$_FILES['custimage']['name'])
-      //    {
-      //       $img_upload_path = $profileData->imgPath;
-      //    }
-      //    else
-      //    {
-      //       $img_name = " ";
-      //       $new_img_name =  " ";
-      //       $img_name = $_FILES['custimage']['name'];
-      //       $img_size = $_FILES['custimage']['size'];
-      //       $tmp_name = $_FILES['custimage']['tmp_name'];
-      //       $error = $_FILES['custimage']['error'];
-      //       $img_extension = pathinfo($img_name, PATHINFO_EXTENSION);
-      //       $img_ex_lc = strtolower($img_extension);
-      //       $allowed_extensions = array("jpg", "jpeg", "png");
-      //       if ($error == 0)
-      //       {
-      //          if (in_array($img_ex_lc, $allowed_extensions))
-      //          {
-      //             $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-      //             $img_upload_path = '../public/imgs/customerImgs/' . $new_img_name;
-      //             move_uploaded_file($tmp_name, $img_upload_path);
-      //          }
-      //       }
-      //    }
+      Session::validateSession([6]);
+      $result = $this->userModel->getUser(Session::getUser("email"));
+      $profile_id = Session::getUser("id");
+      $profiledata = $this->bandModel->getBandServiceDetailsByServiceID($profile_id);
+      $hashedPassword = $result->password;
 
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $data = [
+            'email' => $result->email,
+            'currentPassword' => trim($_POST['currentpw']),
+            'newPassword1' => trim($_POST['newpw']),
+            'newPassword2' => trim($_POST['confirmnewpw']),
+            'currentPassword_error' => '',
+            'newPassword_error' => '',
+            'confirmPassword_error' => ''
+         ];
 
+         $data['currentPassword_error'] = emptyCheck($data['currentPassword']);
+         $data['newPassword_error'] = emptyCheck($data['newPassword1']);
+         $data['confirmPassword_error'] = emptyCheck($data['newPassword2']);
 
+         $resArr = array($data,$profiledata);
 
+         if (!empty($data['currentPassword_error']) || !empty($data['newPassword_error']) || !empty($data['confirmPassword_error'])) //have errors
+         {
+            $this->view('band/band_profileSettings', $resArr);
+         }
 
-      //    $data = [
+         else //no errors
+         {
+            if (password_verify($data['currentPassword'], $hashedPassword))
+            {
+               if ($data['newPassword1'] != $data['newPassword2'])
+               {
+                  $data['confirmPassword_error'] = "New Passwords dont't match";
+                  $resArr = array($data,$profiledata);
+                  $this->view('band/band_profileSettings', $resArr);
+               }
+               if (empty($data['currentPassword_error']) && empty($data['newPassword_error']) && empty($data['confirmPassword_error']))
+               {
+                  $this->userModel->updatePassword($data['email'], $data['newPassword1']);
+                  Toast::setToast(1, "Password changed successfully", "");
+                  $this->view('band/band_profileSettings', $resArr);
+               }
+            }
+            else
+            {
+               $data['currentPassword_error'] = "Incorrect password";
+               $resArr = array($data,$profiledata);
+               $this->view('band/band_profileSettings', $resArr);
+            }
 
-      //       'fName' => isset($_POST['fName']) ? trim($_POST['fName']) : '',
-      //       'lName' =>  isset($_POST['lName']) ? trim($_POST['lName']) : '',
-      //       'gender' => isset($_POST['gender']) ? trim($_POST['gender']) : '',
-      //       'imgPath' => isset($new_img_name) ? $new_img_name : '',
-      //       'mobileNo' => isset($_POST['mobileNo']) ? trim($_POST['mobileNo']) : '',
-      //       'fNameError' => '',
-      //       'lNameError' => '',
-      //       'contactNoError' => '',
-      //       'haveError' => 0,
-      //       'oldProfImg' => isset($new_img_name) ? $new_img_name : $profileData->imgPath
+            $this->view('band/band_profileSettings', $resArr);
+         }
+      }
+      else
+      {
+         $data = [
+            'email' => $result->email,
+            'currentPassword' => '',
+            'newPassword1' => '',
+            'newPassword2' => '',
+            'currentPassword_error' => '',
+            'newPassword_error' => '',
+            'confirmPassword_error' => ''
+         ];
 
-      //    ];
-
-      //    $data['fNameError'] = emptyCheck($data['fName']);
-      //    $data['lNameError'] = emptyCheck($data['lName']);
-      //    $data['contactNoError'] = emptyCheck($data['mobileNo']);
-      //    // print_r($data);
-      //    if (empty($data['contactNoError']))
-      //    {
-      //       $data['contactNoError'] = validateMobileNo($data['mobileNo']);
-      //       if ($data['mobileNo'] != Session::getUser("mobileNo"))
-      //       {
-      //          $mobileNoAlreadyRegisterd = $this->UserModel->checkLoginExists($data['mobileNo']);
-      //       }
-      //       else
-      //       {
-      //          $mobileNoAlreadyRegisterd = 'false';
-      //       }
-
-      //       if ($mobileNoAlreadyRegisterd == 'true')
-      //       {
-      //          $data['contactNoError'] = 'Mobile number already registered.';
-      //          $data['haveError'] = 1;
-      //       }
-      //    }
-      //    // die();
-      //    if (empty($data['fNameError']) && empty($data['lNameError']) && empty($data['contactNoError']))
-      //    {
-      //       if (!$data['imgPath'])
-      //       {
-      //          $data['imgPath'] = $profileData->imgPath;
-      //       }
-
-
-      //       $this->customerModel->beginTransaction();
-      //       $this->customerModel->updateCustomerInfo($data, Session::getUser("id"));
-      //       $this->customerModel->updateUserTableMobileNo($data['mobileNo'], Session::getUser("mobileNo"));
-      //       if ($data['mobileNo'] != Session::getUser("mobileNo"))
-      //       {
-      //          $this->customerModel->deleteOtpRecords(Session::getUser("mobileNo"));
-      //       }
-      //       $this->customerModel->commit();
-
-
-      //       Toast::setToast(1, "Profile details successfully updated.", "");
-      //    }
-      //    else
-      //    {
-      //       $data['haveError'] = 1;
-      //    }
-
-      //    $this->view('customer/cust_profileSettings', $data);
-      // }
-      // else
-      // {
-      //    $data = [
-
-      //       'fName' => $profileData->fName,
-      //       'lName' => $profileData->lName,
-      //       'gender' => $profileData->gender,
-      //       'imgPath' => '',
-      //       'mobileNo' => $profileData->mobileNo,
-      //       'fNameError' => '',
-      //       'lNameError' => '',
-      //       'haveError' => 0,
-      //       'contactNoError' => '',
-      //       'oldProfImg' => $profileData->imgPath
-
-      //    ];
-
-           $this->view('band/band_profileSettings', $data=[]);
-      //}
- }
+         $resArr = array($data,$profiledata);
+         $this->view('band/band_profileSettings', $resArr);
+      }
+   }
 
    public function chat()
    {

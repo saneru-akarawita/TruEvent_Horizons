@@ -324,10 +324,7 @@ class CustomerReservation extends Controller
    {
       $this->view('customer/customer-home');
    }
-   public function addservices()
-   {
-      redirect('DecoService/addNewService');
-   }
+
    public function viewservices()
    {
       redirect('customerDashboard/viewservices');

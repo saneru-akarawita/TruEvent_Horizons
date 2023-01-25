@@ -113,8 +113,94 @@ class Packages extends Controller
          }
    }
 
-   public function editPackage($id){
+   public function editPackage(){
 
+      if(isset($_GET['package_id'])){
+         $package_editid=intval(trim($_GET['package_id']));
+      }
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         
+
+         $data = [
+
+            'pcode' => trim($_POST['pcode']),
+            'name' => trim($_POST['name']),
+            'price' => trim($_POST['price']),
+            'package_type'=>trim($_POST['package_type']),
+            'bands' => isset($_POST['bands']) ? trim($_POST['bands']) : trim($notfound),
+            'decorations' => isset($_POST['decorations']) ? trim($_POST['decorations']) : trim($notfound),
+            'photography' => isset($_POST['photography']) ? trim($_POST['photography']) : trim($notfound),
+
+            'pcode_error' => '',
+            'name_error' => '',
+            'price_error' => '',
+            'bands_error' => '',
+            'decorations_error' => '',
+            'photography_error' => ''
+         ];
+
+         if ($_POST['action'] == "editpackage")
+         {
+            // Validate everything
+            $data['pcode_error'] = emptyCheck($data['pcode']);
+            $data['name_error'] = emptyCheck($data['name']);
+            $data['package_type_error'] = emptyCheck($data['package_type']);
+            $data['price_error'] = validatePrice($data['price']);
+
+          
+            if (
+               empty($data['pcode_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['bands_error']) && empty($data['package_type_error'])
+            )
+            {
+                
+               $this->packageModel->beginTransaction();
+               $this->packageModel->editAdminbyID($data['package_id'], $data);
+               $this->packageModel->commit();
+
+               Toast::setToast(1, "Package Edited Successfully!!!", "");
+
+               redirect('Packages/viewAllPackages');
+               
+            }
+            else
+            {
+               $this->view('admin/edit-packages', $data);
+            }
+         }
+         else
+         {
+            die("Something went wrong");
+         }
+         
+      }
+      else
+      {
+         $packagedetails = $this->adminModel->getPackageDetailsByPackageID($package_editid);
+
+         $data = [
+            'pcode' => $packagedetails -> pcode,
+            'name' => $packagedetails -> name,
+            'price' => $packagedetails -> price,
+            'package_type'=> $packagedetails -> package_type,
+            'bands' => $packagedetails -> bands,
+            'decorations' => $packagedetails -> decorations,
+            'photography' => $packagedetails -> photography,
+
+            'pcode_error' => '',
+            'name_error' => '',
+            'package_type_error'=>'',
+            'price_error' => '',
+            'bands_error' => '',
+            'decorations_error' => '',
+            'photography_error' => ''
+
+         ];
+
+         $this->view('admin/edit-packages', $data);
+
+      }
    }
 
    public function deletePackage($id){
