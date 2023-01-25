@@ -39,6 +39,22 @@ class HotelModel extends Model
 
         return $results;
     }
+
+    public function activate_deactivate($type, $status, $id)
+    {
+        if($type == 'activate'){
+            if($this->update('hotelservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+        else{
+            if($this->update('hotelservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+    }
     
     public function editHotelServicebyID($serviceID,$data)
     {

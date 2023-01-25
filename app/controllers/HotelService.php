@@ -226,6 +226,28 @@ class HotelService extends Controller
 
    }
 
+   public function activate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+   
+         if($this->hotelModel->activate_deactivate("activate",1,$service_id))
+            redirect('HotelService/viewAllServices');
+     }
+   
+   }
+
+   public function deactivate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+
+         if($this->hotelModel->activate_deactivate("deactivate",0,$service_id))
+            redirect('HotelService/viewAllServices');
+     }
+
+   }
+
    public function home()
    {
       $this->view('hotelManager/home-hotel');
