@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/styles-hotel.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/calender.css" />
+
 
 
 </head>
@@ -187,8 +189,11 @@
         <?php }?>
 
         </div>
+        <div class="calender_body">
+        <div id="calendar"></div>
+        </div>
     </div>
-
+           
 
     <!-- footer start -->
     <section class="footer">
@@ -235,7 +240,11 @@
     <!-- footer ends -->
 
     <!-- custom js file link -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
+    <script src="<?php echo URLROOT ?>/public/js/customer/calender.js"></script>
+
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">

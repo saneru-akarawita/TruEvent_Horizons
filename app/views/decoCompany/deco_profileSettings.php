@@ -40,7 +40,7 @@
     <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
 
     <div class="ser-container form-container contentBox" style="width: 60%;">
-        <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
+        <form action="<?php echo URLROOT; ?>/decoDashboard/profileSettings" method="post" class="form">
             <h1 class="title">Profile Settings</h1>
             <br><br>
 
@@ -51,27 +51,27 @@
                 <div class="column">
                     <br>
                     <label class="label" for="companyname">Company Name</label>
-                    <input class="companyname" type="text" id="companyname" name="companyname" placeholder="<?=$data->company_name?>" disabled>
+                    <input class="companyname" type="text" id="companyname" name="companyname" placeholder="<?=$data[1]->company_name?>" disabled>
 
                     <br>
                     <label class="label" for="businessid">Business ID</label>
-                    <input class="businessid" type="text" id="businessid" name="businessid" placeholder="<?=$data->business_id?>" disabled>
+                    <input class="businessid" type="text" id="businessid" name="businessid" placeholder="<?=$data[1]->business_id?>" disabled>
                 </div>
             </div>
             <br><br>
             <label for="email">Email</label>
             <div class="row"> 
-                <input class="email" type="text" id="email" name="email" placeholder="<?=$data->email?>" style="width:48%; text-transform:none" disabled>
+                <input class="email" type="text" id="email" name="email" placeholder="<?=$data[1]->email?>" style="width:48%; text-transform:none" disabled>
             </div>
             <br>
             <div class="row"> 
                     <div class="column">
                         <label for="contactno">Contact Number</label>
-                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="<?=$data->contact_no?>" disabled>
+                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->contact_no?>" disabled>
                     </div>
                     <div class="column">
                         <label class="district" for="district">District</label>
-                        <input class="district" type="text" id="contactno" name="contactno" placeholder="<?=$data->district?>" disabled>
+                        <input class="district" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->district?>" disabled>
                     </div> 
             </div>
 
@@ -82,22 +82,22 @@
             <div class="row"> 
                 <div class="column">
                     <label for="accno">Account Number</label>
-                    <input class="accno" type="text" id="accno" name="accno" placeholder="<?=$data->account_no?>" disabled>
+                    <input class="accno" type="text" id="accno" name="accno" placeholder="<?=$data[1]->account_no?>" disabled>
                 </div>
                 <div class="column">
                     <label class="accname" for="district">Account Name</label>
-                    <input class="accname" type="text" id="accname" name="accname" placeholder="<?=$data->account_name?>" disabled>
+                    <input class="accname" type="text" id="accname" name="accname" placeholder="<?=$data[1]->account_name?>" disabled>
                 </div> 
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="bank">Bank</label>
-                    <input class="bank" type="text" id="bank" name="bank" placeholder="<?=$data->bank?>" disabled>
+                    <input class="bank" type="text" id="bank" name="bank" placeholder="<?=$data[1]->bank?>" disabled>
                 </div>
                 <div class="column">
                     <label class="branch" for="branch">Branch</label>
-                    <input class="branch" type="text" id="branch" name="branch" placeholder="<?=$data->branch?>" disabled>
+                    <input class="branch" type="text" id="branch" name="branch" placeholder="<?=$data[1]->branch?>" disabled>
                 </div> 
             </div>
 
@@ -110,16 +110,19 @@
             <label for="currentpw">Current Password</label>
             <div class="row"> 
                 <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:48%" required>
+                <span class="error"><?php echo $data[0]['currentPassword_error'];  ?></span>
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="newpw">New Password</label>
                     <input class="newpw" type="password" id="newpw" name="newpw" placeholder="enter new password" required>
+                    <span class="error"><?php echo $data[0]['newPassword_error']; ?></span>
                 </div>
                 <div class="column">
                     <label for="confirmnewpw">Confirm New Password</label>
                     <input class="confirmnewpw" type="password" id="confirmnewpw" name="confirmnewpw" placeholder="re-enter new password" required>
+                    <span class="error"><?php echo $data[0]['confirmPassword_error']; ?></span>
                 </div> 
             </div>
             <br>

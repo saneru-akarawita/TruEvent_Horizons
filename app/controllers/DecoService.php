@@ -190,6 +190,28 @@ class DecoService extends Controller
 
    }
 
+   public function activate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+   
+         if($this->decoModel->activate_deactivate("activate",1,$service_id))
+            redirect('DecoService/viewAllServices');
+     }
+   
+   }
+
+   public function deactivate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+
+         if($this->decoModel->activate_deactivate("deactivate",0,$service_id))
+            redirect('DecoService/viewAllServices');
+     }
+
+   }
+
 
    public function home()
    {

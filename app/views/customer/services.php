@@ -159,7 +159,9 @@
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>
                         <p>Provided by <?= $spName ?></p>
-                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>" class="btn">Make Reservation</a>
+                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>" class="btn">Make Reservation</a> 
+                        <!-- <a href="viewEachService?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
+                    
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -226,7 +228,7 @@
                     <h3>Stage Revolution</h3>
                     <p>Last Minute Deals Find Your Next Getaway</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
-                    <a href="services.php" class="btn">View Service</a>
+                    <a href="services.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -239,7 +241,7 @@
                     <h3>Ecstasy</h3>
                     <p>To Make Your Event More Beautiful And Unforgettable</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -252,7 +254,7 @@
                     <h3>Velvet Concord</h3>
                     <p>Make Your Event Enjoyable And Get Mesmerized</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -265,7 +267,7 @@
                     <h3>Turning Jane</h3>
                     <p>Make Your Event More Memorable</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -296,7 +298,7 @@
                     <h3>Image Studio</h3>
                     <p>Our lens capture your moments in all their flavor and fancies</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
-                    <a href="services.php" class="btn">View Service</a>
+                    <a href="services.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -309,7 +311,7 @@
                     <h3>Exlusion Pictures</h3>
                     <p>The work of a photographer is to simplify reality</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -322,7 +324,7 @@
                     <h3>The Artsy Lens</h3>
                     <p>Photography is the art of catching memories</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -335,7 +337,7 @@
                     <h3>Flutter Me Shutters </h3>
                     <p>Capture the moments you nevr want to forget</p>
                     <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                    <a href="packages.php" class="btn">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 

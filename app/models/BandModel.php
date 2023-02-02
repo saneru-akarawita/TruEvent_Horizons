@@ -46,5 +46,21 @@ class BandModel extends Model
         return $result;
      }
     
+    
+    public function activate_deactivate($type, $status, $id)
+    {
+        if($type == 'activate'){
+            if($this->update('bandservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+        else{
+            if($this->update('bandsservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+    }
 
 }

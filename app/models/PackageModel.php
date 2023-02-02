@@ -28,7 +28,21 @@ class PackageModel extends Model
         return $results;
     }
     
-
+    public function activate_deactivate($type, $status, $id)
+    {
+        if($type == 'activate'){
+            if($this->update('adminpackagedetails', ['active' => $status], ['package_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+        else{
+            if($this->update('adminpackagedetails', ['active' => $status], ['package_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+    }
     
     public function editAdminbyID($packageID,$data){
 

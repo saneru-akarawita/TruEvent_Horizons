@@ -40,7 +40,7 @@
     <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
 
     <div class="ser-container form-container contentBox" style="width: 60%;">
-        <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
+        <form action="<?php echo URLROOT; ?>/hotelDashboard/profileSettings" method="post" class="form">
             <h1 class="title">Profile Settings</h1>
             <br><br>
 
@@ -110,16 +110,19 @@
             <label for="currentpw">Current Password</label>
             <div class="row"> 
                 <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:48%" required>
+                <span class="error"><?php echo $data[0]['currentPassword_error'];  ?></span>
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="newpw">New Password</label>
                     <input class="newpw" type="password" id="newpw" name="newpw" placeholder="enter new password" required>
+                    <span class="error"><?php echo $data[0]['newPassword_error']; ?></span>
                 </div>
                 <div class="column">
                     <label for="confirmnewpw">Confirm New Password</label>
                     <input class="confirmnewpw" type="password" id="confirmnewpw" name="confirmnewpw" placeholder="re-enter new password" required>
+                    <span class="error"><?php echo $data[0]['confirmPassword_error']; ?></span>
                 </div> 
             </div>
             <br>

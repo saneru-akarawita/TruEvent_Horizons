@@ -33,7 +33,7 @@ class PhotographyDashboard extends Controller
       Session::validateSession([7]);
       $result = $this->userModel->getUser(Session::getUser("email"));
       $profile_id = Session::getUser("id");
-      $profiledata = $this->photographyModel->getPhotographyServiceDetailsByServiceID($profile_id);
+      $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
       $hashedPassword = $result->password;
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')

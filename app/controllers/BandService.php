@@ -109,6 +109,28 @@ class BandService extends Controller
    public function deleteService($id){
 
    }
+ 
+   public function activate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+   
+         if($this->bandModel->activate_deactivate("activate",1,$service_id))
+            redirect('BandService/viewAllServices');
+     }
+   
+   }
+
+   public function deactivate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+
+         if($this->bandModel->activate_deactivate("deactivate",0,$service_id))
+            redirect('BandService/viewAllServices');
+     }
+
+   }
 
 
    public function home()

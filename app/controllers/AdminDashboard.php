@@ -10,6 +10,7 @@ class AdminDashboard extends Controller
       $this->customerModel = $this->model('CustomerModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
+      $this->userModel = $this->model('UserModel');
    }
 
    public function home()

@@ -199,7 +199,7 @@ class HotelService extends Controller
          $svdetails = $this->hotelModel->gethotelServiceDetailsByServiceID($sv_editid);
          
          $data = [
-            'event_name' =>  $svdetails->event_name,
+            'event_name' =>  $svdetails->service_type,
             'hall_name'=>  $svdetails->hall_name,
             'location' =>  $svdetails->location,
             'max_crowd' =>  $svdetails->max_crowd,
