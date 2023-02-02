@@ -44,25 +44,41 @@
 
     <div class="box-container">
 
-    <?php foreach ($data as $dsDetails) : ?>
+    <?php foreach ($data as $psDetails) : ?>
+        <?php if($psDetails->active == 1) {?>
+
         <div class="box">
             <div class="image">
-            <?php $directory = getcwd()."/images/deco company/services/$dsDetails->service_name/";
+            <?php $directory = getcwd()."/images/deco company/services/$psDetails->service_name/";
                 $files1 = scandir($directory);
                 $num_files = count($files1) - 2;
             ?>
 
-                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$dsDetails->service_name/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
+                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$psDetails->service_name/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
 
             </div>
             <div class="content">
-                <h3 style="font-size:medium"><?= $dsDetails->service_name; ?> </h3>
-                <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
-                <button class="viewButton" style="margin-left:-4px;"><a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
-                <button class="editButton"><a href="editService?service_id=<?=$dsDetails->service_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
-                <button class="deleteButton"><a href="deleteService?service_id=<?=$dsDetails->service_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                <h3 style="font-size:medium">Most Appropriate for <?= $psDetails->service_name; ?> </h3>
+                <p style="font-size:small" >Plan your <?= $psDetails->service_name; ?> </p><br>
+                <button class="viewButton" style="margin-left:-4px;"><a href="viewEachService?service_id=<?=$psDetails->service_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
+                <button class="editButton"><a href="editService?service_id=<?=$psDetails->service_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
+                <button class="deleteButton"><a href="deleteService?service_id=<?=$psDetails->service_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
             </div>
         </div>
+        <?php } else { ?>
+                <div class="box">
+                <div class="image">
+                    <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
+                </div>
+                <div class="content">
+                    <h3 style="font-size:medium">Most Appropriate for <?= $psDetails->service_name; ?> </h3>
+                    <p style="font-size:small" >Plan your   <?= $psDetails->service_name; ?></p><br>
+                    
+                    <button class="viewButton" style="height:40px"><a href="activate?service_id=<?=$psDetails->service_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
+                    <button class="deleteButton" style="height:40px;"><a href="deleteService?service_id=<?=$psDetails->service_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                </div>
+            </div>
+            <?php }?>
     <?php endforeach; ?>
  
     </div>

@@ -12,6 +12,9 @@ class CustomerDashboard extends Controller
       $this->userModel = $this->model('userModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->customerModel = $this->model('CustomerModel');
+      // $this->bandModel = $this->model('BandModel');
+      // $this->photographyModel = $this->model('PhotographyModel');
+     
    }
 
    public function home()
@@ -117,6 +120,8 @@ class CustomerDashboard extends Controller
          $this->view('customer/cust_profileSettings', $resArr);
       }
    }
+
+  
 
    public function provideFeedback()
    {

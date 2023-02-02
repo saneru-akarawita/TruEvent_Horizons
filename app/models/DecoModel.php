@@ -36,6 +36,22 @@ class DecoModel extends Model
         return $results;
     }
 
+    public function activate_deactivate($type, $status, $id)
+    {
+        if($type == 'activate'){
+            if($this->update('decoservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+        else{
+            if($this->update('decoservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+    }
+
     public function editDecoServicebyID($serviceID,$data){
 
         $this->update('decoservicedetails', [

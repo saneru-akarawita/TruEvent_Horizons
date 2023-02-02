@@ -7,6 +7,11 @@ class PhotographyDashboard extends Controller
    public function __construct()
    {
       Session::validateSession([7]);
+      $this->reservationModel = $this->model('ReservationModel');
+      $this->customerModel = $this->model('CustomerModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
+      $this->userModel = $this->model('UserModel');
    }
 
    public function home()
@@ -27,7 +32,7 @@ class PhotographyDashboard extends Controller
       Session::validateSession([7]);
       $result = $this->userModel->getUser(Session::getUser("email"));
       $profile_id = Session::getUser("id");
-      $profiledata = $this->photographyModel->getPhotographyServiceDetailsByServiceID($profile_id);
+      $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
       $hashedPassword = $result->password;
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')

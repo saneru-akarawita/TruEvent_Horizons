@@ -2,225 +2,189 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
-   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/styles-hotel.css">
-   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/style.css">
-
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
-
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-   <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
-
-   <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>TruEvent Horizons - Reservation Log - Decoration Company</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/styles-hotel.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
+
 </head>
 
 <body>
 <?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
+    
 
-<?php $spID = $data[0]; ?>
-<?php $rvdata = $data[1]; ?>
-<?php $cusdata = $data[2]; ?>
- 
-       <div class="maincontainer">
+    <?php $spID = $data[0]; ?>
+    <?php $rvdata = $data[1]; ?>
+    <?php $cusdata = $data[2]; ?>
 
-        <h1 class="heading-title-1" style="text-align:center; margin-top:10px">Reservation Log - Decoration Company</h1>
+      <!-- Main Start -->
 
-                        <div class="recent-grid">
-                                <div class="projects">
-                                <div class="card">
-                                        <div class="card-header">
-                                        <h3>Services</h3>
-                                        </div>
+        <main class="main">
+            <div class="wrapper">
 
-                                        <div class="card-body">
-                                        <div class="table-responsive">
-                                                <table width="98%" style="margin-left:20px;">
-                                                <thead>
-                                                        <tr>
-                                                        <td>Reservation ID</td>
-                                                        <td>Event Name</td>
-                                                        <td>Date</td>
-                                                        <td>Time</td>
-                                                        <td>Event Type</td>
-                                                        <td>Customer Name</td>
-                                                        <td>Status</td>
-                                                        <td>Paid/Not Paid</td>
-                                                        <td style="justify-content:center">
-                                                                Action
-                                                        </td>
-                                                        </tr>
-                                                </thead> 	 
-                                                <tbody>
-                                                <?php foreach ($rvdata as $rvDetails) : ?>
+
+                <div class="hero">
+                    <div class="hero-heading">
+                        <h3>Reservation Log</h3>
+                        <span>Pending| 11 Dec,2022</span>
+                    </div>
+
+
+                    <div class="hero-search">
+                    <div class="input-group">
+                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        </div>
+                        <a href="#" class="buttond"style="border-radius:15px; margin-right:880px;">Search</a>
+                        <span>Filter <i class="bx bx-filter-alt"></i> </span>
+                    </div>
+
+
+                    <div class="hero-heading">
+                        <h3>Current Reservations - Service<i class="bx bx-chevron-down"></i> </h3>
+                    </div>
+
+                     
+                    <?php foreach ($rvdata as $rvDetails) : ?>
                                                     <?php 
                                                         $sp_id_arr = explode (",", $rvDetails->sp_id);
                                                     ?>
                                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                                     <?php if ($new_sp_id == $spID) { ?>
-                                                        <tr>
-                                                                <td><?= $rvDetails->rv_id; ?></td>
-                                                                <td><?= $rvDetails->eventName; ?></td>
-                                                                <td><?= $rvDetails->rvDate; ?></td>
-                                                                <td><?= $rvDetails->rvTime; ?></td>
-                                                                <td><?php echo ($rvDetails->spName == '') ? $rvDetails->packageType : $rvDetails->spName; ?></td>
-                                                                <?php foreach ($cusdata as $cus) : ?>
-                                                                    <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>
-                                                                        <td><?= $cus->fname; ?> <?= $cus->lname; ?></td>
-                                                                    <?php } ?>
-                                                                <?php endforeach; ?>
-                                                                <td>
-                                                                <?= $rvDetails->status; ?>
-                                                                </td>
-                                                                <td>
-                                                                <?= $rvDetails->payment; ?>
-                                                                </td>
-                                                                <td style="justify-content:center">
-                                                                <div class="action-button" style="justify-content:center">
-                                                                        <a href="#" class="buttone">edit</a>
-                                                                        /
-                                                                        <a href="#" class="buttond">delete</a>
-                                                                </div>
-                                                                </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                    <?php endforeach; ?>
-                                                <?php endforeach; ?>
-                                                
-                                                </tbody>
+                    <div class="project">
+                       <div class="col">
+                            <div class="project-card">
+                                <div class="card-header">
+                                    <type class="type">Reservation ID - <?= $rvDetails->rv_id; ?></type>
+                                    <date class="date"><?= $rvDetails->rvDate; ?></date>
+                                    <span><i class="bx bx-dots-vertical-rounded"></i></span>
+                                </div>
+                                
 
-                                                </table>
-                                        </div>
-                                        </div>
+                                <div class="card-body">
+                                    <h6><?= $rvDetails->eventName; ?></h6>
+                                    <p><?= $rvDetails->spName; ?></p>
+                                    <p><?= $rvDetails->rvTime; ?></p>
+                                    <?php foreach ($cusdata as $cus) : ?>
+                                        <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>
+                                                <p><?= $cus->fname; ?> <?= $cus->lname; ?></p>
+                                                <?php } ?>
+                                        <?php endforeach; ?>
+                                    <p>LKR.125 000.00 per head</p>
 
+
+                                    <div class="progress-box">
+                                        <label for="progress">Status</label>
+                                        <?php if($rvDetails->status == "pending") $value="0"; else $value="100";?>
+                                        <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                        <span><?php echo $value ?>%</span>
+                                    </div>
+
+                                    
+                                    <div class="progress-box">
+                                        <label for="progress">Payments</label>
+                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                        <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                        <span><?php echo $value ?>%</span>
+                                    </div>
 
                                 </div>
-                                </div>
+                            
+                                <div class="action-button" style="justify-content:center; margin-left:100px;">
+                                    <a href="viewReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttond">view</a>
+                                    <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
+                                    <a href="#" class="buttond">cancel</a>
 
+                            </div>
+
+                            <div class="card-footer">
+                                <ul class="team">
+                                    <li class="team-member">
+                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                    </li>
+
+
+                                    <li class="team-member">
+                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                    </li>
+
+
+                                    <li class="team-member">
+                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            </div>
                         </div>
 
-                        <!-- <div class="recent-grid">
-                                <div class="projects">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3>Packages</h3>
-                        
-                                        </div>
-                        
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table width="98%" style="margin-left:20px;">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Reservation ID</td>
-                                                            <td>Event Name</td>
-                                                            <td>Date</td>
-                                                            <td>Time</td>
-                                                            <td>Services Included</td>
-                                                            <td>Customer Name</td>
-                                                            <td>Status</td>
-                                                            <td>Paid/Not Paid</td>
-                                                            <td style="justify-content:center">
-                                                                Action
-                                                            </td>
-                                                        </tr>
-                                                    </thead>
-                        
-                                
-                                                    <tbody>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                    
-                                                                </td>
-                                                                <td>
-                                                                   
-                                                                </td>
-                                                                <td>
-                                                                    <div class="action-button">
-                                                                        <a href="#" class="buttone">edit</a>
-                                                                        /
-                                                                        <a href="#" class="buttond">delete</a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                    </tbody>
-                        
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                            </div>
-                
-                        </div> -->
-                
-</div>
+                        <?php } ?>
+                        <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+
+        <!-- tilt -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.4.1/vanilla-tilt.min.js"></script>
 
 
-   
+        <!-- Main End -->
+                         
+        <!-- footer start -->
+        <section class="footer">
+            <div class="overlay"></div>
+            <div class="box-container">
+                <div class="box">
+                    <h3>Quick Access</h3>
+                    <a href="admin-home.php"><i class="fas fa-angle-right"></i> Home</a>
+                    <a href="packages.php"><i class="fas fa-angle-right"></i> Packages</a>
+                    <a href="admin-add-packages.php"><i class="fas fa-angle-right"></i> Add Packages</a>
+                </div>
+
+                <div class="box">
+                    <h3>Extra</h3>
+                    <a href="#"><i class="fas fa-angle-right"></i> About US</a>
+                    <a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
+                    <a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
+                </div>
+
+                <div class="box">
+                    <h3>Contact Us</h3>
+                    <a href="#"><i class="fas fa-phone"></i> +94 123-456-789</a>
+                    <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
+                    <a href="#"><i class="fas fa-map"></i> Colombo</a>
 
 
-    <!-- footer start -->
-    <section class="footer" style="margin-top:50px;">
-      <div class="overlay"></div>
-      <div class="box-container">
-          <div class="box">
-              <h3>Quick Access</h3>
-          <a href="admin-home.php"><i class="fas fa-angle-right"></i>  Home</a>
-          <a href="packages.php"><i class="fas fa-angle-right"></i> Packages</a>
-          <a href="admin-add-packages.php"><i class="fas fa-angle-right"></i> Add Packages</a>
-          </div>
-  
-          <div class="box">
-              <h3>Extra</h3>
-          <a href="#"><i class="fas fa-angle-right"></i>  About US</a>
-          <a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
-          <a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
-          </div>
-  
-          <div class="box">
-              <h3>Contact Us</h3>
-          <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-          <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
-          <a href="#"><i class="fas fa-map"></i> Colombo</a>
-  
-  
-          </div>
-         
-          <div class="box">
-              <h3>Follow US</h3>
-          <a href="#"><i class="fab fa-facebook"></i>  facebook</a>
-          <a href="#"><i class="fab fa-instagram"></i> instagram</a>
-          <a href="#"><i class="fab fa-linkedin"></i>  linkedin</a>
-  
-          </div>
-      </div>
-  
-      
-  
-      <div class="credit">
-          Created By <span>TruEvent Horizon</span> | All Rights Reserved
-      </div>
-  
-  </section>
-  
-  
-  <!-- footer ends -->
-  
+                </div>
+
+                <div class="box">
+                    <h3>Follow US</h3>
+                    <a href="#"><i class="fab fa-facebook"></i> facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+
+                </div>
+            </div>
+
+            <div class="credit">
+                Created By <span>TruEvent</span> | All Rights Reserved
+            </div>
+   </section>
+       <!-- footer ends -->
+        <!-- custom js file link -->
+        <script src="./js/adminscript.js"></script>
 </body>
-
-<script src="./js/countdown.js"></script>
-
 </html>

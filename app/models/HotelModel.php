@@ -1,4 +1,5 @@
 <?php
+
 class HotelModel extends Model
 {
     public function addHotelService($data)

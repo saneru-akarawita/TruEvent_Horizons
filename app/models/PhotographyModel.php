@@ -36,5 +36,21 @@ class PhotographyModel extends Model
         return $results;
     }
     
+    
+    public function activate_deactivate($type, $status, $id)
+    {
+        if($type == 'activate'){
+            if($this->update('photographyservicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+        else{
+            if($this->update('photographyervicedetails', ['active' => $status], ['service_id' => $id]))
+                return true;
+            else
+                return false;
+        }
+    }
 
 }
