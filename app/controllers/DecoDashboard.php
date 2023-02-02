@@ -11,7 +11,9 @@ class DecoDashboard extends Controller
       $this->customerModel = $this->model('CustomerModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
+      $this->decoModel = $this->model('DecoModel');
       $this->userModel = $this->model('UserModel');
+
    }
 
    public function home()
@@ -104,7 +106,21 @@ class DecoDashboard extends Controller
 
    public function chat()
    {
-      $this->view('decoCompany/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->decoModel->getChatUsers($unique_id);
+      $this->view('decoCompany/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->decoModel->getUserByUserId($user_id);
+      $this->view('decoCompany/chat', $user);
    }
 
    public function payment()

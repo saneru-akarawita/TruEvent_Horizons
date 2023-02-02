@@ -129,8 +129,11 @@ class Customer extends Controller
                }
                else
                {
+                  $ran_id = rand(time(), 100000000);
+                  $status = "Active now";
                   $this->userModel->beginTransaction();
                   $this->userModel->registerUser($data['email'], $data['password'], 3);
+                  $this->userModel->registerChatUser($ran_id,$data['company_name'],'',$data['email'],$status);
                   $this->customerModel->registerCustomer($data);
                   $this->OTPModel->removeOTP($data['email'], 1);
 

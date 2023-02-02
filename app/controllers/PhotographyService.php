@@ -3,7 +3,7 @@ class PhotographyService extends Controller
 {
    public function __construct()
    {
-      Session::validateSession([6]);
+      Session::validateSession([7]);
       $this->photographyModel = $this->model('PhotographyModel');
    }
 

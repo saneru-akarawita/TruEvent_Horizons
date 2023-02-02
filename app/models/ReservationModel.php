@@ -6,6 +6,7 @@ class ReservationModel extends Model
         $rv_type = $data['rv_type'];
 
         if($rv_type=='service'){
+            // print_r($data['customer_id']);
             $this->insert('customerrvdetails', [
 
                 'rvType' => $data['rv_type'],
@@ -15,6 +16,7 @@ class ReservationModel extends Model
                 'rvDate' => $data['rvdate'],
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
+                'sp_id' => $data['svp_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     
@@ -30,6 +32,7 @@ class ReservationModel extends Model
                 'rvDate' => $data['rvdate'],
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
+                // 'sp_id' => $data['sp_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     

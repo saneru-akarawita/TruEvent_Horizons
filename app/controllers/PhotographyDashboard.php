@@ -11,6 +11,7 @@ class PhotographyDashboard extends Controller
       $this->customerModel = $this->model('CustomerModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
+      $this->photographyModel = $this->model('PhotographyModel');
       $this->userModel = $this->model('UserModel');
    }
 
@@ -104,7 +105,21 @@ class PhotographyDashboard extends Controller
 
    public function chat()
    {
-      $this->view('photography/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->photographyModel->getChatUsers($unique_id);
+      $this->view('photography/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->photographyModel->getUserByUserId($user_id);
+      $this->view('photography/chat', $user);
    }
 
    public function payment()

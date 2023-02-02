@@ -107,7 +107,21 @@ class AdminDashboard extends Controller
 
    public function chat()
    {
-      $this->view('admin/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->adminModel->getChatUsers($unique_id);
+      $this->view('admin/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->adminModel->getUserByUserId($user_id);
+      $this->view('admin/chat', $user);
    }
 
    public function payment()

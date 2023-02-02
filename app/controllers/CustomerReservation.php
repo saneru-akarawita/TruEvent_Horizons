@@ -24,6 +24,7 @@ class CustomerReservation extends Controller
                'rvdate' => trim($_POST['rvdate']),
                'rvtime' => trim($_POST['rvtime']),
                'customer_id' => Session::getUser("id"),
+               'svp_id' => trim($_POST['sp_id']),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -46,6 +47,7 @@ class CustomerReservation extends Controller
                'rvdate' => trim($_POST['rvdate']),
                'rvtime' => trim($_POST['rvtime']),
                'customer_id' => Session::getUser("id"),
+               'svp_id' => trim($_POST['sp_id']),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -127,11 +129,11 @@ class CustomerReservation extends Controller
       if(isset($_GET['service_name']) && isset($_GET['service_type'])){
          $name=$_GET['service_name'];
          $type=$_GET['service_type'];
+         $spID=$_GET['sp_id'];
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST')
          {
             $rv_type = trim($_POST['rv_type']);
-
             if($rv_type=='service'){
                $data = [
 
@@ -142,6 +144,8 @@ class CustomerReservation extends Controller
                   'rvdate' => trim($_POST['rvdate']),
                   'rvtime' => trim($_POST['rvtime']),
                   'customer_id' => Session::getUser("id"),
+                  'svp_id' => trim($_POST['sp_id']),
+                  
       
                   'rv_type_error' => '',
                   'service_type_error'=>'',
@@ -164,6 +168,7 @@ class CustomerReservation extends Controller
                   'rvdate' => trim($_POST['rvdate']),
                   'rvtime' => trim($_POST['rvtime']),
                   'customer_id' => Session::getUser("id"),
+                  'svp_id' => trim($_POST['sp_id']),
       
                   'rv_type_error' => '',
                   'service_type_error'=>'',
@@ -218,6 +223,7 @@ class CustomerReservation extends Controller
                'event_name' => '',
                'rvdate' => '',
                'rvtime' => '',
+               'svp_id' => $spID,
 
                'rv_type_error' => '',
                'service_type_error'=>'',

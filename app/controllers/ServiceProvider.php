@@ -147,8 +147,11 @@ class ServiceProvider extends Controller
                }
                else
                {
+                  $ran_id = rand(time(), 100000000);
+                  $status = "Active now";
                   $this->userModel->beginTransaction();
                   $this->userModel->registerUser($data['email'], $data['password'], $data['service_type']);
+                  $this->userModel->registerChatUser($ran_id,$data['company_name'],'',$data['email'],$status);
                   $this->serviceProviderModel->registerServiceProvider($data);
                   $this->OTPModel->removeOTP($data['email'], 1);
 

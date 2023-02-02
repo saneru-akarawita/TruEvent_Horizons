@@ -4,300 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/homepage.css">
+    <title>Photography Chat</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/chat-style.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-   <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
 
-   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
-   <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - ChatBox - Photography</title>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/chat/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
 </head>
-</head>
+
 <body>
 <?php require APPROOT . "/views/photography/header-photography.php" ?>
 
-    <div class="main-container">
-        <div class="container">
-            <div class="leftSide">
-                <!-- Header -->
-                <div class="header">
-                    <div class="userimg">
-                        <img src="<?php echo URLROOT ?>/public/images/images-UI/user.jpg" alt="" class="cover">
-                    </div>
-                    <ul class="nav_icons">
-                        <li><ion-icon name="scan-circle-outline"></ion-icon></li>
-                        <li><ion-icon name="chatbox"></ion-icon></li>
-                        <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
-                    </ul>
-                </div>
-                <!-- Search Chat -->
-                <div class="search_chat">
-                    <div>
-                        <input type="text" placeholder="Search or start new chat">
-                        <ion-icon name="search-outline"></ion-icon> 
-                    </div>                
-                </div>
-                <!-- CHAT LIST -->
-                <div class="chatlist">
-                    <div class="block active">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img1.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Saneru Akaravita</h4>
-                                <p class="time">10:56</p>
-                            </div>
-                            <div class="message_p">
-                                <p>How is it going?</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="block unread">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img2.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Sadun Perera</h4>
-                                <p class="time">12:34</p>
-                            </div>
-                            <div class="message_p">
-                                <p>I love your youtube videos!</p>
-                                <b>1</b>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="block unread">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img3.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Harini De Silva</h4>
-                                <p class="time">Yesterday</p>
-                            </div>
-                            <div class="message_p">
-                                <p>I just subscribed to your channel</p>
-                                <b>2</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img4.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Amaya Dias</h4>
-                                <p class="time">Yesterday</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Hey!</p>                            
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img7.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Kaveena Perera</h4>
-                                <p class="time">18/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>I'll get back to you</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img8.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Gimhan Silva</h4>
-                                <p class="time">17/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Congratulations</p> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img9.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Saduni Hansika</h4>
-                                <p class="time">15/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Thanks alot</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img5.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Devin Jayasooriya</h4>
-                                <p class="time">Yesterday</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Did you finish the project?</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img6.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Pasan Bandara</h4>
-                                <p class="time">18/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Nice course</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img7.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Michel Jay</h4>
-                                <p class="time">18/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>I'll get back to you</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img8.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Kaveen Pathirana</h4>
-                                <p class="time">17/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Congratulations</p> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="imgBox">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img9.jpg" class="cover" alt="">
-                        </div>
-                        <div class="details">
-                            <div class="listHead">
-                                <h4>Kalani Dias</h4>
-                                <p class="time">15/01/2022</p>
-                            </div>
-                            <div class="message_p">
-                                <p>Thanks alot</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rightSide">
-                <div class="header">
-                    <div class="imgText">
-                        <div class="userimg">
-                            <img src="<?php echo URLROOT ?>/public/images/images-UI/img1.jpg" alt="" class="cover">
-                        </div>
-                        <h4>Saneru Akaravita <br><span>online</span></h4>
-                    </div>
-                    <ul class="nav_icons">
-                        <li><ion-icon name="search-outline"></ion-icon></li>
-                        <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
-                    </ul>
-                </div>
-    
-                <!-- CHAT-BOX -->
-                <div class="chatbox">
-                    <div class="message my_msg">
-                        <p>Hi <br><span>12:18</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Hey <br><span>12:18</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque aliquid fugiat accusamus dolore qui vitae ratione optio sunt <br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur <br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message my_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                    <div class="message friend_msg">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br><span>12:15</span></p>
-                    </div>
-                </div>
-                
-                <!-- CHAT INPUT -->
-                <div class="chat_input">
-                    <ion-icon name="happy-outline"></ion-icon>
-                    <!-- <ion-icon name="happy-outline"></ion-icon> -->
-                    <input type="text" placeholder="Type a message">
-                    <ion-icon name="mic"></ion-icon>
-                    <ion-icon name="send-outline"></ion-icon>
-    
-                </div>
-            </div>
-        </div>
-    
-    
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    </div>
 
+<div class="chat_div">
+        <div class="chat_wrapper"style="margin-top:75px;margin-bottom:50px;">
+            <section class="chat-area">
+            <header>
+                <a href="chat" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+                
+                <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+                <div class="chat_details">
+                <span><?php echo $data->fname. " " . $data->lname ?></span>
+                <p><?php echo $data->status; ?></p>
+                </div>
+            </header>
+            <div class="chat-box">
+
+            </div>
+            <!-- <form action="#" class="typing-area">
+                <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $_GET['user_id']; ?>" hidden>
+                <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+                <button><i class="fab fa-telegram-plane"></i></button>
+            </form> -->
+            <form action="#" class="typing-area">
+                <input type="text" class="chat_user_id" name="chat_user_id" value="<?= $_SESSION['unique_id'] ?>" hidden>
+                <input type="text" class="incoming_id" name="incoming_id" value="<?= $_GET['user_id'] ?>" hidden>
+                <input type="text" name="message" class="input-field" placeholder="Type a message here..."
+                    autocomplete="off">
+                <button class="btn-send"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+            </section>
+        </div>
+        
+    </div>
 
       <!-- footer start -->
       <section class="footer">
@@ -307,7 +67,7 @@
                 <h3>Quick Access</h3>
             <a href="admin-home.php"><i class="fas fa-angle-right"></i>  Home</a>
             <a href="packages.php"><i class="fas fa-angle-right"></i> Packages</a>
-            <a href="admin-add-packages.php"><i class="fas fa-angle-right"></i> Services</a>
+            <a href="admin-add-packages.php"><i class="fas fa-angle-right"></i> Add Packages</a>
             </div>
     
             <div class="box">
@@ -347,6 +107,6 @@
     <!-- footer ends -->
 
 </body>
-<script src="./js/countdown.js"></script>
+<script src="<?php echo URLROOT ?>/public/js/chat/chat.js"></script>
 
 </html>

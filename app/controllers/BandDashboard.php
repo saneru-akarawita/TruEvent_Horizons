@@ -12,6 +12,7 @@ class BandDashboard extends Controller
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
       $this->userModel = $this->model('UserModel');
+      $this->bandModel = $this->model('BandModel');
    }
 
    public function home()
@@ -104,7 +105,21 @@ class BandDashboard extends Controller
 
    public function chat()
    {
-      $this->view('band/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->bandModel->getChatUsers($unique_id);
+      $this->view('band/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->bandModel->getUserByUserId($user_id);
+      $this->view('band/chat', $user);
    }
 
    public function payment()

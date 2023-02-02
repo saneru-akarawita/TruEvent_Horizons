@@ -140,7 +140,21 @@ class CustomerDashboard extends Controller
 
    public function chat()
    {
-      $this->view('customer/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->customerModel->getChatUsers($unique_id);
+      $this->view('customer/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->customerModel->getUserByUserId($user_id);
+      $this->view('customer/chat', $user);
    }
 
    public function makeAdvancePayment()

@@ -51,26 +51,27 @@
                 <div class="column">
                     <br>
                     <label class="label" for="companyname">Company Name</label>
-                    <input class="companyname" type="text" id="companyname" name="companyname" placeholder="<?=$data[1]->company_name?>">
+                    <input class="companyname" type="text" id="companyname" name="companyname" placeholder="<?=$data[1]->company_name?>" disabled>
+
                     <br>
                     <label class="label" for="businessid">Business ID</label>
-                    <input class="businessid" type="text" id="businessid" name="businessid" placeholder="<?=$data[1]->business_id?>">
+                    <input class="businessid" type="text" id="businessid" name="businessid" placeholder="<?=$data[1]->business_id?>" disabled>
                 </div>
             </div>
             <br><br>
             <label for="email">Email</label>
             <div class="row"> 
-                <input class="email" type="text" id="email" name="email" placeholder="<?=$data[1]->email?>" style="width:48%; text-transform:none">
+                <input class="email" type="text" id="email" name="email" placeholder="<?=$data[1]->email?>" style="width:48%; text-transform:none" disabled>
             </div>
             <br>
             <div class="row"> 
                     <div class="column">
                         <label for="contactno">Contact Number</label>
-                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->contact_no?>">
+                        <input class="contactno" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->contact_no?>" disabled>
                     </div>
                     <div class="column">
                         <label class="district" for="district">District</label>
-                        <input class="district" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->district?>">
+                        <input class="district" type="text" id="contactno" name="contactno" placeholder="<?=$data[1]->district?>" disabled>
                     </div> 
             </div>
 
@@ -81,22 +82,22 @@
             <div class="row"> 
                 <div class="column">
                     <label for="accno">Account Number</label>
-                    <input class="accno" type="text" id="accno" name="accno" placeholder="<?=$data[1]->account_no?>">
+                    <input class="accno" type="text" id="accno" name="accno" placeholder="<?=$data[1]->account_no?>" disabled>
                 </div>
                 <div class="column">
                     <label class="accname" for="district">Account Name</label>
-                    <input class="accname" type="text" id="accname" name="accname" placeholder="<?=$data[1]->account_name?>">
+                    <input class="accname" type="text" id="accname" name="accname" placeholder="<?=$data[1]->account_name?>" disabled>
                 </div> 
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="bank">Bank</label>
-                    <input class="bank" type="text" id="bank" name="bank" placeholder="<?=$data[1]->bank?>">
+                    <input class="bank" type="text" id="bank" name="bank" placeholder="<?=$data[1]->bank?>" disabled>
                 </div>
                 <div class="column">
                     <label class="branch" for="branch">Branch</label>
-                    <input class="branch" type="text" id="branch" name="branch" placeholder="<?=$data[1]->branch?>">
+                    <input class="branch" type="text" id="branch" name="branch" placeholder="<?=$data[1]->branch?>" disabled>
                 </div> 
             </div>
 

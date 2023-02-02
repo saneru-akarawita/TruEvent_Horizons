@@ -41,6 +41,16 @@ class AdminModel extends Model
       return $results;
    }
 
+   public function getChatUsers($unique_id){
+      $result = $this->getSingle("chat_users", "*", ['unique_id' => $unique_id]);
+      return $result;
+   }
+
+   public function getUserByUserId($user_id){
+      $result = $this->getSingle("chat_users", "*", ['unique_id' => $user_id]);
+      return $result;
+   }
+
    
 
 }
