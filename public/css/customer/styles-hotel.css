@@ -11,8 +11,7 @@
         min-height: 100vh;
         height: fit-content;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-evenly;
         margin-top: 50px;
         margin-bottom: 50px;
 

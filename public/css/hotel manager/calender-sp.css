@@ -1,0 +1,19 @@
+.searchbar{
+        width:200px;
+        height:35px;
+        border-radius:10px;
+        padding:5px;
+        padding-left:10px;
+        font-size:1.6rem
+}
+
+.searchbutton{
+     width:100px; 
+     background-color:black; 
+     color:white; 
+     font-size:1.6rem; 
+     font-weight:600; 
+     padding:4px; 
+     border-radius:5px;
+     margin-left:10px;   
+}

@@ -207,6 +207,28 @@ class Packages extends Controller
 
    }
 
+   public function activate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+   
+         if($this->packageModel->activate_deactivate("activate",1,$service_id))
+            redirect('Packages/viewAllServices');
+     }
+   
+   }
+
+   public function deactivate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+
+         if($this->packageModel->activate_deactivate("deactivate",0,$service_id))
+            redirect('Packages/viewAllServices');
+     }
+
+   }
+
    public function home()
    {
       $this->view('admin/admin-home');

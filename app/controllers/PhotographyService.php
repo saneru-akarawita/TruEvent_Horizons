@@ -111,6 +111,29 @@ class PhotographyService extends Controller
 
    }
 
+   public function activate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+   
+         if($this->photographyModel->activate_deactivate("activate",1,$service_id))
+            redirect('PhotographyService/viewAllServices');
+     }
+   
+   }
+
+   public function deactivate(){
+      if (isset($_GET['service_id'])){
+
+         $service_id=$_GET['service_id'];
+
+         if($this->photographyModel->activate_deactivate("deactivate",0,$service_id))
+            redirect('PhotographyService/viewAllServices');
+     }
+
+   }
+
+
 
    public function home()
    {

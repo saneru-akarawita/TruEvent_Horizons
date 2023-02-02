@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/services.css">
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
@@ -32,6 +33,9 @@
 
 </section>
  -->
+<?php $serviceID = $data[0]; ?>
+<?php $data0 = $data[1]; ?>
+<?php $data1 = $data[2]; ?>
 
 <div class="wrapper">
         <div class="product-img">
@@ -39,45 +43,55 @@
         </div>
         <div class="product-info">
                 <div class="product-text">
-                        <h1><?= $data->service_type;?></h1>
-                        <h2><?= Session::getUser('name')?></h2>
+                <?php echo $serviceID;?>
+                <?php $serviceProviderID = $data1->service_provider_id; ?>
+                
+
+                    <?php if ($data0->service_provider_id == $serviceProviderID) { ?>
+                        <?php $spName = $data0->company_name;
+                    } ?>
+                    <?php if($data1->service_id==$service_id) {?>
+                        <h1><?= $data1->service_type;?></h1>
+                        <h2><?php echo $spName ?></h2>
                         <div class="description">
                                 <table id="details12">
                                 <tr>
                                         <td>Hall Name </td>
-                                        <td>: <?= $data->hall_name;?></td>
+                                        <td>: <?= $data1->hall_name;?></td>
                                 </tr>
                                 <tr>
                                         <td>Location </td>
-                                        <td>: <?= $data->location;?></td>
+                                        <td>: <?= $data1->location;?></td>
                                 </tr>
                                 <tr>
                                         <td>Hall Type </td>
-                                        <td>: <?= $data->hall_type;?></td>
+                                        <td>: <?= $data1->hall_type;?></td>
                                 </tr>
                                 <tr>
                                         <td>Air Condition Status </td>
-                                        <td>: <?php if($data->ac_status) echo "Available"; else echo "Non-Available";?></td>
+                                        <td>: <?php if($data1->ac_status) echo "Available"; else echo "Non-Available";?></td>
                                 </tr>
                                 <tr>
                                         <td>Max Crowd </td>
-                                        <td>: <?= $data->max_crowd;?></td>
+                                        <td>: <?= $data1->max_crowd;?></td>
                                 </tr>
                                 <tr>
                                         <td>Other Facilities </td>
-                                        <td>:<?php if(empty($data->other_facilities)) echo " None"; else  echo $data->other_facilities; ?> </td>
+                                        <td>:<?php if(empty($data1->other_facilities)) echo " None"; else  echo $data1->other_facilities; ?> </td>
                                          
                                         
                                 </tr>
                                 </table>
-                                <span style="margin-left:45px">LKR <?= $data->price;?> per head</span>
+                                <span style="margin-left:45px">LKR 125,000 per head</span>
                                 <p style="margin-top:15px; margin-left:-0.5px">**Food Menu will be discussed and decided manually</p>
                         </div>
                         <br>
                         <div class="product-price-btn">
-                                <button type="button" style="margin-top:-25px;" onclick="history.back()">Back</button>
+                                <!-- <button type="button" style="margin-top:-100px; width:250px;"></button> -->
+                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>" class="btn">Make Reservation</a>
+                              
                         </div>
-
+                    <?php } ?>
                 </div>
         </div>
 </div>
