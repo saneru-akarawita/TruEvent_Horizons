@@ -83,7 +83,6 @@ class Session
          case "id":
             return Self::get("user")["id"];
 
-
          default:
             echo "Invalid Parameter";
             break;

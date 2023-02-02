@@ -44,9 +44,13 @@ class User extends Controller
 
                   if (password_verify($data['password'], $hashedPassword))
                   {
+                     $unique_chat_id = $this->userModel->getUserByUniqueID($data['email']);
                      $this->userModel->resetFailedAttempts($data['email']);
                      $this->OTPModel->removeOTP($data['email'], 2);
                      $this->createUserSession($user);
+                     Session::setSingle("unique_id", $unique_chat_id->unique_id);
+                     $msg = "Active now";
+                     $this->userModel->setChatUserOffline($unique_chat_id->unique_id,$msg);
                      $this->provideIntialView();
 
                   }
@@ -271,7 +275,7 @@ class User extends Controller
                redirect('bandDashboard/home');
                break;
             case 7:
-               redirect('photoDashboard/home');
+               redirect('photographyDashboard/home');
                break;
             default:
                redirect('User/signin');
@@ -327,6 +331,8 @@ class User extends Controller
 
    public function signout()
    {
+      $msg = "Offline now";
+      $this->userModel->setChatUserOffline(Session::get("unique_id"),$msg);
       Session::clear('user');
       session_destroy();
       redirect('User/signin');

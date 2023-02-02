@@ -12,9 +12,35 @@ class UserModel extends Model
       ]);
    }
 
+   public function registerChatUser($unique_id,$fname,$lname,$email,$status){
+      $this->insert('chat_users', [
+         'unique_id' => $unique_id,
+         'fname' => $fname,
+         'lname' => $lname,
+         'email' => $email,
+         'status' => $status
+      ]);
+   }
+
+   public function setChatUserOffline($unique_id, $msg){
+
+      $this->update('chat_users', [
+         'status' => $msg
+      ], [
+         'unique_id' => intval(trim($unique_id))
+      ]);
+   
+   }
+
    public function getUser($email)
    {
       $results = $this->getSingle("users", "*", ["email" => $email]);
+      return $results;
+   }
+
+   public function getUserByUniqueID($email)
+   {
+      $results = $this->getSingle("chat_users", "*", ["email" => $email]);
       return $results;
    }
 

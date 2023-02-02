@@ -51,7 +51,7 @@
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
                                 <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
-                                <li class="nr_li dd_main">
+                                <li class="nr_li dd_main" style="width:50px;">
                                         <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px;">
                                         <div class="sub-menu1">
                                                 <ul>
@@ -60,9 +60,11 @@
                                                 </ul>
                                         </div>                
                                 </li>
-                                <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
-                                <hr size="1px">
-                                <p style="margin-top:40px; margin-left:-140px;width:max-content"><?= Session::getUser('typeText') ?></p> 
+                                <div style="display: flex;align-items: center;justify-content: center;text-align: center; flex-direction: column;">
+                                        <li style="margin-top:12px;width:max-content"><?= Session::getUser('name') ?></li> 
+                                        <hr size="1px">
+                                        <p><?= Session::getUser('typeText') ?></p>
+                                </div> 
                         </ul>
                 
                 </div>

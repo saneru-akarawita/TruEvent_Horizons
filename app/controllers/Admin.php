@@ -134,8 +134,11 @@ class Admin extends Controller
                }
                else
                {
+                  $ran_id = rand(time(), 100000000);
+                  $status = "Active now";
                   $this->userModel->beginTransaction();
                   $this->userModel->registerUser($data['email'], $data['password'], 2);
+                  $this->userModel->registerChatUser($ran_id,$data['fname'],$data['lname'],$data['email'],$status);
                   $this->adminModel->registerAdmin($data);
                   $this->OTPModel->removeOTP($data['email'], 1);
 

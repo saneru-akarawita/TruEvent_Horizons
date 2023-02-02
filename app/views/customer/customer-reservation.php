@@ -83,22 +83,23 @@
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
                 <div class="text-group">
                     <label for="event name">Event Name</label>
-                    <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" >
+                    <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" required>
                     <span class="error"><?php echo $data[2]['event_name_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
-                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" >
+                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvtime">Reservation Time</label><br>
-                    <input class="rvtime" type="time" name="rvtime" capture>
+                    <input class="rvtime" type="time" name="rvtime" capture required>
                     <span class="error"><?php echo $data[2]['rvtime_error']; ?></span>
                 </div>
 
+                <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
                 <div class="footer-container">
                     <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>
                 </div>
@@ -159,21 +160,23 @@
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
                 <div class="text-group">
                     <label for="event name">Event Name</label>
-                    <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" >
+                    <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" required>
                     <span class="error"><?php echo $data[1]['event_name_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
-                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" >
+                    <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[1]['rvdate_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvtime">Reservation Time</label><br>
-                    <input class="rvtime" type="time" name="rvtime" capture>
+                    <input class="rvtime" type="time" name="rvtime" capture required>
                     <span class="error"><?php echo $data[1]['rvtime_error']; ?></span>
                 </div>
+
+                <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
 
                 <div class="footer-container">
                     <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>

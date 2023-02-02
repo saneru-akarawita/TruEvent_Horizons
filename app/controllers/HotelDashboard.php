@@ -11,6 +11,8 @@ class HotelDashboard extends Controller
       $this->customerModel = $this->model('CustomerModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
+      $this->userModel = $this->model('UserModel');
+      $this->hotelModel = $this->model('HotelModel');
    }
 
    public function home()
@@ -31,7 +33,7 @@ class HotelDashboard extends Controller
       Session::validateSession([4]);
       $result = $this->userModel->getUser(Session::getUser("email"));
       $profile_id = Session::getUser("id");
-      $profiledata = $this->hotelModel->getHotelServiceDetailsByServiceID($profile_id);
+      $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
       $hashedPassword = $result->password;
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -103,7 +105,21 @@ class HotelDashboard extends Controller
 
    public function chat()
    {
-      $this->view('hotelManager/chat', '');
+      $unique_id = Session::get("unique_id");
+      $users = $this->hotelModel->getChatUsers($unique_id);
+      $this->view('hotelManager/chat_users', $users);
+   }
+
+   public function chatWith()
+   {
+      if(isset($_GET['user_id'])){
+         $user_id=trim($_GET['user_id']);
+      }
+      else
+      $user_id=0;
+      
+      $user = $this->hotelModel->getUserByUserId($user_id);
+      $this->view('hotelManager/chat', $user);
    }
 
    public function payment()
