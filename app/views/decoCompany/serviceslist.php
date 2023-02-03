@@ -55,7 +55,7 @@
 
             </div>
             <div class="content">
-                <h3 style="font-size:medium">Most Appropriate for <?= $dsDetails->service_name; ?> </h3>
+                <h3 style="font-size:medium">Ideal for <?= $dsDetails->service_name; ?> </h3>
                 <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
                 <button class="viewButton" style="margin-left:-4px;"><a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
                 <button class="editButton"><a href="editService?service_id=<?=$dsDetails->service_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
@@ -68,7 +68,7 @@
                     <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
                 </div>
                 <div class="content">
-                    <h3 style="font-size:medium">Most Appropriate for <?= $dsDetails->service_name; ?> </h3>
+                    <h3 style="font-size:medium">Ideal for <?= $dsDetails->service_name; ?> </h3>
                     <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
                     
                     <button class="viewButton" style="height:40px"><a href="activate?service_id=<?=$dsDetails->service_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>

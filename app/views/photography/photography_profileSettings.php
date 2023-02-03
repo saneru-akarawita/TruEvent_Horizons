@@ -109,7 +109,7 @@
 
             <label for="currentpw">Current Password</label>
             <div class="row"> 
-                <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:48%" required>
+                <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:60%" required>
                 <span class="error"><?php echo $data[0]['currentPassword_error'];  ?></span>
            
             </div>

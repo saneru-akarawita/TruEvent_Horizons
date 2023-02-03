@@ -54,7 +54,7 @@
                             <p style="font-size:small" >Plan your <?= $pDetails->package_type; ?> </p><br>
                                 <button class="viewButton" style="margin-left:-4px;"><a href="viewEachPackage?package_id=<?=$pDetails->package_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
                                 <button class="editButton"><a href="editPackage?package_id=<?=$pDetails->package_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
-                                <button class="deleteButton"><a href="deletePackage?package_id=<?=$pDetails->package_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                                <button class="deleteButton"><a href="deactivate?package_id=<?=$pDetails->package_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Disable</a></button>
                         </div>
                     </div>
                     <?php } else { ?>
@@ -66,8 +66,8 @@
                 <h3 style="font-size:medium"><?= $pDetails->package_name; ?> </h3>
                             <p style="font-size:small" >Plan your <?= $pDetails->package_type; ?> </p><br>
                     
-                    <button class="viewButton" style="height:40px"><a href="activate?service_id=<?=$pDetails->package_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
-                    <button class="deleteButton" style="height:40px;"><a href="deleteService?service_id=<?=$pDetails->package_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                    <button class="viewButton" style="height:40px"><a href="activate?package_id=<?=$pDetails->package_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
+                    <button class="deleteButton" style="height:40px;"><a href="deleteService?package_id=<?=$pDetails->package_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
                 </div>
             </div>
             <?php }?>

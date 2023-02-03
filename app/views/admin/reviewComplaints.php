@@ -14,6 +14,24 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
 
+        <style>
+            table {
+                border-collapse:separate;
+                border:solid black 1px;
+                border-radius:6px;
+                width:80%;
+                }
+
+                td, th {
+                text-align: left;
+                padding: 8px;
+                }
+
+                tr:nth-child(even) {
+                background-color: #dddddd;
+                }
+        </style>
+
 
     </head>
     
@@ -44,66 +62,79 @@
 
     <br><br>
     <h1 class="title" style="text-align:center">Review Complaints and Feedback</h1>
+    
+    <?php foreach($data as $feedbackdetails) :?>
+        <div class="ser-container form-container contentBox" style="width: 60%; margin-top:20px; margin-bottom:50px;">
+            <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
+                <div class="row"> 
+                    <div class="column">
+                        <label for="eventname">Event Name</label>
+                        <input class="eventname" type="text" id="eventname" name="eventname" placeholder="<?php echo $feedbackdetails->event_name ?>" disabled>
+                    </div>
+                </div>
+                <br>
+                <div class="row"> 
+                    <div class="column">
+                        <label for="customername">Customer Name</label>
+                        <input class="customername" type="text" id="customername" name="customername" placeholder="<?php echo $feedbackdetails->customer_name ?>" disabled>
+                    </div>
+                    <div class="column">
+                        <label class="spname" for="spname">Service Provider Name</label>
+                        <input class="spname" type="text" id="spname" name="spname" placeholder="<?php echo $feedbackdetails->sp_name ?>" disabled>
+                    </div> 
+                </div>
+                <br>
+                <div class="row"> 
+                    <div class="column">
+                        <label for="customername">Customer Contact Number</label>
+                        <input class="customername" type="text" id="contactno" name="contactno" placeholder="<?php echo $feedbackdetails->contact_no ?>" disabled>
+                    </div>
+                    <div class="column">
 
-    <div class="ser-container form-container contentBox" style="width: 60%; margin-top:20px; margin-bottom:50px;">
-        <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
-            <div class="row"> 
-                <div class="column">
-                    <label for="eventname">Event Name</label>
-                    <input class="eventname" type="text" id="eventname" name="eventname" placeholder="" disabled>
+                    </div> 
                 </div>
-            </div>
-            <br>
-            <div class="row"> 
-                <div class="column">
-                    <label for="customername">Customer Name</label>
-                    <input class="customername" type="text" id="customername" name="customername" placeholder="" disabled>
+                <br>
+                <div class="row">
+                    <div class="column"> 
+                        <label for="complaint">Feedback</label>
+                        <table>
+                            <tr>
+                                <th style="text-align: center;">Feedback Area</th>
+                                <th style="text-align: center;">Rating</th>
+                            </tr>
+                            <tr>
+                                <td>Ease Of Boooking</td>
+                                <td><?php echo $feedbackdetails->eob ?></td>
+                            </tr>
+                            <tr>
+                                <td>Accuracy Of Service</td>
+                                <td><?php echo $feedbackdetails->aos ?></td>
+                            </tr>
+                            <tr>
+                                <td>Value Of Money</td>
+                                <td><?php echo $feedbackdetails->vom ?></td>
+                            </tr>
+                            <tr>
+                                <td>Quality Of Service</td>
+                                <td><?php echo $feedbackdetails->qos ?></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Satisfication</td>
+                                <td><?php echo $feedbackdetails->cs ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="column">
-                    <label class="spname" for="spname">Service Provider Name</label>
-                    <input class="spname" type="text" id="spname" name="spname" placeholder="" disabled>
-                </div> 
-            </div>
-            <br>
-            <div class="row">
-                <div class="column"> 
-                    <label for="complaint">Complaint/Feedback</label>
-                    <input class="complaint" type="text" id="complaint" name="complaint" placeholder="" disabled>
+                <br>
+                <div class="row">
+                    <div class="column"> 
+                        <label for="complaint">Complaint (if any)</label>
+                        <input class="complaint" type="text" id="complaint" name="complaint" placeholder="<?php echo $feedbackdetails->complaint ?>" disabled>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="ser-container form-container contentBox" style="width: 60%; margin-top:20px; margin-bottom:50px;">
-        <form action="<?php echo URLROOT; ?>/customerReservation/addReservation" method="post" class="form">
-            <div class="row"> 
-                <div class="column">
-                    <label for="eventname">Event Name</label>
-                    <input class="eventname" type="text" id="eventname" name="eventname" placeholder="" disabled>
-                </div>
-            </div>
-            <br>
-            <div class="row"> 
-                <div class="column">
-                    <label for="customername">Customer Name</label>
-                    <input class="customername" type="text" id="customername" name="customername" placeholder="" disabled>
-                </div>
-                <div class="column">
-                    <label class="spname" for="spname">Service Provider Name</label>
-                    <input class="spname" type="text" id="spname" name="spname" placeholder="" disabled>
-                </div> 
-            </div>
-            <br>
-            <div class="row">
-                <div class="column"> 
-                    <label for="complaint">Complaint/Feedback</label>
-                    <input class="complaint" type="text" id="complaint" name="complaint" placeholder="" disabled>
-                </div>
-            </div>
-        </form>
-    </div>
-
-
+            </form>
+        </div>
+    <?php endforeach; ?>
 </div>
 
 
