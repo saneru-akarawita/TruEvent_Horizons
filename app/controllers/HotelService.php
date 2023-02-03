@@ -127,12 +127,6 @@ class HotelService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['hotel'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
 
          $data = [
 

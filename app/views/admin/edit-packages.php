@@ -56,7 +56,7 @@
       Edit Packages
    </h1>
 <div class="reg-container form-container contentBox">
-         <form action="<?php echo URLROOT; ?>/packages/addNewPackage" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/packages/editPackage" method="post" class="form">
             <div class="row">
                <div class="column">
                   <div class="text-group">
@@ -66,18 +66,17 @@
                   </div>
                </div>
                <div class="column">
-               <?php if($data['package_type']=='') echo "selected" ?>
-                        <label class="label" for="package_type">Package Type</label>
-                        <select name = "package_type" class="dropdownmenu" id="package_type"> 
-                              <option value="">Select a package type</option>
-                              <option value = "Birthday" <?php if($data['package_type']=='Birthday Parties') echo "selected"; ?>>Birthday Package</option>
-                              <option value = "Anniversary" <?php if($data['package_type']=='Anniversary Parties') echo "selected"; ?>>Anniversary Package</option>
-                              <option value = "Coparate Event" <?php if($data['package_type']=='Coparate Event') echo "selected"; ?> >Coparate Package</option>
-                              <option value = "Graduation Party" <?php if($data['package_type']=='Graduation Party') echo "selected"; ?>>Graduation Party Package</option>
-                              <option value = "Get-Together" <?php if($data['package_type']=='Get-Together') echo "selected"; ?>>Get-Together Package</option>
-                              <option value = "General Event" <?php if($data['package_type']=='General Event') echo "selected"; ?>>General Package</option>
-                        </select>
-                        <span class="error"><?php echo $data[0]['package_type_error']; ?></span>
+                     <label class="label" for="package_type">Package Type</label>
+                     <select name = "package_type" class="dropdownmenu" id="package_type"> 
+                           <option value="">Select a package type</option>
+                           <option value = "Birthday" <?php if($data[0]['package_type']=='Birthday') echo "selected"; ?>>Birthday Package</option>
+                           <option value = "Anniversary" <?php if($data[0]['package_type']=='Anniversary') echo "selected"; ?>>Anniversary Package</option>
+                           <option value = "Coparate Event" <?php if($data[0]['package_type']=='Coparate Event') echo "selected"; ?> >Coparate Package</option>
+                           <option value = "Graduation Party" <?php if($data[0]['package_type']=='Graduation Party') echo "selected"; ?>>Graduation Party Package</option>
+                           <option value = "Get-Together" <?php if($data[0]['package_type']=='Get-Together') echo "selected"; ?>>Get-Together Package</option>
+                           <option value = "General Event" <?php if($data[0]['package_type']=='General Event') echo "selected"; ?>>General Package</option>
+                     </select>
+                     <span class="error"><?php echo $data[0]['package_type_error']; ?></span>
                 </div>
             </div>
 
@@ -102,18 +101,20 @@
 
             Services Included:<br><br><br>
             <div class="row">
+
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="bands">Bands:</label>
-                     <input type="text" name="bands" placeholder="band option" maxlength="25">
+                     <input type="text" name="bands" placeholder="band option" value="<?php echo $data[0]['bands'] ?>" maxlength="25">
                      <span class="error"><?php echo $data[0]['bands_error']; ?></span>
                   </div>
                </div>
+
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="decorations">Decorations:</label>
                      <select name = "decorations" class="dropdownmenu" id="decorations"> 
-                              <option value="">Select a package type</option>
+                              <option value="">Select a Decoration Option</option>
                               <?php foreach ($data[1] as $decodetails) :?>
 
                                  <?php $spname = "";
@@ -124,25 +125,28 @@
                                        $spname = $spdetails->company_name;
                                      }?>
                                  <?php endforeach; ?>
-
-                                 <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>"><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
+                                 <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>" <?php if($data[0]['decorations']=="$spname - $decodetails->service_name")echo "selected";?>><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
 
                               <?php endforeach; ?>
                      </select>
                      <span class="error"><?php echo $data[0]['decorations_error']; ?></span>
                   </div>
                </div>
+
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="photography">Photography:</label>
-                     <input type="text" name="photography" placeholder="Photography option" >
+                     <input type="text" name="photography" placeholder="Photography option" value="<?php echo $data[0]['photography'] ?>">
                      <span class="error"><?php echo $data[0]['photography_error']; ?></span>
                   </div>
                </div>
+
             </div>
-    
+                                     
+            <input type="hidden" id="package_id" name="package_id" value="<?php echo $data[0]['package_id'] ?>">
+
             <div class="footer-container">
-               <button type="submit" name="action" value="editpackage" class="btn btn-filled btn-theme-purple"Update Package</button>
+               <button type="submit" name="action" value="editpackage" class="btn btn-filled btn-theme-purple">Update</button>
             </div>
 
          </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2023 at 09:53 AM
+-- Generation Time: Feb 03, 2023 at 09:18 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.10
 
@@ -35,18 +35,19 @@ CREATE TABLE `adminpackagedetails` (
   `price` text NOT NULL,
   `band_choice` varchar(255) DEFAULT NULL,
   `deco_choice` varchar(255) DEFAULT NULL,
-  `photo_choice` varchar(255) DEFAULT NULL
+  `photo_choice` varchar(255) DEFAULT NULL,
+  `active` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `adminpackagedetails`
 --
 
-INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`, `package_name`, `price`, `band_choice`, `deco_choice`, `photo_choice`) VALUES
-(1, 'P001', 'Birthday', '25th Birthday Package', '50000', 'Stage Revolution', 'Urban 57 Decorations - Get-Togethers', 'Red Ants Photography'),
-(2, 'P002', 'Anniversary', '10th Anniversary Package', '100000', 'Ecstasy Bands', 'Urban 57 Decorations - Anniversary Parties', ''),
-(3, 'P003', 'Coparate Event', 'Farewell Party Package', '90000', '', 'Urban 57 Decorations - Night Functions', 'Image Studio'),
-(4, 'P004', 'Coparate Event', '25th Birthday Package', '82000', 'Stage Revolution', 'Urban 57 Decorations - Welcome Parties', 'Red Ants Photography');
+INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`, `package_name`, `price`, `band_choice`, `deco_choice`, `photo_choice`, `active`) VALUES
+(1, 'P001', 'Birthday', '25th Birthday Package', '50000', 'Stage Revolution', 'Urban 57 Decorations - Get-Togethers', 'Red Ants Photography', 1),
+(2, 'P002', 'Anniversary', '10th Anniversary Package', '100000', 'Ecstasy Bands', 'Urban 57 Decorations - Anniversary Parties', '', 1),
+(3, 'P003', 'Coparate Event', 'Farewell Party Package', '95000', '', 'Urban 57 Decorations - Night Functions', 'Image Studio', 1),
+(4, 'P004', 'Coparate Event', '25th Service Celebration Package', '85000', 'Stage Revolution', '', 'Red Ants Photography', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,14 @@ INSERT INTO `chat_messages` (`msg_id`, `incoming_msg_id`, `outgoing_msg_id`, `ms
 (23, 1460619877, 1215415318, 'hi kaveesha'),
 (24, 1215415318, 1460619877, 'hey'),
 (25, 1460619877, 1215415318, 'boss'),
-(26, 1215415318, 1460619877, 'moko wenne');
+(26, 1215415318, 1460619877, 'moko wenne'),
+(27, 1460619877, 816865346, 'hey kaveesha'),
+(28, 816865346, 1460619877, 'hi chamila'),
+(29, 1460619877, 1215415318, 'hello'),
+(30, 816865346, 277022096, 'hiiii'),
+(31, 816865346, 749645829, 'hello'),
+(32, 749645829, 960514050, 'hello'),
+(33, 1215415318, 370802146, 'hi');
 
 -- --------------------------------------------------------
 
@@ -158,9 +166,11 @@ CREATE TABLE `chat_users` (
 INSERT INTO `chat_users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `img`, `status`) VALUES
 (1, 816865346, 'Chamila', 'Amarathunga', 'chamila.amarathunga@gmail.com', NULL, 'Offline now'),
 (2, 1460619877, 'Kaveesha', 'Muthukuda', '2020cs007@stu.ucsc.cmb.ac.lk', NULL, 'Active now'),
-(3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Offline now'),
+(3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Active now'),
 (4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Offline now'),
-(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Offline now');
+(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Offline now'),
+(6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Offline now'),
+(7, 370802146, 'SHANGRI - LA', '', 'tempemail@gmail.com', NULL, 'Active now');
 
 -- --------------------------------------------------------
 
@@ -180,6 +190,7 @@ CREATE TABLE `customerrvdetails` (
   `packageName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `status` varchar(10) NOT NULL,
   `payment` varchar(10) NOT NULL,
+  `price` varchar(255) NOT NULL DEFAULT '0',
   `customer_id` int NOT NULL,
   `sp_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -188,11 +199,12 @@ CREATE TABLE `customerrvdetails` (
 -- Dumping data for table `customerrvdetails`
 --
 
-INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `packageType`, `packageName`, `status`, `payment`, `customer_id`, `sp_id`) VALUES
-(1, 'After Interim 3.0 Party', '2023-01-25', '19:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', NULL, NULL, 'pending', 'not-paid', 1, '1'),
-(2, 'kaveesha\'s Farewell Party', '2023-01-24', '20:00:00', 'package', NULL, NULL, 'Coparate Event', 'Farewell Party Package', 'pending', 'not-paid', 1, '2,3'),
-(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', NULL, NULL, 'pending', 'not-paid', 1, '1'),
-(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', NULL, NULL, 'pending', 'not-paid', 1, '2');
+INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `packageType`, `packageName`, `status`, `payment`, `price`, `customer_id`, `sp_id`) VALUES
+(1, 'After Interim 3.0 Party', '2023-02-02', '20:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', NULL, NULL, 'pending', 'not-paid', '0', 1, '1'),
+(2, 'kaveesha\'s Farewell Party', '2023-01-24', '20:00:00', 'package', NULL, NULL, 'Coparate Event', 'Farewell Party Package', 'pending', 'not-paid', '0', 1, '2,3'),
+(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', NULL, NULL, 'pending', 'not-paid', '0', 1, '1'),
+(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', NULL, NULL, 'pending', 'not-paid', '0', 1, '2'),
+(12, 'test 2', '2023-02-03', '15:37:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', NULL, NULL, 'pending', 'not-paid', '0', 1, '4');
 
 -- --------------------------------------------------------
 
@@ -248,14 +260,44 @@ INSERT INTO `decoservicedetails` (`service_id`, `service_name`, `decoration_item
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedbacks`
+--
+
+CREATE TABLE `feedbacks` (
+  `feedback_id` int NOT NULL,
+  `sp_type` varchar(255) NOT NULL,
+  `sp_name` varchar(255) NOT NULL,
+  `event_name` varchar(255) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `contact_no` int NOT NULL,
+  `eob` varchar(255) NOT NULL,
+  `aos` varchar(255) NOT NULL,
+  `vom` varchar(255) NOT NULL,
+  `qos` varchar(255) NOT NULL,
+  `cs` varchar(255) NOT NULL,
+  `complaint` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `feedbacks`
+--
+
+INSERT INTO `feedbacks` (`feedback_id`, `sp_type`, `sp_name`, `event_name`, `customer_name`, `contact_no`, `eob`, `aos`, `vom`, `qos`, `cs`, `complaint`) VALUES
+(1, 'Hotel', 'Shangri - La', 'After Interim 3.0 Party', 'Kaveesha Muthukuda', 762714972, 'Fair', 'Good', 'Excellent', 'Poor', 'Good', 'Test Complaint'),
+(2, 'Photography', 'Red Ants Photography', 'kaveesha\'s Farewell Party', 'Kaveesha Muthukuda', 762714972, 'Good', 'Good', 'Good', 'Fair', 'Good', ''),
+(3, 'Decoration', 'Urban 57 Decorations', 'Kaveesha\'s Birthday', 'Kaveesha Muthukuda', 762714972, 'Excellent', 'Excellent', 'Excellent', 'Good', 'Good', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hotelservicedetails`
 --
 
 CREATE TABLE `hotelservicedetails` (
   `service_id` int NOT NULL,
-  `service_type` text NOT NULL,
+  `service_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `hall_image` longblob NOT NULL,
-  `hall_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `hall_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `location` text NOT NULL,
   `hall_type` text NOT NULL,
   `max_crowd` int NOT NULL,
@@ -276,7 +318,7 @@ INSERT INTO `hotelservicedetails` (`service_id`, `service_type`, `hall_image`, `
 (3, 'Birthday Parties', 0x322e6a7067, 'Central Ocean View', 'West Wing', 'indoor', 150, 1, '5000.00', '', 1, 0),
 (4, 'Get-Togethers', 0x332e6a7067, 'Sky View', 'RoofTop', 'outdoor', 200, 0, '3500.00', 'AC provided if needed', 1, 1),
 (5, 'General Events', 0x322e6a7067, 'Harbour Court', 'East Wing', 'indoor', 350, 1, '4500.00', '', 3, 1),
-(6, 'Welcome Parties', 0x332e6a7067, 'Tea Lounge', 'Ground Floor', 'indoor', 200, 1, '3500.00', '', 4, 1),
+(6, 'Welcome Parties', 0x332e6a7067, 'Tea Lounge', 'Ground Floor', 'indoor', 200, 0, '4500.00', '', 4, 1),
 (7, 'Anniversary Parties', 0x332e6a7067, 'Royal Hall', '1st floor', 'indoor', 100, 1, '5000', '', 1, 1);
 
 -- --------------------------------------------------------
@@ -391,7 +433,9 @@ INSERT INTO `users` (`email`, `password`, `fail_attempts`, `user_type`, `vstatus
 -- Indexes for table `adminpackagedetails`
 --
 ALTER TABLE `adminpackagedetails`
-  ADD PRIMARY KEY (`package_id`);
+  ADD PRIMARY KEY (`package_id`),
+  ADD UNIQUE KEY `package_code` (`package_code`),
+  ADD UNIQUE KEY `package_type` (`package_type`,`package_name`);
 
 --
 -- Indexes for table `adminuser`
@@ -443,10 +487,17 @@ ALTER TABLE `decoservicedetails`
   ADD KEY `decodeet to service provider user FK on service provider id` (`service_provider_id`);
 
 --
+-- Indexes for table `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  ADD PRIMARY KEY (`feedback_id`);
+
+--
 -- Indexes for table `hotelservicedetails`
 --
 ALTER TABLE `hotelservicedetails`
   ADD PRIMARY KEY (`service_id`),
+  ADD UNIQUE KEY `service_type` (`service_type`,`hall_name`,`service_provider_id`),
   ADD KEY `hotel service deet to service provider user FK on SP ID` (`service_provider_id`);
 
 --
@@ -508,19 +559,19 @@ ALTER TABLE `bandservicedetails`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `msg_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `msg_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `chat_users`
 --
 ALTER TABLE `chat_users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
-  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `customeruser`
@@ -533,6 +584,12 @@ ALTER TABLE `customeruser`
 --
 ALTER TABLE `decoservicedetails`
   MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  MODIFY `feedback_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hotelservicedetails`

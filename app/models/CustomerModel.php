@@ -49,5 +49,24 @@ class CustomerModel extends Model
       return $result;
    }
 
+   public function provideFeedback($data)
+   {
+
+      $this->insert('feedbacks', [
+         'sp_type' => $data['service_type'],
+         'sp_name' => $data['service_name'],
+         'event_name' => $data['event_name'],
+         'customer_name' => $data['customername'],
+         'contact_no' => $data['contactno'],
+         'eob' => $data['eob'],
+         'aos' => $data['aos'],
+         'vom' => $data['vom'],
+         'qos' => $data['qos'],
+         'cs' => $data['cs'],
+         'complaint' => $data['complaint']
+      ]);
+      
+   }
+
 
 }

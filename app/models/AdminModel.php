@@ -51,6 +51,12 @@ class AdminModel extends Model
       return $result;
    }
 
+   public function getFeedback()
+   {
+      $results = $this->getResultSet("feedbacks", "*", []);
+      return $results;
+   }
+
    
 
 }

@@ -119,7 +119,7 @@
             <input type="hidden" id="sv_id" name="sv_id" value="<?php echo $data['sv_id']; ?>">
 
             <div class="footer-container">
-               <button type="submit" name="action" value="editservices" class="btn btn-filled btn-theme-purple">Update Service</button>
+               <button type="submit" name="action" value="editservice" class="btn btn-filled btn-theme-purple">Update Service</button>
             </div>
 
          </form>
