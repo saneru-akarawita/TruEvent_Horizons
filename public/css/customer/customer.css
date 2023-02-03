@@ -886,6 +886,7 @@ main .wrapper .hero .project .col .project-card {
     height: 400px;
 }
 
+
 main .wrapper .hero .project .col .project-card::before {
     content: '';
     position: absolute;
@@ -1081,5 +1082,9 @@ main .project, .col{
 
 main .col{
     margin-right:16px;
+}
+
+main .project-card{
+    margin-top:20px;
 }
 /* New Reservation log Main end */

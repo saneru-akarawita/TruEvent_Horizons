@@ -34,7 +34,6 @@
                 <div class="hero">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
-                        <span>Pending| 11 Dec,2022</span>
                     </div>
 
 
@@ -42,8 +41,9 @@
                         <div class="input-group">
                             <input type="text" name="" id="" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:880px;">Search</a>
-                        <span>Filter <i class="bx bx-filter-alt"></i> </span>
+                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
+                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
+                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -150,16 +150,16 @@
                 <div class="hero">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
-                        <span>Pending| 11 Dec,2022</span>
                     </div>
 
 
                     <div class="hero-search">
                     <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:880px;">Search</a>
-                        <span>Filter <i class="bx bx-filter-alt"></i> </span>
+                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
+                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
+                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -212,27 +212,27 @@
                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
                                     <a href="#" class="buttond">cancel</a>
 
-                            </div>
+                                </div>
 
-                            <div class="card-footer">
-                                <ul class="team">
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                    </li>
-
-
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                    </li>
+                                <div class="card-footer">
+                                    <ul class="team">
+                                        <li class="team-member">
+                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                        </li>
 
 
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                    </li>
+                                        <li class="team-member">
+                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                        </li>
 
-                                </ul>
-                            </div>
 
+                                        <li class="team-member">
+                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                </div>
                             </div>
                         </div>
 
