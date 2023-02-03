@@ -122,7 +122,14 @@ class CustomerDashboard extends Controller
       }
    }
 
-  
+   public function viewEachServiceHotel()
+   {
+      $service_id = $_GET['service_id'];
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result3 = $this->hotelModel->getHotelServiceDetails();
+   
+      $this->view('customer/view-each-service-hotel',$service_id,$result1,$result3);
+   }
 
    public function provideFeedback()
    {

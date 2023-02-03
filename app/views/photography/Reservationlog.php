@@ -42,8 +42,9 @@
                     <div class="input-group">
                             <input type="text" name="" id="" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:880px;">Search</a>
-                        <span>Filter <i class="bx bx-filter-alt"></i> </span>
+                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
+                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
+                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -116,7 +117,7 @@
 
                                 </ul>
                             </div>
-
+                                    </div>
                             </div>
                         </div>
 
