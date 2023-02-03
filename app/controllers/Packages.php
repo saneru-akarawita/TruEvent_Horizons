@@ -7,6 +7,7 @@ class Packages extends Controller
       $this->packageModel = $this->model('PackageModel');
       $this->decoModel = $this->model('DecoModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
+      $this->adminModel = $this->model('AdminModel');
    }
 
    public function viewAllPackages()
@@ -132,6 +133,7 @@ class Packages extends Controller
             'bands' => isset($_POST['bands']) ? trim($_POST['bands']) : trim($notfound),
             'decorations' => isset($_POST['decorations']) ? trim($_POST['decorations']) : trim($notfound),
             'photography' => isset($_POST['photography']) ? trim($_POST['photography']) : trim($notfound),
+            'package_id'=> trim($_POST['package_id']),
 
             'pcode_error' => '',
             'name_error' => '',
@@ -156,12 +158,12 @@ class Packages extends Controller
             {
                 
                $this->packageModel->beginTransaction();
-               $this->packageModel->editAdminbyID($data['package_id'], $data);
+               $this->packageModel->editPackagebByID($data['package_id'], $data);
                $this->packageModel->commit();
 
                Toast::setToast(1, "Package Edited Successfully!!!", "");
 
-               redirect('Packages/viewAllPackages');
+               redirect('packages/viewAllPackages');
                
             }
             else
@@ -177,16 +179,19 @@ class Packages extends Controller
       }
       else
       {
-         $packagedetails = $this->adminModel->getPackageDetailsByPackageID($package_editid);
+         $packagedetails = $this->packageModel->getPackageDetailsByPackageID($package_editid);
+         $decoresult = $this->decoModel->getDecoServiceDetails();
+         $spresult = $this->serviceProviderModel->getServiceProviderDetails();
 
          $data = [
-            'pcode' => $packagedetails -> pcode,
-            'name' => $packagedetails -> name,
+            'pcode' => $packagedetails -> package_code,
+            'name' => $packagedetails -> package_name,
             'price' => $packagedetails -> price,
             'package_type'=> $packagedetails -> package_type,
-            'bands' => $packagedetails -> bands,
-            'decorations' => $packagedetails -> decorations,
-            'photography' => $packagedetails -> photography,
+            'bands' => $packagedetails -> band_choice,
+            'decorations' => $packagedetails -> deco_choice,
+            'photography' => $packagedetails -> photo_choice,
+            'package_id'=>$package_editid,
 
             'pcode_error' => '',
             'name_error' => '',
@@ -198,7 +203,9 @@ class Packages extends Controller
 
          ];
 
-         $this->view('admin/edit-packages', $data);
+         $result = array($data, $decoresult, $spresult);
+
+         $this->view('admin/edit-packages', $result);
 
       }
    }
@@ -208,23 +215,23 @@ class Packages extends Controller
    }
 
    public function activate(){
-      if (isset($_GET['service_id'])){
+      if (isset($_GET['package_id'])){
 
-         $service_id=$_GET['service_id'];
+         $package_id=$_GET['package_id'];
    
-         if($this->packageModel->activate_deactivate("activate",1,$service_id))
-            redirect('Packages/viewAllServices');
+         if($this->packageModel->activate_deactivate("activate",1,$package_id))
+            redirect('Packages/viewAllPackages');
      }
    
    }
 
    public function deactivate(){
-      if (isset($_GET['service_id'])){
+      if (isset($_GET['package_id'])){
 
-         $service_id=$_GET['service_id'];
+         $service_id=$_GET['package_id'];
 
          if($this->packageModel->activate_deactivate("deactivate",0,$service_id))
-            redirect('Packages/viewAllServices');
+            redirect('Packages/viewAllPackages');
      }
 
    }

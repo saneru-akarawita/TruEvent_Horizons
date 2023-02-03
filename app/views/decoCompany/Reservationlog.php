@@ -98,10 +98,10 @@
 
                                 </div>
                             
-                                <div class="action-button" style="justify-content:center; margin-left:100px;">
+                                <div class="action-button" style="justify-content:center; margin-left:75px;">
                                     <a href="viewReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttond">view</a>
                                     <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
-                                    <a href="#" class="buttond">cancel</a>
+                                    <a href="#" class="buttond">Decline</a>
 
                             </div>
 

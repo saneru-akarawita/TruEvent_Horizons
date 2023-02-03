@@ -103,24 +103,24 @@
 
                                         </div>
 
-                                    <div class="card-footer">
-                                        <ul class="team">
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                            </li>
+                                        <div class="card-footer">
+                                            <ul class="team">
+                                                <li class="team-member">
+                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                                </li>
 
 
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                            </li>
+                                                <li class="team-member">
+                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                                </li>
 
 
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                            </li>
+                                                <li class="team-member">
+                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                                </li>
 
-                                        </ul>
-                                    </div> 
+                                            </ul>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>

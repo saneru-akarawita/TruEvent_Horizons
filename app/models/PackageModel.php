@@ -44,7 +44,7 @@ class PackageModel extends Model
         }
     }
     
-    public function editAdminbyID($packageID,$data){
+    public function editPackagebByID($packageID,$data){
 
         $this->update('adminpackagedetails', [
 

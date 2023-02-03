@@ -102,7 +102,9 @@ class AdminDashboard extends Controller
    }
 
    public function reviewComplaints(){
-      $this->view('admin/reviewComplaints');
+
+      $complaints = $this->adminModel->getFeedback();
+      $this->view('admin/reviewComplaints', $complaints);
    }
 
    public function chat()

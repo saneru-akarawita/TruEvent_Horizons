@@ -14,6 +14,7 @@ class CustomerDashboard extends Controller
       $this->customerModel = $this->model('CustomerModel');
       // $this->bandModel = $this->model('BandModel');
       // $this->photographyModel = $this->model('PhotographyModel');
+      $this->reservationModel = $this->model('ReservationModel');
      
    }
 
@@ -132,8 +133,121 @@ class CustomerDashboard extends Controller
 
    public function provideFeedback()
    {
-      $this->view('customer/customer_feedback','');
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         
+         $data = [
+
+            'service_type' => trim($_POST['service_type']),
+            'service_name' => trim($_POST['service_name']),
+            'event_name' => trim($_POST['event_name']),
+            'customername' => trim($_POST['customername']),
+            'contactno' => trim($_POST['contactno']),
+            'eob' => trim($_POST['feedbackval1']),
+            'aos' => trim($_POST['feedbackval2']),
+            'vom' => trim($_POST['feedbackval3']),
+            'qos' => trim($_POST['feedbackval4']),
+            'cs' => trim($_POST['feedbackval5']),
+            'complaint' => trim($_POST['improvement']),
+
+            'service_type_error'=>'',
+            'service_name_error' => '',
+            'event_name_error' => '',
+            'customername_error' => '',
+            'contactno_error' => '',
+            'eob_error' => '',
+            'aos_error' => '',
+            'vom_error' => '',
+            'qos_error' => '',
+            'cs_error' => ''
+            
+         ];
+       
+
+         if ($_POST['action'] == "addfeedback")
+         {
+            // Validate everything
+            $data['event_name_error'] = emptyCheck($data['event_name']);
+            $data['service_type_error'] = emptyCheck($data['service_type']);
+            $data['service_name_error'] = emptyCheck($data['service_name']);
+            $data['customername_error'] = emptyCheck($data['customername']);
+            $data['contactno_error'] = validateContactno($data['contactno']);
+            $data['eob_error'] = emptyCheck($data['eob']);
+            $data['aos_error'] = emptyCheck($data['aos']);
+            $data['vom_error'] = emptyCheck($data['vom']);
+            $data['qos_error'] = emptyCheck($data['qos']);
+            $data['cs_error'] = emptyCheck($data['cs']);
+
+            if (
+               empty($data['event_name_error']) &&
+               empty($data['service_type_error']) &&
+               empty($data['service_name_error']) &&
+               empty($data['customername_error']) &&
+               empty($data['contactno_error']) &&
+               empty($data['eob_error']) &&
+               empty($data['aos_error']) &&
+               empty($data['vom_error']) &&
+               empty($data['qos_error']) &&
+               empty($data['cs_error'])
+            )
+            {
+                
+               $this->customerModel->beginTransaction();
+               $this->customerModel->provideFeedback($data);
+               Toast::setToast(1, "Feedback Added Successfully!!!", '');
+               $this->customerModel->commit();
+
+               redirect('CustomerDashboard/home');
+               
+            }
+            else
+            {
+               redirect('CustomerDashboard/provideFeedback', $data);
+            }
+         }
+         else
+         {
+            die("Something went wrong");
+         }
+         
+      }
+      else
+      {
+         
+         $data = [
+            'service_type' => '',
+            'service_name' => '',
+            'event_name' => '',
+            'customername' => '',
+            'contactno' => '',
+            'eob' => '',
+            'aos' => '',
+            'vom' => '',
+            'qos' => '',
+            'cs' => '',
+            'complaint' => '',
+
+            'service_type_error'=>'',
+            'service_name_error' => '',
+            'event_name_error' => '',
+            'customername_error' => '',
+            'contactno_error' => '',
+            'eob_error' => '',
+            'aos_error' => '',
+            'vom_error' => '',
+            'qos_error' => '',
+            'cs_error' => ''
+         ];
+
+         $reservations = $this->reservationModel->getReservationsByCustomer(Session::getUser("id"));
+         $customerdetails = $this ->customerModel->getCustomerDetailsByID(Session::getUser("id"));
+         $result = array($reservations, $customerdetails, $data);
+
+         $this->view('customer/customer_feedback',$result);
+      }
    }
+
 
    public function addAccountDetails()
    {

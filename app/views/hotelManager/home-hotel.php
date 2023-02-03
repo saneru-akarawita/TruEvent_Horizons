@@ -70,11 +70,7 @@
 </div>
 </section>
 
-<!-- <-------------------------------------------------------Service Provider Calender Start------------------------------------------------------->   
-<section class="home-packages">
-    <h1 class="heading-title">Available Time Slots</h1>
-            <?php require APPROOT . "/views/hotelManager/calender-hotel.php" ?>
-</section>
+
 
 <!-- <-------------------------------------------------------Service Provider Calender End-------------------------------------------------------> 
 
