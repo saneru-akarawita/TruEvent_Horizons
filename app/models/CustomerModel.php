@@ -68,5 +68,11 @@ class CustomerModel extends Model
       
    }
 
+   public function getNumberofCustomers(){
+
+      $results = $this->getRowCount("customeruser", []);
+      return $results;
+    }
+
 
 }

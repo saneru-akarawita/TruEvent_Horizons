@@ -51,13 +51,14 @@
                         <h3>Current Reservations - Services <i class="bx bx-chevron-down"></i> </h3>
                     </div>
 
+                    <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($data as $rvdetails) : ?>
                                     <?php if($rvdetails->rvType =='service') { ?>
-                    
+                                        <?php $scount = $scount + 1; ?>
                             <!-- <?= $rvdetails->rv_id; ?> -->
 
                             <div class="project">
-                                <div class="col">
+                                <div class="col col<?php echo $scount%4 +1 ?>">
 
 
                                     <div class="project-card">
@@ -75,7 +76,8 @@
                                             <h6><?= $rvdetails->eventName; ?></h6>
                                             <p><?= $rvdetails->spName; ?></p>
                                             <p><?= $rvdetails->rvTime; ?></p>
-                                            <p>LKR.125 000.00 per head</p>
+                                            <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
+                                            <p>LKR. <?=$formatted_price?> <?php if($rvdetails->spType == "Hotel") echo "per head" ?></p>
 
 
                                             <div class="progress-box">
@@ -170,24 +172,24 @@
                      
                     <?php foreach ($data as $rvdetails) : ?>
                                     <?php if($rvdetails->rvType !='service') { ?>
-
+                                        <?php $pcount = $pcount + 1; ?>
                                      <!-- <?= $rvdetails->rv_id; ?> -->
 
                     <div class="project">
-                       <div class="col">
+                       <div class="col col<?php echo $pcount%4 +1?>">
                             <div class="project-card">
                                 <div class="card-header">
                                     <type class="type"><?= $rvdetails->packageName; ?></type>
                                     <date class="date"><?= $rvdetails->rvDate; ?></date>
                                     <span><i class="bx bx-dots-vertical-rounded"></i></span>
                                 </div>
-                                
 
                                 <div class="card-body">
                                     <h6><?= $rvdetails->eventName; ?></h6>
                                     <p>Services Provided- Band, Photography, Decoration</p>
                                     <p><?= $rvdetails->rvTime; ?></p>
-                                    <p>LKR.125 000.00 per head</p>
+                                    <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
+                                    <p>LKR. <?=$formatted_price?> </p>
 
 
                                     <div class="progress-box">
@@ -267,7 +269,7 @@
                 <div class="box">
                     <h3>Contact Us</h3>
                     <a href="#"><i class="fas fa-phone"></i> +94 123-456-789</a>
-                    <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i> TruEvent@gmail.com</a>
                     <a href="#"><i class="fas fa-map"></i> Colombo</a>
 
 

@@ -31,6 +31,22 @@ body {
   .text-orange {
     color: #f5b74f;
   }
+
+  .text-black {
+    color: #000000;
+  }
+
+  .text-purple {
+    color: #de4fc9;
+  }
+
+  .text-brown {
+    color: #372608;
+  }
+
+  .text-darkBlue {
+    color: #0d144b;
+  }
   
   .font-weight-bold {
     font-weight: 600;
@@ -160,21 +176,37 @@ body {
   }
   
   .card:first-child {
-    border-left: 7px solid #246dec;
+    border-left: 7px solid #ec24d8;
   }
   
   .card:nth-child(2) {
-    border-left: 7px solid #f5b74f;
+    border-left: 7px solid #000000;
   }
   
   .card:nth-child(3) {
-    border-left: 7px solid #367952;
+    border-left: 7px solid #1c1852;
   }
   
   .card:nth-child(4) {
+    border-left: 7px solid #633b11;
+  }
+
+  .card:nth-child(5) {
+    border-left: 7px solid #246dec;
+  }
+  
+  .card:nth-child(6) {
     border-left: 7px solid #cc3c43;
   }
   
+  .card:nth-child(7) {
+    border-left: 7px solid #367952;
+  }
+  
+  .card:nth-child(8) {
+    border-left: 7px solid #f5b74f;
+  }
+
   .card > span {
     font-size: 20px;
     font-weight: 600;

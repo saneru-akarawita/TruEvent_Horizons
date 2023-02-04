@@ -29,7 +29,7 @@
                                                 <ul>
                                                         <li><a href="viewservices">View Services</a></li>
                                                         <li><a href="addReservation">Add Reservation</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="viewReservationLog">Reservation Log</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/provideFeedback">Provide Feedbacks</a></li>
 
@@ -41,7 +41,7 @@
                                                 <ul>
                                                         <li><a href="">View Packages</a></li>
                                                         <li><a href="addReservation">Add Reservation</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="viewReservationLog">Reservation Log</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/provideFeedback">Provide Feedbacks</a></li>
 

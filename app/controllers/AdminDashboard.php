@@ -11,11 +11,35 @@ class AdminDashboard extends Controller
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
       $this->userModel = $this->model('UserModel');
+      $this->decoModel = $this->model('DecoModel');
+      $this->hotelModel = $this->model('HotelModel');
+      $this->bandModel = $this->model('BandModel');
+      $this->photographyModel = $this->model('PhotographyModel');
+      $this->reservationModel = $this->model('ReservationModel');
    }
 
    public function home()
    {
-      $this->view('admin/admin-home');
+      $no_of_customers = $this->customerModel->getNumberofCustomers();
+      $no_of_service_providers = $this->serviceProviderModel->getNumberofServiceProviders();
+      $no_of_reservations = $this->reservationModel->getNumberofReservationsByPaid();
+      $no_of_decos = $this->decoModel->getNumberofServices();
+      $no_of_hotels = $this->hotelModel->getNumberofServices();
+      $no_of_bands = $this->bandModel->getNumberofServices();
+      $no_of_photographies = $this->photographyModel->getNumberofServices();
+
+      $data = [
+         'no_of_customers' => $no_of_customers,
+         'no_of_service_providers' => $no_of_service_providers,
+         'no_of_reservations' => $no_of_reservations,
+         'no_of_decos' => $no_of_decos,
+         'no_of_hotels' => $no_of_hotels,
+         'no_of_bands' => $no_of_bands,
+         'no_of_photographies' => $no_of_photographies,
+         'no_of_services'=> $no_of_decos+$no_of_hotels+$no_of_bands+$no_of_photographies
+      ];
+
+      $this->view('admin/admin-home',$data);
    }
    public function addpackages()
    {

@@ -45,6 +45,12 @@ class ServiceProviderModel extends Model
       return $results;
    }
 
+   public function getNumberofServiceProviders(){
+
+      $results = $this->getRowCount("serviceprovideruser", []);
+      return $results;
+    }
+
 
 
 }
