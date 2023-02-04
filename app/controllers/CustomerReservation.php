@@ -5,6 +5,32 @@ class CustomerReservation extends Controller
    {
       Session::validateSession([3]);
       $this->reservationModel = $this->model('ReservationModel');
+      $this->decoModel = $this->model('DecoModel');
+      $this->hotelModel = $this->model('HotelModel');
+      $this->bandModel = $this->model('BandModel');
+      $this->photographyModel = $this->model('PhotographyModel');
+   }
+
+   public function getPriceFromServiceIDType($service_type, $service_id)
+   {
+      switch ($service_type) {
+         case 'Hotel':
+            $result = $this->hotelModel->getPriceFromServiceID($service_id);
+            break;
+         case 'Decoration':
+            $result = $this->decoModel->getPriceFromServiceID($service_id);
+            break;
+         case 'Band':
+            $result = $this->bandModel->getPriceFromServiceID($service_id);
+            break;
+         case 'Photography':
+            $result = $this->photographyModel->getPriceFromServiceID($service_id);
+            break;
+         default:
+            // $result = $this->packageModel->getPriceFromPackageID($package_id);
+            break;
+      }
+      return $result;
    }
 
    public function addReservation()
@@ -25,6 +51,8 @@ class CustomerReservation extends Controller
                'rvtime' => trim($_POST['rvtime']),
                'customer_id' => Session::getUser("id"),
                'svp_id' => trim($_POST['sp_id']),
+               'price' => trim($_POST['price']),
+               
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -48,6 +76,7 @@ class CustomerReservation extends Controller
                'rvtime' => trim($_POST['rvtime']),
                'customer_id' => Session::getUser("id"),
                'svp_id' => trim($_POST['sp_id']),
+               'price' => trim($_POST['price']),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -130,6 +159,8 @@ class CustomerReservation extends Controller
          $name=$_GET['service_name'];
          $type=$_GET['service_type'];
          $spID=$_GET['sp_id'];
+         $service_id = $_GET['service_id'];
+         $price = $this->getPriceFromServiceIDType($type, $service_id);
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST')
          {
@@ -145,6 +176,7 @@ class CustomerReservation extends Controller
                   'rvtime' => trim($_POST['rvtime']),
                   'customer_id' => Session::getUser("id"),
                   'svp_id' => trim($_POST['sp_id']),
+                  'price' => trim($_POST['price']),
                   
       
                   'rv_type_error' => '',
@@ -169,6 +201,7 @@ class CustomerReservation extends Controller
                   'rvtime' => trim($_POST['rvtime']),
                   'customer_id' => Session::getUser("id"),
                   'svp_id' => trim($_POST['sp_id']),
+                  'price' => trim($_POST['price']),
       
                   'rv_type_error' => '',
                   'service_type_error'=>'',
@@ -224,6 +257,7 @@ class CustomerReservation extends Controller
                'rvdate' => '',
                'rvtime' => '',
                'svp_id' => $spID,
+               'price' => $price->price,
 
                'rv_type_error' => '',
                'service_type_error'=>'',

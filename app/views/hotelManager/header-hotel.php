@@ -73,7 +73,7 @@
                                                 </li>
 
                                                 <li class="nr_li">
-                                                        <i class="fas fa-envelope-open-text"></i>
+                                                        <i class="fa-solid fa-envelopee-open-text"></i>
 				                </li>
 			                </ul>
 		                </div>  -->

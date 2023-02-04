@@ -84,4 +84,28 @@ class HotelModel extends Model
         return $result;
      }
 
+    public function getNumberofServices(){
+
+      $results = $this->getRowCount("hotelservicedetails", []);
+      return $results;
+    }
+
+    public function getRandomServicesFromHotel($limit){
+
+        $resultSet = array();
+
+        foreach ($limit as $number) {
+            
+            $results = $this->getResultSet("hotelservicedetails", "*", ['service_id' => $number]);
+            array_push($resultSet, $results);
+        }
+
+      return $resultSet;
+    }
+
+    public function getPriceFromServiceID($id){
+        $results = $this->getSingle("hotelservicedetails", ["price"], ['service_id' => $id]);
+        return $results;
+    }
+
 }

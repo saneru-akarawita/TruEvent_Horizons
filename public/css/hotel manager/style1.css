@@ -29,6 +29,7 @@
         border: none;
         text-decoration: none;
         text-transform: capitalize;
+        transition: all .3s ease-in-out;
     }
     
     html {

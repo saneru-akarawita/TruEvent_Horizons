@@ -145,7 +145,7 @@
           <div class="box">
               <h3>Contact Us</h3>
           <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-          <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
+          <a href="#"><i class="fa-solid fa-envelope"></i> TruEvent@gmail.com</a>
           <a href="#"><i class="fas fa-map"></i> Colombo</a>
   
   

@@ -63,4 +63,15 @@ class BandModel extends Model
         }
     }
 
+    public function getNumberofServices(){
+
+        $results = $this->getRowCount("bandservicedetails", []);
+        return $results;
+      }
+    
+    public function getPriceFromServiceID($id){
+        $results = $this->getSingle("bandservicedetails", ["price"], ['service_id' => $id]);
+        return $results;
+    }
+
 }

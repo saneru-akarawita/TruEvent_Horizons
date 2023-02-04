@@ -74,6 +74,30 @@ class DecoModel extends Model
         $result = $this->getSingle("chat_users", "*", ['unique_id' => $user_id]);
         return $result;
      }
+
+    public function getNumberofServices(){
+
+        $results = $this->getRowCount("decoservicedetails", []);
+        return $results;
+    }
+
+    public function getRandomServicesFromDeco($limit){
+
+        $resultSet = array();
+
+        foreach ($limit as $number) {
+            
+            $results = $this->getResultSet("decoservicedetails", "*", ['service_id' => $number]);
+            array_push($resultSet, $results);
+        }
+
+        return $resultSet;
+    }
+
+    public function getPriceFromServiceID($id){
+        $results = $this->getSingle("decoservicedetails", ["price"], ['service_id' => $id]);
+        return $results;
+    }
     
 
 }

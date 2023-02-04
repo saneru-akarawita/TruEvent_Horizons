@@ -19,6 +19,7 @@
         <!-- custom css file link -->
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css"/>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     </head>
     <body>
@@ -92,39 +93,81 @@
 
         <div class="main-cards">
 
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">Total Number of Services</p>
-              <span class="material-icons-outlined text-blue">inventory_2</span>
+            <div class="card">
+                <div class="card-inner">
+                <p class="text-primary">Total Number of Customers</p>
+                <span class="material-icons-outlined text-purple">group</span>
+                </div>
+                <span class="text-primary font-weight-bold"><?php echo $data['no_of_customers']?></span>
             </div>
-            <span class="text-primary font-weight-bold">21</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">Total Number of Customers</p>
-              <span class="material-icons-outlined text-orange">add_shopping_cart</span>
-            </div>
-            <span class="text-primary font-weight-bold">5</span>
-          </div>
 
           <div class="card">
             <div class="card-inner">
               <p class="text-primary">Total Number of Service Providers</p>
-              <span class="material-icons-outlined text-green">shopping_cart</span>
+              <span class="material-icons-outlined text-black">support_agent</span>
             </div>
-            <span class="text-primary font-weight-bold">6</span>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_service_providers']?></span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Total Number of Services</p>
+              <span class="material-icons-outlined text-darkBlue">inventory_2</span>
+            </div>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_services']?></span>
           </div>
 
           <div class="card">
             <div class="card-inner">
               <p class="text-primary">Ongoing Reservations</p>
-              <span class="material-icons-outlined text-red">notification_important</span>
+              <span class="material-icons-outlined text-brown">notification_important</span>
             </div>
-            <span class="text-primary font-weight-bold">3</span>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_reservations']?></span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Total Number of Hotels</p>
+              <span class="material-icons-outlined text-blue">hotel</span>
+            </div>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_hotels']?></span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Total Number of Decoration Companies</p>
+              <span class="material-icons-outlined text-red">celebration</span>
+            </div>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_decos']?></span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Total Number of Bands</p>
+              <span class="material-icons-outlined text-green">library_music</span>
+            </div>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_bands']?></span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Total Number of Photography Companies</p>
+              <span class="material-icons-outlined text-orange">photo_camera</span>
+            </div>
+            <span class="text-primary font-weight-bold"><?php echo $data['no_of_photographies']?></span>
           </div>
 
         </div>
+
+        <div class="card" style="width:40%; margin: 0 auto;">
+            <p class="chart-title">Distribution of Users in the System</p>
+            <div class="card-inner">
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+            </div>
+        </div>
+
+        <br><br>
+        
 
         <div class="charts">
 
@@ -141,7 +184,12 @@
         </div>
 </main>
 
-
+<div id="dataContainer1" type="hidden" data-value="{<?php echo $data['no_of_customers'] ?>}"></div>
+<div id="dataContainer2" type="hidden" data-value="{<?php echo $data['no_of_service_providers'] ?>}"></div>
+<div id="dataContainer3" type="hidden" data-value="{<?php echo $data['no_of_hotels'] ?>}"></div>
+<div id="dataContainer4" type="hidden" data-value="{<?php echo $data['no_of_decos'] ?>}"></div>
+<div id="dataContainer5" type="hidden" data-value="{<?php echo $data['no_of_bands'] ?>}"></div>
+<div id="dataContainer6" type="hidden" data-value="{<?php echo $data['no_of_photographies'] ?>}"></div>
 
 
 <!-- Home Package Section  starts -->
@@ -231,7 +279,7 @@
         <div class="box">
             <h3>Contact Us</h3>
         <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-        <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
+        <a href="#"><i class="fa-solid fa-envelope"></i> TruEvent@gmail.com</a>
         <a href="#"><i class="fas fa-map"></i> Colombo</a>
 
 
