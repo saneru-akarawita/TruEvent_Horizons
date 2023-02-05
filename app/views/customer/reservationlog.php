@@ -83,7 +83,7 @@
                                             <div class="progress-box">
                                                 <label for="progress">Status</label>
                                                 <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
-                                                <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                                <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                                 <span><?php echo $value ?>%</span>
                                             </div>
 
@@ -91,7 +91,7 @@
                                             <div class="progress-box">
                                                 <label for="progress">Payments</label>
                                                 <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
-                                                <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                                <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                                 <span><?php echo $value ?>%</span>
                                             </div>
 
@@ -146,7 +146,7 @@
 <!-- Main Start -->
 
 <main class="main">
-            <div class="wrapper">
+            <div class="wrapper" style="display:block">
 
 
                 <div class="hero">
@@ -195,7 +195,7 @@
                                     <div class="progress-box">
                                         <label for="progress">Status</label>
                                         <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                        <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
@@ -203,7 +203,7 @@
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
                                         <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                        <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 

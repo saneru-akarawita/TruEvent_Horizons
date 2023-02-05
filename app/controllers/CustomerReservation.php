@@ -52,6 +52,7 @@ class CustomerReservation extends Controller
                'customer_id' => Session::getUser("id"),
                'svp_id' => trim($_POST['sp_id']),
                'price' => trim($_POST['price']),
+               'service_id' => trim($_POST['service_id']),
                
    
                'rv_type_error' => '',
@@ -77,6 +78,7 @@ class CustomerReservation extends Controller
                'customer_id' => Session::getUser("id"),
                'svp_id' => trim($_POST['sp_id']),
                'price' => trim($_POST['price']),
+               'package_id' => trim($_POST['package_id']),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -177,6 +179,7 @@ class CustomerReservation extends Controller
                   'customer_id' => Session::getUser("id"),
                   'svp_id' => trim($_POST['sp_id']),
                   'price' => trim($_POST['price']),
+                  'service_id'=>trim($_POST['service_id']),
                   
       
                   'rv_type_error' => '',
@@ -202,6 +205,7 @@ class CustomerReservation extends Controller
                   'customer_id' => Session::getUser("id"),
                   'svp_id' => trim($_POST['sp_id']),
                   'price' => trim($_POST['price']),
+                  'package_id'=>trim($_POST['package_id']),
       
                   'rv_type_error' => '',
                   'service_type_error'=>'',
@@ -258,6 +262,7 @@ class CustomerReservation extends Controller
                'rvtime' => '',
                'svp_id' => $spID,
                'price' => $price->price,
+               'service_id' => $service_id,
 
                'rv_type_error' => '',
                'service_type_error'=>'',
