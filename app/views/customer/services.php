@@ -74,10 +74,11 @@
                     <div class="content">
                         <h3><?=$spName;?></h3>
                         <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
+                        
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn">Make Reservation</a> -->
                         <a href="viewEachServiceHotel?service_id=<?=$hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none  border-radius:5px;">View Service</a>
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn">Make Reservation</a> -->
-                        <!-- <a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
+                   
                     </div>
                 </div>
 
@@ -166,8 +167,7 @@
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>" class="btn">Make Reservation</a>  -->
                         <a href="viewEachServiceDeco?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$dcDetails->service_id; ?>" class="btn">Make Reservation</a>  -->
-                        <!-- <a href="viewEachService?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
-                    
+                   
                     </div>
                 </div>
             <?php endforeach; ?>
