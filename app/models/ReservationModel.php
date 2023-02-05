@@ -17,6 +17,8 @@ class ReservationModel extends Model
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
                 'sp_id' => $data['svp_id'],
+                'price' => $data['price'],
+                'service_id' => $data['service_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     
@@ -33,6 +35,8 @@ class ReservationModel extends Model
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
                 // 'sp_id' => $data['sp_id'],
+                'price' => $data['price'],
+                'package_id' => $data['package_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     
@@ -74,5 +78,11 @@ class ReservationModel extends Model
             ['rv_id' => $rvID]);
 
     }
+
+    public function getNumberofReservationsByPaid(){
+
+        $results = $this->getRowCount("customerrvdetails", ["payment" => "not-paid"]);
+        return $results;
+      }
     
 }

@@ -25,6 +25,7 @@
     border: none;
     text-decoration: none;
     text-transform: capitalize;
+    transition: all .3s ease-in-out;
 }
 
 html {
@@ -903,23 +904,23 @@ main .wrapper .hero .project .col .project-card::before {
 
 }
 
-main .wrapper .hero .project .col:nth-child(1) .project-card::before {
+main .wrapper .hero .project .col1 .project-card::before {
     background-color: rgb(76, 15, 243);
     box-shadow: 0px 0px 100px 50px rgb(76, 15, 243);
 }
 
-main .wrapper .hero .project .col:nth-child(2) .project-card::before {
+main .wrapper .hero .project .col2 .project-card::before {
     background-color: rgb(15, 243, 155);
     box-shadow: 0px 0px 100px 50px rgb(15, 243, 155);
 }
 
 
-main .wrapper .hero .project .col:nth-child(3) .project-card::before {
+main .wrapper .hero .project .col3 .project-card::before {
     background-color: rgb(243, 15, 235);
     box-shadow: 0px 0px 100px 50px rgb(243, 15, 235);
 }
 
-main .wrapper .hero .project .col:nth-child(4) .project-card::before {
+main .wrapper .hero .project .col4 .project-card::before {
     background-color: rgb(22, 17, 22);
     box-shadow: 0px 0px 100px 50px rgb(22, 17, 22);
 }

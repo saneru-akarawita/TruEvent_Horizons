@@ -41,7 +41,6 @@
                                                         <li><a href="viewpackages">View Packages</a></li>
                                                         <li><a href="addpackages">Add Packages</a></li>
                                                         <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/adminDashboard/reservationLog">Reservation Log</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/adminDashboard/reviewComplaints">Review Complaints</a></li>
 
                                                 </ul>

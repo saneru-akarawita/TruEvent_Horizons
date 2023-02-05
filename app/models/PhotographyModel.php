@@ -63,4 +63,15 @@ class PhotographyModel extends Model
         }
     }
 
+    public function getNumberofServices(){
+
+        $results = $this->getRowCount("photographyservicedetails", []);
+        return $results;
+      }
+    
+    public function getPriceFromServiceID($id){
+        $results = $this->getSingle("photographyservicedetails", ["price"], ['service_id' => $id]);
+        return $results;
+    }
+
 }
