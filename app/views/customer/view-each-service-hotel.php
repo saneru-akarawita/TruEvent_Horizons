@@ -92,7 +92,7 @@
 
                         <div class="product-price-btn">
         
-                                <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn" style="width:250px; margin-top:-20px; margin-left:-50px;">Make Reservation</a>
+                                <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn" style="width:250px; margin-top:-20px; margin-left:-50px;">Make Reservation</a>
 
                         </div>
 

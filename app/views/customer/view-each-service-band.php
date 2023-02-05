@@ -57,7 +57,7 @@
                 <p>other types of band : <?= $bsDetails->other_band_type;?></p><br>
                 <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
               <div class="product-price-btn">
-              <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $bsDetails->service_name?>&service_type=<?php echo 'Band'?>&sp_id=<?=$serviceProviderID;?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
+              <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $bsDetails->service_name?>&service_type=<?php echo 'Band'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$bsDetails->service_id; ?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>
             <?php } ?>
             <?php endforeach; ?>

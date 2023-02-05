@@ -60,7 +60,7 @@
                 
                 <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span>
               <div class="product-price-btn">
-              <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name?>&service_type=<?php echo 'Photography'?>&sp_id=<?=$serviceProviderID;?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
+              <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name?>&service_type=<?php echo 'Photography'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$psDetails->service_id; ?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>
               <?php } ?>
             <?php endforeach; ?>
