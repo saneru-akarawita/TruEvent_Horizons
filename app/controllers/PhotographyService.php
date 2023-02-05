@@ -19,7 +19,7 @@ class PhotographyService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['band'];  
+         $checkbox1=$_POST['photography'];  
             $chk="";  
             foreach($checkbox1 as $chk1)  
                {  
@@ -98,7 +98,7 @@ class PhotographyService extends Controller
    public function viewEachService(){
          if(isset($_GET['service_id'])){
             $id=$_GET['service_id'];
-            $result = $this->photographyModel->getBandServiceDetailsByServiceID($id);
+            $result = $this->photographyModel->getPhotographyServiceDetailsByServiceID($id);
             $this->view('photography/viewoneservice', $result);
          }
    }

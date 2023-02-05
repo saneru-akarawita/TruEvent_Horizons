@@ -34,13 +34,12 @@
                 <div class="hero">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
-                        <span>Pending| 11 Dec,2022</span>
                     </div>
 
 
                     <div class="hero-search">
                     <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
                         </div>
                         <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
                         <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
@@ -53,31 +52,38 @@
                     </div>
 
                      
-                    <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType =='service') { ?>
-
-                                     <!-- <?= $rvdetails->rv_id; ?> -->
-
+                    <?php foreach ($rvdata as $rvDetails) : ?>
+                                                <?php 
+                                                        $sp_id_arr = explode (",", $rvDetails->sp_id);
+                                                ?>
+                                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                                    <?php if ($new_sp_id == $spID) { ?>
+                 
                     <div class="project">
                        <div class="col">
                             <div class="project-card">
                                 <div class="card-header">
-                                    <type class="type">Service - <?= $rvdetails->spType; ?></type>
-                                    <date class="date"><?= $rvdetails->rvDate; ?></date>
+                                    <type class="type">Reservation ID - <?= $rvDetails->rv_id; ?></type>
+                                    <date class="date"><?= $rvDetails->rvDate; ?></date>
                                     <span><i class="bx bx-dots-vertical-rounded"></i></span>
                                 </div>
                                 
 
                                 <div class="card-body">
-                                    <h6><?= $rvdetails->eventName; ?></h6>
-                                    <p><?= $rvdetails->spName; ?></p>
-                                    <p><?= $rvdetails->rvTime; ?></p>
+                                    <h6><?= $rvDetails->eventName; ?></h6>
+                                    <p><?= $rvDetails->spName; ?></p>
+                                    <p><?= $rvDetails->rvTime; ?></p>
+                                    <?php foreach ($cusdata as $cus) : ?>
+                                        <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>
+                                                <p><?= $cus->fname; ?> <?= $cus->lname; ?></p>
+                                                <?php } ?>
+                                        <?php endforeach; ?>
                                     <p>LKR.125 000.00 per head</p>
 
 
                                     <div class="progress-box">
                                         <label for="progress">Status</label>
-                                        <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
+                                        <?php if($rvDetails->status == "pending") $value="0"; else $value="100";?>
                                         <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
@@ -85,7 +91,7 @@
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else $value="100";?>
                                         <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
@@ -93,9 +99,9 @@
                                 </div>
                             
                                 <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                    <a href="#" class="buttond">cancel</a>
+                                    <a href="viewReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttond">view</a>
+                                    <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
+                                    <a href="#" class="buttond">Decline</a>
 
                             </div>
 
@@ -122,8 +128,8 @@
                         </div>
 
                         <?php } ?>
-                                                    <?php endforeach; ?>
-
+                        <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
 
                 </div>
@@ -139,7 +145,7 @@
         <!-- Main End -->
 <!-- Main Start -->
 
-<main class="main">
+<!-- <main class="main">
             <div class="wrapper">
 
 
@@ -167,8 +173,6 @@
                      
                     <?php foreach ($data as $rvdetails) : ?>
                                     <?php if($rvdetails->rvType !='service') { ?>
-
-                                     <!-- <?= $rvdetails->rv_id; ?> -->
 
                     <div class="project">
                        <div class="col">
@@ -242,7 +246,7 @@
 </div>
 
 </div>
-</main>                               
+</main>                                -->
         <!-- footer start -->
         <section class="footer">
             <div class="overlay"></div>

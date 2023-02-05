@@ -6,12 +6,11 @@ class BandModel extends Model
         $this->insert('bandservicedetails', [
 
             'service_name' => $data['name'],
-            'other_band' => $data['other_band'],
-            'num_players' => $data['num_players'],
+            'other_band_type' => $data['other_band'],
+            'no_of_players' => $data['num_players'],
             'price'=>$data['price'],
-            'music_item' => $data['band'],
+            'band_type' => $data['band'],
             'service_provider_id' => $data['service_provider_id']
-
          ]);
     }
 
@@ -56,7 +55,7 @@ class BandModel extends Model
                 return false;
         }
         else{
-            if($this->update('bandsservicedetails', ['active' => $status], ['service_id' => $id]))
+            if($this->update('bandservicedetails', ['active' => $status], ['service_id' => $id]))
                 return true;
             else
                 return false;

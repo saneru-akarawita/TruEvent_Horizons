@@ -33,7 +33,6 @@
                 <div class="hero">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
-                        <span>Pending| 11 Dec,2022</span>
                     </div>
 
 

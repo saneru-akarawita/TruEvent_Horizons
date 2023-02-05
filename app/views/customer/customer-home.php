@@ -108,7 +108,6 @@
                 <div class="content">
                     <h3>Anniversary Package</h3>
                     <p>Plan your anniversary</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 7500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -121,7 +120,6 @@
                 <div class="content">
                     <h3>Birthdy Package</h3>
                     <p>Enjoy your birthdays</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 8500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>
@@ -134,7 +132,6 @@
                 <div class="content">
                     <h3>Fair Wells Package</h3>
                     <p>Have Fun</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">Rs. 5500</p> -->
                     <a href="#" class="btn">View Package</a>
                 </div>
             </div>

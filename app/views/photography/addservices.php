@@ -24,7 +24,7 @@
       <!-- <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/photography/addNewService" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/photographyService/addNewService" method="post" class="form">
             <h1 class="title" style="font-size:3rem;">Add Photography Service</h1>
 
             

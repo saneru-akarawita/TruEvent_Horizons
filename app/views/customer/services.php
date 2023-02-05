@@ -46,6 +46,8 @@
     <?php $data0 = $data[0]; ?>
     <?php $data1 = $data[1]; ?>
     <?php $data2 = $data[2]; ?>
+    <?php $data3 = $data[3]; ?>
+    <?php $data4 = $data[4]; ?>
     <!-- Hotel Section  starts -->
 
     <section class="home-packages" id="hotels">
@@ -72,8 +74,11 @@
                     <div class="content">
                         <h3><?=$spName;?></h3>
                         <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
-                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn">Make Reservation</a>
-                        <!-- <a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" class="viewButton" name="viewaction" value="view" style="text-decoration:none">View</a> -->
+                        
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn">Make Reservation</a> -->
+                        <a href="viewEachServiceHotel?service_id=<?=$hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none  border-radius:5px;">View Service</a>
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn">Make Reservation</a> -->
+                   
                     </div>
                 </div>
 
@@ -159,9 +164,10 @@
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>
                         <p>Provided by <?= $spName ?></p>
-                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$dcDetails->service_id; ?>" class="btn">Make Reservation</a> 
-                        <!-- <a href="viewEachService?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
-                    
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>" class="btn">Make Reservation</a>  -->
+                        <a href="viewEachServiceDeco?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$dcDetails->service_id; ?>" class="btn">Make Reservation</a>  -->
+                   
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -214,8 +220,37 @@
 
     <!-- Music Band Starts -->
 
-
     <section class="home-packages" id="bands">
+    <h1 class="heading-title"> Bands</h1>
+
+    <div class="box-container">
+    <?php $dcount=0?>
+            <?php foreach ($data3 as $bsDetails) : ?>
+                <?php $dcount= $dcount+1;?>
+                <?php $serviceProviderID = $bsDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
+                <div class="box">
+                    <div class="image">
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $bsDetails->service_name; ?></h3>
+                        <p>Provided by <?= $spName ?></p>
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $bsDetails->service_name ?>&service_type=<?php echo 'Band' ?>" class="btn">Make Reservation</a>  -->
+                        <a href="viewEachServiceBand?service_id=<?=$bsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section> 
+
+    <!-- <section class="home-packages" id="bands">
 
         <h1 class="heading-title"> Music Band</h1>
 
@@ -227,8 +262,7 @@
                 <div class="content">
                     <h3>Stage Revolution</h3>
                     <p>Last Minute Deals Find Your Next Getaway</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
-                    <a href="services.php" class="btn" style="border-radius:5px;">View Service</a>
+                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
@@ -240,7 +274,6 @@
                 <div class="content">
                     <h3>Ecstasy</h3>
                     <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -253,7 +286,6 @@
                 <div class="content">
                     <h3>Velvet Concord</h3>
                     <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -266,7 +298,6 @@
                 <div class="content">
                     <h3>Turning Jane</h3>
                     <p>Make Your Event More Memorable</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -274,18 +305,48 @@
 
         </div>
 
-        </div>
+        </div> -->
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
-    </section>
+    <!-- </section> -->
 
     <!-- Music Band Section Ends -->
 
 
     <!-- Photography Section  Starts -->
 
-
     <section class="home-packages" id="photography">
+    <h1 class="heading-title"> Photography</h1>
+
+    <div class="box-container">
+            <?php $dcount=0?>
+            <?php foreach ($data4 as $psDetails) : ?>
+                <?php $dcount= $dcount+1;?>
+                <?php $serviceProviderID = $psDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
+                <div class="box">
+                    <div class="image">
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $psDetails->service_name; ?></h3>
+                        <p>Provided by <?= $spName ?></p>
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name ?>&service_type=<?php echo 'Photography'?>" class="btn">Make Reservation</a>  -->
+                        <a href="viewEachServicePhotography?service_id=<?=$psDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
+                    
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+    <!-- <section class="home-packages" id="photography">
 
         <h1 class="heading-title"> Photography</h1>
 
@@ -297,7 +358,6 @@
                 <div class="content">
                     <h3>Image Studio</h3>
                     <p>Our lens capture your moments in all their flavor and fancies</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$750</p> -->
                     <a href="services.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -310,7 +370,6 @@
                 <div class="content">
                     <h3>Exlusion Pictures</h3>
                     <p>The work of a photographer is to simplify reality</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -323,7 +382,6 @@
                 <div class="content">
                     <h3>The Artsy Lens</h3>
                     <p>Photography is the art of catching memories</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$550</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
@@ -336,18 +394,17 @@
                 <div class="content">
                     <h3>Flutter Me Shutters </h3>
                     <p>Capture the moments you nevr want to forget</p>
-                    <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
                     <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
                 </div>
             </div>
 
         </div>
 
-        </div>
+        </div> --> 
 
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
-    </section>
+    <!-- </section> -->
 
     <!-- Photography Section Ends -->
 

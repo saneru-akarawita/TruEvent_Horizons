@@ -40,7 +40,8 @@
             <div class="product-info">
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
-                <h2>Theme: <?= $data->theme;?></h2>
+                <h2><?= Session::getUser('name')?></h2>
+                <p>Theme: <?= $data->theme;?></p>
                 <p>Decoration items:<br><?= $data->decoration_item;?></p>
                 <p><?= $data->other_decoration;?></p><br>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
