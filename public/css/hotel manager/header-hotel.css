@@ -60,7 +60,7 @@
       
       .active, .menu-bar ul li :hover{
               background-color: rgb(232, 227, 227);
-              color:#8e44ad;
+              color:#50116c;
               padding-top: 8px;
               padding-left:8px;
               padding-right: 8px;    
@@ -81,7 +81,7 @@
               display: block;
               position: absolute;
               background-color: rgb(155, 149, 149);
-              color:#8e44ad;
+              color:#50116c;
               margin-top: 5px;
               margin-left: 15px;
       }
@@ -104,7 +104,7 @@
       
       .menu-bar ul li:hover .sub-menu1 ul a:hover{
         background-color: rgb(232, 227, 227);
-        color:#8e44ad;
+        color:#50116c;
       }
       
       .icons li{

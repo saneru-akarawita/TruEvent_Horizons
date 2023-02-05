@@ -9,12 +9,11 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
-        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/services.css">
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+<?php require APPROOT . "/views/customer/header-customer.php" ?>
 <!-- header section starts -->
 <!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
@@ -33,65 +32,73 @@
 
 </section>
  -->
-<?php $serviceID = $data[0]; ?>
-<?php $data0 = $data[1]; ?>
-<?php $data1 = $data[2]; ?>
+
+ <?php $serviceID = $data[0]; ?>
+ <?php $data1 = $data[1]; ?>
+ <?php $data2 = $data[2]; ?>
 
 <div class="wrapper">
         <div class="product-img">
                 <img src="<?php echo URLROOT ?>/public/images/hotel manager/images/image.jpg" height="100%" max-width="100%">
         </div>
+
         <div class="product-info">
                 <div class="product-text">
-                <?php echo $serviceID;?>
-                <?php $serviceProviderID = $data1->service_provider_id; ?>
-                
+                <?php foreach ($data2 as $hsDetails) : ?>
+                <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
 
-                    <?php if ($data0->service_provider_id == $serviceProviderID) { ?>
-                        <?php $spName = $data0->company_name;
+                <?php foreach ($data1 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
                     } ?>
-                    <?php if($data1->service_id==$service_id) {?>
-                        <h1><?= $data1->service_type;?></h1>
+                    <?php endforeach; ?>
+                    <?php if($hsDetails->service_id == $serviceID) {?> 
+                        <h1><?= $hsDetails->service_type;?></h1>
                         <h2><?php echo $spName ?></h2>
                         <div class="description">
                                 <table id="details12">
                                 <tr>
                                         <td>Hall Name </td>
-                                        <td>: <?= $data1->hall_name;?></td>
+                                        <td>: <?= $hsDetails->hall_name;?></td>
                                 </tr>
                                 <tr>
                                         <td>Location </td>
-                                        <td>: <?= $data1->location;?></td>
+                                        <td>: <?= $hsDetails->location;?></td>
                                 </tr>
                                 <tr>
                                         <td>Hall Type </td>
-                                        <td>: <?= $data1->hall_type;?></td>
+                                        <td>: <?= $hsDetails->hall_type;?></td>
                                 </tr>
                                 <tr>
                                         <td>Air Condition Status </td>
-                                        <td>: <?php if($data1->ac_status) echo "Available"; else echo "Non-Available";?></td>
+                                        <td>: <?php if($hsDetails->ac_status) echo "Available"; else echo "Non-Available";?></td>
                                 </tr>
                                 <tr>
                                         <td>Max Crowd </td>
-                                        <td>: <?= $data1->max_crowd;?></td>
+                                        <td>: <?= $hsDetails->max_crowd;?></td>
                                 </tr>
                                 <tr>
                                         <td>Other Facilities </td>
-                                        <td>:<?php if(empty($data1->other_facilities)) echo " None"; else  echo $data1->other_facilities; ?> </td>
+                                        <td>:<?php if(empty($hsDetails->other_facilities)) echo " None"; else  echo $hsDetails->other_facilities; ?> </td>
                                          
                                         
                                 </tr>
                                 </table>
-                                <span style="margin-left:45px">LKR 125,000 per head</span>
+                                <span style="margin-left:45px">LKR <?= $hsDetails->price;?> per head</span>
                                 <p style="margin-top:15px; margin-left:-0.5px">**Food Menu will be discussed and decided manually</p>
                         </div>
+
                         <br>
+
                         <div class="product-price-btn">
-                                <!-- <button type="button" style="margin-top:-100px; width:250px;"></button> -->
-                        <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>" class="btn">Make Reservation</a>
-                              
+        
+                                <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn" style="width:250px; margin-top:-20px; margin-left:-50px;">Make Reservation</a>
+
                         </div>
-                    <?php } ?>
+
+                        <?php } ?>
+            <?php endforeach; ?>
+                        
                 </div>
         </div>
 </div>
@@ -146,5 +153,4 @@ Created By <span>TruEvent</span> | All Rights Reserved
 <!-- footer ends -->
 
 </body>
-
 </html>

@@ -134,7 +134,11 @@ class PhotographyDashboard extends Controller
 
    public function reservationLog()
    {
-      $this->view('photography/Reservationlog', '');
+         $spID = Session::getUser("id");
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result = array($spID, $reservationsList, $customerlist);
+         $this->view('Photography/Reservationlog',$result);
    }
 
    public function logout()

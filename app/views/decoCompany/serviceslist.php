@@ -59,7 +59,7 @@
                 <p style="font-size:small" >Plan your <?= $dsDetails->service_name; ?> </p><br>
                 <button class="viewButton" style="margin-left:-4px;"><a href="viewEachService?service_id=<?=$dsDetails->service_id; ?>"  name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
                 <button class="editButton"><a href="editService?service_id=<?=$dsDetails->service_id; ?>"  name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
-                <button class="deleteButton"><a href="deleteService?service_id=<?=$dsDetails->service_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                <button class="deleteButton"><a href="deactivate?service_id=<?=$dsDetails->service_id; ?>"  name="deleteaction" value="delete" style="color:white; font-weight:550;">Disable</a></button>
             </div>
         </div>
         <?php } else { ?>

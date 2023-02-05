@@ -133,14 +133,29 @@ class HotelDashboard extends Controller
       $this->view('hotelManager/Reports', '');
    }
 
+   public function reservationDetails()
+   {
+         $spID = Session::getUser("id");
+         if(isset($_GET['rv_id'])){
+            $rvID=$_GET['rv_id'];
+         }
+         $hoteldetailslist = $this->hotelModel->getServicesByServiceProvider($spID);
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result = array($spID,$rvID,$reservationsList,$customerlist,$hoteldetailslist);
+         $this->view('hotelManager/view-reservation',$result);
+   }
+
    public function reservationLog()
    {
          $spID = Session::getUser("id");
+
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $result = array($spID, $reservationsList, $customerlist);
          $this->view('hotelManager/Reservationlog',$result);
    }
+
 
    public function editService()
    {

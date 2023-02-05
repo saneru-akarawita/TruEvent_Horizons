@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/calender.css" />
 
-
-
 </head>
 
 <body>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
+<?php require APPROOT . "/views/customer/header-customer.php" ?>
 
             <!-- header section starts -->
     <!-- <section class="header">
@@ -31,7 +31,9 @@
     
     
         </section> -->
-
+<?php $serviceID = $data[0]; ?>
+<?php $data1 = $data[1]; ?>
+<?php $data2 = $data[2]; ?>
 
         <div class="wrapper">
             <div class="product-img">
@@ -39,15 +41,26 @@
             </div>
             <div class="product-info">
               <div class="product-text">
-                <h1><?= $data->service_name;?></h1><br>
-                <h2><?= Session::getUser('name')?></h2>
-                <p>Theme: <?= $data->theme;?></p>
-                <p>Decoration items:<br><?= $data->decoration_item;?></p>
-                <p><?= $data->other_decoration;?></p><br>
-                <span style="margin-left:45px"><?= $data->price;?> LKR</span>
+              <?php foreach ($data2 as $dsDetails) : ?>
+                <?php $serviceProviderID = $dsDetails->service_provider_id; ?>
+
+                <?php foreach ($data1 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                    <?php endforeach; ?>
+                    <?php if($dsDetails->service_id == $serviceID) { ?> 
+                <h1><?= $dsDetails->service_name;?></h1><br>
+                <h2><?php echo $spName ?></h2>
+                <p>Theme: <?= $dsDetails->theme;?></p>
+                <p>Decoration items:<br><?= $dsDetails->decoration_item;?></p>
+                <p><?= $dsDetails->other_decoration;?></p><br>
+                <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span>
               <div class="product-price-btn">
-                <button type="button" onclick="history.back()">Back</button>
+              <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dsDetails->service_name ?>&service_type=<?php echo 'Decoration'?>&sp_id=<?=$serviceProviderID;?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>
+              <?php } ?>
+            <?php endforeach; ?>
               </div>
             </div>
         </div>

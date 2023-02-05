@@ -12,8 +12,8 @@ class CustomerDashboard extends Controller
       $this->userModel = $this->model('userModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->customerModel = $this->model('CustomerModel');
-      // $this->bandModel = $this->model('BandModel');
-      // $this->photographyModel = $this->model('PhotographyModel');
+      $this->bandModel = $this->model('BandModel');
+      $this->photographyModel = $this->model('PhotographyModel');
       $this->reservationModel = $this->model('ReservationModel');
      
    }
@@ -42,8 +42,10 @@ class CustomerDashboard extends Controller
       $result1 = $this->serviceProviderModel->getServiceProviderDetails();
       $result2 = $this->decoModel->getDecoServiceDetails();
       $result3 = $this->hotelModel->getHotelServiceDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $result8 = $this->bandModel->getBandServiceDetails();
       
-      $result = array($result1, $result2, $result3);
+      $result = array($result1, $result2, $result3,$result8,$result6);
       $this->view('customer/services',  $result);
    }
 
@@ -124,12 +126,52 @@ class CustomerDashboard extends Controller
 
    public function viewEachServiceHotel()
    {
-      $service_id = $_GET['service_id'];
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
       $result1 = $this->serviceProviderModel->getServiceProviderDetails();
       $result3 = $this->hotelModel->getHotelServiceDetails();
-   
-      $this->view('customer/view-each-service-hotel',$service_id,$result1,$result3);
+      $result4 = array($service_id, $result1, $result3);
+      $this->view('customer/view-each-service-hotel',$result4);
    }
+
+   public function viewEachServiceDeco()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->decoModel->getDecoServiceDetails();
+      $result5 = array($service_id, $result1, $result2);
+      $this->view('customer/view-each-service-deco',$result5);
+   }
+
+   public function viewEachServicePhotography()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $result7 = array($service_id, $result1, $result6);
+      $this->view('customer/view-each-service-photography',$result7);
+   }
+
+   public function viewEachServiceBand()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result8 = $this->bandModel->getBandServiceDetails();
+      $result9 = array($service_id, $result1, $result8);
+      $this->view('customer/view-each-service-band',$result9);
+   }
+
 
    public function provideFeedback()
    {

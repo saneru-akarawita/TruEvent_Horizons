@@ -6,10 +6,10 @@ class PhotographyModel extends Model
         $this->insert('photographyservicedetails', [
 
             'service_name' => $data['name'],
-            'other_photography' => $data['other_photography'],
+            'other_features' => $data['other_photography'],
             // 'num_members' => $data['num_members'],
             'price'=>$data['price'],
-            'photography_features' => $data['photography'],
+            'photo_features' => $data['photography'],
             'service_provider_id' => $data['service_provider_id']
 
          ]);
@@ -56,7 +56,7 @@ class PhotographyModel extends Model
                 return false;
         }
         else{
-            if($this->update('photographyervicedetails', ['active' => $status], ['service_id' => $id]))
+            if($this->update('photographyservicedetails', ['active' => $status], ['service_id' => $id]))
                 return true;
             else
                 return false;

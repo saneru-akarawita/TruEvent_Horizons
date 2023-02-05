@@ -3,7 +3,7 @@ class BandService extends Controller
 {
    public function __construct()
    {
-      // Session::validateSession([6]);
+      Session::validateSession([6]);
       $this->bandModel = $this->model('BandModel');
    }
 

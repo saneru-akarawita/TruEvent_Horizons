@@ -131,10 +131,14 @@ class BandDashboard extends Controller
    {
       $this->view('band/Reports', '');
    }
-
+   
    public function reservationLog()
    {
-      $this->view('band/Reservationlog', '');
+         $spID = Session::getUser("id");
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result = array($spID, $reservationsList, $customerlist);
+         $this->view('Band/Reservationlog',$result);
    }
 
    public function logout()

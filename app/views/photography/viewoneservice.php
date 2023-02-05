@@ -42,9 +42,9 @@
             <div class="product-info">
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
-                <!-- <h2>No of players : <?= $data->num_players;?></h2> -->
-                <p>Features:<br><?= $data->photography_item;?></p>
-                <p><?= $data->photography_band;?></p><br>
+                <h2><?= Session::getUser('name')?></h2>
+                <p>Features:<br><?= $data->photo_features;?></p>
+                <p>Other Features:<br><?= $data->other_features;?></p>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>

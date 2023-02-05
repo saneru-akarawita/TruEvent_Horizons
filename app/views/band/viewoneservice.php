@@ -42,9 +42,10 @@
             <div class="product-info">
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
-                <h2>No of players : <?= $data->num_players;?></h2>
-                <p>Music Types:<br><?= $data->band_item;?></p>
-                <p><?= $data->other_band;?></p><br>
+                <h2><?= Session::getUser('name')?></h2>
+                <p>No of players : <?= $data->no_of_players;?></p>
+                <p>Music Types:<br><?= $data->band_type;?></p>
+                <p>other types of band : <?= $data->other_band_type;?></p><br>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>
