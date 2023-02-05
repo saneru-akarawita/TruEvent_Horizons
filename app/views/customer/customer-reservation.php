@@ -103,7 +103,8 @@
 
                 <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
                 <input class="rvdate" type="hidden" name="price" id="price" value="<?php echo $data[2]['price']?>" style="text-transform: none;">
-                
+                <input class="rvdate" type="hidden" name="service_id" id="service_id" value="<?php echo $data[2]['service_id']?>" style="text-transform: none;">
+
                 <div class="footer-container">
                     <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>
                 </div>
@@ -182,7 +183,7 @@
 
                 <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
                 <input class="rvdate" type="hidden" name="price" id="price" value="<?php echo $data[2]['price']?>" style="text-transform: none;">
-
+                <input class="rvdate" type="hidden" name="service_id" id="service_id" value="<?php echo $data[2]['service_id']?>" style="text-transform: none;">
 
                 <div class="footer-container">
                     <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>
