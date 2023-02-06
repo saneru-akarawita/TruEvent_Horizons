@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<?php require APPROOT . "/views/admin/header-admin.php" ?>
+    <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
     <!-- header section starts -->
     <!-- <section class="header">
@@ -35,8 +35,8 @@
         </nav> -->
 
 
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
+    <!-- Gives a Menu Button -->
+    <button id="menu-btn" class="fas fa-bars"></button>
 
 
     <!-- </section> -->
@@ -55,9 +55,9 @@
         <h1 class="heading-title"> Hotels</h1>
 
         <div class="box-container">
-            <?php $hcount=0?>
+            <?php $hcount = 0 ?>
             <?php foreach ($data2 as $hsDetails) : ?>
-                <?php $hcount= $hcount+1;?>
+                <?php $hcount = $hcount + 1; ?>
                 <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -68,17 +68,17 @@
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
 
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . $hcount%7 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . ($hcount % 7 + 1) . ".jpg'>"; ?>
 
                     </div>
                     <div class="content">
-                        <h3><?=$spName;?></h3>
-                        <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
-                        
-                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn">Make Reservation</a> -->
-                        <!-- <a href="viewEachServiceHotel?service_id=<?=$hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none  border-radius:5px;">View Service</a> -->
-                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn">Make Reservation</a> -->
-                   
+                        <h3><?= $spName; ?></h3>
+                        <p><?= $hsDetails->service_type; ?> - <?= $hsDetails->hall_name ?></p>
+
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $hsDetails->hall_name ?>&service_type=<?php echo 'Hotel' ?>&sp_id=<?= $serviceProviderID; ?>" class="btn">Make Reservation</a> -->
+                        <!-- <a href="viewEachServiceHotel?service_id=<?= $hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none  border-radius:5px;">View Service</a> -->
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $hsDetails->hall_name ?>&service_type=<?php echo 'Hotel' ?>&sp_id=<?= $serviceProviderID; ?>&service_id=<?= $hsDetails->service_id; ?>" class="btn">Make Reservation</a> -->
+
                     </div>
                 </div>
 
@@ -147,9 +147,9 @@
         <h1 class="heading-title"> Decorations</h1>
 
         <div class="box-container">
-            <?php $dcount=0?>
+            <?php $dcount = 0 ?>
             <?php foreach ($data1 as $dcDetails) : ?>
-                <?php $dcount= $dcount+1;?>
+                <?php $dcount = $dcount + 1; ?>
                 <?php $serviceProviderID = $dcDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -159,15 +159,15 @@
                 <?php endforeach; ?>
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount % 5 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>
                         <p>Provided by <?= $spName ?></p>
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>" class="btn">Make Reservation</a>  -->
-                        <!-- <a href="viewEachServiceDeco?service_id=<?=$dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
-                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$dcDetails->service_id; ?>" class="btn">Make Reservation</a>  -->
-                   
+                        <!-- <a href="viewEachServiceDeco?service_id=<?= $dcDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dcDetails->service_name ?>&service_type=<?php echo 'Decoration' ?>&sp_id=<?= $serviceProviderID; ?>&service_id=<?= $dcDetails->service_id; ?>" class="btn">Make Reservation</a>  -->
+
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -221,12 +221,12 @@
     <!-- Music Band Starts -->
 
     <section class="home-packages" id="bands">
-    <h1 class="heading-title"> Bands</h1>
+        <h1 class="heading-title"> Bands</h1>
 
-    <div class="box-container">
-    <?php $dcount=0?>
+        <div class="box-container">
+            <?php $dcount = 0 ?>
             <?php foreach ($data3 as $bsDetails) : ?>
-                <?php $dcount= $dcount+1;?>
+                <?php $dcount = $dcount + 1; ?>
                 <?php $serviceProviderID = $bsDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -236,19 +236,19 @@
                 <?php endforeach; ?>
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount % 5 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
                         <p>Provided by <?= $spName ?></p>
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $bsDetails->service_name ?>&service_type=<?php echo 'Band' ?>" class="btn">Make Reservation</a>  -->
-                        <!-- <a href="viewEachServiceBand?service_id=<?=$bsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
+                        <!-- <a href="viewEachServiceBand?service_id=<?= $bsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-</section> 
+        </div>
+    </section>
 
     <!-- <section class="home-packages" id="bands">
 
@@ -307,7 +307,7 @@
 
         </div> -->
 
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
+    <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     <!-- </section> -->
 
     <!-- Music Band Section Ends -->
@@ -316,12 +316,12 @@
     <!-- Photography Section  Starts -->
 
     <section class="home-packages" id="photography">
-    <h1 class="heading-title"> Photography</h1>
+        <h1 class="heading-title"> Photography</h1>
 
-    <div class="box-container">
-            <?php $dcount=0?>
+        <div class="box-container">
+            <?php $dcount = 0 ?>
             <?php foreach ($data4 as $psDetails) : ?>
-                <?php $dcount= $dcount+1;?>
+                <?php $dcount = $dcount + 1; ?>
                 <?php $serviceProviderID = $psDetails->service_provider_id; ?>
 
                 <?php foreach ($data0 as $spdetails) : ?>
@@ -331,20 +331,20 @@
                 <?php endforeach; ?>
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount % 5 + 1 . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $psDetails->service_name; ?></h3>
                         <p>Provided by <?= $spName ?></p>
-                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name ?>&service_type=<?php echo 'Photography'?>" class="btn">Make Reservation</a>  -->
-                        <!-- <a href="viewEachServicePhotography?service_id=<?=$psDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
-                    
+                        <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name ?>&service_type=<?php echo 'Photography' ?>" class="btn">Make Reservation</a>  -->
+                        <!-- <a href="viewEachServicePhotography?service_id=<?= $psDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a> -->
+
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-</section>
+        </div>
+    </section>
 
     <!-- <section class="home-packages" id="photography">
 
@@ -400,10 +400,10 @@
 
         </div>
 
-        </div> --> 
+        </div> -->
 
 
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
+    <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     <!-- </section> -->
 
     <!-- Photography Section Ends -->
