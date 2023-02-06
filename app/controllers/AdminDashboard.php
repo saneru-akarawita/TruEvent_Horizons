@@ -50,6 +50,19 @@ class AdminDashboard extends Controller
       redirect('Packages/viewAllPackages');
    }
 
+   public function viewservices()
+   {
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->decoModel->getDecoServiceDetails();
+      $result3 = $this->hotelModel->getHotelServiceDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $result8 = $this->bandModel->getBandServiceDetails();
+      
+      $result = array($result1, $result2, $result3,$result8,$result6);
+      $this->view('common/services',  $result);
+   }
+
+
    public function profileSettings()
    {
       Session::validateSession([2]);
@@ -148,6 +161,47 @@ class AdminDashboard extends Controller
       $user = $this->adminModel->getUserByUserId($user_id);
       $this->view('admin/chat', $user);
    }
+
+   //------------- view offers functions start -------------------
+
+   public function randomGen($min, $numberOfServices, $quantity) {
+      $numbers = range($min, $numberOfServices);
+      shuffle($numbers);
+      return array_slice($numbers, 0, $quantity);
+   }
+
+   public function generateRandomArrayforEachServiceType($numberOfServices) {
+
+      $min = 1;
+
+      if($numberOfServices >= 4) {
+         $quantity = 4;
+      } else {
+         $quantity = $numberOfServices;
+      }
+
+      $randomNoArray = $this->randomGen($min, $numberOfServices, $quantity);
+      return $randomNoArray;
+   }
+
+
+   public function viewOffers()
+   {
+      $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
+      $hotelServiceNo = $this->hotelModel->getNumberofServices();
+      $decoServiceNo = $this->decoModel->getNumberofServices();
+
+      
+
+      $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
+      $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      
+      $this->view('common/special-offers', $resultArray);
+   }
+
+   //------------- view offers functions ends -------------------
 
    public function payment()
    {

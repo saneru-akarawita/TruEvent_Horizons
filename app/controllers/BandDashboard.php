@@ -13,6 +13,8 @@ class BandDashboard extends Controller
       $this->adminModel = $this->model('AdminModel');
       $this->userModel = $this->model('UserModel');
       $this->bandModel = $this->model('BandModel');
+      $this->hotelModel = $this->model('HotelModel');
+      $this->decoModel = $this->model('DecoModel');
    }
 
    public function home()
@@ -121,6 +123,48 @@ class BandDashboard extends Controller
       $user = $this->bandModel->getUserByUserId($user_id);
       $this->view('band/chat', $user);
    }
+
+      //------------- view offers functions start -------------------
+
+      public function randomGen($min, $numberOfServices, $quantity) {
+         $numbers = range($min, $numberOfServices);
+         shuffle($numbers);
+         return array_slice($numbers, 0, $quantity);
+      }
+   
+      public function generateRandomArrayforEachServiceType($numberOfServices) {
+   
+         $min = 1;
+   
+         if($numberOfServices >= 4) {
+            $quantity = 4;
+         } else {
+            $quantity = $numberOfServices;
+         }
+   
+         $randomNoArray = $this->randomGen($min, $numberOfServices, $quantity);
+         return $randomNoArray;
+      }
+   
+   
+      public function viewOffers()
+      {
+         $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
+         $hotelServiceNo = $this->hotelModel->getNumberofServices();
+         $decoServiceNo = $this->decoModel->getNumberofServices();
+   
+         
+   
+         $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
+         $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+   
+         $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+         
+         $this->view('common/special-offers', $resultArray);
+      }
+   
+      //------------- view offers functions ends -------------------
+   
 
    public function payment()
    {

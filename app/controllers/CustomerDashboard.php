@@ -15,6 +15,7 @@ class CustomerDashboard extends Controller
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
       $this->reservationModel = $this->model('ReservationModel');
+      $this->packageModel = $this->model('PackageModel');
      
    }
 
@@ -34,7 +35,16 @@ class CustomerDashboard extends Controller
 
    public function viewpackages()
    {
-      redirect('Packages/viewAllPackages');
+      $result = $this->packageModel->getPackageDetails();
+      $this->view('common/view-packages',  $result);
+   }
+
+   public function viewEachPackage(){
+      if(isset($_GET['package_id'])){
+         $id=$_GET['package_id'];
+         $result = $this->packageModel->getPackageDetailsByPackageID($id);
+         $this->view('common/view-each-package', $result);
+      }
    }
 
    public function viewservices()
