@@ -39,7 +39,7 @@
                                 <li><a href="">Packages</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="">View Packages</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages">View Packages</a></li>
                                                         <li><a href="addReservation">Add Reservation</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="viewReservationLog">Reservation Log</a></li>

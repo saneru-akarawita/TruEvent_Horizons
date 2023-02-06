@@ -30,7 +30,7 @@
                                                 <ul>
                                                         <li><a href="viewservices">View Bands</a></li>
                                                         <li><a href="addservices">Add Bands</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/BandDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/BandDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>
@@ -39,7 +39,7 @@
                                         <div class="sub-menu1">
                                                 <ul>
                                                         <li><a href="">View Packages</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/BandDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/BandDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>
