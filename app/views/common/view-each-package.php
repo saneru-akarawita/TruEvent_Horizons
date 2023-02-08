@@ -13,6 +13,12 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/each-package-style.css">
 
+        <style>
+            .backbutton{
+                margin:0px 1.5px;
+            }
+        </style>
+
     </head>
     <body>
 
@@ -90,7 +96,10 @@
                     </table>   
                 </a>
                 <br><br><br>
-                <input type="button" class="backbutton" style="float:right; margin-right:40%" value="Go back!" onclick="history.back()">          
+                <?php if(Session::getUser('type')==3){ ?>
+                    <button class="viewButton"  style="margin-left:44px;  width:150px; background-color:black"><a href="<?php echo URLROOT; ?>/customerReservation/addReservationByPackages?package_id=<?=$data->package_id?>&package_name=<?=$data->package_name?>&package_type=<?=$data->package_type?>&sp_id_string=<?=$data->sp_id_string?>"  name="viewaction" value="view" style="color:white; font-weight:550;">Make Reservation</a></button>
+                <?php } ?>     
+                <input type="button" class="backbutton" style="float:left; margin-left:30%" value="Go back!" onclick="history.back()">     
             </li>
         </ul>
 </section>
