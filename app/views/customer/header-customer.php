@@ -27,10 +27,10 @@
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="viewservices">View Services</a></li>
-                                                        <li><a href="addReservation">Add Reservation</a></li>
-                                                        <li><a href="viewOffers">Offers/Promotions</a></li>
-                                                        <li><a href="viewReservationLog">Reservation Log</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewservices">View Services</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewservices">Add Reservation</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewOffers">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewReservationLog">Reservation Log</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/provideFeedback">Provide Feedbacks</a></li>
 
                                                 </ul>
@@ -40,15 +40,15 @@
                                         <div class="sub-menu1">
                                                 <ul>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages">View Packages</a></li>
-                                                        <li><a href="addReservation">Add Reservation</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages">Add Reservation</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewOffers">Offers/Promotions</a></li>
-                                                        <li><a href="viewReservationLog">Reservation Log</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/viewReservationLog">Reservation Log</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/provideFeedback">Provide Feedbacks</a></li>
 
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Payment</a>
+                                <li><a href="<?php echo URLROOT ?>/CustomerDashboard/calendar">Payment</a>
                                 <div class="sub-menu1">
                                                 <ul>
                                                         <li><a href="<?php echo URLROOT ?>/CustomerDashboard/makeAdvancePayment">Advance Payment</a></li>

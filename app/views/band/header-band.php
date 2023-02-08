@@ -35,15 +35,7 @@
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Packages</a>
-                                        <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="">View Packages</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/BandDashboard/viewOffers">Offers/Promotions</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/BandDashboard/reservationLog">Reservation Log</a></li>
-                                                </ul>
-                                        </div>
-                                </li>
+                                <li><a href="<?php echo URLROOT ?>/BandDashboard/calendar">Calendar</a></li>
                                 <li><a href="<?php echo URLROOT ?>/BandDashboard/payment">Payment</a></li>
                                 <li><a href="<?php echo URLROOT ?>/BandDashboard/reports">Reports</a></li> 
 

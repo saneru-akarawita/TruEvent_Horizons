@@ -162,111 +162,47 @@
 
     <!-- Music Band Starts -->
 
-
+                            
     <section class="home-packages">
         <h1 class="heading-title"> Music Band</h1>
 
         <div class="box-container">
 
+            <?php $count = -1; ?>
+                
+            <?php foreach ($data[3] as $bsDetails) : ?>
+                <?php $count = $count + 1;?>
+                <?php $serviceProviderID = $bsDetails[0]->service_provider_id; ?>
 
+                <?php foreach ($data[0] as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
 
-
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
+                <div class="box" style="background-color: root(--light-white)">
                     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image29.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Stage Revolution</h3>
-                            <p>Last Minute Deals Find Your Next Getaway</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#bands" class="btn">View Service</a>
+
+                        <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                            <div class="image discount-radius">
+                                <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image<?php echo 28 + $count?>.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h3><?= $bsDetails[0]->service_name; ?></h3>
+                                <p>Provided by <?= $spName ?></p>
+                                <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
+                                <a href="viewservices#bands" class="btn">View Service</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image30.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Ecstasy</h3>
-                            <p>To Make Your Event More Beautiful And Unforgettable</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#bands" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Velvet Concord</h3>
-                            <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#bands" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image31.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Turning Jane</h3>
-                            <p>Make Your Event More Memorable</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#bands" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
+            <?php endforeach; ?>
 
         </div>
 
         </div>
-
-
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
     </section>
@@ -282,34 +218,17 @@
 
         <div class="box-container">
 
+        <?php $count = -1; ?>
 
+            <?php foreach ($data[4] as $psDetails) : ?>
+                <?php $count = $count + 1;?>
+                <?php $serviceProviderID = $psDetails[0]->service_provider_id; ?>
 
-
-        
-        
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image32.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Flytographer</h3>
-                            <p>Last Minute Deals Find Your Next Getaway</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#photography" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
+                <?php foreach ($data[0] as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
 
             <div class="box" style="background-color: root(--light-white)">
                 <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
@@ -317,73 +236,23 @@
                     <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
                     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
                         <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image33.jpg" alt="">
+                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image<?php echo 32 + $count?>.jpg" alt="">
                         </div>
                         <div class="content">
-                            <h3>The Picture & The Poet</h3>
-                            <p>To Make Your Event More Beautiful And Unforgettable</p>
+                            <h3><?= $psDetails[0]->service_name; ?></h3>
+                            <p>Provided by <?= $spName ?></p>
                             <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#photography" class="btn">View Service</a>
+                            <a href="viewservices#photos" class="btn">View Service</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image34.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>The Artsy Lens</h3>
-                            <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#photography" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-            <div class="box" style="background-color: root(--light-white)">
-                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
-                    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                        <div class="image discount-radius">
-                            <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image35.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>Flutter Me Shutters</h3>
-                            <p>Make Your Event More Memorable</p>
-                            <!-- <p style="font: size 5rem;color: var(--black);">$850</p> -->
-                            <a href="viewservices#photography" class="btn">View Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            
-
-
-
+            <?php endforeach; ?>
 
         </div>
 
         </div>
-
 
 
         <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->

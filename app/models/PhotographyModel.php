@@ -63,6 +63,19 @@ class PhotographyModel extends Model
         }
     }
 
+    public function getRandomServicesFromPhotography($limit){
+
+        $resultSet = array();
+
+        foreach ($limit as $number) {
+            
+            $results = $this->getResultSet("photographyservicedetails", "*", ['service_id' => $number]);
+            array_push($resultSet, $results);
+        }
+
+      return $resultSet;
+    }
+
     public function getNumberofServices(){
 
         $results = $this->getRowCount("photographyservicedetails", []);

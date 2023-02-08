@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 09:18 AM
+-- Generation Time: Feb 08, 2023 at 05:18 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.10
 
@@ -34,20 +34,28 @@ CREATE TABLE `adminpackagedetails` (
   `package_name` varchar(255) NOT NULL,
   `price` text NOT NULL,
   `band_choice` varchar(255) DEFAULT NULL,
+  `band_sv_id` int NOT NULL DEFAULT '0',
   `deco_choice` varchar(255) DEFAULT NULL,
+  `deco_sv_id` int NOT NULL DEFAULT '0',
   `photo_choice` varchar(255) DEFAULT NULL,
-  `active` int NOT NULL DEFAULT '1'
+  `photo_sv_id` int NOT NULL DEFAULT '0',
+  `active` int NOT NULL DEFAULT '1',
+  `sp_id_string` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `adminpackagedetails`
 --
 
-INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`, `package_name`, `price`, `band_choice`, `deco_choice`, `photo_choice`, `active`) VALUES
-(1, 'P001', 'Birthday', '25th Birthday Package', '50000', 'Stage Revolution', 'Urban 57 Decorations - Get-Togethers', 'Red Ants Photography', 1),
-(2, 'P002', 'Anniversary', '10th Anniversary Package', '100000', 'Ecstasy Bands', 'Urban 57 Decorations - Anniversary Parties', '', 1),
-(3, 'P003', 'Coparate Event', 'Farewell Party Package', '95000', '', 'Urban 57 Decorations - Night Functions', 'Image Studio', 1),
-(4, 'P004', 'Coparate Event', '25th Service Celebration Package', '85000', 'Stage Revolution', '', 'Red Ants Photography', 1);
+INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`, `package_name`, `price`, `band_choice`, `band_sv_id`, `deco_choice`, `deco_sv_id`, `photo_choice`, `photo_sv_id`, `active`, `sp_id_string`) VALUES
+(1, 'P001', 'Birthday', '25th Birthday Package', '50000', 'Wayo Band - Business Gatherings', 2, 'Urban 57 Decorations - Get-Togethers', 4, 'Red Ants Photography - Night Functions', 2, 1, '5,2,6'),
+(2, 'P002', 'Anniversary', '10th Anniversary Package', '100000', '', 0, 'Urban 57 Decorations - Anniversary Parties', 1, '', 0, 1, '2'),
+(3, 'P003', 'Coparate Event', 'Farewell Party Package', '95000', '', 0, 'Urban 57 Decorations - Night Functions', 3, 'Red Ants Photography - Birthday Parties', 1, 1, '2,6'),
+(4, 'P004', 'Coparate Event', '25th Service Celebration Package', '85000', '', 0, 'Urban 57 Decorations - Anniversary Parties', 1, '', 0, 1, '2'),
+(5, 'P007', 'Birthday', 'Saneru\'s Package', '340000', 'Wayo Band - Welcome Parties', 1, '', 0, 'Red Ants Photography - Business Gatherings', 3, 1, '5,6'),
+(6, 'test package', 'Birthday', 'test test', '12345', 'Wayo Band - Business Gatherings', 2, 'Urban 57 Decorations - Welcome Parties', 2, 'Red Ants Photography - Birthday Parties', 1, 1, '5,2,6'),
+(7, 'P334', 'Coparate Event', 'athal ekata', '12399', '', 0, 'Urban 57 Decorations - Night Functions', 3, 'Red Ants Photography - Birthday Parties', 1, 1, '2,6'),
+(8, 'P008', 'Coparate Event', 'Pamudi\'s Farewell', '45000', '', 0, 'Urban 57 Decorations - Welcome Parties', 2, 'Red Ants Photography - Night Functions', 2, 1, '2,6');
 
 -- --------------------------------------------------------
 
@@ -91,6 +99,44 @@ CREATE TABLE `bandservicedetails` (
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `bandservicedetails`
+--
+
+INSERT INTO `bandservicedetails` (`service_id`, `service_name`, `band_type`, `other_band_type`, `no_of_players`, `price`, `service_provider_id`, `active`) VALUES
+(1, 'Welcome Parties', 'Pop, Classic, ', '', 3, '15000', 5, 1),
+(2, 'Business Gatherings', 'Classic, EDM, ', 'Kareoke', 4, '20000', 5, 1),
+(3, 'General Events', 'Pop, Classic, Hip-Hop, Rap, ', '', 5, '30000', 5, 1),
+(4, 'Get-Togethers', 'Pop, Classic, ', '', 2, '10000', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calendar_dates`
+--
+
+CREATE TABLE `calendar_dates` (
+  `id` int NOT NULL,
+  `sp_user_id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `calendar_dates`
+--
+
+INSERT INTO `calendar_dates` (`id`, `sp_user_id`, `title`, `start`, `end`) VALUES
+(1, 1, 'After Interim 3.0 Party', '2023-02-02', '2023-02-02'),
+(2, 2, 'kaveesha\'s Farewell Party', '2023-01-23', '2023-01-23'),
+(3, 1, 'Kaveesha\'s Birthday', '2022-12-30', '2022-12-30'),
+(4, 4, 'test 2', '2023-02-03', '2023-02-03'),
+(5, 1, 'temp 4', '2023-02-17', '2023-02-17'),
+(6, 2, 'temp 5', '2023-02-07', '2023-02-07'),
+(7, 5, 'test band', '2023-03-02', '2023-03-02'),
+(8, 6, 'photo test', '2023-02-22', '2023-02-22');
 
 -- --------------------------------------------------------
 
@@ -164,13 +210,13 @@ CREATE TABLE `chat_users` (
 --
 
 INSERT INTO `chat_users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `img`, `status`) VALUES
-(1, 816865346, 'Chamila', 'Amarathunga', 'chamila.amarathunga@gmail.com', NULL, 'Offline now'),
+(1, 816865346, 'Chamila', 'Amarathunga', 'chamila.amarathunga@gmail.com', NULL, 'Active now'),
 (2, 1460619877, 'Kaveesha', 'Muthukuda', '2020cs007@stu.ucsc.cmb.ac.lk', NULL, 'Active now'),
 (3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Active now'),
 (4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Offline now'),
 (5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Offline now'),
-(6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Offline now'),
-(7, 370802146, 'SHANGRI - LA', '', 'tempemail@gmail.com', NULL, 'Active now');
+(6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Active now'),
+(7, 370802146, 'SHANGRI - LA', '', 'tempemail@gmail.com', NULL, 'Offline now');
 
 -- --------------------------------------------------------
 
@@ -186,6 +232,7 @@ CREATE TABLE `customerrvdetails` (
   `rvType` varchar(10) NOT NULL,
   `spType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `spName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `service_id` int DEFAULT '0',
   `packageType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `packageName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `status` varchar(10) NOT NULL,
@@ -199,12 +246,26 @@ CREATE TABLE `customerrvdetails` (
 -- Dumping data for table `customerrvdetails`
 --
 
-INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `packageType`, `packageName`, `status`, `payment`, `price`, `customer_id`, `sp_id`) VALUES
-(1, 'After Interim 3.0 Party', '2023-02-02', '20:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', NULL, NULL, 'pending', 'not-paid', '0', 1, '1'),
-(2, 'kaveesha\'s Farewell Party', '2023-01-24', '20:00:00', 'package', NULL, NULL, 'Coparate Event', 'Farewell Party Package', 'pending', 'not-paid', '0', 1, '2,3'),
-(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', NULL, NULL, 'pending', 'not-paid', '0', 1, '1'),
-(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', NULL, NULL, 'pending', 'not-paid', '0', 1, '2'),
-(12, 'test 2', '2023-02-03', '15:37:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', NULL, NULL, 'pending', 'not-paid', '0', 1, '4');
+INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `service_id`, `packageType`, `packageName`, `status`, `payment`, `price`, `customer_id`, `sp_id`) VALUES
+(1, 'After Interim 3.0 Party', '2023-02-02', '20:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', 1, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '1'),
+(2, 'kaveesha\'s Farewell Party', '2023-01-24', '20:00:00', 'package', NULL, NULL, 0, 'Coparate Event', 'Farewell Party Package', 'pending', 'not-paid', '0', 1, '2,3'),
+(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'pending', 'not-paid', '5000.00', 1, '1'),
+(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', 5, NULL, NULL, 'pending', 'not-paid', '35000', 1, '2'),
+(12, 'test 2', '2023-02-03', '15:37:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
+(13, 'test3', '2023-03-02', '14:49:00', 'service', 'Decoration', 'Urban 57 Decorations - Welcome Parties', 2, NULL, NULL, 'pending', 'not-paid', '40000', 1, '2'),
+(14, 'temp 3', '2023-02-23', '15:39:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
+(15, 'temp 4', '2023-02-17', '17:09:00', 'service', 'Hotel', 'SHANGRI - LA - Royal Hall', 7, NULL, NULL, 'pending', 'not-paid', '5000', 1, '1'),
+(16, 'temp 5', '2023-02-07', '17:09:00', 'service', 'Decoration', 'Urban 57 Decorations - Get-Togethers', 4, NULL, NULL, 'pending', 'not-paid', '35000', 1, '2'),
+(17, 'Temp Package 2', '2023-02-17', '17:09:00', 'package', NULL, NULL, 0, 'Coperate Event', 'abc 1', 'pending', 'not-paid', '124394', 1, '2,3'),
+(18, 'temp package 2', '2023-02-09', '17:09:00', 'package', NULL, NULL, 0, 'coperate package', 'test 32', 'pending', 'not-paid', '324500', 1, '2,3,4'),
+(19, 'temp package 3', '2023-02-15', '15:44:08', 'package', NULL, NULL, 0, 'Birthday Package', 'athal package 2', 'pending', 'not-paid', '123000', 1, '3,4'),
+(20, 'aaaaaaaaaaaaa', '2023-02-24', '17:55:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'pending', 'not-paid', '5000.00', 1, '1'),
+(21, 'bbbbbbbbbbb', '2023-03-03', '17:56:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
+(22, 'ccccccccccccccc', '2023-02-10', '05:56:00', 'service', 'Decoration', 'Urban 57 Decorations - Anniversary Parties', 1, NULL, NULL, 'pending', 'not-paid', '50000', 1, '2'),
+(23, 'test 345', '2023-02-10', '07:53:00', 'service', 'Decoration', 'Urban 57 Decorations - Night Functions', 3, NULL, NULL, 'pending', 'not-paid', '60000', 1, '2'),
+(24, 'test band', '2023-03-02', '11:09:00', 'service', 'Band', 'Wayo Band - Business Gatherings', 2, NULL, NULL, 'pending', 'not-paid', '20000', 1, '5'),
+(25, 'photo test', '2023-02-22', '11:10:00', 'service', 'Photography', 'Red Ants Photography - Night Functions', 2, NULL, NULL, 'pending', 'not-paid', '25000', 1, '6'),
+(26, 'test package 999', '2023-02-16', '13:37:00', 'package', NULL, NULL, 2, 'Anniversary', '10th Anniversary Package', 'pending', 'not-paid', '100000', 1, '2');
 
 -- --------------------------------------------------------
 
@@ -337,6 +398,22 @@ CREATE TABLE `otpverification` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `payment_id` int NOT NULL,
+  `rv_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `ad_price` text NOT NULL,
+  `full_price` text NOT NULL,
+  `ad_flag` int NOT NULL,
+  `fp_flag` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `photographyservicedetails`
 --
 
@@ -349,6 +426,16 @@ CREATE TABLE `photographyservicedetails` (
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `photographyservicedetails`
+--
+
+INSERT INTO `photographyservicedetails` (`service_id`, `service_name`, `photo_features`, `other_features`, `price`, `service_provider_id`, `active`) VALUES
+(1, 'Birthday Parties', 'Full-day photo shoots, Professional lighting setup, Professional camera and lens kits, Photo editing, color correction and retouching, Multi-shooter, ', 'Transport cost', '35000', 6, 1),
+(2, 'Night Functions', 'Professional lighting setup, Professional camera and lens kits, Single-shooter, ', '', '25000', 6, 1),
+(3, 'Business Gatherings', 'Full-day photo shoots, Professional camera and lens kits, ', '', '30000', 6, 1),
+(4, 'Anniversary Parties', 'Half-day photo shoots, Professional camera and lens kits, Single-shooter, ', '', '12000', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -394,6 +481,13 @@ CREATE TABLE `superadminuser` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `superadminuser`
+--
+
+INSERT INTO `superadminuser` (`email`, `password`) VALUES
+('superadmin@gmail.com', 'temp');
 
 -- --------------------------------------------------------
 
@@ -453,6 +547,12 @@ ALTER TABLE `bandservicedetails`
   ADD KEY `banddeet to service provider user FK on service provider id` (`service_provider_id`);
 
 --
+-- Indexes for table `calendar_dates`
+--
+ALTER TABLE `calendar_dates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
@@ -507,6 +607,12 @@ ALTER TABLE `otpverification`
   ADD PRIMARY KEY (`email`,`type`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
 -- Indexes for table `photographyservicedetails`
 --
 ALTER TABLE `photographyservicedetails`
@@ -541,7 +647,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adminpackagedetails`
 --
 ALTER TABLE `adminpackagedetails`
-  MODIFY `package_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `package_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `adminuser`
@@ -553,7 +659,13 @@ ALTER TABLE `adminuser`
 -- AUTO_INCREMENT for table `bandservicedetails`
 --
 ALTER TABLE `bandservicedetails`
-  MODIFY `service_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `calendar_dates`
+--
+ALTER TABLE `calendar_dates`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `chat_messages`
@@ -571,7 +683,7 @@ ALTER TABLE `chat_users`
 -- AUTO_INCREMENT for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
-  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `customeruser`
@@ -598,10 +710,16 @@ ALTER TABLE `hotelservicedetails`
   MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `photographyservicedetails`
 --
 ALTER TABLE `photographyservicedetails`
-  MODIFY `service_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `serviceprovideruser`

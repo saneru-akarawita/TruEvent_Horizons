@@ -328,13 +328,17 @@ class CustomerDashboard extends Controller
       $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
       $hotelServiceNo = $this->hotelModel->getNumberofServices();
       $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
 
       
 
       $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
       $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
 
-      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
       
       $this->view('customer/special-offers', $resultArray);
    }
@@ -370,9 +374,19 @@ class CustomerDashboard extends Controller
       $this->view('customer/make-advance-payment', '');
    }
 
+   public function makePayment()
+   {
+      $this->view('customer/make-payment', '');
+   }
+
    public function makeFullPayment()
    {
       $this->view('customer/make-full-payment', '');
+   }
+
+   public function calendar(){
+      $events = $this->customerModel->getEvents(1);
+      $this->view("calendar/index", $events);
    }
 
    public function totalPaymentSuccess()

@@ -105,7 +105,22 @@
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="bands">Bands:</label>
-                     <input type="text" name="bands" placeholder="band option" value="<?php echo $data[0]['bands'] ?>" maxlength="25">
+                     <select name = "bands" class="dropdownmenu" id="bands"> 
+                              <option value="">Select a Band Option</option>
+                              <?php foreach ($data[2] as $banddetails) :?>
+
+                                 <?php $spname = "";
+                                       $spid = $banddetails->service_provider_id; ?>
+
+                                 <?php foreach ($data[4] as $spdetails) :
+                                    if($spdetails->service_provider_id ==$spid ){
+                                       $spname = $spdetails->company_name;
+                                     }?>
+                                 <?php endforeach; ?>
+                                 <option value = "<?php echo $spname?> - <?php echo $banddetails->service_name ?>|<?=$banddetails->service_provider_id?>|<?php echo $banddetails->service_id ?>" <?php if($data[0]['bands']=="$spname - $banddetails->service_name")echo "selected";?>><?php echo $spname?> - <?php echo $banddetails->service_name ?></option>
+
+                              <?php endforeach; ?>
+                     </select>
                      <span class="error"><?php echo $data[0]['bands_error']; ?></span>
                   </div>
                </div>
@@ -120,12 +135,12 @@
                                  <?php $spname = "";
                                        $spid = $decodetails->service_provider_id; ?>
 
-                                 <?php foreach ($data[2] as $spdetails) :
+                                 <?php foreach ($data[4] as $spdetails) :
                                     if($spdetails->service_provider_id ==$spid ){
                                        $spname = $spdetails->company_name;
                                      }?>
                                  <?php endforeach; ?>
-                                 <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>" <?php if($data[0]['decorations']=="$spname - $decodetails->service_name")echo "selected";?>><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
+                                 <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>|<?=$decodetails->service_provider_id?>|<?php echo $decodetails->service_id ?>" <?php if($data[0]['decorations']=="$spname - $decodetails->service_name")echo "selected";?>><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
 
                               <?php endforeach; ?>
                      </select>
@@ -136,7 +151,22 @@
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="photography">Photography:</label>
-                     <input type="text" name="photography" placeholder="Photography option" value="<?php echo $data[0]['photography'] ?>">
+                     <select name = "photography" class="dropdownmenu" id="photography"> 
+                              <option value="">Select a Photography Option</option>
+                              <?php foreach ($data[3] as $photodetails) :?>
+
+                                 <?php $spname = "";
+                                       $spid = $photodetails->service_provider_id; ?>
+
+                                 <?php foreach ($data[4] as $spdetails) :
+                                    if($spdetails->service_provider_id ==$spid ){
+                                       $spname = $spdetails->company_name;
+                                     }?>
+                                 <?php endforeach; ?>
+                                 <option value = "<?php echo $spname?> - <?php echo $photodetails->service_name ?>|<?=$photodetails->service_provider_id?>|<?php echo $photodetails->service_id ?>" <?php if($data[0]['photography']=="$spname - $photodetails->service_name")echo "selected";?>><?php echo $spname?> - <?php echo $photodetails->service_name ?></option>
+
+                              <?php endforeach; ?>
+                     </select>
                      <span class="error"><?php echo $data[0]['photography_error']; ?></span>
                   </div>
                </div>
