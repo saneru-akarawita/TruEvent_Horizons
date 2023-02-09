@@ -128,7 +128,6 @@ class PhotographyService extends Controller
             'sv_id' => trim($_POST['sv_id']),
 
             'name_error' => '',
-            'description_error'=>'',
             'price_error' => '',
             'other_photography_error' => ''
          ];

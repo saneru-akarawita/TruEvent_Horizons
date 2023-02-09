@@ -141,7 +141,7 @@ class BandService extends Controller
             $data['num_players_error'] = emptyCheck($data['num_players']);
 
             if (
-               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error'])
+               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error'])
             )
             {
                 
@@ -151,7 +151,7 @@ class BandService extends Controller
 
                Toast::setToast(1, "Service Edited Successfully!!!", "");
 
-               redirect('bandService/viewAllServices');
+               redirect('BandService/viewAllServices');
                
             }
             else
@@ -177,7 +177,6 @@ class BandService extends Controller
             'num_players' => $svdetails->no_of_players,
             'sv_id' => $sv_editid,
 
-            
             'name_error' => '',
             'price_error' => '',
             'num_players_error' => ''

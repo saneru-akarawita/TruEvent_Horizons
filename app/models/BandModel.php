@@ -44,7 +44,7 @@ class BandModel extends Model
             'no_of_players' => $data['num_players'],
             'price'=>$data['price'],
             'band_type' => $data['band'],
-        
+
          ], ['service_id' => $serviceID]);
     }
 
