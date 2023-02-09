@@ -19,11 +19,6 @@
 
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
-    
-
-    <?php $spID = $data[0]; ?>
-    <?php $rvdata = $data[1]; ?>
-    <?php $cusdata = $data[2]; ?>
 
       <!-- Main Start -->
 

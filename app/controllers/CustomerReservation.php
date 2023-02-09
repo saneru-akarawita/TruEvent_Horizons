@@ -11,6 +11,7 @@ class CustomerReservation extends Controller
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
       $this->packageModel = $this->model('PackageModel');
+      $this->customerModel = $this->model('CustomerModel');
    }
 
    public function getPriceFromServiceIDType($service_type, $service_id)
