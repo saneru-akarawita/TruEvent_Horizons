@@ -8,6 +8,8 @@ class Packages extends Controller
       $this->decoModel = $this->model('DecoModel');
       $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->adminModel = $this->model('AdminModel');
+      $this->bandModel = $this->model('BandModel');
+      $this->photographyModel = $this->model('PhotographyModel');
    }
 
    public function viewAllPackages()
@@ -21,15 +23,56 @@ class Packages extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
+
+         if(isset($_POST['bands']))
+         {
+            $temp = explode("|",$_POST['bands']);
+            $bands = $temp[0];
+            $band_sp_id = $temp[1];
+            $band_sv_id = 0;
+            if(isset($temp[2])){
+               $band_sv_id = $temp[2];
+            }
+         }
+
+         if(isset($_POST['decorations']))
+         {
+            $temp = explode("|",$_POST['decorations']);
+            $decorations = $temp[0];
+            $deco_sp_id = $temp[1];
+            $deco_sv_id = 0;
+            if(isset($temp[2])){
+               $deco_sv_id = $temp[2];
+            }
+         }
+
+         if(isset($_POST['photography']))
+         {
+            $temp = explode("|",$_POST['photography']);
+            $photography = $temp[0];
+            $photo_sp_id = $temp[1];
+            $photo_sv_id = 0;
+            if(isset($temp[2])){
+               $photo_sv_id = $temp[2];
+            }
+         }
+
+         $sp_id_string = join(',', array_filter(array($band_sp_id, $deco_sp_id, $photo_sp_id)));
+
+
          $notfound ="Not Found";
          $data = [
             'pcode' => trim($_POST['pcode']),
             'name' => trim($_POST['name']),
             'price' => trim($_POST['price']),
             'package_type'=>trim($_POST['package_type']),
-            'bands' => isset($_POST['bands']) ? trim($_POST['bands']) : trim($notfound),
-            'decorations' => isset($_POST['decorations']) ? trim($_POST['decorations']) : trim($notfound),
-            'photography' => isset($_POST['photography']) ? trim($_POST['photography']) : trim($notfound),
+            'bands' => isset($_POST['bands']) ? $bands : trim($notfound),
+            'decorations' => isset($_POST['decorations']) ? $decorations : trim($notfound),
+            'photography' => isset($_POST['photography']) ? $photography : trim($notfound),
+            'sp_id_string' => $sp_id_string,
+            'band_sv_id' => $band_sv_id,
+            'deco_sv_id' => $deco_sv_id,
+            'photo_sv_id' => $photo_sv_id,
 
             'pcode_error' => '',
             'name_error' => '',
@@ -80,6 +123,8 @@ class Packages extends Controller
       {
 
          $decoresult = $this->decoModel->getDecoServiceDetails();
+         $bandresult = $this->bandModel->getBandServiceDetails();
+         $photographyresult = $this->photographyModel->getPhotographyServiceDetails();
          $spresult = $this->serviceProviderModel->getServiceProviderDetails();
 
          $data = [
@@ -100,7 +145,7 @@ class Packages extends Controller
             'photography_error' => ''
          ];
 
-         $result = array($data, $decoresult, $spresult);
+         $result = array($data, $decoresult,$bandresult,$photographyresult, $spresult);
 
          $this->view('admin/admin-add-packages', $result);
       }
@@ -123,6 +168,43 @@ class Packages extends Controller
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
          
+         if(isset($_POST['bands']))
+         {
+            $temp = explode("|",$_POST['bands']);
+            $bands = $temp[0];
+            $band_sp_id = $temp[1];
+            $band_sv_id = 0;
+            if(isset($temp[2])){
+               $band_sv_id = $temp[2];
+            }
+         }
+
+         if(isset($_POST['decorations']))
+         {
+            $temp = explode("|",$_POST['decorations']);
+            $decorations = $temp[0];
+            $deco_sp_id = $temp[1];
+            $deco_sv_id = 0;
+            if(isset($temp[2])){
+               $deco_sv_id = $temp[2];
+            }
+         }
+
+         if(isset($_POST['photography']))
+         {
+            $temp = explode("|",$_POST['photography']);
+            $photography = $temp[0];
+            $photo_sp_id = $temp[1];
+            $photo_sv_id = 0;
+            if(isset($temp[2])){
+               $photo_sv_id = $temp[2];
+            }
+         }
+
+         $sp_id_string = join(',', array_filter(array($band_sp_id, $deco_sp_id, $photo_sp_id)));
+
+
+         $notfound ="Not Found";
 
          $data = [
 
@@ -130,10 +212,14 @@ class Packages extends Controller
             'name' => trim($_POST['name']),
             'price' => trim($_POST['price']),
             'package_type'=>trim($_POST['package_type']),
-            'bands' => isset($_POST['bands']) ? trim($_POST['bands']) : trim($notfound),
-            'decorations' => isset($_POST['decorations']) ? trim($_POST['decorations']) : trim($notfound),
-            'photography' => isset($_POST['photography']) ? trim($_POST['photography']) : trim($notfound),
+            'bands' => isset($_POST['bands']) ? $bands : trim($notfound),
+            'decorations' => isset($_POST['decorations']) ? $decorations : trim($notfound),
+            'photography' => isset($_POST['photography']) ? $photography : trim($notfound),
             'package_id'=> trim($_POST['package_id']),
+            'sp_id_string' => $sp_id_string,
+            'band_sv_id' => $band_sv_id,
+            'deco_sv_id' => $deco_sv_id,
+            'photo_sv_id' => $photo_sv_id,
 
             'pcode_error' => '',
             'name_error' => '',
@@ -181,6 +267,8 @@ class Packages extends Controller
       {
          $packagedetails = $this->packageModel->getPackageDetailsByPackageID($package_editid);
          $decoresult = $this->decoModel->getDecoServiceDetails();
+         $bandresult = $this->bandModel->getBandServiceDetails();
+         $photographyresult = $this->photographyModel->getPhotographyServiceDetails();
          $spresult = $this->serviceProviderModel->getServiceProviderDetails();
 
          $data = [
@@ -203,7 +291,7 @@ class Packages extends Controller
 
          ];
 
-         $result = array($data, $decoresult, $spresult);
+         $result = array($data, $decoresult, $bandresult, $photographyresult, $spresult);
 
          $this->view('admin/edit-packages', $result);
 

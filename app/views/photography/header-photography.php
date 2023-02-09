@@ -30,20 +30,12 @@
                                                 <ul>
                                                         <li><a href="viewservices">View Photographies</a></li>
                                                         <li><a href="addservices">Add Photographies</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Packages</a>
-                                        <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="">View Packages</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/reservationLog">Reservation Log</a></li>
-                                                </ul>
-                                        </div>
-                                </li>
+                                <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/calendar">Calendar</a></li>
                                 <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/payment">Payment</a></li>
                                 <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/reports">Reports</a></li> 
 
@@ -63,7 +55,7 @@
                                 <div style="display: flex;align-items: center;justify-content: center;text-align: center; flex-direction: column;">
                                         <li style="margin-top:12px;width:max-content"><?= Session::getUser('name') ?></li> 
                                         <hr size="1px">
-                                        <p><?= Session::getUser('typeText') ?></p>
+                                        <p style="margin-top:0px"><?= Session::getUser('typeText') ?></p>
                                 </div> 
                         </ul>
                 

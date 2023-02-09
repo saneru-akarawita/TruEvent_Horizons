@@ -76,6 +76,19 @@ class BandModel extends Model
         }
     }
 
+    public function getRandomServicesFromBand($limit){
+
+        $resultSet = array();
+
+        foreach ($limit as $number) {
+            
+            $results = $this->getResultSet("bandservicedetails", "*", ['service_id' => $number]);
+            array_push($resultSet, $results);
+        }
+
+      return $resultSet;
+    }
+
     public function getNumberofServices(){
 
         $results = $this->getRowCount("bandservicedetails", []);

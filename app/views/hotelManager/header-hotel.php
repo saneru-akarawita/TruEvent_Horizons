@@ -33,11 +33,12 @@
                                                 <ul>
                                                         <li><a href="viewservices">View Venues</a></li>
                                                         <li><a href="addservices">Add Venues</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
+                                                        <li><a href="<?php echo URLROOT ?>/HotelDashboard/viewOffers">Offers/Promotions</a></li>
                                                         <li><a href="<?php echo URLROOT ?>/HotelDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>
                                 </li>
+                                <li><a href="<?php echo URLROOT ?>/HotelDashboard/calendar">Calendar</a></li>
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/payment">Payment</a></li>
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/reports">Reports</a></li> 
         

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Home</title>
+    <title>Special Offers</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +18,29 @@
 
 <body>
 
-<?php require APPROOT . "/views/customer/header-customer.php" ?>
+<?php switch(Session::getUser("type")){
+    case 2:
+        require APPROOT . "/views/admin/header-admin.php";
+        break;
+    case 3:
+        require APPROOT . "/views/customer/header-customer.php";
+        break;
+    case 4:
+        require APPROOT . "/views/hotelManager/header-hotel.php";
+        break;
+    case 5:
+        require APPROOT . "/views/decoCompany/header-deco.php";
+        break;
+    case 6:
+        require APPROOT . "/views/band/header-band.php";
+        break;
+    case 7:
+        require APPROOT . "/views/photography/header-photography.php";
+        break;
+    default:
+        echo "Invalid Parameter";
+        break;
+}?>
 
 
         <!-- Gives a Menu Button -->
@@ -73,6 +95,16 @@
     </section>
 
     <!-- Hotel Section Ends -->
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- Decoration Starts -->

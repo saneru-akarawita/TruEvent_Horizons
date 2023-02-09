@@ -8,3 +8,28 @@ User Roles
 5 - Deco Company
 6 - Band Manager
 7 - Photography Company
+
+
+
+payment
+-------------------
+
+paid
+ad-paid
+not-paid
+
+
+
+status
+-------------------
+
+pending
+confirm 
+decline
+
+
+active
+------------------
+active - 1
+de active - 0
+

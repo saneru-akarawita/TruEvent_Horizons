@@ -34,9 +34,9 @@ class ReservationModel extends Model
                 'rvDate' => $data['rvdate'],
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
-                // 'sp_id' => $data['sp_id'],
+                'sp_id' => $data['spv_id_string'],
                 'price' => $data['price'],
-                'package_id' => $data['package_id'],
+                'service_id' => $data['package_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
     

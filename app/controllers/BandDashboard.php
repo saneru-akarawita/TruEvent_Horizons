@@ -13,6 +13,9 @@ class BandDashboard extends Controller
       $this->adminModel = $this->model('AdminModel');
       $this->userModel = $this->model('UserModel');
       $this->bandModel = $this->model('BandModel');
+      $this->hotelModel = $this->model('HotelModel');
+      $this->decoModel = $this->model('DecoModel');
+      $this->photographyModel = $this->model('PhotographyModel');
    }
 
    public function home()
@@ -122,6 +125,52 @@ class BandDashboard extends Controller
       $this->view('band/chat', $user);
    }
 
+      //------------- view offers functions start -------------------
+
+   public function randomGen($min, $numberOfServices, $quantity) {
+      $numbers = range($min, $numberOfServices);
+      shuffle($numbers);
+      return array_slice($numbers, 0, $quantity);
+   }
+
+   public function generateRandomArrayforEachServiceType($numberOfServices) {
+
+      $min = 1;
+
+      if($numberOfServices >= 4) {
+         $quantity = 4;
+      } else {
+         $quantity = $numberOfServices;
+      }
+
+      $randomNoArray = $this->randomGen($min, $numberOfServices, $quantity);
+      return $randomNoArray;
+   }
+
+
+   public function viewOffers()
+   {
+      $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
+      $hotelServiceNo = $this->hotelModel->getNumberofServices();
+      $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
+
+      
+
+      $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
+      $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
+
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
+      
+      $this->view('common/special-offers', $resultArray);
+   }
+
+   //------------- view offers functions ends -------------------
+   
+
    public function reservationDetails()
    {
          $spID = Session::getUser("id");
@@ -155,6 +204,13 @@ class BandDashboard extends Controller
          $customerlist = $this->customerModel->getCustomerDetails();
          $result = array($spID, $reservationsList, $customerlist);
          $this->view('Band/Reservationlog',$result);
+   }
+
+   public function calendar(){
+      $usermail = Session::getUser('email');
+      $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
+      $events = $this->customerModel->getEvents($spID[0]);
+      $this->view("calendar/index", $events);
    }
 
    public function logout()

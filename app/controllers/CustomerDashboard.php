@@ -15,6 +15,8 @@ class CustomerDashboard extends Controller
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
       $this->reservationModel = $this->model('ReservationModel');
+      $this->packageModel = $this->model('PackageModel');
+     
    }
 
    public function home()
@@ -33,7 +35,16 @@ class CustomerDashboard extends Controller
 
    public function viewpackages()
    {
-      redirect('Packages/viewAllPackages');
+      $result = $this->packageModel->getPackageDetails();
+      $this->view('common/view-packages',  $result);
+   }
+
+   public function viewEachPackage(){
+      if(isset($_GET['package_id'])){
+         $id=$_GET['package_id'];
+         $result = $this->packageModel->getPackageDetailsByPackageID($id);
+         $this->view('common/view-each-package', $result);
+      }
    }
 
    public function viewservices()
@@ -317,13 +328,17 @@ class CustomerDashboard extends Controller
       $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
       $hotelServiceNo = $this->hotelModel->getNumberofServices();
       $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
 
       
 
       $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
       $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
 
-      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
       
       $this->view('customer/special-offers', $resultArray);
    }
@@ -359,9 +374,19 @@ class CustomerDashboard extends Controller
       $this->view('customer/make-advance-payment', '');
    }
 
+   public function makePayment()
+   {
+      $this->view('customer/make-payment', '');
+   }
+
    public function makeFullPayment()
    {
       $this->view('customer/make-full-payment', '');
+   }
+
+   public function calendar(){
+      $events = $this->customerModel->getEvents(1);
+      $this->view("calendar/index", $events);
    }
 
    public function totalPaymentSuccess()
