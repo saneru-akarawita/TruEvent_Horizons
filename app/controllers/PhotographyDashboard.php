@@ -181,6 +181,22 @@ class PhotographyDashboard extends Controller
       $this->view('photography/Reports', '');
    }
 
+   public function reservationDetails()
+   {
+         $spID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+         $photographydetailslist = $this->photographyModel->getServicesByServiceProvider($spID);
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$photographydetailslist);
+         $this->view('photography/view-reservation',$result0);
+   }
+
    public function reservationLog()
    {
          $spID = Session::getUser("id");

@@ -12,7 +12,6 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<body>
 <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
 <!-- header section starts -->
 <!-- <section class="header">
@@ -33,115 +32,114 @@
 </section>
  -->
 <?php $spID = $data[0]; ?>
-<?php $rvID = $data[1]; ?>
-<?php $rvdata = $data[2]; ?>
-<?php $cusdata = $data[3]; ?>
-<?php $hotelservicedata = $data[4]; ?>
-
+<?php $serviceID = $data[1]; ?>
+<?php $rvID = $data[2]; ?>
+<?php $rvdata = $data[3]; ?>
+<?php $cusdata = $data[4]; ?>
+<?php $hotelservicedata = $data[5]; ?>
 
 <div class="wrapper">
-        <div class="product-img">
-                <img src="<?php echo URLROOT ?>/public/images/hotel manager/images/image.jpg" height="100%" max-width="100%">
+
+        <div class="product-img" style="height:500px;">
+                <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/bdy - photo.jpg" height="100%" max-width="100%">
         </div>
+
         <div class="product-info">
-                <div class="product-text">
-                <?php foreach ($rvdata as $rvDetails) : ?>
-                                                    <?php 
-                                                        $sp_id_arr = explode (",", $rvDetails->sp_id);
-                                                    ?>
-                                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
-                                                    <?php if ($new_sp_id == $spID) { ?>
-                <h1>Service Details</h1>    
-                <?php foreach ($hotelservicedata as $hoteldata) : ?>
-                        <?php if ($hoteldata->service_provider_id == $rvDetails->sp_id) { ?>
-                        <h1><?= $hoteldata->service_type;?></h1>
-                        <h2>Reservation ID<?= $rvDetails->rv_id;?></h2>
-                        <div class="description">
-                                <table id="details12">
-                                <tr>
-                                        <td>Hall Name </td>
-                                        <td>: <?= $hoteldata->hall_name;?></td>
-                                </tr>
-                                <tr>
-                                        <td>Location </td>
-                                        <td>: <?= $hoteldata->location;?></td>
-                                </tr>
-                                <tr>
-                                        <td>Hall Type </td>
-                                        <td>: <?= $hoteldata->hall_type;?></td>
-                                </tr>
-                                <tr>
-                                        <td>Air Condition Status </td>
-                                        <td>: <?php if($hoteldata->ac_status) echo "Available"; else echo "Non-Available";?></td>
-                                </tr>
-                                <tr>
-                                        <td>Max Crowd </td>
-                                        <td>: <?= $hoteldata->max_crowd;?></td>
-                                </tr>
-                                <tr>
-                                        <td>Other Facilities </td>
-                                        <td>:<?php if(empty($hoteldata->other_facilities)) echo " None"; else  echo $hoteldata->other_facilities; ?> </td>
-                                         
-                                </tr>
-                                <tr>
-                                        <td>Reservation Date</td>
-                                        <td>: <?= $rvDetails->rvDate;?></td>
-                                </tr>
-                                <tr>
-                                        <td>Reservation Time</td>
-                                        <td>: <?= $rvDetails->rvTime;?></td>
-                                </tr>
-                                </table>
-
-                                <span style="margin-left:45px">LKR <?= $hoteldata->price;?> per head</span>
-                                <p style="margin-top:15px; margin-left:-0.5px">**Food Menu will be discussed and decided manually</p>
-                                
-                                <h1>Customer Details</h1>
-                                <?php foreach ($cusdata as $cus) : ?>
-                                        <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>
-                                              
-                                <div class="description">
-                                        <table id="details12">
-                                        <tr>
-                                                <td>Customer Name </td>
-                                                <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
-                                        </tr>
-                                        <tr>
-                                                <td>Address </td>
-                                                <td>: <?= $cus->district;?></td>
-                                        </tr>
-                                        <tr>
-                                                <td>Contact No </td>
-                                                <td>: <?= $cus->contact_no;?></td>
-                                        </tr>
-                                        <tr>
-                                                <td>E-mail </td>
-                                                <td>: <?= $cus->email;?></td>
-                                        </tr>
-                                
-                                        </table>
-                                        <?php } ?>
-                                        <?php endforeach; ?>
-                                        <?php } ?>
-                                        <?php endforeach; ?>
-                                </div>
-                                <br>
-                                <div class="product-price-btn">
-                                        <button type="button" style="margin-top:-25px;" onclick="history.back()">Back</button>
-                                </div>
-
-                        </div>
-                        <?php } ?>
-                        <?php endforeach; ?>
-                        <?php endforeach; ?>
+                <div class="product-text" style="height:1000px; width:500px;">
+                        <?php foreach ($rvdata as $rvDetails) : ?>
+                                <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                        <?php if ($new_sp_id == $spID) { ?>
+                                                <?php foreach ($hotelservicedata as $hoteldata) : ?>
+                                                <?php if ($hoteldata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
+                                                <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $hoteldata->service_type;?></h1>
+                                                <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                        
+                                                <div class="description">
+                                                        <table id="details12">
+                                                                        <tr>
+                                                                                <td>Reservation Date</td>
+                                                                                <td>: <?= $rvDetails->rvDate;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Time</td>
+                                                                                <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Hall Name </td>
+                                                                                <td>: <?= $hoteldata->hall_name;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Location </td>
+                                                                                <td>: <?= $hoteldata->location;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Hall Type </td>
+                                                                                <td>: <?= $hoteldata->hall_type;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Air Condition Status </td>
+                                                                                <td>: <?php if($hoteldata->ac_status) echo "Available"; else echo "Non-Available";?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Max Crowd </td>
+                                                                                <td>: <?= $hoteldata->max_crowd;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Other Facilities </td>
+                                                                                <td>:<?php if(empty($hoteldata->other_facilities)) echo " None"; else  echo $hoteldata->other_facilities; ?> </td>
+                                                                                
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Price </td>
+                                                                                <td>: <?= $hoteldata->price;?> per head</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Payments </td>
+                                                                                <td>: <?= $rvDetails->payment;?></td>
+                                                                        </tr>
+                                                                
+                                                                        <?php foreach ($cusdata as $cus) : ?>
+                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
+                                                                        <tr>
+                                                                                        <td>Customer Name </td>
+                                                                                        <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Address </td>
+                                                                                        <td>: <?= $cus->district;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Contact No </td>
+                                                                                        <td>: <?= $cus->contact_no;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>E-mail </td>
+                                                                                        <td style="text-transform:none">: <?= $cus->email;?></td>
+                                                                                </tr>
+                                                                        
+                
+                                                                                <?php } ?>
+                                                                        <?php endforeach; ?>                                
+                                                        </table>
+                
+                                                </div>
+                                                <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php } ?>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
+                
+                <div class="product-price-btn">
+                        <button type="button" onclick="history.back()">Back</button>
                 </div>
-        </div>
-
+                </div>
+        </div>  
 </div>
 
 
 <!-- footer start -->
-<section class="footer" style="margin-top:150px">
+<section class="footer" style="margin-top:200px">
 <div class="overlay"></div>
 <div class="box-container">
 <div class="box">

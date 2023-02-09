@@ -32,6 +32,7 @@
     
         </section> -->
 <?php $serviceID = $data[0]; ?>
+
 <?php $data1 = $data[1]; ?>
 <?php $data2 = $data[2]; ?>
 
@@ -65,51 +66,18 @@
             </div>
         </div>
 
+<!-- Photo Gallary Start-->
+<div class="image-tab" style="width:100%;">
+<?php require APPROOT . "/views/customer/photoGalleryBand.php" ?>
+<!-- Photo Gallary End-->
+</div>
 
-        <!-- footer start -->
-<section class="footer">
-    <div class="overlay"></div>
-    <div class="box-container">
-        <div class="box">
-            <h3>Quick Access</h3>
-        <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
-        <a href="viewservices"><i class="fas fa-angle-right"></i> Services</a>
-        <a href="#"><i class="fas fa-angle-right"></i> Packages</a>
-        </div>
-
-        <div class="box">
-            <h3>Extra</h3>
-        <a href="#"><i class="fas fa-angle-right"></i>  About US</a>
-        <a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
-        <a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
-        </div>
-
-        <div class="box">
-            <h3>Contact Us</h3>
-        <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-        <a href="#"><i class="fa-solid fa-envelope"></i> TruEvent@gmail.com</a>
-        <a href="#"><i class="fas fa-map"></i> Colombo</a>
-
-
-        </div>
-       
-        <div class="box">
-            <h3>Follow US</h3>
-        <a href="#"><i class="fab fa-facebook"></i>  facebook</a>
-        <a href="#"><i class="fab fa-instagram"></i> instagram</a>
-        <a href="#"><i class="fab fa-linkedin"></i>  linkedin</a>
-
-        </div>
-    </div>
-
-    
-
-    <div class="credit">
-        Created By <span>TruEvent</span> | All Rights Reserved
-    </div>
-
-</section>
-
+ <!-- footer start -->
+<?php foreach ($data1 as $spdetails) : ?>
+        <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                <?php require APPROOT . "/views/customer/bandServiceFooter.php" ?>
+                <?php } ?>
+ <?php endforeach; ?>
 
 <!-- footer ends -->
     
