@@ -99,9 +99,33 @@
                                     
                                         <div class="action-button" style="justify-content:center; margin-left:100px;">
 
-                                            <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+                                            <?php if($rvdetails->spType == "Hotel") {?>
+                                                    <a href="viewServiceReservationDetailsHotel?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="#" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Decoration") {?>
+                                                    <a href="viewServiceReservationDetailsDeco?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="#" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Band") {?>
+                                                    <a href="viewServiceReservationDetailsBand?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="#" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Photography") {?>
+                                                    <a href="viewServiceReservationDetailsPhotography?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="#" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <!-- <a href="viewServiceReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                             <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                            <a href="#" class="buttond">cancel</a>
+                                            <a href="#" class="buttond">cancel</a> -->
 
                                         </div>
 
@@ -111,11 +135,9 @@
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
                                                 </li>
 
-
                                                 <li class="team-member">
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
                                                 </li>
-
 
                                                 <li class="team-member">
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">

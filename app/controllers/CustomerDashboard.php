@@ -15,7 +15,6 @@ class CustomerDashboard extends Controller
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
       $this->reservationModel = $this->model('ReservationModel');
-     
    }
 
    public function home()

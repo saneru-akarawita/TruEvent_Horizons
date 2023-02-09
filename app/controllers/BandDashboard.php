@@ -122,6 +122,22 @@ class BandDashboard extends Controller
       $this->view('band/chat', $user);
    }
 
+   public function reservationDetails()
+   {
+         $spID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+         $banddetailslist = $this->bandModel->getServicesByServiceProvider($spID);
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$banddetailslist);
+         $this->view('band/view-reservation',$result0);
+   }
+
    public function payment()
    {
       $this->view('band/payment', '');

@@ -35,6 +35,20 @@ class BandModel extends Model
         return $results;
     }
 
+    public function editBandServicebyID($serviceID,$data){
+
+        $this->update('bandservicedetails', [
+
+            'service_name' => $data['name'],
+            'other_band_type' => $data['other_band'],
+            'no_of_players' => $data['num_players'],
+            'price'=>$data['price'],
+            'band_type' => $data['band'],
+        
+         ], ['service_id' => $serviceID]);
+    }
+
+
     public function getChatUsers($unique_id){
         $result = $this->getSingle("chat_users", "*", ['unique_id' => $unique_id]);
         return $result;

@@ -50,6 +50,7 @@
                     <div class="hero-heading">
                         <h3>Current Reservations - Services <i class="bx bx-chevron-down"></i> </h3>
                     </div>
+                    <?php $scount = 0; $pcount=0; ?>
 
                     <?php foreach ($rvdata as $rvDetails) : ?>
                                                     <?php 
@@ -57,9 +58,11 @@
                                                     ?>
                                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                                     <?php if ($new_sp_id == $spID) { ?>
+                                        <?php $scount = $scount + 1; ?>
+
 
                     <div class="project">
-                       <div class="col">
+                       <div class="col col<?php echo $scount%4 +1 ?>">
                             <div class="project-card">
                                 <div class="card-header">
                                     <type class="type">Reservation ID - <?= $rvDetails->rv_id; ?></type>
@@ -77,7 +80,7 @@
                                                 <p><?= $cus->fname; ?> <?= $cus->lname; ?></p>
                                                 <?php } ?>
                                         <?php endforeach; ?>
-                                    <p>LKR.125 000.00 per head</p>
+                                    <p><?= $rvDetails->price; ?></p>
 
 
                                     <div class="progress-box">
@@ -98,7 +101,12 @@
                                 </div>
                             
                                 <div class="action-button" style="justify-content:center; margin-left:75px;">
-                                    <a href="viewReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttond">view</a>
+                                <?php if($rvDetails->rvType == "service"){?>        
+                                    <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
+                                    <?php } else {?>
+                                        <a href="#" class="buttond">view</a>
+                                    <?php }?>
+                                    <!-- <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id; ?>&service_id=<?=$rvDetails->service_id; ?>" class="buttond">view</a> -->
                                     <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                     <a href="#" class="buttond">Decline</a>
 

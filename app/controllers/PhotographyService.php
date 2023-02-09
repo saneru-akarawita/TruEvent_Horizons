@@ -103,8 +103,84 @@ class PhotographyService extends Controller
          }
    }
 
-   public function editService($id){
+   
+   public function editService(){
 
+      if(isset($_GET['service_id'])){
+         $sv_editid=intval(trim($_GET['service_id']));
+      }
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $checkbox1=$_POST['photography'];  
+            $chk="";  
+            foreach($checkbox1 as $chk1)  
+               {  
+                  $chk .= $chk1.", ";  
+               }  
+
+         $data = [
+
+            'name' => trim($_POST['service_name']),
+            'price' => trim($_POST['price']),
+            'photography'=>$chk,
+            'other_photography' => trim($_POST['other_photography']),
+            'sv_id' => trim($_POST['sv_id']),
+
+            'name_error' => '',
+            'description_error'=>'',
+            'price_error' => '',
+            'other_photography_error' => ''
+         ];
+
+         if ($_POST['action'] == "editservice")
+         {
+            // Validate everything
+            $data['name_error'] = emptyCheck($data['name']);
+            $data['price_error'] = validatePrice($data['price']);
+            if (
+               empty($data['name_error']) && empty($data['price_error'])
+            )
+            {
+                
+               $this->photographyModel->beginTransaction();
+               $this->photographyModel->editPhotographyServicebyID($data['sv_id'], $data);
+               $this->photographyModel->commit();
+
+               Toast::setToast(1, "Service Edited Successfully!!!", "");
+
+               redirect('photographyService/viewAllServices');
+               
+            }
+            else
+            {
+               $this->view('photography/editservice', $data);
+            }
+         }
+         else
+         {
+            die("Something went wrong");
+         }
+         
+      }
+      else
+      {
+         $svdetails = $this->photographyModel->getPhotographyServiceDetailsByServiceID($sv_editid);
+
+         $data = [
+            'name' => $svdetails->service_name,
+            'price' => $svdetails->price,
+            'photography'=> $svdetails->photo_features,
+            'other_photography' => $svdetails->other_features,
+            'sv_id' => $sv_editid,
+
+            'name_error' => '',
+            'price_error' => '',
+            
+         ];
+
+         $this->view('photography/editservice', $data);
+      }
    }
 
    public function deleteService($id){

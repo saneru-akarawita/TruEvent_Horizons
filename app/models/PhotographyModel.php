@@ -36,6 +36,19 @@ class PhotographyModel extends Model
         return $results;
     }
 
+    public function editPhotographyServicebyID($serviceID,$data){
+
+        $this->update('photographyservicedetails', [
+
+            'service_name' => $data['name'],
+            'other_features' => $data['other_photography'],
+            // 'num_members' => $data['num_members'],
+            'price'=>$data['price'],
+            'photo_features' => $data['photography'],
+        
+         ], ['service_id' => $serviceID]);
+    }
+
     public function getChatUsers($unique_id){
         $result = $this->getSingle("chat_users", "*", ['unique_id' => $unique_id]);
         return $result;

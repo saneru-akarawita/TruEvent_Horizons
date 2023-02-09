@@ -40,27 +40,27 @@
     <a class="next" onclick="plusSlides(1)">❯</a>
     <div class="swiper home-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/1.jpg) no-repeat">
+            <div class="swiper-slide slide" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/bandviewservicemainpic.jpg) no-repeat">
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Make Your Event More Beautiful</h3>
-                <a href="viewservices" class="btn">View Services</a>
+             
                 </div>     
             </div>
 
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/2.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/bandviewserviceswelcomeparty.jpg) no-repeat; display:none;">
                 <div class="content">
                 <span>Exclusive Events,Priceless Memories</span>
                 <h3>Discover</h3>
-                <a href="viewservices" class="btn">View Packages</a>
+              
                 </div>
             </div>
     
-            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/deco\ company/deco-add-services/deco1.jpg) no-repeat; display:none;">
+            <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/bandviewservicesanniversary.jpg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
                     <h3>Make your event Memorable</h3>
-                    <a href="viewservices" class="btn">View Services</a>
+                   
             </div>
         </div>
     </div>
@@ -134,7 +134,7 @@
 
 <section class="home-packages">
 
-    <h1 class="heading-title">Your BandServices</h1>
+    <h1 class="heading-title">Your Band Services</h1>
 
 
     <div class="box-container">

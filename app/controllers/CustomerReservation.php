@@ -5,6 +5,7 @@ class CustomerReservation extends Controller
    {
       Session::validateSession([3]);
       $this->reservationModel = $this->model('ReservationModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->decoModel = $this->model('DecoModel');
       $this->hotelModel = $this->model('HotelModel');
       $this->bandModel = $this->model('BandModel');
@@ -361,6 +362,113 @@ class CustomerReservation extends Controller
           }
    }
 
+   public function viewServiceReservationDetailsHotel()
+   {
+
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $hoteldetailslist = $this->hotelModel->getServicesByServiceProvider($spid);
+         $result11 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$hoteldetailslist);
+         $this->view('customer/view-reservation-details-hotel',$result11);   
+   }
+
+   public function viewServiceReservationDetailsDeco()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $decodetailslist = $this->decoModel->getServicesByServiceProvider($spid);
+         $result12 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$decodetailslist);
+         $this->view('customer/view-reservation-details-deco',$result12);
+        
+   }
+
+
+   public function viewServiceReservationDetailsBand()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $banddetailslist = $this->bandModel->getServicesByServiceProvider($spid);
+         $result13 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$banddetailslist);
+         $this->view('customer/view-reservation-details-band',$result13);
+        
+   }
+
+   public function viewServiceReservationDetailsPhotography()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $photographydetailslist = $this->photographyModel->getServicesByServiceProvider($spid);
+         $result14 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$photographydetailslist);
+         $this->view('customer/view-reservation-details-photography',$result14);
+         
+   }
    public function deleteReservation($id){
 
    }
