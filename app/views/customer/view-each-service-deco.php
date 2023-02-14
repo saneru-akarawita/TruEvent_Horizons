@@ -67,7 +67,7 @@
 
 
 <!-- Photo Gallary Start-->
-<div class="image-tab" style="width:100%;">
+<div class="image-tab">
 <?php require APPROOT . "/views/customer/photoGalleryDeco.php" ?>
 <!-- Photo Gallary End-->
 
