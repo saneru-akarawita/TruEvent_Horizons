@@ -133,7 +133,7 @@ class Customer extends Controller
                   $status = "Active now";
                   $this->userModel->beginTransaction();
                   $this->userModel->registerUser($data['email'], $data['password'], 3);
-                  $this->userModel->registerChatUser($ran_id,$data['company_name'],'',$data['email'],$status);
+                  $this->userModel->registerChatUser($ran_id,$data['fname'],$data['lname'],$data['email'],$status);
                   $this->customerModel->registerCustomer($data);
                   $this->OTPModel->removeOTP($data['email'], 1);
 

@@ -19,7 +19,7 @@
 
 .images-body{
   font-family: sans-serif;
-  min-height: 100vh;
+  min-height: 90vh;
   background-attachment: fixed;
   background-size: cover;
   background: #c4bfc7;
@@ -30,8 +30,8 @@
     
 
 .carousel {
-  padding-top:120px;
-  height: 80vh;
+  padding-top:90px;
+  height: 70vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
   width: 20rem;
   height: 30rem;
   transform-style: preserve-3d;
-  transform: translateZ(20rem);
+  transform: translateZ(15rem);
   transition: transform 0.3s ease-in;
 }
 .carousel__img {
@@ -99,7 +99,7 @@
   color: #ffffff;
   cursor: pointer;
   margin: 0 2rem;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 .carousel__btn:hover {
   transform: scale(1.04);
@@ -111,6 +111,10 @@
 
 <body>
 <div class="images-body">
+<img class="carousel__img"
+        src="<?php echo URLROOT?>/public/images/temp.png" alt="oops!!"
+        style="width:265px; height:auto; margin-top:-70px; margin-left:80px; box-shadow:none;">
+
         <div class="carousel">
                 <div class="carousel__cards">
                         <div class="carousel__card">
@@ -157,10 +161,16 @@
                 </div>
 
                 <div class="carousel__control">
-                        <button class="carousel__btn carousel__btn--back" >&#8678; Prev</button>
-                        <button class="carousel__btn carousel__btn--next" name="next">Next &#8680;</button>
+        
+         <button class="carousel__btn carousel__btn--back" id="prev">&#8678; Prev</button>
+                        <button class="carousel__btn carousel__btn--next" id="next">Next &#8680;</button>
                 </div>
         </div>
+
+        <img class="carousel__img"
+        src="<?php echo URLROOT?>/public/images/temp.png" alt="oops!!"
+        style="width:265px; height:auto; margin-top:-70px; margin-right:80px; box-shadow:none;">
+
 </div>
  
 <script>
@@ -170,26 +180,20 @@
 let angle = 0;
 
 
-// let a = 0;
-// let timeout;
-// function updategellary() {
-//   carousel.style.transform = `perspective(1000px) rotateY(${a}deg)`;
-//   timeout=setTimeout(() => {
-//     a = a - 45;
+setInterval(displayHello, 3000);
 
-//     updategellary();
-//   }, 4000);
-// }
-// updategellary();
+function displayHello() {
+  document.getElementById("next").click();
+}
 
 next.addEventListener("click", () => {
   angle -= 45;
-  carousel.style.transform = `translateZ(20rem) rotateY(${angle}deg)`;
+  carousel.style.transform = `translateZ(15rem) rotateY(${angle}deg)`;
 });
 
 back.addEventListener("click", () => {
   angle += 45;
-  carousel.style.transform = `translateZ(20rem) rotateY(${angle}deg)`;
+  carousel.style.transform = `translateZ(15rem) rotateY(${angle}deg)`;
 });
 
     </script>

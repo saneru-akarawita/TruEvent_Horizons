@@ -174,7 +174,7 @@ class DecoDashboard extends Controller
 
    public function payment()
    {
-      $this->view('decoCompany/payment', '');
+      $this->view('decoCompany/paymentsnew', '');
    }
 
    public function reports()
