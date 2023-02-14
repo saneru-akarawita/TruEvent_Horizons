@@ -209,10 +209,28 @@ class DecoDashboard extends Controller
    }
 
    public function calendar(){
-      $usermail = Session::getUser('email');
-      $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
-      $events = $this->customerModel->getEvents($spID[0]);
-      $this->view("calendar/index", $events);
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $data = [
+            'sp_user_id' => trim($_POST['spID']),
+            'title' => trim($_POST['eventname']),
+            'start' => trim($_POST['startdate']),
+            'end' => trim($_POST['enddate'])
+         ];
+
+         $this->reservationModel->addEvent($data);
+         $usermail = Session::getUser('email');
+         $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
+         $events = $this->customerModel->getEvents($spID[0]);
+         $this->view("calendar/index", $events);
+             
+      }else{
+         $usermail = Session::getUser('email');
+         $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
+         $events = $this->customerModel->getEvents($spID[0]);
+         $this->view("calendar/index", $events);
+      }
    }
 
    public function logout()
