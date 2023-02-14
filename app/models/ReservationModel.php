@@ -83,6 +83,16 @@ class ReservationModel extends Model
 
         $results = $this->getRowCount("customerrvdetails", ["payment" => "not-paid"]);
         return $results;
-      }
+    }
+
+    public function addEvent($data)
+    {   
+        $this->insert('calendar_dates', [
+            'sp_user_id' => $data['sp_user_id'],
+            'title' => $data['title'],
+            'start'=>$data['start'],
+            'end' => $data['end']
+            ]);
+    }
     
 }
