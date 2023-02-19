@@ -94,5 +94,33 @@ class ReservationModel extends Model
             'end' => $data['end']
             ]);
     }
+
+    public function addPayment($data){
+        $this->insert('payments', [
+            'rv_id' => $data['rv_id'],
+            'customer_id' => $data['customer_id'],
+            'ad_price' => $data['ad_price'],
+            'full_price' => $data['full_price']
+            ]);
+    }
+
+    public function updateRvDetails($data){
+            
+        $this->update('customerrvdetails', [
+            'status' => $data['status'],
+            'payment' => $data['payment']
+            ], 
+            
+            ['rv_id' => $data['rv_id']]);
+    
+    }
+
+    public function deleteEvent($eventData){
+        $this->delete('calendar_dates', ['start' => $eventData['start'], 'end' => $eventData['end'], 'sp_user_id' => $eventData['sp_user_id'], 'title' => $eventData['title']]);
+    }
+
+    public function deletePayment($rvid){
+        $this->delete('payments', ['rv_id' => $rvid]);
+    }
     
 }

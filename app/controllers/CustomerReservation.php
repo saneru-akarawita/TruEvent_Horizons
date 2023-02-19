@@ -573,8 +573,50 @@ class CustomerReservation extends Controller
          $this->view('customer/view-reservation-details-photography',$result14);
          
    }
-   public function deleteReservation($id){
 
+   public function deleteReservation(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($reservationDetails->sp_id);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+
+         $email = $serviceProviderDetails->email;
+
+         $emailData = [
+            "sp_name" => $serviceProviderDetails->company_name,
+            "event_name" => $reservationDetails->eventName,
+            "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+         ];
+
+         $eventData = [
+            "sp_user_id" => $reservationDetails->sp_id,
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+            EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            //cancel calendar event
+            $this->reservationModel->deleteEvent($eventData);
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
    }
 
    public function home()
