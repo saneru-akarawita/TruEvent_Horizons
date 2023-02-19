@@ -14,27 +14,13 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/styles-hotel.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/calender.css" />
 
 </head>
 
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Dashboard</a>
 
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="#">Packages</a>
-            <a href="viewreservationlog">Reservation Log</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-
-        <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
 
     <!-- </section> -->
@@ -64,7 +50,7 @@
                 <div class="row">
                     <div class="column" id="service-details-col">
                         <label class="label" for="service_type">Service Details</label>
-                        <select name="service_type" class="dropdownmenu" id="service-details" required>
+                        <select name="service_type" class="dropdownmenu" id="service-details" required disabled>
                             <option value="">Service Provider Type</option>
                             <option value="Hotel" <?php if($data[0]=='Hotel') echo 'selected'?>>Hotel Service</option>
                             <option value="Decoration" <?php if($data[0]=='Decoration') echo 'selected'?>>Decoration Service</option>
@@ -77,7 +63,7 @@
                 <div class="row">
                     <div class="column" id="service-name-col">
                         <label for="name" >Service Name</label>
-                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required>
+                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required disabled>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
@@ -88,7 +74,8 @@
                 </div>
 
                 <div class="text-group">
-                    <label for="rvdate">Reservation Date</label>
+                    <label for="rvdate">Reservation Date</label>                    
+                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id']?>" style="font-weight:bold;">from here</a>.)</p>
                     <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
@@ -128,7 +115,7 @@
                 <div class="row">
                     <div class="column" id="package-details-col">
                         <label class="label" for="hall_type">Package Details</label>
-                        <select name="package_type" class="dropdownmenu" id="package-details"  required >
+                        <select name="package_type" class="dropdownmenu" id="package-details"  required disabled>
                             <option value="">Package Type</option>
                             <option value = "Birthday" <?php if($data[0]=='Birthday') echo 'selected'?>>Birthday Package</option>
                             <option value = "Anniversary" <?php if($data[0]=='Anniversary') echo 'selected'?>>Anniversary Package</option>
@@ -143,7 +130,7 @@
                 <div class="row">
                     <div class="column" id="package-name-col">
                         <label for="event name">Pacakage Name</label>
-                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" value="<?php echo $data[1]?>" required>
+                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" value="<?php echo $data[1]?>" required disabled>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
@@ -155,6 +142,7 @@
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
+                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id']?>" style="font-weight:bold;">from here</a>.)</p>
                     <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
@@ -179,7 +167,8 @@
 
         </div>
         <div class="calender_body">
-        <div id="calendar"></div>
+            <br><br><br>
+            <img src="<?=URLROOT?>/public/images/customer/datepicker.gif" alt="">
         </div>
     </div>
            
@@ -231,8 +220,6 @@
     <!-- custom js file link -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
-    <script src="<?php echo URLROOT ?>/public/js/customer/calender.js"></script>
-
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>

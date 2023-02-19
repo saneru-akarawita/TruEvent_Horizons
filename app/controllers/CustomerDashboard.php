@@ -385,8 +385,9 @@ class CustomerDashboard extends Controller
    }
 
    public function calendar(){
-      $events = $this->customerModel->getEvents(1);
-      $this->view("calendar/index", $events);
+      $sp_id = $_GET['sp_id'];
+      $events = $this->customerModel->getEvents($sp_id);
+      $this->view("calendar/cus_calendar/index", $events);
    }
 
    public function totalPaymentSuccess()
