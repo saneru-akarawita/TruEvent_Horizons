@@ -18,7 +18,7 @@ class SMS
    public static function sendMobileVerifySMS($mobileNo, $OTP)
    {
       $SMSText = urlencode(
-         "Please enter the OTP code: $OTP to verify your mobile number.\n\nBeauty Craft"
+         "Please enter the OTP code: $OTP to verify your mobile number.\n\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 1);
    }
@@ -26,7 +26,7 @@ class SMS
    public static function sendCustomerRegSMS($mobileNo)
    {
       $SMSText = urlencode(
-         "Welcome to Beauty Craft!\nYour customer account has been created successfully."
+         "Welcome to TruEvent Horizons!\nYour customer account has been created successfully."
       );
       return self::sendSMS($mobileNo, $SMSText, 0);
    }
@@ -34,7 +34,7 @@ class SMS
    public static function sendPasswordResetSMS($mobileNo, $OTP)
    {
       $SMSText = urlencode(
-         "Please enter the OTP code: $OTP to reset the password.\nBeauty Craft"
+         "Please enter the OTP code: $OTP to reset the password.\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 1);
    }
@@ -54,7 +54,7 @@ class SMS
          $staffTypeName = "Service provider";
       }
       $SMSText = urlencode(
-         "Welcome to Beauty Craft. Your " . $staffTypeName . " Account has been created. Use your mobile number as your user name and NIC as the password to log in. Please reset your password after the first log in.\nBeauty Craft"
+         "Welcome to TruEvent Horizons. Your " . $staffTypeName . " Account has been created. Use your mobile number as your user name and NIC as the password to log in. Please reset your password after the first log in.\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 1);
    }
@@ -62,7 +62,7 @@ class SMS
    public static function sendSalaryPaySMS($mobileNo)
    {
       $SMSText = urlencode(
-         "Dear sir/madam your salary has been credited to your account.\nBeauty Craft"
+         "Dear sir/madam your salary has been credited to your account.\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 0);
    }
@@ -83,7 +83,7 @@ class SMS
       }
 
       $SMSText = urlencode(
-         "Dear sir/madam your " . $staffTypeName . " account has been enabled. Use your new poassword as your NIC. Please reset your password after the first log in.\nBeauty Craft"
+         "Dear sir/madam your " . $staffTypeName . " account has been enabled. Use your new poassword as your NIC. Please reset your password after the first log in.\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 0);
    }
@@ -103,7 +103,7 @@ class SMS
       }
 
       $SMSText = urlencode(
-         "Dear sir/madam your " . $staffTypeName . " account has been temporarily disabled.\nBeauty Craft"
+         "Dear sir/madam your " . $staffTypeName . " account has been temporarily disabled.\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 0);
    }
@@ -112,7 +112,7 @@ class SMS
    public static function sendNewReservationSMS($mobileNo, $service, $seProv, $time, $date)
    {
       $SMSText = urlencode(
-         "Your reservation has been placed successfully.\n Service: " . $service . "\n Service Provider: " . $seProv . "\n Time:  " . $time . " on " . $date . "\n\nBeauty Craft"
+         "Your reservation has been placed successfully.\n Service: " . $service . "\n Service Provider: " . $seProv . "\n Time:  " . $time . " on " . $date . "\n\nTruEvent Horizons"
       );
       return self::sendSMS($mobileNo, $SMSText, 1);
    }

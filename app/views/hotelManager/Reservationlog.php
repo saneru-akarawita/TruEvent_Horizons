@@ -52,6 +52,7 @@
 
                     <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($rvdata as $rvDetails) : ?>
+                    <?php if($rvDetails->status !="decline") {?>
                     
                                                 <?php 
                                                     $sp_id_arr = explode (",", $rvDetails->sp_id);
@@ -84,29 +85,33 @@
                                     <div class="progress-box">
                                         <label for="progress">Status</label>
                                         <?php if($rvDetails->status == "pending") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                        <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else if($rvDetails->payment == "ad-paid") $value="25"; else $value = "100"?>
+                                        <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
                                 </div>
-                            
+                                
+                                <?php if($rvDetails->status =="pending") {?>
                                 <div class="action-button" style="justify-content:center; margin-left:75px;">
-                                <?php if($rvDetails->rvType == "service"){?>        
+                                    <?php if($rvDetails->rvType == "service"){?>        
                                     <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                     <?php } else {?>
                                         <a href="#" class="buttond">view</a>
                                     <?php }?>
                                     <!-- <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id; ?>&service_id=<?=$rvDetails->service_id; ?>" class="buttond">view</a> -->
-                                    <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
-                                    <a href="#" class="buttond">Decline</a>
-                            </div>
+                                    <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
+                                    <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
+                                <?php } else { ?>
+                                    <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
+                                <?php }?>
+                                </div>
 
                             <div class="card-footer">
                                 <ul class="team">
@@ -132,6 +137,7 @@
 
                         <?php } ?>
                         <?php endforeach; ?>
+                        <?php } ?>
                         <?php endforeach; ?>
                     </div>
 
