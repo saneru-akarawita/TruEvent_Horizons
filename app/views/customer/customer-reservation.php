@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="column" id="service-details-col">
                         <label class="label" for="service_type">Service Details</label>
-                        <select name="service_type" class="dropdownmenu" id="service-details" required disabled>
+                        <select name="service_type" class="dropdownmenu" id="service-details" required>
                             <option value="">Service Provider Type</option>
                             <option value="Hotel" <?php if($data[0]=='Hotel') echo 'selected'?>>Hotel Service</option>
                             <option value="Decoration" <?php if($data[0]=='Decoration') echo 'selected'?>>Decoration Service</option>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="column" id="service-name-col">
                         <label for="name" >Service Name</label>
-                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required disabled>
+                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required readonly>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
@@ -115,7 +115,7 @@
                 <div class="row">
                     <div class="column" id="package-details-col">
                         <label class="label" for="hall_type">Package Details</label>
-                        <select name="package_type" class="dropdownmenu" id="package-details"  required disabled>
+                        <select name="package_type" class="dropdownmenu" id="package-details"  required>
                             <option value="">Package Type</option>
                             <option value = "Birthday" <?php if($data[0]=='Birthday') echo 'selected'?>>Birthday Package</option>
                             <option value = "Anniversary" <?php if($data[0]=='Anniversary') echo 'selected'?>>Anniversary Package</option>
@@ -130,7 +130,7 @@
                 <div class="row">
                     <div class="column" id="package-name-col">
                         <label for="event name">Pacakage Name</label>
-                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" value="<?php echo $data[1]?>" required disabled>
+                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" value="<?php echo $data[1]?>" required readonly>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
@@ -142,7 +142,7 @@
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
-                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id']?>" style="font-weight:bold;">from here</a>.)</p>
+                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id_string']?>" style="font-weight:bold;">from here</a>.)</p>
                     <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
