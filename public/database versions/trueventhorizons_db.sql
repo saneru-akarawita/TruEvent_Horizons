@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2023 at 05:18 PM
+-- Generation Time: Feb 21, 2023 at 02:01 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.10
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `adminpackagedetails` (
   `package_id` int NOT NULL,
-  `package_code` varchar(15) NOT NULL,
-  `package_type` varchar(255) NOT NULL,
-  `package_name` varchar(255) NOT NULL,
-  `price` text NOT NULL,
-  `band_choice` varchar(255) DEFAULT NULL,
+  `package_code` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `package_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `package_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `price` text COLLATE utf8mb4_general_ci NOT NULL,
+  `band_choice` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `band_sv_id` int NOT NULL DEFAULT '0',
-  `deco_choice` varchar(255) DEFAULT NULL,
+  `deco_choice` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `deco_sv_id` int NOT NULL DEFAULT '0',
-  `photo_choice` varchar(255) DEFAULT NULL,
+  `photo_choice` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `photo_sv_id` int NOT NULL DEFAULT '0',
   `active` int NOT NULL DEFAULT '1',
-  `sp_id_string` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `sp_id_string` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adminpackagedetails`
@@ -55,7 +55,8 @@ INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`,
 (5, 'P007', 'Birthday', 'Saneru\'s Package', '340000', 'Wayo Band - Welcome Parties', 1, '', 0, 'Red Ants Photography - Business Gatherings', 3, 1, '5,6'),
 (6, 'test package', 'Birthday', 'test test', '12345', 'Wayo Band - Business Gatherings', 2, 'Urban 57 Decorations - Welcome Parties', 2, 'Red Ants Photography - Birthday Parties', 1, 1, '5,2,6'),
 (7, 'P334', 'Coparate Event', 'athal ekata', '12399', '', 0, 'Urban 57 Decorations - Night Functions', 3, 'Red Ants Photography - Birthday Parties', 1, 1, '2,6'),
-(8, 'P008', 'Coparate Event', 'Pamudi\'s Farewell', '45000', '', 0, 'Urban 57 Decorations - Welcome Parties', 2, 'Red Ants Photography - Night Functions', 2, 1, '2,6');
+(8, 'P008', 'Coparate Event', 'Pamudi\'s Farewell', '45000', '', 0, 'Urban 57 Decorations - Welcome Parties', 2, 'Red Ants Photography - Night Functions', 2, 1, '2,6'),
+(9, 'P010', 'Birthday', 'Null Value Package', '40000', 'Wayo Band - Welcome Parties', 1, 'Urban 57 Decorations - Night Functions', 3, '', 0, 1, '5,2');
 
 -- --------------------------------------------------------
 
@@ -65,15 +66,15 @@ INSERT INTO `adminpackagedetails` (`package_id`, `package_code`, `package_type`,
 
 CREATE TABLE `adminuser` (
   `admin_id` int NOT NULL,
-  `fname` varchar(25) NOT NULL,
-  `lname` varchar(25) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `acc_name` varchar(255) NOT NULL,
-  `acc_no` varchar(20) NOT NULL,
-  `bank` varchar(255) NOT NULL,
-  `branch` varchar(255) NOT NULL,
+  `fname` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `lname` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `acc_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `acc_no` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `bank` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `branch` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adminuser`
@@ -91,14 +92,14 @@ INSERT INTO `adminuser` (`admin_id`, `fname`, `lname`, `email`, `acc_name`, `acc
 
 CREATE TABLE `bandservicedetails` (
   `service_id` int NOT NULL,
-  `service_name` varchar(255) NOT NULL,
-  `band_type` varchar(255) NOT NULL,
-  `other_band_type` varchar(255) NOT NULL,
+  `service_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `band_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `other_band_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `no_of_players` int NOT NULL,
-  `price` text NOT NULL,
+  `price` text COLLATE utf8mb4_general_ci NOT NULL,
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bandservicedetails`
@@ -119,24 +120,28 @@ INSERT INTO `bandservicedetails` (`service_id`, `service_name`, `band_type`, `ot
 CREATE TABLE `calendar_dates` (
   `id` int NOT NULL,
   `sp_user_id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `start` date NOT NULL,
-  `end` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `end` date NOT NULL,
+  `rv_id` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `calendar_dates`
 --
 
-INSERT INTO `calendar_dates` (`id`, `sp_user_id`, `title`, `start`, `end`) VALUES
-(1, 1, 'After Interim 3.0 Party', '2023-02-02', '2023-02-02'),
-(2, 2, 'kaveesha\'s Farewell Party', '2023-01-23', '2023-01-23'),
-(3, 1, 'Kaveesha\'s Birthday', '2022-12-30', '2022-12-30'),
-(4, 4, 'test 2', '2023-02-03', '2023-02-03'),
-(5, 1, 'temp 4', '2023-02-17', '2023-02-17'),
-(6, 2, 'temp 5', '2023-02-07', '2023-02-07'),
-(7, 5, 'test band', '2023-03-02', '2023-03-02'),
-(8, 6, 'photo test', '2023-02-22', '2023-02-22');
+INSERT INTO `calendar_dates` (`id`, `sp_user_id`, `title`, `start`, `end`, `rv_id`) VALUES
+(1, 1, 'After Interim 3.0 Party', '2023-02-02', '2023-02-02', 1),
+(2, 2, 'kaveesha\'s Farewell Party', '2023-01-23', '2023-01-23', 6),
+(3, 1, 'Kaveesha\'s Birthday', '2022-12-30', '2022-12-30', 5),
+(4, 4, 'test 2', '2023-02-03', '2023-02-03', 12),
+(5, 1, 'temp 4', '2023-02-17', '2023-02-17', 15),
+(6, 2, 'temp 5', '2023-02-07', '2023-02-07', 16),
+(7, 5, 'test band', '2023-03-02', '2023-03-02', 24),
+(8, 6, 'photo test', '2023-02-22', '2023-02-22', 25),
+(35, 2, 'kaveesha\'s Farewell Party', '2023-01-24', '2023-01-24', 2),
+(39, 5, 'confirm Decline Test 2', '2023-02-24', '2023-02-24', 30),
+(40, 6, 'confirm Decline Test 2', '2023-02-24', '2023-02-24', 30);
 
 -- --------------------------------------------------------
 
@@ -148,8 +153,8 @@ CREATE TABLE `chat_messages` (
   `msg_id` int NOT NULL,
   `incoming_msg_id` int NOT NULL,
   `outgoing_msg_id` int NOT NULL,
-  `msg` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `msg` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_messages`
@@ -198,12 +203,12 @@ INSERT INTO `chat_messages` (`msg_id`, `incoming_msg_id`, `outgoing_msg_id`, `ms
 CREATE TABLE `chat_users` (
   `user_id` int NOT NULL,
   `unique_id` int NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `fname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `lname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_users`
@@ -212,9 +217,9 @@ CREATE TABLE `chat_users` (
 INSERT INTO `chat_users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `img`, `status`) VALUES
 (1, 816865346, 'Chamila', 'Amarathunga', 'chamila.amarathunga@gmail.com', NULL, 'Active now'),
 (2, 1460619877, 'Kaveesha', 'Muthukuda', '2020cs007@stu.ucsc.cmb.ac.lk', NULL, 'Active now'),
-(3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Active now'),
-(4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Offline now'),
-(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Offline now'),
+(3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Offline now'),
+(4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Active now'),
+(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Active now'),
 (6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Active now'),
 (7, 370802146, 'SHANGRI - LA', '', 'tempemail@gmail.com', NULL, 'Offline now');
 
@@ -226,46 +231,67 @@ INSERT INTO `chat_users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `im
 
 CREATE TABLE `customerrvdetails` (
   `rv_id` int NOT NULL,
-  `eventName` varchar(255) NOT NULL,
+  `eventName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `rvDate` date NOT NULL,
   `rvTime` time NOT NULL,
-  `rvType` varchar(10) NOT NULL,
-  `spType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `spName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `rvType` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `spType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `spName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `service_id` int DEFAULT '0',
-  `packageType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `packageName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `status` varchar(10) NOT NULL,
-  `payment` varchar(10) NOT NULL,
-  `price` varchar(255) NOT NULL DEFAULT '0',
+  `packageType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `packageName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `payment` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `price` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
   `customer_id` int NOT NULL,
-  `sp_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `sp_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customerrvdetails`
 --
 
 INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvType`, `spType`, `spName`, `service_id`, `packageType`, `packageName`, `status`, `payment`, `price`, `customer_id`, `sp_id`) VALUES
-(1, 'After Interim 3.0 Party', '2023-02-02', '20:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', 1, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '1'),
+(1, 'After Interim 3.0 Party', '2023-02-02', '20:00:00', 'service', 'Hotel', 'SHANGRI - LA - Shang Palace', 1, NULL, NULL, 'confirm', 'not-paid', '4500.00', 1, '1'),
 (2, 'kaveesha\'s Farewell Party', '2023-01-24', '20:00:00', 'package', NULL, NULL, 0, 'Coparate Event', 'Farewell Party Package', 'pending', 'not-paid', '0', 1, '2,3'),
-(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'pending', 'not-paid', '5000.00', 1, '1'),
-(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', 5, NULL, NULL, 'pending', 'not-paid', '35000', 1, '2'),
+(5, 'Kaveesha\'s Birthday', '2022-12-30', '17:00:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'confirm', 'not-paid', '5000.00', 1, '1'),
+(6, 'kaveesha\'s Farewell Party', '2023-01-23', '19:00:00', 'service', 'Decoration', 'Urban 57 Decorations - Birthday Parties', 5, NULL, NULL, 'confirm', 'not-paid', '35000', 1, '2'),
 (12, 'test 2', '2023-02-03', '15:37:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
-(13, 'test3', '2023-03-02', '14:49:00', 'service', 'Decoration', 'Urban 57 Decorations - Welcome Parties', 2, NULL, NULL, 'pending', 'not-paid', '40000', 1, '2'),
-(14, 'temp 3', '2023-02-23', '15:39:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
-(15, 'temp 4', '2023-02-17', '17:09:00', 'service', 'Hotel', 'SHANGRI - LA - Royal Hall', 7, NULL, NULL, 'pending', 'not-paid', '5000', 1, '1'),
+(13, 'test3', '2023-03-02', '14:49:00', 'service', 'Decoration', 'Urban 57 Decorations - Welcome Parties', 2, NULL, NULL, 'decline', 'not-paid', '40000', 1, '2'),
+(14, 'temp 3', '2023-02-23', '15:39:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'decline', 'not-paid', '4500.00', 1, '4'),
+(15, 'temp 4', '2023-02-17', '17:09:00', 'service', 'Hotel', 'SHANGRI - LA - Royal Hall', 7, NULL, NULL, 'decline', 'not-paid', '5000', 1, '1'),
 (16, 'temp 5', '2023-02-07', '17:09:00', 'service', 'Decoration', 'Urban 57 Decorations - Get-Togethers', 4, NULL, NULL, 'pending', 'not-paid', '35000', 1, '2'),
 (17, 'Temp Package 2', '2023-02-17', '17:09:00', 'package', NULL, NULL, 0, 'Coperate Event', 'abc 1', 'pending', 'not-paid', '124394', 1, '2,3'),
-(18, 'temp package 2', '2023-02-09', '17:09:00', 'package', NULL, NULL, 0, 'coperate package', 'test 32', 'pending', 'not-paid', '324500', 1, '2,3,4'),
+(18, 'temp package 2', '2023-02-09', '17:09:00', 'package', NULL, NULL, 0, 'coperate package', 'test 32', 'decline', 'not-paid', '324500', 1, '2,3,4'),
 (19, 'temp package 3', '2023-02-15', '15:44:08', 'package', NULL, NULL, 0, 'Birthday Package', 'athal package 2', 'pending', 'not-paid', '123000', 1, '3,4'),
-(20, 'aaaaaaaaaaaaa', '2023-02-24', '17:55:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'pending', 'not-paid', '5000.00', 1, '1'),
+(20, 'aaaaaaaaaaaaa', '2023-02-24', '17:55:00', 'service', 'Hotel', 'SHANGRI - LA - Central Ocean View', 3, NULL, NULL, 'decline', 'not-paid', '5000.00', 1, '1'),
 (21, 'bbbbbbbbbbb', '2023-03-03', '17:56:00', 'service', 'Hotel', 'Cinnamon Grand Colombo - Tea Lounge', 6, NULL, NULL, 'pending', 'not-paid', '4500.00', 1, '4'),
-(22, 'ccccccccccccccc', '2023-02-10', '05:56:00', 'service', 'Decoration', 'Urban 57 Decorations - Anniversary Parties', 1, NULL, NULL, 'pending', 'not-paid', '50000', 1, '2'),
+(22, 'ccccccccccccccc', '2023-02-10', '05:56:00', 'service', 'Decoration', 'Urban 57 Decorations - Anniversary Parties', 1, NULL, NULL, 'decline', 'not-paid', '50000', 1, '2'),
 (23, 'test 345', '2023-02-10', '07:53:00', 'service', 'Decoration', 'Urban 57 Decorations - Night Functions', 3, NULL, NULL, 'pending', 'not-paid', '60000', 1, '2'),
 (24, 'test band', '2023-03-02', '11:09:00', 'service', 'Band', 'Wayo Band - Business Gatherings', 2, NULL, NULL, 'pending', 'not-paid', '20000', 1, '5'),
 (25, 'photo test', '2023-02-22', '11:10:00', 'service', 'Photography', 'Red Ants Photography - Night Functions', 2, NULL, NULL, 'pending', 'not-paid', '25000', 1, '6'),
-(26, 'test package 999', '2023-02-16', '13:37:00', 'package', NULL, NULL, 2, 'Anniversary', '10th Anniversary Package', 'pending', 'not-paid', '100000', 1, '2');
+(26, 'test package 999', '2023-02-16', '13:37:00', 'package', NULL, NULL, 2, 'Anniversary', '10th Anniversary Package', 'pending', 'not-paid', '100000', 1, '2'),
+(27, 'check Package Confirmation', '2023-02-25', '01:39:00', 'package', NULL, NULL, 5, '', '', 'decline', 'not-paid', '340000', 1, '5,6'),
+(28, 'Checking on Package Confirmation', '2023-02-24', '10:30:00', 'package', NULL, NULL, 5, '', '', 'decline', 'not-paid', '340000', 1, '5,6'),
+(29, 'confirm Decline Test', '2023-02-24', '17:22:00', 'package', NULL, NULL, 6, '', '', 'decline', 'not-paid', '12345', 1, '5,2,6'),
+(30, 'confirm Decline Test 2', '2023-02-24', '17:42:00', 'package', NULL, NULL, 5, '', '', 'confirm', 'not-paid', '340000', 1, '5,6'),
+(31, 'service name check', '2023-02-24', '17:44:00', 'service', '', '', 2, NULL, NULL, 'pending', 'not-paid', '40000', 1, '2'),
+(32, 'test check name', '2023-02-25', '18:18:00', 'service', 'Band', 'Wayo Band - Business Gatherings', 2, NULL, NULL, 'pending', 'not-paid', '20000', 1, '5'),
+(33, 'read only package test', '2023-02-25', '18:26:00', 'package', NULL, NULL, 2, 'Anniversary', '10th Anniversary Package', 'decline', 'not-paid', '100000', 1, '2');
+
+--
+-- Triggers `customerrvdetails`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_reservation_to_package_confirmation_trigger` AFTER INSERT ON `customerrvdetails` FOR EACH ROW BEGIN
+	IF NEW.rvType = "package" THEN
+    -- Insert values into package_confirmation table
+    INSERT INTO `package_confirmation` (`rv_id`, `event_name`, `no_of_services`)
+    VALUES (NEW.`rv_id`, NEW.`eventName`, (SELECT LENGTH(NEW.`sp_id`) - LENGTH(REPLACE(NEW.`sp_id`, ',', '')) + 1));
+	END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -275,13 +301,13 @@ INSERT INTO `customerrvdetails` (`rv_id`, `eventName`, `rvDate`, `rvTime`, `rvTy
 
 CREATE TABLE `customeruser` (
   `customer_id` int NOT NULL,
-  `fname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `lname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `contact_no` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `district` varchar(255) NOT NULL,
+  `fname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lname` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_no` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `district` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customeruser`
@@ -298,14 +324,14 @@ INSERT INTO `customeruser` (`customer_id`, `fname`, `lname`, `email`, `contact_n
 
 CREATE TABLE `decoservicedetails` (
   `service_id` int NOT NULL,
-  `service_name` varchar(255) NOT NULL,
-  `decoration_item` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `theme` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `price` text NOT NULL,
-  `other_decoration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `service_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `decoration_item` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `theme` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `price` text COLLATE utf8mb4_general_ci NOT NULL,
+  `other_decoration` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `decoservicedetails`
@@ -326,18 +352,18 @@ INSERT INTO `decoservicedetails` (`service_id`, `service_name`, `decoration_item
 
 CREATE TABLE `feedbacks` (
   `feedback_id` int NOT NULL,
-  `sp_type` varchar(255) NOT NULL,
-  `sp_name` varchar(255) NOT NULL,
-  `event_name` varchar(255) NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
+  `sp_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `sp_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `event_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `contact_no` int NOT NULL,
-  `eob` varchar(255) NOT NULL,
-  `aos` varchar(255) NOT NULL,
-  `vom` varchar(255) NOT NULL,
-  `qos` varchar(255) NOT NULL,
-  `cs` varchar(255) NOT NULL,
-  `complaint` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `eob` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `aos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `vom` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `qos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `cs` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `complaint` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedbacks`
@@ -356,18 +382,18 @@ INSERT INTO `feedbacks` (`feedback_id`, `sp_type`, `sp_name`, `event_name`, `cus
 
 CREATE TABLE `hotelservicedetails` (
   `service_id` int NOT NULL,
-  `service_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `service_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `hall_image` longblob NOT NULL,
-  `hall_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `location` text NOT NULL,
-  `hall_type` text NOT NULL,
+  `hall_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `location` text COLLATE utf8mb4_general_ci NOT NULL,
+  `hall_type` text COLLATE utf8mb4_general_ci NOT NULL,
   `max_crowd` int NOT NULL,
   `ac_status` int NOT NULL,
-  `price` text NOT NULL,
-  `other_facilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `price` text COLLATE utf8mb4_general_ci NOT NULL,
+  `other_facilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hotelservicedetails`
@@ -389,11 +415,59 @@ INSERT INTO `hotelservicedetails` (`service_id`, `service_type`, `hall_image`, `
 --
 
 CREATE TABLE `otpverification` (
-  `email` varchar(255) NOT NULL,
-  `OTP` text NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `OTP` text COLLATE utf8mb4_general_ci NOT NULL,
   `timestamp` datetime NOT NULL,
   `type` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package_confirmation`
+--
+
+CREATE TABLE `package_confirmation` (
+  `id` int NOT NULL,
+  `rv_id` int NOT NULL,
+  `event_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `no_of_services` int NOT NULL,
+  `no_of_confirmed_services` int NOT NULL DEFAULT '0',
+  `no_of_declined_services` int NOT NULL DEFAULT '0',
+  `deco_confirmation` int NOT NULL DEFAULT '0',
+  `band_confirmation` int NOT NULL DEFAULT '0',
+  `photo_confirmation` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `package_confirmation`
+--
+
+INSERT INTO `package_confirmation` (`id`, `rv_id`, `event_name`, `no_of_services`, `no_of_confirmed_services`, `no_of_declined_services`, `deco_confirmation`, `band_confirmation`, `photo_confirmation`) VALUES
+(1, 2, 'Kaveesha\'s Farewell Party', 2, 1, 0, 2, 0, 0),
+(2, 17, 'Temp Package 2', 2, 0, 0, 0, 0, 0),
+(5, 29, 'confirm Decline Test', 3, 1, 1, 0, 5, 0),
+(6, 30, 'confirm Decline Test 2', 2, 2, 0, 0, 5, 6);
+
+--
+-- Triggers `package_confirmation`
+--
+DELIMITER $$
+CREATE TRIGGER `confirm_status_trigger` AFTER UPDATE ON `package_confirmation` FOR EACH ROW BEGIN
+  IF NEW.no_of_services = NEW.no_of_confirmed_services THEN
+    UPDATE customerrvdetails SET status = 'confirm' WHERE rv_id = NEW.rv_id;
+  END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `decline_status_trigger` AFTER UPDATE ON `package_confirmation` FOR EACH ROW BEGIN
+  IF NEW.no_of_declined_services <> 0 THEN
+    UPDATE customerrvdetails SET status = 'decline' WHERE rv_id = NEW.rv_id;
+  END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -405,11 +479,21 @@ CREATE TABLE `payments` (
   `payment_id` int NOT NULL,
   `rv_id` int NOT NULL,
   `customer_id` int NOT NULL,
-  `ad_price` text NOT NULL,
-  `full_price` text NOT NULL,
-  `ad_flag` int NOT NULL,
-  `fp_flag` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `ad_price` text COLLATE utf8mb4_general_ci NOT NULL,
+  `full_price` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ad_flag` int NOT NULL DEFAULT '0',
+  `fp_flag` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`payment_id`, `rv_id`, `customer_id`, `ad_price`, `full_price`, `ad_flag`, `fp_flag`) VALUES
+(1, 5, 1, '1250', '5000.00', 0, 0),
+(2, 20, 1, '1250', '5000.00', 0, 0),
+(8, 6, 1, '8750', '35000', 0, 0),
+(10, 30, 1, '85000', '340000', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -419,13 +503,13 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `photographyservicedetails` (
   `service_id` int NOT NULL,
-  `service_name` varchar(255) NOT NULL,
-  `photo_features` varchar(255) NOT NULL,
-  `other_features` varchar(255) NOT NULL,
-  `price` text NOT NULL,
+  `service_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `photo_features` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `other_features` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `price` text COLLATE utf8mb4_general_ci NOT NULL,
   `service_provider_id` int NOT NULL,
   `active` int NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `photographyservicedetails`
@@ -445,19 +529,19 @@ INSERT INTO `photographyservicedetails` (`service_id`, `service_name`, `photo_fe
 
 CREATE TABLE `serviceprovideruser` (
   `service_provider_id` int NOT NULL,
-  `business_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `company_name` varchar(255) NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `contact_no` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `district` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `sp_category` varchar(255) NOT NULL,
-  `account_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `bank` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `branch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `business_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_no` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `district` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `sp_category` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `account_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `bank` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `branch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `travel_flag` int NOT NULL,
   `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `serviceprovideruser`
@@ -478,9 +562,9 @@ INSERT INTO `serviceprovideruser` (`service_provider_id`, `business_id`, `compan
 --
 
 CREATE TABLE `superadminuser` (
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `superadminuser`
@@ -496,12 +580,12 @@ INSERT INTO `superadminuser` (`email`, `password`) VALUES
 --
 
 CREATE TABLE `users` (
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `fail_attempts` int NOT NULL,
   `user_type` int NOT NULL,
-  `vstatus` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `vstatus` varchar(25) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -607,6 +691,12 @@ ALTER TABLE `otpverification`
   ADD PRIMARY KEY (`email`,`type`);
 
 --
+-- Indexes for table `package_confirmation`
+--
+ALTER TABLE `package_confirmation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
@@ -647,7 +737,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adminpackagedetails`
 --
 ALTER TABLE `adminpackagedetails`
-  MODIFY `package_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `package_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `adminuser`
@@ -665,7 +755,7 @@ ALTER TABLE `bandservicedetails`
 -- AUTO_INCREMENT for table `calendar_dates`
 --
 ALTER TABLE `calendar_dates`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `chat_messages`
@@ -683,7 +773,7 @@ ALTER TABLE `chat_users`
 -- AUTO_INCREMENT for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
-  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `rv_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `customeruser`
@@ -710,10 +800,16 @@ ALTER TABLE `hotelservicedetails`
   MODIFY `service_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `package_confirmation`
+--
+ALTER TABLE `package_confirmation`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `photographyservicedetails`

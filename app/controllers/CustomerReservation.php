@@ -111,7 +111,7 @@ class CustomerReservation extends Controller
                 
                $this->reservationModel->beginTransaction();
                $this->reservationModel->addReservation($data);
-
+               
                Toast::setToast(1, "Service Added Successfully!!!", '');
                $this->reservationModel->commit();
 
@@ -595,7 +595,8 @@ class CustomerReservation extends Controller
             "sp_user_id" => $reservationDetails->sp_id,
             "title" => $reservationDetails->eventName,
             "start" => $reservationDetails->rvDate,
-            "end" => $reservationDetails->rvDate
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
          ];
 
          $data =[
@@ -612,6 +613,57 @@ class CustomerReservation extends Controller
             $this->reservationModel->deletePayment($rvid);
          }
 
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
+   }
+
+
+   public function deleteReservationPackage(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+         $sp_id_string = $reservationDetails->sp_id;
+         $sp_id_arr = explode (",", $sp_id_string);
+
+         $eventData = [
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+
+            foreach ($sp_id_arr as $new_sp_id) :
+               $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($new_sp_id);
+               $email = $serviceProviderDetails->email;
+
+               $emailData = [
+                  "sp_name" => $serviceProviderDetails->company_name,
+                  "event_name" => $reservationDetails->eventName,
+                  "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+               ];
+
+               EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            endforeach;
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+         
+         $this->reservationModel->deleteEvent($eventData);
+         $this->reservationModel->deleteFromPackageConfirmation($rvid);
          $this->reservationModel->updateRvDetails($data);
 
          redirect('CustomerReservation/viewReservationLog');

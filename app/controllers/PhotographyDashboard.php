@@ -202,7 +202,8 @@ class PhotographyDashboard extends Controller
          $spID = Session::getUser("id");
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
-         $result = array($spID, $reservationsList, $customerlist);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result = array($spID, $reservationsList, $customerlist,$packageConfirmationlist);
          $this->view('Photography/Reservationlog',$result);
    }
 

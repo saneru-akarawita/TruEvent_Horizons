@@ -80,7 +80,8 @@
                                                 <p><?= $cus->fname; ?> <?= $cus->lname; ?></p>
                                                 <?php } ?>
                                         <?php endforeach; ?>
-                                    <p><?= $rvDetails->price; ?> per head</p>
+                                    <?php $formatted_price = number_format($rvDetails->price, 2, '.', '');?>
+                                    <p>LKR. <?= $formatted_price; ?> per head</p>
                                     
                                     <div class="progress-box">
                                         <label for="progress">Status</label>

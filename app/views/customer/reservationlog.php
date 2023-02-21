@@ -120,8 +120,10 @@
                                                     <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
                                         
-                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?>
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
                                             <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                            <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
                                         <?php } else {?>
                                             <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
                                         <?php }?>
@@ -227,19 +229,29 @@
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
                                         <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
                                 </div>
-                            
-                                <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                    <a href="#" class="buttond">cancel</a>
+                                        
+                                <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
 
-                                </div>
+                                    <div class="action-button" style="justify-content:center; margin-left:100px;">
+                                        <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
+                                <?php } else {?>
+                                    <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
+                                <?php }?>
+                                    
+                                    </div>
 
                                 <div class="card-footer">
                                     <ul class="team">
@@ -264,7 +276,7 @@
                         </div>
 
                         <?php } ?>
-                                                    <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                      
                     </div>

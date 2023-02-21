@@ -91,7 +91,8 @@ class ReservationModel extends Model
             'sp_user_id' => $data['sp_user_id'],
             'title' => $data['title'],
             'start'=>$data['start'],
-            'end' => $data['end']
+            'end' => $data['end'],
+            'rv_id' => $data['rv_id'],
             ]);
     }
 
@@ -115,12 +116,48 @@ class ReservationModel extends Model
     
     }
 
+    public function getPackageConfirmationDetails(){
+        $results = $this->getResultSet("package_confirmation", "*", []);
+        return $results;
+    }
+    
+
+    public function updatePackageConfirmationDetails($data){
+
+        switch($data['sp_user_type']){
+            case 'Deco Company':
+                $SQLstatement = "UPDATE package_confirmation SET no_of_confirmed_services = no_of_confirmed_services + 1, deco_confirmation =" .$data['sp_user_id']." WHERE rv_id = ".$data['rv_id'];
+                break;
+            case 'Band Manager':
+                $SQLstatement = "UPDATE package_confirmation SET no_of_confirmed_services = no_of_confirmed_services + 1, band_confirmation =" .$data['sp_user_id']." WHERE rv_id = ".$data['rv_id'];
+                break;
+            case 'Photography Company':
+                $SQLstatement = "UPDATE package_confirmation SET no_of_confirmed_services = no_of_confirmed_services + 1, photo_confirmation =" .$data['sp_user_id']." WHERE rv_id = ".$data['rv_id'];
+                break;
+        }
+                
+        $this->customQuery($SQLstatement);
+    }
+
+    public function updatePackageDeclineDetails($data){
+        
+        $this->update('package_confirmation', [
+            'no_of_declined_services' => $data['no_of_declined_services']
+            ], 
+            
+            ['rv_id' => $data['rv_id']]);
+    }
+
     public function deleteEvent($eventData){
-        $this->delete('calendar_dates', ['start' => $eventData['start'], 'end' => $eventData['end'], 'sp_user_id' => $eventData['sp_user_id'], 'title' => $eventData['title']]);
+        $this->delete('calendar_dates', ['rv_id' => $eventData['rv_id']]);
     }
 
     public function deletePayment($rvid){
         $this->delete('payments', ['rv_id' => $rvid]);
+    }
+
+    public function deleteFromPackageConfirmation($rvid){
+        $this->delete('package_confirmation', ['rv_id' => $rvid]);
     }
     
 }
