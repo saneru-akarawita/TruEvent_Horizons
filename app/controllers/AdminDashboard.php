@@ -190,13 +190,17 @@ class AdminDashboard extends Controller
       $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
       $hotelServiceNo = $this->hotelModel->getNumberofServices();
       $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
 
       
 
       $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
       $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
 
-      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
       
       $this->view('common/special-offers', $resultArray);
    }

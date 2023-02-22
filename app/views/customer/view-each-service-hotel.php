@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer-sp.css">
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+      
+
 </head>
 <body>
 <body>
@@ -37,7 +40,7 @@
  <?php $data1 = $data[1]; ?>
  <?php $data2 = $data[2]; ?>
 
-<div class="wrapper">
+<div class="wrapper" style="margin-bottom:200px;">
         <div class="product-img">
                 <img src="<?php echo URLROOT ?>/public/images/hotel manager/images/image.jpg" height="100%" max-width="100%">
         </div>
@@ -103,53 +106,17 @@
         </div>
 </div>
 
-
-
-
-<!-- footer start -->
-<section class="footer" style="margin-top:150px">
-<div class="overlay"></div>
-<div class="box-container">
-<div class="box">
-<h3>Quick Access</h3>
-<a href="home"><i class="fas fa-angle-right"></i>  Home</a>
-<a href="viewservice"><i class="fas fa-angle-right"></i> Services</a>
-<a href="addservice"><i class="fas fa-angle-right"></i> Add Services</a>
+<!-- Photo Gallary Start-->
+<div class="image-tab" style="width:100%;">
+<?php require APPROOT . "/views/customer/photoGalleryHotel.php" ?>
+<!-- Photo Gallary End-->
 </div>
 
-<div class="box">
-<h3>Extra</h3>
-<a href="#"><i class="fas fa-angle-right"></i>  About US</a>
-<a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
-<a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
-</div>
-
-<div class="box">
-<h3>Contact Us</h3>
-<a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-<a href="#"><i class="fa-solid fa-envelope"></i> TruEvent@gmail.com</a>
-<a href="#"><i class="fas fa-map"></i> Colombo</a>
-
-
-</div>
-
-<div class="box">
-<h3>Follow US</h3>
-<a href="#"><i class="fab fa-facebook"></i>  facebook</a>
-<a href="#"><i class="fab fa-instagram"></i> instagram</a>
-<a href="#"><i class="fab fa-linkedin"></i>  linkedin</a>
-
-</div>
-</div>
-
-
-
-<div class="credit">
-Created By <span>TruEvent</span> | All Rights Reserved
-</div>
-
-</section>
-
+<?php foreach ($data1 as $spdetails) : ?>
+        <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                <?php require APPROOT . "/views/customer/hotelServiceFooter.php" ?>
+                <?php } ?>
+ <?php endforeach; ?>
 <!-- footer ends -->
 
 </body>

@@ -38,6 +38,7 @@
                                                 </ul>
                                         </div>
                                 </li>
+                                <li><a href="<?php echo URLROOT ?>/HotelDashboard/calendar">Calendar</a></li>
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/payment">Payment</a></li>
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/reports">Reports</a></li> 
         

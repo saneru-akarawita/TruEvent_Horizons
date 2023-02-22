@@ -19,11 +19,6 @@
 
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
-    
-
-    <?php $spID = $data[0]; ?>
-    <?php $rvdata = $data[1]; ?>
-    <?php $cusdata = $data[2]; ?>
 
       <!-- Main Start -->
 
@@ -53,7 +48,7 @@
 
                     <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType =='service') { ?>
+                                    <?php if($rvdetails->rvType =='service' && $rvdetails->status !='decline') { ?>
                                         <?php $scount = $scount + 1; ?>
                             <!-- <?= $rvdetails->rv_id; ?> -->
 
@@ -90,18 +85,52 @@
                                             
                                             <div class="progress-box">
                                                 <label for="progress">Payments</label>
-                                                <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                                <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
                                                 <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                                 <span><?php echo $value ?>%</span>
                                             </div>
 
                                         </div>
-                                    
+
+                                        <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
+
                                         <div class="action-button" style="justify-content:center; margin-left:100px;">
 
-                                            <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+                                            <?php if($rvdetails->spType == "Hotel") {?>
+                                                    <a href="viewServiceReservationDetailsHotel?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Decoration") {?>
+                                                    <a href="viewServiceReservationDetailsDeco?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Band") {?>
+                                                    <a href="viewServiceReservationDetailsBand?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+                                            <?php } ?>
+
+                                            <?php if($rvdetails->spType == "Photography") {?>
+                                                    <a href="viewServiceReservationDetailsPhotography?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
+                                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+                                            <?php } ?>
+                                        
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                            <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                            <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
+                                        <?php } else {?>
+                                            <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
+                                        <?php }?>
+
+                                            <!-- <a href="viewServiceReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                             <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                            <a href="#" class="buttond">cancel</a>
+                                            <a href="#" class="buttond">cancel</a> -->
 
                                         </div>
 
@@ -111,11 +140,9 @@
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
                                                 </li>
 
-
                                                 <li class="team-member">
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
                                                 </li>
-
 
                                                 <li class="team-member">
                                                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
@@ -166,12 +193,12 @@
 
 
                     <div class="hero-heading">
-                        <h3>Current Reservations - Packages <i class="bx bx-chevron-down"></i> </h3>
+                        <h3>Current Reservations - Reserved via Packages <i class="bx bx-chevron-down"></i> </h3>
                     </div>
 
                      
                     <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType !='service') { ?>
+                                    <?php if($rvdetails->rvType !='service' && $rvdetails->status != 'decline') { ?>
                                         <?php $pcount = $pcount + 1; ?>
                                      <!-- <?= $rvdetails->rv_id; ?> -->
 
@@ -202,19 +229,29 @@
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
                                         <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
                                 </div>
-                            
-                                <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                    <a href="#" class="buttond">cancel</a>
+                                        
+                                <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
 
-                                </div>
+                                    <div class="action-button" style="justify-content:center; margin-left:100px;">
+                                        <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
+                                <?php } else {?>
+                                    <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
+                                <?php }?>
+                                    
+                                    </div>
 
                                 <div class="card-footer">
                                     <ul class="team">
@@ -239,7 +276,7 @@
                         </div>
 
                         <?php } ?>
-                                                    <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                      
                     </div>

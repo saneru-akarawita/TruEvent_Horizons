@@ -14,6 +14,8 @@ class DecoDashboard extends Controller
       $this->decoModel = $this->model('DecoModel');
       $this->userModel = $this->model('UserModel');
       $this->hotelModel = $this->model('HotelModel');
+      $this->bandModel = $this->model('BandModel');
+      $this->photographyModel = $this->model('PhotographyModel');
 
    }
 
@@ -126,44 +128,48 @@ class DecoDashboard extends Controller
 
       //------------- view offers functions start -------------------
 
-      public function randomGen($min, $numberOfServices, $quantity) {
-         $numbers = range($min, $numberOfServices);
-         shuffle($numbers);
-         return array_slice($numbers, 0, $quantity);
+   public function randomGen($min, $numberOfServices, $quantity) {
+      $numbers = range($min, $numberOfServices);
+      shuffle($numbers);
+      return array_slice($numbers, 0, $quantity);
+   }
+
+   public function generateRandomArrayforEachServiceType($numberOfServices) {
+
+      $min = 1;
+
+      if($numberOfServices >= 4) {
+         $quantity = 4;
+      } else {
+         $quantity = $numberOfServices;
       }
-   
-      public function generateRandomArrayforEachServiceType($numberOfServices) {
-   
-         $min = 1;
-   
-         if($numberOfServices >= 4) {
-            $quantity = 4;
-         } else {
-            $quantity = $numberOfServices;
-         }
-   
-         $randomNoArray = $this->randomGen($min, $numberOfServices, $quantity);
-         return $randomNoArray;
-      }
-   
-   
-      public function viewOffers()
-      {
-         $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
-         $hotelServiceNo = $this->hotelModel->getNumberofServices();
-         $decoServiceNo = $this->decoModel->getNumberofServices();
-   
-         
-   
-         $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
-         $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
-   
-         $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
-         
-         $this->view('common/special-offers', $resultArray);
-      }
-   
-      //------------- view offers functions ends -------------------
+
+      $randomNoArray = $this->randomGen($min, $numberOfServices, $quantity);
+      return $randomNoArray;
+   }
+
+
+   public function viewOffers()
+   {
+      $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
+      $hotelServiceNo = $this->hotelModel->getNumberofServices();
+      $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
+
+      
+
+      $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
+      $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
+
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
+      
+      $this->view('common/special-offers', $resultArray);
+   }
+
+   //------------- view offers functions ends -------------------
    
 
    public function payment()
@@ -176,13 +182,56 @@ class DecoDashboard extends Controller
       $this->view('decoCompany/Reports', '');
    }
 
+   public function reservationDetails()
+   {
+         $spID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+         $decodetailslist = $this->decoModel->getServicesByServiceProvider($spID);
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $customerlist = $this->customerModel->getCustomerDetails();
+         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist);
+         $this->view('decoCompany/view-reservation',$result1);
+   }
+
+
    public function reservationLog()
    {
          $spID = Session::getUser("id");
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
-         $result = array($spID, $reservationsList, $customerlist);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result = array($spID, $reservationsList, $customerlist, $packageConfirmationlist);
       $this->view('decoCompany/Reservationlog',$result);
+   }
+
+   public function calendar(){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $data = [
+            'sp_user_id' => trim($_POST['spID']),
+            'title' => trim($_POST['eventname']),
+            'start' => trim($_POST['startdate']),
+            'end' => trim($_POST['enddate'])
+         ];
+
+         $this->reservationModel->addEvent($data);
+         $usermail = Session::getUser('email');
+         $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
+         $events = $this->customerModel->getEvents($spID[0]);
+         $this->view("calendar/index", $events);
+             
+      }else{
+         $usermail = Session::getUser('email');
+         $spID = $this->serviceProviderModel->getServiceProviderUserData($usermail);
+         $events = $this->customerModel->getEvents($spID[0]);
+         $this->view("calendar/index", $events);
+      }
    }
 
    public function logout()
