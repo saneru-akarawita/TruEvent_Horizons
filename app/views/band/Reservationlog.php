@@ -32,19 +32,16 @@
             <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
 
 
                     <div class="hero-search">
-                    <div class="input-group">
-                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <div class="input-group">
+                            <input type="text" name="search_bar" id="search_bar" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -167,111 +164,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.4.1/vanilla-tilt.min.js"></script>
 
 
-        <!-- Main End -->
-<!-- Main Start -->
-
-<!-- <main class="main">
-            <div class="wrapper">
-
-
-                <div class="hero">
-                    <div class="hero-heading">
-                        <h3>Reservation Log</h3>
-                        <span>Pending| 11 Dec,2022</span>
-                    </div>
-
-
-                    <div class="hero-search">
-                        <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search">
-                        </div>
-                        <span style="margin-right:440px; color:white; background-color:black;">Search</i> </span>
-
-                        <span>Filter <i class="bx bx-filter-alt"></i> </span>
-                    </div>
-
-
-                    <div class="hero-heading">
-                        <h3>Current Reservations - Packages <i class="bx bx-chevron-down"></i> </h3>
-                    </div>
-
-                     
-                    <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType !='service') { ?>
-
-                    <div class="project">
-                       <div class="col">
-                            <div class="project-card">
-                                <div class="card-header">
-                                    <type class="type"><?= $rvdetails->packageName; ?></type>
-                                    <date class="date"><?= $rvdetails->rvDate; ?></date>
-                                    <span><i class="bx bx-dots-vertical-rounded"></i></span>
-                                </div>
-                                
-
-                                <div class="card-body">
-                                    <h6><?= $rvdetails->eventName; ?></h6>
-                                    <p>Services Provided- Band, Photography, Decoration</p>
-                                    <p><?= $rvdetails->rvTime; ?></p>
-                                    <p>LKR.125 000.00 per head</p>
-
-
-                                    <div class="progress-box">
-                                        <label for="progress">Status</label>
-                                        <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
-                                        <span><?php echo $value ?>%</span>
-                                    </div>
-
-                                    
-                                    <div class="progress-box">
-                                        <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
-                                        <span><?php echo $value ?>%</span>
-                                    </div>
-
-                                </div>
-                            
-                                <div class="action-button" style="justify-content:center; margin-left:75px;">
-                                    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                    <a href="#" class="buttond">Decline</a>
-
-                            </div>
-
-                            <div class="card-footer">
-                                <ul class="team">
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                    </li>
-
-
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                    </li>
-
-
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            </div>
-                        </div>
-
-                        <?php } ?>
-                                                    <?php endforeach; ?>
-
-                     
-                    </div>
-
-</div>
-
-</div>
-</main>                                -->
         <!-- footer start -->
         <section class="footer">
             <div class="overlay"></div>
@@ -315,5 +207,30 @@
        <!-- footer ends -->
         <!-- custom js file link -->
         <script src="./js/adminscript.js"></script>
+        <script>
+            // Get the search input element
+            const searchInput = document.getElementById('search_bar');
+
+            // Attach an event listener to the search input
+            searchInput.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
 </body>
 </html>

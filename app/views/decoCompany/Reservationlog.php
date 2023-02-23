@@ -32,7 +32,7 @@
             <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                      
@@ -40,12 +40,9 @@
 
 
                     <div class="hero-search">
-                    <div class="input-group">
-                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <div class="input-group">
+                            <input type="text" name="search_bar" id="search_bar" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -214,5 +211,30 @@
        <!-- footer ends -->
         <!-- custom js file link -->
         <script src="./js/adminscript.js"></script>
+        <script>
+            // Get the search input element
+            const searchInput = document.getElementById('search_bar');
+
+            // Attach an event listener to the search input
+            searchInput.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
 </body>
 </html>
