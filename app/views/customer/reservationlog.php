@@ -26,7 +26,7 @@
             <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
@@ -34,11 +34,8 @@
 
                     <div class="hero-search">
                         <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                            <input type="text" name="search_bar_s" id="search_bar_s" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -56,7 +53,7 @@
                                 <div class="col col<?php echo $scount%4 +1 ?>">
 
 
-                                    <div class="project-card">
+                                    <div class="project-card project-card-searchs">
 
                                         <div class="card-header">
 
@@ -173,22 +170,19 @@
 <!-- Main Start -->
 
 <main class="main">
-            <div class="wrapper" style="display:block">
+            <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
 
 
                     <div class="hero-search">
-                    <div class="input-group">
-                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <div class="input-group">
+                            <input type="text" name="search_bar_p" id="search_bar_p" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -204,7 +198,7 @@
 
                     <div class="project">
                        <div class="col col<?php echo $pcount%4 +1?>">
-                            <div class="project-card">
+                            <div class="project-card project-card-searchp">
                                 <div class="card-header">
                                     <type class="type"><?= $rvdetails->packageName; ?></type>
                                     <date class="date"><?= $rvdetails->rvDate; ?></date>
@@ -328,5 +322,55 @@
        <!-- footer ends -->
         <!-- custom js file link -->
         <script src="./js/adminscript.js"></script>
+        <script>
+            // Get the search input element
+            const searchInputs = document.getElementById('search_bar_s');
+
+            // Attach an event listener to the search input
+            searchInputs.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card-searchs');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInputs.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
+        <script>
+            // Get the search input element
+            const searchInputp = document.getElementById('search_bar_p');
+
+            // Attach an event listener to the search input
+            searchInputp.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card-searchp');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInputp.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
 </body>
 </html>

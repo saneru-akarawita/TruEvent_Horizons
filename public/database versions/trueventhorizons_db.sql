@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2023 at 02:01 PM
+-- Generation Time: Feb 23, 2023 at 05:44 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.10
 
@@ -216,11 +216,11 @@ CREATE TABLE `chat_users` (
 
 INSERT INTO `chat_users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `img`, `status`) VALUES
 (1, 816865346, 'Chamila', 'Amarathunga', 'chamila.amarathunga@gmail.com', NULL, 'Active now'),
-(2, 1460619877, 'Kaveesha', 'Muthukuda', '2020cs007@stu.ucsc.cmb.ac.lk', NULL, 'Active now'),
+(2, 1460619877, 'Kaveesha', 'Muthukuda', '2020cs007@stu.ucsc.cmb.ac.lk', NULL, 'Offline now'),
 (3, 1215415318, 'Saneru', 'Akarawita', 'saneru.akarawita@gmail.com', NULL, 'Offline now'),
-(4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Active now'),
-(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Active now'),
-(6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Active now'),
+(4, 277022096, 'Wayo Band', '', 'band321@gmail.com', NULL, 'Offline now'),
+(5, 960514050, 'Red Ants Photography', '', 'photo321@gmail.com', NULL, 'Offline now'),
+(6, 749645829, 'Urban 57 Decorations', '', 'harinij@gmail.com', NULL, 'Offline now'),
 (7, 370802146, 'SHANGRI - LA', '', 'tempemail@gmail.com', NULL, 'Offline now');
 
 -- --------------------------------------------------------
@@ -634,7 +634,8 @@ ALTER TABLE `bandservicedetails`
 -- Indexes for table `calendar_dates`
 --
 ALTER TABLE `calendar_dates`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_on_calendar_dates` (`rv_id`);
 
 --
 -- Indexes for table `chat_messages`
@@ -694,13 +695,15 @@ ALTER TABLE `otpverification`
 -- Indexes for table `package_confirmation`
 --
 ALTER TABLE `package_confirmation`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_on_rv_package_confirmation` (`rv_id`);
 
 --
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
-  ADD PRIMARY KEY (`payment_id`);
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `FK_on_payments` (`rv_id`);
 
 --
 -- Indexes for table `photographyservicedetails`
@@ -840,6 +843,12 @@ ALTER TABLE `bandservicedetails`
   ADD CONSTRAINT `banddeet to service provider user FK on service provider id` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceprovideruser` (`service_provider_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `calendar_dates`
+--
+ALTER TABLE `calendar_dates`
+  ADD CONSTRAINT `FK_on_calendar_dates` FOREIGN KEY (`rv_id`) REFERENCES `customerrvdetails` (`rv_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `customerrvdetails`
 --
 ALTER TABLE `customerrvdetails`
@@ -862,6 +871,18 @@ ALTER TABLE `decoservicedetails`
 --
 ALTER TABLE `hotelservicedetails`
   ADD CONSTRAINT `hotel service deet to service provider user FK on SP ID` FOREIGN KEY (`service_provider_id`) REFERENCES `serviceprovideruser` (`service_provider_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `package_confirmation`
+--
+ALTER TABLE `package_confirmation`
+  ADD CONSTRAINT `FK_on_rv_package_confirmation` FOREIGN KEY (`rv_id`) REFERENCES `customerrvdetails` (`rv_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `FK_on_payments` FOREIGN KEY (`rv_id`) REFERENCES `customerrvdetails` (`rv_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `photographyservicedetails`
