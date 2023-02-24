@@ -384,6 +384,11 @@ class CustomerDashboard extends Controller
       $this->view('customer/make-full-payment', '');
    }
 
+   public function paymentLog()
+   {
+      $this->view('customer/payment-log', '');
+   }
+
    public function calendar(){
       $sp_ids = $_GET['sp_id'];
 

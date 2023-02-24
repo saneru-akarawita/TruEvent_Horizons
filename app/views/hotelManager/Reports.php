@@ -8,38 +8,41 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
 
-   
-    
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/styles-hotel.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/table.css" />
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/styles-hotel.css">
 
    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - Report - Decoration Company</title>
+   <title>TruEvent Horizons - Report - Hotel Manager</title>
 </head>
 
 <body>
 <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
-       
+   
+    
 
         <div class="main-content">
 
        
-                <div class="text-group">
-                        <label for="servicetype" style="font-size:18px; font-weight:500;">Service Type</label>
-                        <input type="text" value="Hotel">
-                        
+                <div class="row">
+                        <div class="text-group">
+                                <label for="servicetype" style="font-size:18px; font-weight:500;">Service/Package</label>
+                                <input type="text" >
+        
+                        </div>
                 </div>
+                <button class="btn-btn-report" style="font-size:18px; font-weight:500;"><a href="<?php echo URLROOT ?>/adminDashboard/generateReports" style="color:white;">Generate Reports<a></button>
 
                 <div class="row">
                         <div class="text-group2">
                                 <label for="fromdate" style="font-size:18px; font-weight:500;">From</label>
                                 <input type="date">
-                             
+                                
                         </div>  
-                        <div class="text-group2-1">
-                                <label for="todate" class="todate" style="font-size:18px; font-weight:500;">To</label>
+                        <div class="text-group2-1" style="font-size:18px; font-weight:500;">
+                                <label for="todate" class="todate">To</label>
                                 <input type="Date" value="Hotel">
-                               
+                                
                         </div>
 
                         <button class="btn-btn-search" style="font-size:18px; font-weight:500;">Search</button>
@@ -65,17 +68,79 @@
                         </div>  
                 </div>
 
-                <div class="tabledetails">
-                <h2>Reservation Details</h2>
-                <table>
-                        <tr>
-                                <th>Reservation No</th>
-                                <th>Customer Name</th>
-                                <th>Reservation Date</th>
-                                <th>Price</th>
-                        </tr>
-                </table>
-        </div>
+                <section class="container">
+   <!-- <input type="search" class="lighter-table-filter" data-table="table-info" placeholder="Filter/Search Here" style="margin-bottom:20px ;"> -->
+<table class="table-info-table">
+    <thead>
+        <tr>
+        <th>Roll No</th>
+        <th>Candidate Name</th>
+        <th>Email</th>
+        <th>Fees Dues</th>
+        <th>Remaing Days</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1901</td>
+        <td>John</td>
+        <td>john04@gmail.com</td>
+        <td>45000</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>1902</td>
+        <td>Kayamat</td>
+        <td>kam06@gmail.com</td>
+        <td>46700</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td>1903</td>
+        <td>Yash Kumar</td>
+        <td>yashkum@gmail.com</td>
+        <td>34000</td>
+        <td>14</td>
+    </tr>
+    <tr>
+        <td>1904</td>
+        <td>Charlies</td>
+        <td>Charlies@gmail.com</td>
+        <td>22000</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>1905</td>
+        <td>Aman Dhawan</td>
+        <td>amandhawan@gmail.com</td>
+        <td>66000</td>
+        <td>22</td>
+    </tr>
+    <tr>
+        <td>1906</td>
+        <td>Kuldeep senger</td>
+        <td>senger09@gmail.com</td>
+        <td>87000</td>
+        <td>33</td>
+    </tr>
+    <tr>
+        <td>1907</td>
+        <td>Shyam singh</td>
+        <td>shyma06singh@gmail.com</td>
+        <td>11000</td>
+        <td>41</td>
+    </tr>
+    <tr>
+        <td>1908</td>
+        <td>Hema Shankar</td>
+        <td>shankarhema@gmail.com</td>
+        <td>57000</td>
+        <td>32</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+        
                 
         </div> 
         
@@ -125,6 +190,8 @@
     
     
     <!-- footer ends -->
+    <script src="<?php echo URLROOT ?>/public/js/admin/function.js"></script>
+
 </body>
 
 
