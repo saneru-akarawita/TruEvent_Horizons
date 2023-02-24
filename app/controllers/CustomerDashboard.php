@@ -384,6 +384,11 @@ class CustomerDashboard extends Controller
       $this->view('customer/make-full-payment', '');
    }
 
+   public function paymentLog()
+   {
+      $this->view('customer/payment-log', '');
+   }
+
    public function calendar(){
       $events = $this->customerModel->getEvents(1);
       $this->view("calendar/index", $events);
