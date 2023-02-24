@@ -26,7 +26,7 @@
             <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
@@ -34,11 +34,8 @@
 
                     <div class="hero-search">
                         <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                            <input type="text" name="search_bar_s" id="search_bar_s" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -48,7 +45,7 @@
 
                     <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType =='service') { ?>
+                                    <?php if($rvdetails->rvType =='service' && $rvdetails->status !='decline') { ?>
                                         <?php $scount = $scount + 1; ?>
                             <!-- <?= $rvdetails->rv_id; ?> -->
 
@@ -56,7 +53,7 @@
                                 <div class="col col<?php echo $scount%4 +1 ?>">
 
 
-                                    <div class="project-card">
+                                    <div class="project-card project-card-searchs">
 
                                         <div class="card-header">
 
@@ -85,38 +82,48 @@
                                             
                                             <div class="progress-box">
                                                 <label for="progress">Payments</label>
-                                                <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                                <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
                                                 <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                                 <span><?php echo $value ?>%</span>
                                             </div>
 
                                         </div>
-                                    
+
+                                        <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
+
                                         <div class="action-button" style="justify-content:center; margin-left:100px;">
 
                                             <?php if($rvdetails->spType == "Hotel") {?>
                                                     <a href="viewServiceReservationDetailsHotel?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                                    <a href="#" class="buttond">cancel</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
 
                                             <?php if($rvdetails->spType == "Decoration") {?>
                                                     <a href="viewServiceReservationDetailsDeco?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                                    <a href="#" class="buttond">cancel</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
 
                                             <?php if($rvdetails->spType == "Band") {?>
                                                     <a href="viewServiceReservationDetailsBand?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                                    <a href="#" class="buttond">cancel</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
 
                                             <?php if($rvdetails->spType == "Photography") {?>
                                                     <a href="viewServiceReservationDetailsPhotography?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                                    <a href="#" class="buttond">cancel</a>
+                                                    <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
+                                        
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                            <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                        <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                            <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
+                                        <?php } else {?>
+                                            <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
+                                        <?php }?>
 
                                             <!-- <a href="viewServiceReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
                                             <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
@@ -163,38 +170,35 @@
 <!-- Main Start -->
 
 <main class="main">
-            <div class="wrapper" style="display:block">
+            <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
 
 
                     <div class="hero-search">
-                    <div class="input-group">
-                        <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <div class="input-group">
+                            <input type="text" name="search_bar_p" id="search_bar_p" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
                     <div class="hero-heading">
-                        <h3>Current Reservations - Packages <i class="bx bx-chevron-down"></i> </h3>
+                        <h3>Current Reservations - Reserved via Packages <i class="bx bx-chevron-down"></i> </h3>
                     </div>
 
                      
                     <?php foreach ($data as $rvdetails) : ?>
-                                    <?php if($rvdetails->rvType !='service') { ?>
+                                    <?php if($rvdetails->rvType !='service' && $rvdetails->status != 'decline') { ?>
                                         <?php $pcount = $pcount + 1; ?>
                                      <!-- <?= $rvdetails->rv_id; ?> -->
 
                     <div class="project">
                        <div class="col col<?php echo $pcount%4 +1?>">
-                            <div class="project-card">
+                            <div class="project-card project-card-searchp">
                                 <div class="card-header">
                                     <type class="type"><?= $rvdetails->packageName; ?></type>
                                     <date class="date"><?= $rvdetails->rvDate; ?></date>
@@ -219,19 +223,29 @@
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else $value="100";?>
+                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
                                         <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
                                 </div>
-                            
-                                <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                    <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                    <a href="#" class="buttond">cancel</a>
+                                        
+                                <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
 
-                                </div>
+                                    <div class="action-button" style="justify-content:center; margin-left:100px;">
+                                        <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                    <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
+                                <?php } else {?>
+                                    <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
+                                <?php }?>
+                                    
+                                    </div>
 
                                 <div class="card-footer">
                                     <ul class="team">
@@ -256,7 +270,7 @@
                         </div>
 
                         <?php } ?>
-                                                    <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                      
                     </div>
@@ -308,5 +322,55 @@
        <!-- footer ends -->
         <!-- custom js file link -->
         <script src="./js/adminscript.js"></script>
+        <script>
+            // Get the search input element
+            const searchInputs = document.getElementById('search_bar_s');
+
+            // Attach an event listener to the search input
+            searchInputs.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card-searchs');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInputs.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
+        <script>
+            // Get the search input element
+            const searchInputp = document.getElementById('search_bar_p');
+
+            // Attach an event listener to the search input
+            searchInputp.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card-searchp');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInputp.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
 </body>
 </html>
