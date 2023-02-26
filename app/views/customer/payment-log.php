@@ -9,25 +9,25 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/payment/stylepayments.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
 
-   
 
-        <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-         -->
-<script>
- function change_tab(id)
- {
-   document.getElementById("page_content").innerHTML=document.getElementById(id+"_desc").innerHTML;
-   document.getElementById("page1").className="notselected";
-   document.getElementById("page2").className="notselected";
+    <script>
+        function change_tab(id)
+        {
+        document.getElementById("page_content").innerHTML=document.getElementById(id+"_desc").innerHTML;
+        document.getElementById("page1").className="notselected";
+        document.getElementById("page2").className="notselected";
 
-   document.getElementById(id).className="selected";
- }
-</script>
+        document.getElementById(id).className="selected";
+        }
+    </script>
+
 </head>
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
+<?php   $pending = $data[0];
+        $complete = $data[1];
+        $rvdetails = $data[2]; ?>
 
 <div id="main_content">
 
@@ -42,200 +42,62 @@
 
         <main class="main">
                 <div class="wrapper">
-    
-    
-                    <div class="hero">
-                        <div class="hero-heading">
-                            <!-- <h3>Payments</h3> -->
-                            <!-- <span>Pending| 11 Dec,2022</span> -->
-                        </div>
-    
-    
-                        <div class="hero-search">
-                            <div class="input-group">
-                                <!-- <input type="text" name="" id=""> -->
-                                <!-- <i class="i.bx.bx-search"></i> -->
-                            </div>
-    
-                            <span>Filter <i class="bx bx-filter-alt"></i> </span>
-                        </div>
-    
-    
+
+                    <div class="hero" style="width:2000px">
+                        
                         <div class="hero-heading">
                             <h3>Pending Payments <i class="bx bx-chevron-down"></i> </h3>
                         </div>
     
     
-                        <div class="project">
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                            <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
+                        <div class="project" style="justify-content:normal; width:100%">
+                            
+                            <?php foreach($pending as $pendings): ?>
+                                <div class="col" style="margin-left:20px">
+                                    <div class="project-card">
+                                        <main class="order__summary">
+                                            <!-- div for hero image -->
+                                            <div class="order__summary-image">
+                                                <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
                                             </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-                                
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
+                                            <!-- Main content start -->
+                                            <br>
+                                            <h1>Reservation ID : <?=$pendings->rv_id?></h1>
+                                            <p class="description">
+                                                <?php foreach($rvdetails as $rvdetail): ?>
+                                                    <?php if($rvdetail->rv_id == $pendings->rv_id){?>
+                                                        <?php $content = $rvdetail->eventName. "-" .$rvdetail->rvType;?>
+                                                    <?php }?>
+                                                <?php endforeach; ?>
+                                                <?=$content?>
+                                            </p>
+        
+                                            <!-- div for order plan -->
+                                            <div class="order__summary-plan" style="justify-content:normal; width:95%">
+                                                <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
+                                                <div class="plan" style="margin-left: 25px">
+                                                    <h3 style="font-size:18px">LKR. <?=number_format($pendings->rem_price, 2, '.', '')?></h3>
+                                                    <?php if($pendings->ad_flag==0){?>
+                                                        <p style="font-size:14px">Ad. <?=number_format($pendings->ad_price, 2, '.', '')?></p>
+                                                    <?php }?>
+                                                </div>
+                                                
                                             </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
+                                            <?php if($pendings->ad_flag==0){?>
+                                                <button>Proceed to Advance Payment</button>
+                                            <?php }else{?>
+                                                <br>
+                                            <?php }?>
+                                            <button>Proceed to Full Payment</button>
+                                        </main>
+                                    
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
     
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
                         </div>
-    
                     </div>
-    
                 </div>
-    
             </main>
             
  </div>
@@ -246,22 +108,7 @@
         <main class="main">
                 <div class="wrapper">
     
-    
-                    <div class="hero">
-                        <div class="hero-heading">
-                            <!-- <h3>Payments</h3> -->
-                            <!-- <span>Pending| 11 Dec,2022</span> -->
-                        </div>
-    
-    
-                        <div class="hero-search">
-                            <div class="input-group">
-                                <!-- <input type="text" name="" id=""> -->
-                                <!-- <i class="i.bx.bx-search"></i> -->
-                            </div>
-    
-                            <!-- <span>Filter <i class="bx bx-filter-alt"></i> </span> -->
-                        </div>
+                    <div class="hero" style="width:2000px">
     
     
                         <div class="hero-heading">
@@ -269,9 +116,9 @@
                         </div>
     
     
-                        <div class="project">
-    
-                            <div class="col">
+                        <div class="project" style="justify-content:normal; width:100%">
+                        <?php foreach($complete as $completes): ?>
+                            <div class="col" style="margin-left:20px">
                                 <div class="project-card">
                                     <main class="order__summary">
                                         <!-- div for hero image -->
@@ -280,166 +127,36 @@
                                             
                                         </div>
                                         <!-- Main content start -->
+                                        <br>
                                         <h1>Order Summary</h1>
+                                        <br>
                                         <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
+                                            <?php foreach($rvdetails as $rvdetail): ?>
+                                                <?php if($rvdetail->rv_id == $completes->rv_id){?>
+                                                    <?php $content = $rvdetail->eventName. "-" .$rvdetail->rvType;?>
+                                                <?php }?>
+                                            <?php endforeach; ?>
+                                            
+                                            Payment Completed under the Reservation Name <br>
+                                            "<?=$content?>"
                                         </p>
-    
-    
-    
+                                        <br>
                                         <!-- div for order plan -->
-                                        <div class="order__summary-plan">
+                                        <div class="order__summary-plan" style="justify-content:normal; width:95%">
                                             <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
+                                            <div class="plan" style="margin-left:25px">
+                                                <h3 style="font-size:18px">LKR. <?=number_format($completes->full_price, 2, '.', '')?></h3>
                                             </div>
-                                            <a href="#">Change</a>
+                                            
                                         </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
                                     </main>
                                 
                                 </div>
                             </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="project-card">
-                                    <main class="order__summary">
-                                        <!-- div for hero image -->
-                                        <div class="order__summary-image">
-                                        <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
-                                            
-                                        </div>
-                                        <!-- Main content start -->
-                                        <h1>Order Summary</h1>
-                                        <p class="description">
-                                            You can now listen to millions of songs, audiobooks, and podcasts on any
-                                            device anywhere you like!
-                                        </p>
-    
-    
-                                        <!-- div for order plan -->
-                                        <div class="order__summary-plan">
-                                            <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                            <div class="plan">
-                                                <h2>Annual Plan</h2>
-                                                <p>$59.99/year</p>
-                                            </div>
-                                            <a href="#">Change</a>
-                                        </div>
-                                        <button>Proceed to Payment</button>
-                                        <button>Cancel Order</button>
-                                    </main>
-    
-                                </div>
-                            </div>
+                        <?php endforeach; ?>
                         </div>
-    
                     </div>
-    
                 </div>
-    
             </main>
  </div>
  
@@ -451,188 +168,59 @@
         <div class="wrapper">
 
 
-            <div class="hero">
-                <div class="hero-heading">
-                    <!-- <h3>Payments</h3> -->
-                    <!-- <span>Pending| 11 Dec,2022</span> -->
-                </div>
-
-
-                <div class="hero-search">
-                    <div class="input-group">
-                        <!-- <input type="text" name="" id=""> -->
-                        <!-- <i class="i.bx.bx-search"></i> -->
-                    </div>
-
-                    <!-- <span>Filter <i class="bx bx-filter-alt"></i> </span> -->
-                </div>
-
+            <div class="hero" style="width:2000px">
+                
 
                 <div class="hero-heading">
                     <h3>Pending Payments <i class="bx bx-chevron-down"></i> </h3>
                 </div>
 
 
-                <div class="project">
+                <div class="project" style="justify-content:normal;width:100%">
 
-                    <div class="col">
+                <?php foreach($pending as $pendings): ?>
+                    <div class="col" style="margin-left:20px">
                         <div class="project-card">
                             <main class="order__summary">
                                 <!-- div for hero image -->
                                 <div class="order__summary-image">
-                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
+                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif " aria-hidden="true" alt="hero" />
                                 </div>
                                 <!-- Main content start -->
-                                <h1>Order Summary</h1>
+                                <br>
+                                <h1>Reservation ID : <?=$pendings->rv_id?></h1>
                                 <p class="description">
-                                    You can now listen to millions of songs, audiobooks, and podcasts on any
-                                    device anywhere you like!
+                                    <?php foreach($rvdetails as $rvdetail): ?>
+                                        <?php if($rvdetail->rv_id == $pendings->rv_id){?>
+                                            <?php $content = $rvdetail->eventName. "-" .$rvdetail->rvType;?>
+                                        <?php }?>
+                                    <?php endforeach; ?>
+                                    <?=$content?>
                                 </p>
 
-
-
                                 <!-- div for order plan -->
-                                <div class="order__summary-plan">
+                                <div class="order__summary-plan" style="justify-content:normal; width:95%">
                                     <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                    <div class="plan">
-                                        <h2>Annual Plan</h2>
-                                        <p>$59.99/year</p>
+                                    <div class="plan" style="margin-left: 25px">
+                                        <h3 style="font-size:18px">LKR. <?=number_format($pendings->rem_price, 2, '.', '')?></h3>
+                                        <?php if($pendings->ad_flag==0){?>
+                                            <p style="font-size:14px">Ad. <?=number_format($pendings->ad_price, 2, '.', '')?></p>
+                                        <?php }?>
                                     </div>
-                                    <a href="#">Change</a>
+                                    
                                 </div>
-                                <button>Proceed to Payment</button>
-                                <button>Cancel Order</button>
+                                <?php if($pendings->ad_flag==0){?>
+                                    <button>Proceed to Advance Payment</button>
+                                <?php }else{?>
+                                    <br>
+                                <?php }?>
+                                <button>Proceed to Full Payment</button>
                             </main>
                         
                         </div>
                     </div>
-
-                    <div class="col">
-                        <div class="project-card">
-                            <main class="order__summary">
-                                <!-- div for hero image -->
-                                <div class="order__summary-image">
-                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
-                                </div>
-                                <!-- Main content start -->
-                                <h1>Order Summary</h1>
-                                <p class="description">
-                                    You can now listen to millions of songs, audiobooks, and podcasts on any
-                                    device anywhere you like!
-                                </p>
-
-
-
-                                <!-- div for order plan -->
-                                <div class="order__summary-plan">
-                                    <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                    <div class="plan">
-                                        <h2>Annual Plan</h2>
-                                        <p>$59.99/year</p>
-                                    </div>
-                                    <a href="#">Change</a>
-                                </div>
-                                <button>Proceed to Payment</button>
-                                <button>Cancel Order</button>
-                            </main>
-
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="project-card">
-                            <main class="order__summary">
-                                <!-- div for hero image -->
-                                <div class="order__summary-image">
-                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
-                                </div>
-                                <!-- Main content start -->
-                                <h1>Order Summary</h1>
-                                <p class="description">
-                                    You can now listen to millions of songs, audiobooks, and podcasts on any
-                                    device anywhere you like!
-                                </p>
-
-
-
-                                <!-- div for order plan -->
-                                <div class="order__summary-plan">
-                                    <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                    <div class="plan">
-                                        <h2>Annual Plan</h2>
-                                        <p>$59.99/year</p>
-                                    </div>
-                                    <a href="#">Change</a>
-                                </div>
-                                <button>Proceed to Payment</button>
-                                <button>Cancel Order</button>
-                            </main>
-
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="project-card">
-                            <main class="order__summary">
-                                <!-- div for hero image -->
-                                <div class="order__summary-image">
-                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
-                                </div>
-                                <!-- Main content start -->
-                                <h1>Order Summary</h1>
-                                <p class="description">
-                                    You can now listen to millions of songs, audiobooks, and podcasts on any
-                                    device anywhere you like!
-                                </p>
-
-
-
-                                <!-- div for order plan -->
-                                <div class="order__summary-plan">
-                                    <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                    <div class="plan">
-                                        <h2>Annual Plan</h2>
-                                        <p>$59.99/year</p>
-                                    </div>
-                                    <a href="#">Change</a>
-                                </div>
-                                <button>Proceed to Payment</button>
-                                <button>Cancel Order</button>
-                            </main>
-
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="project-card">
-                            <main class="order__summary">
-                                <!-- div for hero image -->
-                                <div class="order__summary-image">
-                                    <img src="<?php echo URLROOT ?>/public/images/payment.gif" aria-hidden="true" alt="hero" />
-                                </div>
-                                <!-- Main content start -->
-                                <h1>Order Summary</h1>
-                                <p class="description">
-                                    You can now listen to millions of songs, audiobooks, and podcasts on any
-                                    device anywhere you like!
-                                </p>
-
-
-                                <!-- div for order plan -->
-                                <div class="order__summary-plan">
-                                    <img src="<?php echo URLROOT ?>/public/images/money-icon.png" aria-hidden="true" alt="music" />
-                                    <div class="plan">
-                                        <h2>Annual Plan</h2>
-                                        <p>$59.99/year</p>
-                                    </div>
-                                    <a href="#">Change</a>
-                                </div>
-                                <button>Proceed to Payment</button>
-                                <button>Cancel Order</button>
-                            </main>
-
-                        </div>
-                    </div>
+                <?php endforeach; ?>
+                
                 </div>
 
             </div>

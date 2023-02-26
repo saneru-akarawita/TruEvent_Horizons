@@ -386,7 +386,13 @@ class CustomerDashboard extends Controller
 
    public function paymentLog()
    {
-      $this->view('customer/payment-log', '');
+      $pending = $this->reservationModel->getPendingPaymentDetailsByCustomerID(Session::getUser("id"));
+      $completed = $this->reservationModel->getCompletedPaymentDetailsByCustomerID(Session::getUser("id"));
+      $rvdetails = $this->reservationModel->getReservationsByCustomer(Session::getUser("id"));
+
+      $result = array($pending, $completed, $rvdetails);
+
+      $this->view('customer/payment-log', $result);
    }
 
    public function calendar(){

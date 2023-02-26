@@ -1,12 +1,12 @@
 /*--------GLOBAL CSS--------*/
-*,
+/* *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Red Hat Display", sans-serif;
-}
+} */
 :root {
   --pale-blue: hsl(225, 100%, 94%);
   --bright-blue: hsl(245, 75%, 52%);
@@ -90,7 +90,7 @@ body {
   color: var(--desaturated-blue);
   padding: 0 2rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 .order__summary .order__summary-plan {
   width: 85%;
@@ -105,7 +105,7 @@ body {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   padding: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 .order__summary .order__summary-plan img {
   width: 40px;
@@ -144,9 +144,12 @@ body {
   margin: auto;
   border: none;
   background: none;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   cursor: pointer;
   color: var(--desaturated-blue);
+  border-radius: 8px;
+  border: 1px solid var(--desaturated-blue);
+  padding:8px 0;
 }
 .order__summary button:hover {
   color: var(--dark-blue);
@@ -219,13 +222,15 @@ body {
 }
 #main_content li.notselected
 {
- background-color:#5f5f63;
- color:white;	
+  border: solid 1px #688A08;
+  background-color: transparent;
+  border-radius: 8px;	
 }
 #main_content li.selected
 {
- background-color:rgb(215, 215, 226);
- color:black;	
+ background-color: var(--bright-blue);
+ color:rgb(255, 255, 255);	
+ border-radius: 8px;	
 }
 #main_content .hidden_desc
 {
