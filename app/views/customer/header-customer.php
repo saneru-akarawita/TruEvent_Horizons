@@ -48,13 +48,7 @@
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="<?php echo URLROOT ?>/CustomerDashboard/calendar">Payment</a>
-                                <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/makeAdvancePayment">Advance Payment</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/CustomerDashboard/makeFullPayment">Total Payment</a></li>
-                                                </ul>
-                                        </div></li> 
+                                <li><a href="<?php echo URLROOT ?>/CustomerDashboard/paymentLog">Payment</a></li> 
         
                                 <!-- <div class="icons"> -->
                                 <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>

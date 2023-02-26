@@ -11,6 +11,7 @@ class CustomerReservation extends Controller
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
       $this->packageModel = $this->model('PackageModel');
+      $this->customerModel = $this->model('CustomerModel');
    }
 
    public function getPriceFromServiceIDType($service_type, $service_id)
@@ -110,7 +111,7 @@ class CustomerReservation extends Controller
                 
                $this->reservationModel->beginTransaction();
                $this->reservationModel->addReservation($data);
-
+               
                Toast::setToast(1, "Service Added Successfully!!!", '');
                $this->reservationModel->commit();
 
@@ -572,8 +573,102 @@ class CustomerReservation extends Controller
          $this->view('customer/view-reservation-details-photography',$result14);
          
    }
-   public function deleteReservation($id){
 
+   public function deleteReservation(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($reservationDetails->sp_id);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+
+         $email = $serviceProviderDetails->email;
+
+         $emailData = [
+            "sp_name" => $serviceProviderDetails->company_name,
+            "event_name" => $reservationDetails->eventName,
+            "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+         ];
+
+         $eventData = [
+            "sp_user_id" => $reservationDetails->sp_id,
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+            EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            //cancel calendar event
+            $this->reservationModel->deleteEvent($eventData);
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
+   }
+
+
+   public function deleteReservationPackage(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+         $sp_id_string = $reservationDetails->sp_id;
+         $sp_id_arr = explode (",", $sp_id_string);
+
+         $eventData = [
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+
+            foreach ($sp_id_arr as $new_sp_id) :
+               $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($new_sp_id);
+               $email = $serviceProviderDetails->email;
+
+               $emailData = [
+                  "sp_name" => $serviceProviderDetails->company_name,
+                  "event_name" => $reservationDetails->eventName,
+                  "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+               ];
+
+               EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            endforeach;
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+         
+         $this->reservationModel->deleteEvent($eventData);
+         $this->reservationModel->deleteFromPackageConfirmation($rvid);
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
    }
 
    public function home()

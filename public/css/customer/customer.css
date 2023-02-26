@@ -1079,6 +1079,7 @@ main .wrapper .hero .project .col .project-card .card-footer ul.team li.team-mem
 
 main .project, .col{
     display:inline-block;
+    float:left;
 }
 
 main .col{

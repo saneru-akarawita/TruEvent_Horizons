@@ -30,19 +30,16 @@
             <div class="wrapper">
 
 
-                <div class="hero">
+                <div class="hero" style="width:2000px">
                     <div class="hero-heading">
                         <h3>Reservation Log</h3>
                     </div>
 
 
                     <div class="hero-search">
-                    <div class="input-group">
-                            <input type="text" name="" id="" placeholder="Search" style="width:300px;">
+                        <div class="input-group">
+                            <input type="text" name="search_bar" id="search_bar" placeholder="Search" style="width:300px;">
                         </div>
-                        <a href="#" class="buttond"style="border-radius:15px; margin-right:630px;">Search</a>
-                        <h6 style="margin-right:20px; font-size:2rem">Filter </h6>
-                        <span><input type="date" value=""></span>
                     </div>
 
 
@@ -52,6 +49,7 @@
 
                     <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($rvdata as $rvDetails) : ?>
+                    <?php if($rvDetails->status !="decline") {?>
                     
                                                 <?php 
                                                     $sp_id_arr = explode (",", $rvDetails->sp_id);
@@ -79,34 +77,39 @@
                                                 <p><?= $cus->fname; ?> <?= $cus->lname; ?></p>
                                                 <?php } ?>
                                         <?php endforeach; ?>
-                                    <p><?= $rvDetails->price; ?> per head</p>
+                                    <?php $formatted_price = number_format($rvDetails->price, 2, '.', '');?>
+                                    <p>LKR. <?= $formatted_price; ?> per head</p>
                                     
                                     <div class="progress-box">
                                         <label for="progress">Status</label>
                                         <?php if($rvDetails->status == "pending") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                        <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
-                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?php $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                        <?php if($rvDetails->payment == "not-paid") $value="0"; else if($rvDetails->payment == "ad-paid") $value="25"; else $value = "100"?>
+                                        <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
 
                                 </div>
-                            
+                                
+                                <?php if($rvDetails->status =="pending") {?>
                                 <div class="action-button" style="justify-content:center; margin-left:75px;">
-                                <?php if($rvDetails->rvType == "service"){?>        
+                                    <?php if($rvDetails->rvType == "service"){?>        
                                     <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                     <?php } else {?>
                                         <a href="#" class="buttond">view</a>
                                     <?php }?>
                                     <!-- <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id; ?>&service_id=<?=$rvDetails->service_id; ?>" class="buttond">view</a> -->
-                                    <a href="editReservation?rv_id=<?=$rvDetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
-                                    <a href="#" class="buttond">Decline</a>
-                            </div>
+                                    <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
+                                    <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
+                                <?php } else { ?>
+                                    <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
+                                <?php }?>
+                                </div>
 
                             <div class="card-footer">
                                 <ul class="team">
@@ -132,6 +135,7 @@
 
                         <?php } ?>
                         <?php endforeach; ?>
+                        <?php } ?>
                         <?php endforeach; ?>
                     </div>
 
@@ -190,5 +194,30 @@
        <!-- footer ends -->
         <!-- custom js file link -->
         <script src="./js/adminscript.js"></script>
+        <script>
+            // Get the search input element
+            const searchInput = document.getElementById('search_bar');
+
+            // Attach an event listener to the search input
+            searchInput.addEventListener('keyup', () => {
+            // Get all the reservation cards
+                const reservationCards = document.querySelectorAll('.project-card');
+
+                // Loop through each reservation card
+                reservationCards.forEach(card => {
+                    const eventName = card.querySelector('h6').textContent;
+
+                    // Check if the event name matches the search input value
+                    if (eventName.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                    // Show the reservation card
+                    card.style.display = 'block';
+                    } else {
+                    // Hide the reservation card
+                    card.style.display = 'none';
+                    }
+                });
+            });
+
+        </script>
 </body>
 </html>

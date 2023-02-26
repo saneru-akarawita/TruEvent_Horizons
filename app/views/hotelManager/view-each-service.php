@@ -65,7 +65,7 @@
                                 </tr>
                                 <tr>
                                         <td>Other Facilities </td>
-                                        <td>:<?php if(empty($data->other_facilities)) echo " None"; else  echo $data->other_facilities; ?> </td>
+                                        <td>: <?php if(empty($data->other_facilities)) echo " None"; else  echo $data->other_facilities; ?> </td>
                                          
                                         
                                 </tr>

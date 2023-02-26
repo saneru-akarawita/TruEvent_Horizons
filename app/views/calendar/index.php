@@ -20,6 +20,8 @@
 
         <title>Jquery Fullcalandar Integration with PHP and Mysql</title>
 
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -65,7 +67,8 @@
     </head>
 
     <body>
-
+    
+    <?php $controllerName =''; ?>
     <?php switch(Session::getUser("type")){
     case 2:
         require APPROOT . "/views/admin/header-admin.php";
@@ -75,15 +78,19 @@
         break;
     case 4:
         require APPROOT . "/views/hotelManager/header-hotel.php";
+        $controllerName ="HotelDashboard";
         break;
     case 5:
         require APPROOT . "/views/decoCompany/header-deco.php";
+        $controllerName ="DecoDashboard";
         break;
     case 6:
         require APPROOT . "/views/band/header-band.php";
+        $controllerName ="BandDashboard";
         break;
     case 7:
         require APPROOT . "/views/photography/header-photography.php";
+        $controllerName ="PhotographyDashboard";
         break;
     default:
         echo "Invalid Parameter";
@@ -91,9 +98,37 @@
 }?>
 
         <br><br><br>
+    <div style="display:flex">
         <div class ="calmaindiv" style="margin:auto">
             <div class="container" style="margin:10px 10px 0px 0px">
                 <div id="calendar"></div>
+            </div>
+        </div>
+        <div class="login-container form-container contentBox" style="margin:auto; background-color: rgba(217, 217, 217,1); box-shadow:none">
+                <form action="<?php echo URLROOT; ?>/<?=$controllerName?>/calendar" method="post" class="form">
+                    <h1 class="title">Add Custom Event</h1>
+                    
+                    <div class="text-group">
+                        <p>Event Name:</p>
+                        <input type="text" name="eventname" placeholder="enter event name..." required>
+                    </div>
+
+                    <div class="text-group">
+                        <p>Start Date:</p>
+                        <input id="startdate" type="date" name="startdate" placeholder="start date..." style="text-transform:none;" required>
+                    </div>
+
+                    <div class="text-group">
+                        <p>End Date:</p>
+                        <input id="enddate" type="date" name="enddate" placeholder="end date..." style="text-transform:none;" required>
+                    </div>
+
+                    <input id="spID" type="hidden" name="spID" value="<?=Session::getUser('id')?>" required>
+
+                    <div class="footer-container">
+                        <button class="btn btn-filled btn-theme-purple">Add Event</button>
+                    </div>
+                </form>
             </div>
         </div>
         <br><br><br>
@@ -136,7 +171,7 @@
         </div>
     
         
-    
+
         <div class="credit">
             Created By <span>TruEvent Horizon</span> | All Rights Reserved
         </div>
@@ -148,5 +183,15 @@
 
     </body>
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
+    <script language="javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#startdate').attr('min',today);
+        $('#enddate').attr('min',today);
+    </script>
 
 </html>

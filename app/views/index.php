@@ -132,8 +132,8 @@
 
                                                 <div class="sub-menu1">
                                                         <ul>
-                                                                <li><a href="<?php echo URLROOT?>/customer/register">As Service Provider</a></li>
-                                                                <li><a href="<?php echo URLROOT?>/serviceprovider/register">As Customer</a></li>
+                                                                <li><a href="<?php echo URLROOT?>/customer/register">As Customer</a></li>
+                                                                <li><a href="<?php echo URLROOT?>/serviceprovider/register">As Service Provider</a></li>
                                                         </ul>
                                                 </div>
                                         </li>
