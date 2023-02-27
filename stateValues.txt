@@ -33,3 +33,17 @@ active
 active - 1
 de active - 0
 
+
+
+payhere details
+-------------------
+
+Visa : 4916217501611292
+MasterCard : 5307732125531191
+AMEX : 346781005510225
+
+
+payhere query passing
+
+advance payment 0
+full payment 1

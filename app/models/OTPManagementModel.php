@@ -90,7 +90,7 @@ class OTPManagementModel extends Model
 
    public function removeOTP($mobileNo, $type)
    {
-      $this->delete("OTPverification", ["email" => $mobileNo, "type" => $type]);
+      $this->delete("otpverification", ["email" => $mobileNo, "type" => $type]);
    }
 
    // Generates OTP
