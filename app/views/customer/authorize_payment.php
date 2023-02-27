@@ -48,8 +48,8 @@ if ($local_md5sig === $md5sig){
         }
     }
 
-    // $sql_to_log = "INSERT INTO Payments_Log (PayHere_Payment_ID, Booking_ID, Mode, Amount, Success_Flag, Status_Message) VALUES ($payment_id, $order_id, '$mode', $payhere_amount, $status_code, '$status_message')";
-    // $result = $conn -> query($sql_to_log);
+    $sql_to_log = "INSERT INTO payment_log (PayHere_Payment_ID, payment_id, Booking_ID, Mode, Amount, Success_Flag, Status_Message) VALUES ($payment_id, $payment_id_db, $order_id, '$mode', $payhere_amount, $status_code, '$status_message')";
+    $result = $conn -> query($sql_to_log); 
 }
 
 
