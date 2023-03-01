@@ -178,7 +178,7 @@
             <div class="box" style="background-color: root(--light-white)">
                 <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
 
-                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
+                    <div class="discount" style="text-align:center; width: 100%; border-radius: 15px 15px 0px 0px">discount  <?php echo rand(ceil(5/5),floor(40/5))*5?> %</div>
                     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
                         <div class="image discount-radius">
                             <img src="<?php echo URLROOT?>/public/images/customer/admin-add-packages/image30.jpg" alt="">

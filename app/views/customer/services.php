@@ -236,7 +236,7 @@
                 <?php endforeach; ?>
                 <div class="box">
                     <div class="image">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" .($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
