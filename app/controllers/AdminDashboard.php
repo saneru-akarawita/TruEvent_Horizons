@@ -214,8 +214,86 @@ class AdminDashboard extends Controller
 
    public function reports()
    {
-      $this->view('admin/Reports', '');
+      if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+         if(isset($_POST['year']))
+            $years = $_POST['year'];
+         else
+            $years = [];
+         if(isset($_POST['month']))
+            $months = $_POST['month'];
+         else
+            $months = [];
+         if(isset($_POST['status']))
+            $status = $_POST['status'];
+         else
+            $status = [];
+         if(isset($_POST['payment']))
+            $payment = $_POST['payment'];
+         else
+            $payment = [];
+         if(isset($_POST['type']))
+            $type = $_POST['type'];
+         else
+            $type = [];
+
+         $query = $this->generate_sql_query($years, $months, $status, $payment, $type);
+
+         $data = [
+            'query' => $query
+         ];
+
+         $this->view('admin/Reports', $data);
+      }
+      else{
+         $this->view('admin/Reports', '');
+      }
+      
    }
+
+   public function generate_sql_query($years = [], $months = [], $statuses = [], $payments = [], $rv_types = []) {
+		// Start with the SELECT statement to get all columns
+		$query = "SELECT * FROM customerrvdetails";
+		
+		// Check if any constraints were selected
+		if (!empty($years) || !empty($months) || !empty($statuses) || !empty($payments) || !empty($rv_types)) {
+			// Add the WHERE keyword to indicate constraints
+			$query .= " WHERE ";
+			
+			// Add each constraint as an AND condition
+			$conditions = [];
+			
+			if (!empty($years)) {
+				$years_str = implode(", ", array_map('intval', $years));
+				$conditions[] = "year(rvDate) IN ($years_str)";
+			}
+				
+			if (!empty($months)) {
+				$months_str = implode(", ", array_map(function ($month) { return "'$month'"; }, $months));
+				$conditions[] = "month(rvDate) IN ($months_str)";
+			}
+			
+			if (!empty($statuses)) {
+				$statuses_str = implode(", ", array_map(function ($status) { return "'$status'"; }, $statuses));
+				$conditions[] = "status IN ($statuses_str)";
+			}
+			
+			if (!empty($payments)) {
+				$payments_str = implode(", ", array_map(function ($payment) { return "'$payment'"; }, $payments));
+				$conditions[] = "payment IN ($payments_str)";
+			}
+			
+			if (!empty($rv_types)) {
+				$rv_types_str = implode(", ", array_map(function ($rv_type) { return "'$rv_type'"; }, $rv_types));
+				$conditions[] = "rvType IN ($rv_types_str)";
+			}
+			
+			// Join all conditions with the AND keyword
+			$query .= implode(" AND ", $conditions);
+		}
+		
+		return $query;
+	}
 
    public function reservationLog()
    {

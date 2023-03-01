@@ -101,7 +101,8 @@ class ReservationModel extends Model
             'rv_id' => $data['rv_id'],
             'customer_id' => $data['customer_id'],
             'ad_price' => $data['ad_price'],
-            'full_price' => $data['full_price']
+            'full_price' => $data['full_price'],
+            'rem_price' => $data['full_price']
             ]);
     }
 
@@ -158,6 +159,16 @@ class ReservationModel extends Model
 
     public function deleteFromPackageConfirmation($rvid){
         $this->delete('package_confirmation', ['rv_id' => $rvid]);
+    }
+
+    public function getPendingPaymentDetailsByCustomerID($customerID){
+        $results = $this->customQuery("SELECT * FROM payments WHERE customer_id = ".$customerID." AND fp_flag = 0");
+        return $results;
+    }
+
+    public function getCompletedPaymentDetailsByCustomerID($customerID){
+        $results = $this->getResultSet("payments", "*", ['customer_id' => $customerID,'fp_flag'=>1]);
+        return $results;
     }
     
 }
