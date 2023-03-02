@@ -174,7 +174,24 @@ class HotelDashboard extends Controller
 
    public function payment()
    {
-      $this->view('hotelManager/payment', '');
+      $paymentLogs = $this->reservationModel->getPaymentLogDetails();
+      $reservationDetailsAll = $this->reservationModel->getReservationDetails();
+      $customerDetails = $this->customerModel->getCustomerDetails();
+      $loggedUserID = Session::getUser("id");
+
+      $PaymentLogArray = [];
+
+      foreach($paymentLogs as $paymentLog) {
+         $reservation_id = $paymentLog->Booking_ID;
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($reservation_id);
+         $sp_id_array = explode (",", $reservationDetails->sp_id);
+         if(in_array($loggedUserID, $sp_id_array)){
+            array_push($PaymentLogArray, $paymentLog);
+         }
+      }
+
+      $result = array($PaymentLogArray, $reservationDetailsAll, $customerDetails);
+      $this->view('common/sp_payment_log', $result);
    }
 
    public function reports()

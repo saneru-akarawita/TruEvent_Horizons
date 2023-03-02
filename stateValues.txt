@@ -44,6 +44,16 @@ AMEX : 346781005510225
 
 
 payhere query passing
+--------------------------
 
 advance payment 0
 full payment 1
+
+Payment Status Codes
+--------------------------
+
+2   - success
+0   - pending
+-1  - canceled
+-2  - failed
+-3  - chargedback
