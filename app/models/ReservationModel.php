@@ -170,5 +170,10 @@ class ReservationModel extends Model
         $results = $this->getResultSet("payments", "*", ['customer_id' => $customerID,'fp_flag'=>1]);
         return $results;
     }
+
+    public function getPaymentLogDetails(){
+        $results = $this->getResultSet("payment_log", "*", []);
+        return $results;
+    }
     
 }

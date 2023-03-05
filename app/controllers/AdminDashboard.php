@@ -209,7 +209,12 @@ class AdminDashboard extends Controller
 
    public function payment()
    {
-      $this->view('admin/payment', '');
+      $paymentLogs = $this->reservationModel->getPaymentLogDetails();
+      $reservationDetails = $this->reservationModel->getReservationDetails();
+      $customerDetails = $this->customerModel->getCustomerDetails();
+
+      $result = array($paymentLogs,$reservationDetails,$customerDetails);
+      $this->view('admin/payment', $result);
    }
 
    public function reports()

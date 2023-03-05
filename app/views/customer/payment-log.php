@@ -66,6 +66,7 @@
                                             <p class="description">
                                                 <?php foreach($rvdetails as $rvdetail): ?>
                                                     <?php if($rvdetail->rv_id == $pendings->rv_id){?>
+                                                        <?php $name = $rvdetail->eventName;?>
                                                         <?php $content = $rvdetail->eventName. "-" .$rvdetail->rvType;?>
                                                     <?php }?>
                                                 <?php endforeach; ?>
@@ -84,11 +85,11 @@
                                                 
                                             </div>
                                             <?php if($pendings->ad_flag==0){?>
-                                                <button>Proceed to Advance Payment</button>
+                                                <button onclick = 'payNow(<?=$pendings->payment_id?>,<?=$pendings->rv_id?>,<?=$pendings->ad_price?>,"Admin","advance")'>Proceed to Advance Payment</button>
                                             <?php }else{?>
                                                 <br>
                                             <?php }?>
-                                            <button>Proceed to Full Payment</button>
+                                            <button onclick = 'payNow(<?=$pendings->payment_id?>,<?=$pendings->rv_id?>,<?=$pendings->rem_price?>,"Admin","full")'>Proceed to Full Payment</button>
                                         </main>
                                     
                                     </div>
@@ -192,6 +193,7 @@
                                 <p class="description">
                                     <?php foreach($rvdetails as $rvdetail): ?>
                                         <?php if($rvdetail->rv_id == $pendings->rv_id){?>
+                                            <?php $name = $rvdetail->eventName;?>
                                             <?php $content = $rvdetail->eventName. "-" .$rvdetail->rvType;?>
                                         <?php }?>
                                     <?php endforeach; ?>
@@ -210,11 +212,11 @@
                                     
                                 </div>
                                 <?php if($pendings->ad_flag==0){?>
-                                    <button>Proceed to Advance Payment</button>
+                                    <button onclick = 'payNow(<?=$pendings->payment_id?>,<?=$pendings->rv_id?>,<?=$pendings->ad_price?>,"Admin","advance")'>Proceed to Advance Payment</button>
                                 <?php }else{?>
                                     <br>
                                 <?php }?>
-                                <button>Proceed to Full Payment</button>
+                                <button onclick = 'payNow(<?=$pendings->payment_id?>,<?=$pendings->rv_id?>,<?=$pendings->rem_price?>,"Admin","full")'>Proceed to Full Payment</button>
                             </main>
                         
                         </div>
@@ -276,5 +278,75 @@
     </section>
 
     <!-- footer ends -->
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <script>
+
+        function payNow(payment_due_id, booking_id, amount, worker_name, payment_type){
+            //Call AJAX function to get the hash value
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var hash_val = this.responseText;
+                // Put the payment variables here
+                    var payment = {
+                        "sandbox": true,
+                        "merchant_id": merchant_id,    // Replace your Merchant ID
+                        "return_url": undefined,     // Important
+                        "cancel_url": undefined,     // Important
+                        "notify_url": "https://ravinduwegiriya.com/authorize_payment_trueventhorizons.php",
+                        "order_id": booking_id,
+                        "items": "Payment to "+worker_name,
+                        "amount": amount,
+                        "currency": "LKR",
+                        "hash": hash_val, // *Replace with generated hash retrieved from backend
+                        "first_name": "Saman",
+                        "last_name": "Perera",
+                        "email": "samanp@gmail.com",
+                        "phone": "0771234567",
+                        "address": "No.1, Galle Road",
+                        "city": "Colombo",
+                        "country": "Sri Lanka",
+                        "custom_1": payment_due_id,
+                        "custom_2": payment_type
+                    };
+                    payhere.startPayment(payment);
+                    
+            }
+            
+            }
+            xmlhttp.open("POST", "http://localhost/temp/gethash.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //send order_id and amount
+            xmlhttp.send("order_id="+booking_id+"&amount="+amount);
+            
+            
+
+            
+        }
+        // Payment completed. It can be a successful failure.
+        payhere.onCompleted = function onCompleted(orderId) {
+            console.log("Payment completed. OrderID:" + orderId);
+            //Reload Window
+            window.location.reload();
+
+        };
+
+        // Payment window closed
+        payhere.onDismissed = function onDismissed() {
+            // Note: Prompt user to pay again or show an error page
+            console.log("Payment dismissed");
+        };
+
+        // Error occurred
+        payhere.onError = function onError(error) {
+            // Note: show an error page
+            console.log("Error:"  + error);
+        };
+        var merchant_id = "1222593";    
+
+
+
+    
+    </script>
 </body>
 </html>

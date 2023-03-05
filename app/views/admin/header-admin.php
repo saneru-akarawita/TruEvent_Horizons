@@ -46,13 +46,7 @@
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Payment</a>
-                                <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="">Advance Payment</a></li>
-                                                        <li><a href="">Total Payment</a></li>
-                                                </ul>
-                                        </div></li> 
+                                <li><a href="<?php echo URLROOT ?>/adminDashboard/payment">Payment</a></li> 
 
                                 <li><a href="<?php echo URLROOT ?>/adminDashboard/reports">Reports</a>
                                 <!-- <div class="icons"> -->
