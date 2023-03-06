@@ -1,5 +1,8 @@
 <?php
 
+      require_once(APPROOT.'/../vendor/autoload.php');
+      use Mpdf\Mpdf\Mpdf;
+
 // Session validation is only applied to the constructor
 // bcz a dashboard controller 
 class AdminDashboard extends Controller
@@ -243,15 +246,31 @@ class AdminDashboard extends Controller
             $type = [];
 
          $query = $this->generate_sql_query($years, $months, $status, $payment, $type);
+         $checkBoxArray = array($years, $months, $status, $payment, $type);
+
+         $dataRows = $this->reservationModel->getReservationDetailsByQuery($query);
+         $customerdetails = $this->customerModel->getCustomerDetails();
 
          $data = [
-            'query' => $query
+            'query' => $query,
+            'checkBoxArray' => $checkBoxArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
          ];
 
          $this->view('admin/Reports', $data);
       }
       else{
-         $this->view('admin/Reports', '');
+         $dataRows = $this->reservationModel->getReservationDetails();
+         $customerdetails = $this->customerModel->getCustomerDetails();
+         $emptyArray = [[],[],[],[],[]];
+         $data = [
+            'query' => '',
+            'checkBoxArray' => $emptyArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
+         ];
+         $this->view('admin/Reports', $data);
       }
       
    }
@@ -295,10 +314,25 @@ class AdminDashboard extends Controller
 			
 			// Join all conditions with the AND keyword
 			$query .= implode(" AND ", $conditions);
+
+         $query .= "ORDER BY customer_id, rvDate";
 		}
 		
 		return $query;
 	}
+
+   public function downloadReport(){
+
+      $html = file_get_contents(APPROOT.'/views/admin/Reports.php');
+      $start = strpos($html, '<main class="main-container">');
+      $end = strpos($html, '</main>', $start);
+      $html = substr($html, $start, $end - $start + 7);
+
+      // generate the PDF file
+      $mpdf = new \Mpdf\Mpdf\Mpdf();
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('report.pdf', 'D');
+   }
 
    public function reservationLog()
    {
