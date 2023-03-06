@@ -1,5 +1,6 @@
 <?php
 
+
 // Session validation is only applied to the constructor
 // bcz a dashboard controller 
 class AdminDashboard extends Controller
