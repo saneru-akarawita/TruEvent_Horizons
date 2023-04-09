@@ -3,13 +3,23 @@ class UserModel extends Model
 {
    public function registerUser($email, $password, $user_type)
    {
-      $this->insert('users', [
-         'email' => $email,
-         'password' => password_hash($password, PASSWORD_DEFAULT),
-         'user_type' => $user_type,
-         'fail_attempts' => 0,
-         'vstatus' => "verified"
-      ]);
+      if(in_array($user_type, array(4,5,6,7))){
+         $this->insert('users', [
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'user_type' => $user_type,
+            'fail_attempts' => 0,
+            'vstatus' => "pending"
+         ]);
+      }else{
+         $this->insert('users', [
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'user_type' => $user_type,
+            'fail_attempts' => 0,
+            'vstatus' => "verified"
+         ]);
+      }
    }
 
    public function registerChatUser($unique_id,$fname,$lname,$email,$status){
@@ -32,9 +42,26 @@ class UserModel extends Model
    
    }
 
+   public function setChatUserStatus($email, $msg){
+
+      $this->update('chat_users', [
+         'userstatus' => $msg
+      ], [
+         'email' => $email
+      ]);
+   
+   }
+
    public function getUser($email)
    {
       $results = $this->getSingle("users", "*", ["email" => $email]);
+      return $results;
+   }
+
+   public function getAllGeneralUsers()
+   {
+      $sql = "SELECT email, user_type, vstatus FROM users WHERE user_type IN (3,4,5,6,7)";
+      $results = $this->customQuery($sql);
       return $results;
    }
 
@@ -109,6 +136,11 @@ class UserModel extends Model
    {
       $results = $this->getSingle("users", ["fail_attempts"], ["email" => $email]);
       return $results->fail_attempts;
+   }
+
+   public function updateVerificationStatus($email,$status){
+      $results = $this->update("users", ["vstatus" => $status], ["email" => $email]);
+      return $results;
    }
 
    //to remove staf user account when disable staff member
