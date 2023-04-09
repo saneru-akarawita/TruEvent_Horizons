@@ -12,5 +12,7 @@
     define('DB_PASSWORD', 'password123');
     define('DB_NAME', 'trueventhorizons_db');
 
+    define('MINIMUM_EVENT_BOOK_DATE',14);
+
 
 ?>
