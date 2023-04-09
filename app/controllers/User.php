@@ -44,14 +44,24 @@ class User extends Controller
 
                   if (password_verify($data['password'], $hashedPassword))
                   {
-                     $unique_chat_id = $this->userModel->getUserByUniqueID($data['email']);
-                     $this->userModel->resetFailedAttempts($data['email']);
-                     $this->OTPModel->removeOTP($data['email'], 2);
-                     $this->createUserSession($user);
-                     Session::setSingle("unique_id", $unique_chat_id->unique_id);
-                     $msg = "Active now";
-                     $this->userModel->setChatUserOffline($unique_chat_id->unique_id,$msg);
-                     $this->provideIntialView();
+
+                     //methanata if ekk gahapn verified nm enna nathm view ekk wait for verification
+                     if($user->vstatus == "pending"){
+                        $this->accountState($viewtype = "pending");
+                     }
+                     elseif($user->vstatus == "disable"){
+                        $this->accountState($viewtype = "disable");
+                     }
+                     else{ 
+                        $unique_chat_id = $this->userModel->getUserByUniqueID($data['email']);
+                        $this->userModel->resetFailedAttempts($data['email']);
+                        $this->OTPModel->removeOTP($data['email'], 2);
+                        $this->createUserSession($user);
+                        Session::setSingle("unique_id", $unique_chat_id->unique_id);
+                        $msg = "Active now";
+                        $this->userModel->setChatUserOffline($unique_chat_id->unique_id,$msg);
+                        $this->provideIntialView();
+                     }
 
                   }
                   else
@@ -370,4 +380,13 @@ class User extends Controller
    //    header('Content-Type: application/json; charset=utf-8');
    //    print_r(json_encode($path));
    // }
+
+   public function accountState($type){
+      if($type =="disable"){
+         $this->view('accsuspend','');
+      }
+      elseif($type =="pending"){
+         $this->view('verification','');
+      }
+   }
 }

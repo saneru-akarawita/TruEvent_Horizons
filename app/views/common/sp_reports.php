@@ -127,9 +127,25 @@
                 margin-left:25px;
             }
 
+            @media print {
+                .footer{
+                    display: none;
+                }
 
+                @page:first {
+                    margin-left: 0.1in;
+                    margin-right: 0.1in;
+                    margin-top: -0.9in;
+                    margin-bottom: 0.2in;
+                }
+                @page {
+                    margin-left: 0.1in;
+                    margin-right: 0.1in;
+                    margin-top: 0.2in;
+                    margin-bottom: 0.2in;
+                }
+            }
             
-
         </style>
 
     </head>
@@ -261,7 +277,7 @@
                         <button type="submit" name="action" value="addpackage" class="btn btn-filled btn-theme-purple" style="border-radius:5px;background:#444BF8;padding: unset;width: 100px;height: 30px;">Filter</button>
                     </div>
                     <div class="footer-container" style="display: flex;justify-content: center; margin-top:1rem; margin-left:2rem">
-                        <a href="<?=URLROOT?>/adminDashboard/downloadReport" style="color:black;"><i class="fa-solid fa-file-arrow-down fa-3x"></i></a>
+                        <i class="fa-solid fa-file-arrow-down fa-3x" onclick="window.print()"></i>
                     </div>
                 </div>
 
