@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Report Generation</title>
+        <title>Service Provider Reports</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -146,17 +146,33 @@
                 }
             }
             
-
         </style>
 
     </head>
     <body>
-    <?php require APPROOT . "/views/admin/header-admin.php" ?>
-    
-    <main class ="main-container" style="background-color:#FFFFFF;">
+
+    <?php switch(Session::getUser("type")){
+        case 4:
+            require APPROOT . "/views/hotelManager/header-hotel.php";
+            break;
+        case 5:
+            require APPROOT . "/views/decoCompany/header-deco.php";
+            break;
+        case 6:
+            require APPROOT . "/views/band/header-band.php";
+            break;
+        case 7:
+            require APPROOT . "/views/photography/header-photography.php";
+            break;
+        default:
+            echo "Invalid Parameter";
+            break;
+    }?>
+
+<main class ="main-container" style="background-color:#FFFFFF;">
         <div class="table-container" style="border-radius:10px">
 
-            <h1 style="font-size:50px; margin-top:75px;"><center>System Report Generation</center></h1>
+            <h1 style="font-size:50px; margin-top:75px;"><center>Service Provider Report Generation</center></h1>
             <br><br>
 
             <div class="ser-container form-container contentBox">

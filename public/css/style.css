@@ -627,3 +627,69 @@ footer p {
 }
 
 
+/* verification */
+.accverification .main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+
+.accverification .inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* height: min-content;
+  width: min-content; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+.accverification .inner-container h2 {
+  display: flex;
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--theme-black);
+}
+
+.accverification .btn {
+  margin-top: 20px;
+  padding: 7px;
+  width: 150px;
+}
+
+/* account suspend */
+.accsuspend .main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+
+.accsuspend .inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* height: min-content;
+  width: min-content; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+.accsuspend .inner-container h2 {
+  display: flex;
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--theme-black);
+}
+
+.accsuspend .btn {
+  margin-top: 20px;
+  padding: 7px;
+  width: 150px;
+}
+

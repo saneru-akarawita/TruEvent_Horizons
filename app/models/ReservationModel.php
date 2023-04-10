@@ -59,6 +59,13 @@ class ReservationModel extends Model
         return $results;
     }
 
+    public function getReservationDetailsByQuery($query)
+    {
+        $results = $this->customQuery($query);
+
+        return $results;
+    }
+
     public function getReservationsByCustomer($customerID)
     {
         $results = $this->getResultSet("customerrvdetails", "*", ['customer_id' => $customerID]);
@@ -168,6 +175,11 @@ class ReservationModel extends Model
 
     public function getCompletedPaymentDetailsByCustomerID($customerID){
         $results = $this->getResultSet("payments", "*", ['customer_id' => $customerID,'fp_flag'=>1]);
+        return $results;
+    }
+
+    public function getPaymentLogDetails(){
+        $results = $this->getResultSet("payment_log", "*", []);
         return $results;
     }
     
