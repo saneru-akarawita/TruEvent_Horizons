@@ -66,51 +66,17 @@
         </div>
 
 
-        <!-- footer start -->
-<section class="footer">
-    <div class="overlay"></div>
-    <div class="box-container">
-        <div class="box">
-            <h3>Quick Access</h3>
-        <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
-        <a href="viewservices"><i class="fas fa-angle-right"></i> Services</a>
-        <a href="addservices"><i class="fas fa-angle-right"></i> Add Services</a>
-        </div>
-
-        <div class="box">
-            <h3>Extra</h3>
-        <a href="#"><i class="fas fa-angle-right"></i>  About US</a>
-        <a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a>
-        <a href="#"><i class="fas fa-angle-right"></i> Ask Questions</a>
-        </div>
-
-        <div class="box">
-            <h3>Contact Us</h3>
-        <a href="#"><i class="fas fa-phone"></i>  +94 123-456-789</a>
-        <a href="#"><i class="fas fa-envelop"></i> TruEvent@gmail.com</a>
-        <a href="#"><i class="fas fa-map"></i> Colombo</a>
+<!-- Photo Gallary Start-->
+<div class="image-tab">
+<?php require APPROOT . "/views/customer/photoGalleryDeco.php" ?>
+<!-- Photo Gallary End-->
 
 
-        </div>
-       
-        <div class="box">
-            <h3>Follow US</h3>
-        <a href="#"><i class="fab fa-facebook"></i>  facebook</a>
-        <a href="#"><i class="fab fa-instagram"></i> instagram</a>
-        <a href="#"><i class="fab fa-linkedin"></i>  linkedin</a>
-
-        </div>
-    </div>
-
-    
-
-    <div class="credit">
-        Created By <span>TruEvent</span> | All Rights Reserved
-    </div>
-
-</section>
-
-
+<?php foreach ($data1 as $spdetails) : ?>
+    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                <?php require APPROOT . "/views/customer/decoServiceFooter.php" ?>
+                <?php } ?>
+<?php endforeach; ?>
 <!-- footer ends -->
     
 

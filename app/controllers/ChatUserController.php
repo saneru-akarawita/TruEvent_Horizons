@@ -26,10 +26,10 @@ class ChatUserController extends BaseChatController
 
         if (isset($_SESSION['unique_id'])) {
             $currentUser = $_SESSION['unique_id'];
-
+            // changing this so that disable users wont be shown in the chat (if doesnt work change the DB column as well) 
             $users = $this->chatUserModel->findByAttribute(array(
-                    'where' => 'NOT unique_id = "' . $currentUser . '"'
-                )
+                    'where' => 'NOT unique_id = "' . $currentUser . '" AND userstatus != "disable"'
+                )      
             );
 
             if (count($users) > 0) {

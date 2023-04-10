@@ -102,8 +102,89 @@ class BandService extends Controller
          }
    }
 
-   public function editService($id){
+   public function editService(){
 
+      if(isset($_GET['service_id'])){
+         $sv_editid=intval(trim($_GET['service_id']));
+      }
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $checkbox1=$_POST['band'];  
+            $chk="";  
+            foreach($checkbox1 as $chk1)  
+               {  
+                  $chk .= $chk1.", ";  
+               }  
+
+         $data = [
+
+            'name' => trim($_POST['service_name']),
+            'price' => trim($_POST['price']),
+            'band'=>$chk,
+            'other_band' => trim($_POST['other_band']),
+            'num_players' => trim($_POST['num_players']),
+            'sv_id' => trim($_POST['sv_id']),
+
+            'name_error' => '',
+            'description_error'=>'',
+            'price_error' => '',
+            'other_band_error' => '',
+            'num_players_error' => ''
+         ];
+
+         if ($_POST['action'] == "editservice")
+         {
+            // Validate everything
+            $data['name_error'] = emptyCheck($data['name']);
+            $data['price_error'] = validatePrice($data['price']);
+            $data['num_players_error'] = emptyCheck($data['num_players']);
+
+            if (
+               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error'])
+            )
+            {
+                
+               $this->bandModel->beginTransaction();
+               $this->bandModel->editBandServicebyID($data['sv_id'], $data);
+               $this->bandModel->commit();
+
+               Toast::setToast(1, "Service Edited Successfully!!!", "");
+
+               redirect('bandService/viewAllServices');
+               
+            }
+            else
+            {
+               $this->view('band/editservice', $data);
+            }
+         }
+         else
+         {
+            die("Something went wrong");
+         }
+         
+      }
+      else
+      {
+         $svdetails = $this->bandModel->getBandServiceDetailsByServiceID($sv_editid);
+
+         $data = [
+            'name' => $svdetails->service_name,
+            'price' => $svdetails->price,
+            'band'=> $svdetails->band_type,
+            'other_band' => $svdetails->other_band_type,
+            'num_players' => $svdetails->no_of_players,
+            'sv_id' => $sv_editid,
+
+            
+            'name_error' => '',
+            'price_error' => '',
+            'num_players_error' => ''
+         ];
+
+         $this->view('band/editservice', $data);
+      }
    }
 
    public function deleteService($id){

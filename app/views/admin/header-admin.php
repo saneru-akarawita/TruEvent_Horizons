@@ -46,17 +46,11 @@
                                                 </ul>
                                         </div>
                                 </li>
-                                <li><a href="">Payment</a>
-                                <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="">Advance Payment</a></li>
-                                                        <li><a href="">Total Payment</a></li>
-                                                </ul>
-                                        </div></li> 
+                                <li><a href="<?php echo URLROOT ?>/adminDashboard/payment">Payment</a></li> 
 
                                 <li><a href="<?php echo URLROOT ?>/adminDashboard/reports">Reports</a>
                                 <!-- <div class="icons"> -->
-                                <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
+                                <li><a href="<?php echo URLROOT ?>/adminDashboard/userManagement"> <i class="fa-solid fa-users-gear fa-lg"></i></a></li>
                                 <li><a href="<?php echo URLROOT ?>/adminDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
                                 <li class="nr_li dd_main">

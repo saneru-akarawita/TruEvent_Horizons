@@ -1,5 +1,6 @@
 <?php
 
+
 // Session validation is only applied to the constructor
 // bcz a dashboard controller 
 class AdminDashboard extends Controller
@@ -190,13 +191,17 @@ class AdminDashboard extends Controller
       $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
       $hotelServiceNo = $this->hotelModel->getNumberofServices();
       $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
 
       
 
       $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
       $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
 
-      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
       
       $this->view('common/special-offers', $resultArray);
    }
@@ -205,12 +210,117 @@ class AdminDashboard extends Controller
 
    public function payment()
    {
-      $this->view('admin/payment', '');
+      $paymentLogs = $this->reservationModel->getPaymentLogDetails();
+      $reservationDetails = $this->reservationModel->getReservationDetails();
+      $customerDetails = $this->customerModel->getCustomerDetails();
+
+      $result = array($paymentLogs,$reservationDetails,$customerDetails);
+      $this->view('admin/payment', $result);
    }
 
    public function reports()
    {
-      $this->view('admin/Reports', '');
+      if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+         if(isset($_POST['year']))
+            $years = $_POST['year'];
+         else
+            $years = [];
+         if(isset($_POST['month']))
+            $months = $_POST['month'];
+         else
+            $months = [];
+         if(isset($_POST['status']))
+            $status = $_POST['status'];
+         else
+            $status = [];
+         if(isset($_POST['payment']))
+            $payment = $_POST['payment'];
+         else
+            $payment = [];
+         if(isset($_POST['type']))
+            $type = $_POST['type'];
+         else
+            $type = [];
+
+         $query = $this->generate_sql_query($years, $months, $status, $payment, $type);
+         $checkBoxArray = array($years, $months, $status, $payment, $type);
+
+         $dataRows = $this->reservationModel->getReservationDetailsByQuery($query);
+         $customerdetails = $this->customerModel->getCustomerDetails();
+
+         $data = [
+            'query' => $query,
+            'checkBoxArray' => $checkBoxArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
+         ];
+
+         $this->view('admin/Reports', $data);
+      }
+      else{
+         $dataRows = $this->reservationModel->getReservationDetails();
+         $customerdetails = $this->customerModel->getCustomerDetails();
+         $emptyArray = [[],[],[],[],[]];
+         $data = [
+            'query' => '',
+            'checkBoxArray' => $emptyArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
+         ];
+         $this->view('admin/Reports', $data);
+      }
+      
+   }
+
+   public function generate_sql_query($years = [], $months = [], $statuses = [], $payments = [], $rv_types = []) {
+		// Start with the SELECT statement to get all columns
+		$query = "SELECT * FROM customerrvdetails";
+		
+		// Check if any constraints were selected
+		if (!empty($years) || !empty($months) || !empty($statuses) || !empty($payments) || !empty($rv_types)) {
+			// Add the WHERE keyword to indicate constraints
+			$query .= " WHERE ";
+			
+			// Add each constraint as an AND condition
+			$conditions = [];
+			
+			if (!empty($years)) {
+				$years_str = implode(", ", array_map('intval', $years));
+				$conditions[] = "year(rvDate) IN ($years_str)";
+			}
+				
+			if (!empty($months)) {
+				$months_str = implode(", ", array_map(function ($month) { return "'$month'"; }, $months));
+				$conditions[] = "month(rvDate) IN ($months_str)";
+			}
+			
+			if (!empty($statuses)) {
+				$statuses_str = implode(", ", array_map(function ($status) { return "'$status'"; }, $statuses));
+				$conditions[] = "status IN ($statuses_str)";
+			}
+			
+			if (!empty($payments)) {
+				$payments_str = implode(", ", array_map(function ($payment) { return "'$payment'"; }, $payments));
+				$conditions[] = "payment IN ($payments_str)";
+			}
+			
+			if (!empty($rv_types)) {
+				$rv_types_str = implode(", ", array_map(function ($rv_type) { return "'$rv_type'"; }, $rv_types));
+				$conditions[] = "rvType IN ($rv_types_str)";
+			}
+			
+			// Join all conditions with the AND keyword
+			$query .= implode(" AND ", $conditions);
+
+         $query .= "ORDER BY customer_id, rvDate";
+		}
+		
+		return $query;
+	}
+
+   public function downloadReport(){
+
    }
 
    public function reservationLog()
@@ -218,9 +328,82 @@ class AdminDashboard extends Controller
       $this->view('admin/Reservationlog', '');
    }
 
-   public function generateReports()
+   public function approveReject()
    {
-      $this->view('admin/generate-reports', '');
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         $val = explode("||", $_POST['submit']);
+         $email = $val[1];
+         if ($val[0] == 'Approve') {
+            $this->acceptServiceProvider($email);
+         } else if ($val[0] == 'Reject') {
+            $this->rejectServiceProvider($email);
+         }
+     }
+   }
+
+   public function enableDisable()
+   {
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         $val = explode("||", $_POST['submit']);
+         $email = $val[1];
+         if ($val[0] == 'Enable') {
+            $this->activateUser($email);
+         } else if ($val[0] == 'Disable') {
+            $this->disableUser($email);
+         }
+     }
+   }
+
+   public function acceptServiceProvider($email)
+   {
+
+      //call model
+      $this->userModel->updateVerificationStatus($email,"verified");
+      //call chatregisteruser
+      $serviceProviderData = $this->serviceProviderModel->getServiceProviderUserData($email);
+      //Array ( [0] => 7 [1] => Mt. Lavenia Hotel [2] => 4 )
+      $ran_id = rand(time(), 100000000);
+      $status = "Active now";
+      $this->userModel->registerChatUser($ran_id,$serviceProviderData[1],'',$email,$status);
+      EMAIL::sendUserAccVerification($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function rejectServiceProvider($email)
+   {
+
+      //call model
+      $this->userModel->removeUserAccount($email);
+      EMAIL::sendUserAccRejection($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function disableUser($email)
+   {
+      //call model
+      $this->userModel->updateVerificationStatus($email,"disable");
+      $this->userModel->setChatUserStatus($email,"disable");
+      EMAIL::sendUserAccDisable($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function activateUser($email)
+   {
+
+      //call model
+      $this->userModel->updateVerificationStatus($email,"verified");
+      $this->userModel->setChatUserStatus($email,"verified");
+      EMAIL::sendUserAccEnable($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function userManagement()
+   {
+      $users = $this->userModel->getAllGeneralUsers();
+      $serviceProviders = $this->serviceProviderModel->getServiceProviderDetails();
+      $customers = $this->customerModel->getCustomerDetails();
+      $result = array($users, $serviceProviders, $customers);
+      $this->view('admin/user_management', $result);
    }
 
    public function logout()

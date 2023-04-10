@@ -14,27 +14,13 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/styles-hotel.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/calender.css" />
 
 </head>
 
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Dashboard</a>
 
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="#">Packages</a>
-            <a href="viewreservationlog">Reservation Log</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-
-        <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
 
     <!-- </section> -->
@@ -74,10 +60,10 @@
                     </div>
                 </div>
 
-                <div class="column display-flex-jcsb">
+                <div class="row">
                     <div class="column" id="service-name-col">
                         <label for="name" >Service Name</label>
-                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required>
+                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" value="<?php echo $data[1]?>" required readonly>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
@@ -88,7 +74,8 @@
                 </div>
 
                 <div class="text-group">
-                    <label for="rvdate">Reservation Date</label>
+                    <label for="rvdate">Reservation Date</label>                    
+                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id']?>" style="font-weight:bold;">from here</a>.)</p>
                     <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
                     <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
@@ -117,71 +104,58 @@
                 <div class="column display-flex-jcsb">
                     <div class="column">
                         Service
-                        <input type="radio" class="rv_type" name="rv_type" id="service" value="service">
+                        <input type="radio" class="rv_type" name="rv_type" id="service" value="service" disabled>
                     </div>
                     <div class="column">
-                        <input type="radio" class="rv_type" name="rv_type" id="package" value="package">
+                        <input type="radio" class="rv_type" name="rv_type" id="package" value="package" checked>
                         Package
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="column" id="service-details-col">
-                        <label class="label" for="service_type">Service Details</label>
-                        <select name="service_type" class="dropdownmenu" id="service-details" required >
-                            <option value="">Service Provider Type</option>
-                            <option value="Hotel">Hotel Service</option>
-                            <option value="Decoration">Decoration Service</option>
-                            <option value="Band">Band Service</option>
-                            <option value="Photography">Photography Service</option>
-                        </select>
-                    </div>
                     <div class="column" id="package-details-col">
                         <label class="label" for="hall_type">Package Details</label>
-                        <select name="package_type" class="dropdownmenu" id="package-details"  required >
+                        <select name="package_type" class="dropdownmenu" id="package-details"  required>
                             <option value="">Package Type</option>
-                            <option value = "Birthday">Birthday Package</option>
-                            <option value = "Anniversary">Anniversary Package</option>
-                            <option value = "Coparate Event">Coparate Package</option>
-                            <option value = "Graduation Party">Graduation Party Package</option>
-                            <option value = "Get-Together">Get-Together Package</option>
-                            <option value = "General Event">General Package</option>
+                            <option value = "Birthday" <?php if($data[0]=='Birthday') echo 'selected'?>>Birthday Package</option>
+                            <option value = "Anniversary" <?php if($data[0]=='Anniversary') echo 'selected'?>>Anniversary Package</option>
+                            <option value = "Coparate Event" <?php if($data[0]=='Coparate Event') echo 'selected'?>>Coparate Package</option>
+                            <option value = "Graduation Party" <?php if($data[0]=='Graduation Party') echo 'selected'?>>Graduation Party Package</option>
+                            <option value = "Get-Together" <?php if($data[0]=='Get-Together') echo 'selected'?>>Get-Together Package</option>
+                            <option value = "General Event" <?php if($data[0]=='General Event') echo 'selected'?>>General Package</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="column display-flex-jcsb">
-                    <div class="column" id="service-name-col">
-                        <label for="name" >Service Name</label>
-                        <input class="service_name" type="text" id="service-name" name="service_name" placeholder="Enter Service Name" disabled required>
-                    </div>
+                <div class="row">
                     <div class="column" id="package-name-col">
                         <label for="event name">Pacakage Name</label>
-                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" disabled required>
+                        <input class="package_name" type="text" id="package-name" name="package_name" placeholder="Enter Package Name" value="<?php echo $data[1]?>" required readonly>
                     </div>
                 </div>
                 <br><br><hr style="height:2px;border-width:0;color:silver;background-color:silver">
                 <div class="text-group">
                     <label for="event name">Event Name</label>
                     <input class="eventname" type="text" name="event_name" placeholder="Name of your Event" required>
-                    <span class="error"><?php echo $data[1]['event_name_error']; ?></span>
+                    <span class="error"><?php echo $data[2]['event_name_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvdate">Reservation Date</label>
+                    <p style="font-size:12px; color:grey; font-style:italic">(Please select a date after checking the service provider availability <a href="<?=URLROOT?>/customerDashboard/calendar?sp_id=<?=$data[2]['svp_id_string']?>" style="font-weight:bold;">from here</a>.)</p>
                     <input class="rvdate" type="date" name="rvdate" id="date_picker" placeholder="Select the Date" style="text-transform: none;" required>
-                    <span class="error"><?php echo $data[1]['rvdate_error']; ?></span>
+                    <span class="error"><?php echo $data[2]['rvdate_error']; ?></span>
                 </div>
 
                 <div class="text-group">
                     <label for="rvtime">Reservation Time</label><br>
                     <input class="rvtime" type="time" name="rvtime" capture required>
-                    <span class="error"><?php echo $data[1]['rvtime_error']; ?></span>
+                    <span class="error"><?php echo $data[2]['rvtime_error']; ?></span>
                 </div>
 
-                <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
+                <input class="rvdate" type="hidden" name="spv_id_string" id="sp_id" value="<?php echo $data[2]['svp_id_string']?>" style="text-transform: none;">
                 <input class="rvdate" type="hidden" name="price" id="price" value="<?php echo $data[2]['price']?>" style="text-transform: none;">
-                <input class="rvdate" type="hidden" name="service_id" id="service_id" value="<?php echo $data[2]['service_id']?>" style="text-transform: none;">
+                <input class="rvdate" type="hidden" name="package_id" id="package_id" value="<?php echo $data[2]['package_id']?>" style="text-transform: none;">
 
                 <div class="footer-container">
                     <button type="submit" name="action" value = "addrv" class="btn btn-filled btn-theme-purple">Add Reservation</button>
@@ -193,7 +167,8 @@
 
         </div>
         <div class="calender_body">
-        <div id="calendar"></div>
+            <br><br><br>
+            <img src="<?=URLROOT?>/public/images/customer/datepicker.gif" alt="">
         </div>
     </div>
            
@@ -245,8 +220,6 @@
     <!-- custom js file link -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
-    <script src="<?php echo URLROOT ?>/public/js/customer/calender.js"></script>
-
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
@@ -269,11 +242,14 @@
     </script>
     <script language="javascript">
         var today = new Date();
+        today.setDate(today.getDate() + <?php echo MINIMUM_EVENT_BOOK_DATE?>);
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
-
+        console.log(today, dd, mm, yyyy);
+        console.log("test");
         today = yyyy + '-' + mm + '-' + dd;
+        console.log(today);
         $('#date_picker').attr('min',today);
     </script>
 </body>

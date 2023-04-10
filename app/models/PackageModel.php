@@ -11,6 +11,10 @@ class PackageModel extends Model
             'band_choice' => $data['bands'],
             'deco_choice' => $data['decorations'],
             'photo_choice' => $data['photography'],
+            'sp_id_string' => $data['sp_id_string'],
+            'band_sv_id' => $data['band_sv_id'],
+            'deco_sv_id' => $data['deco_sv_id'],
+            'photo_sv_id' => $data['photo_sv_id']
          ]);
     }
 
@@ -55,8 +59,17 @@ class PackageModel extends Model
             'band_choice' => $data['bands'],
             'deco_choice' => $data['decorations'],
             'photo_choice' => $data['photography'],
+            'sp_id_string' => $data['sp_id_string'],
+            'band_sv_id' => $data['band_sv_id'],
+            'deco_sv_id' => $data['deco_sv_id'],
+            'photo_sv_id' => $data['photo_sv_id']
 
          ], ['package_id' => $packageID]);
+    }
+
+    public function getPriceFromPackageID($id){
+        $results = $this->getSingle("adminpackagedetails", ["price"], ['package_id' => $id]);
+        return $results;
     }
     
 

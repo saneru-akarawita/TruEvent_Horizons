@@ -5,10 +5,13 @@ class CustomerReservation extends Controller
    {
       Session::validateSession([3]);
       $this->reservationModel = $this->model('ReservationModel');
+      $this->serviceProviderModel = $this->model('ServiceProviderModel');
       $this->decoModel = $this->model('DecoModel');
       $this->hotelModel = $this->model('HotelModel');
       $this->bandModel = $this->model('BandModel');
       $this->photographyModel = $this->model('PhotographyModel');
+      $this->packageModel = $this->model('PackageModel');
+      $this->customerModel = $this->model('CustomerModel');
    }
 
    public function getPriceFromServiceIDType($service_type, $service_id)
@@ -27,7 +30,7 @@ class CustomerReservation extends Controller
             $result = $this->photographyModel->getPriceFromServiceID($service_id);
             break;
          default:
-            // $result = $this->packageModel->getPriceFromPackageID($package_id);
+            $result = $this->packageModel->getPriceFromPackageID($service_id);
             break;
       }
       return $result;
@@ -76,9 +79,9 @@ class CustomerReservation extends Controller
                'rvdate' => trim($_POST['rvdate']),
                'rvtime' => trim($_POST['rvtime']),
                'customer_id' => Session::getUser("id"),
-               'svp_id' => trim($_POST['sp_id']),
+               'spv_id_string' => trim($_POST['spv_id_string']),
                'price' => trim($_POST['price']),
-               'package_id' => trim($_POST['package_id']),
+               'package_id'=>trim($_POST['package_id']),
    
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -108,7 +111,7 @@ class CustomerReservation extends Controller
                 
                $this->reservationModel->beginTransaction();
                $this->reservationModel->addReservation($data);
-
+               
                Toast::setToast(1, "Service Added Successfully!!!", '');
                $this->reservationModel->commit();
 
@@ -195,7 +198,6 @@ class CustomerReservation extends Controller
             }
             else{
                $data = [
-
                   'rv_type' => trim($_POST['rv_type']),
                   'package_type'=>trim($_POST['package_type']),
                   'package_name' => trim($_POST['package_name']),
@@ -203,7 +205,7 @@ class CustomerReservation extends Controller
                   'rvdate' => trim($_POST['rvdate']),
                   'rvtime' => trim($_POST['rvtime']),
                   'customer_id' => Session::getUser("id"),
-                  'svp_id' => trim($_POST['sp_id']),
+                  'spv_id_string' => trim($_POST['spv_id_string']),
                   'price' => trim($_POST['price']),
                   'package_id'=>trim($_POST['package_id']),
       
@@ -215,7 +217,7 @@ class CustomerReservation extends Controller
                   'event_name_error' => '',
                   'rvdate_error' => '',
                   'rvtime_error' => ''
-                  
+
                ];
             }
 
@@ -263,6 +265,109 @@ class CustomerReservation extends Controller
                'svp_id' => $spID,
                'price' => $price->price,
                'service_id' => $service_id,
+
+               'rv_type_error' => '',
+               'service_type_error'=>'',
+               'package_type_error' => '',
+               'package_name_error' => '',
+               'service_name_error' => '',
+               'event_name_error' => '',
+               'rvdate_error' => '',
+               'rvtime_error' => ''
+            ];
+
+            $result = array($type,$name,$data);
+            $this->view('customer/customer-reservation', $result);
+
+         }
+  
+      }
+
+   }
+
+
+   public function addReservationByPackages(){
+
+      if(isset($_GET['package_name']) && isset($_GET['package_type'])){
+         $name=$_GET['package_name'];
+         $type=$_GET['package_type'];
+         $sp_id_string = $_GET['sp_id_string'];
+         $package_id = $_GET['package_id'];
+
+         $price = $this->getPriceFromServiceIDType("Package", $package_id);
+
+         if ($_SERVER['REQUEST_METHOD'] == 'POST')
+         {
+            $rv_type = trim($_POST['rv_type']);
+            if($rv_type=='package'){
+               $data = [
+
+                  'rv_type' => trim($_POST['rv_type']),
+                  'package_type'=>trim($_POST['package_type']),
+                  'package_name' => trim($_POST['package_name']),
+                  'event_name' => trim($_POST['event_name']),
+                  'rvdate' => trim($_POST['rvdate']),
+                  'rvtime' => trim($_POST['rvtime']),
+                  'customer_id' => Session::getUser("id"),
+                  'spv_id_string' => trim($_POST['spv_id_string']),
+                  'price' => trim($_POST['price']),
+                  'package_id'=>trim($_POST['package_id']),
+      
+                  'rv_type_error' => '',
+                  'service_type_error'=>'',
+                  'package_type_error' => '',
+                  'package_name_error' => '',
+                  'service_name_error' => '',
+                  'event_name_error' => '',
+                  'rvdate_error' => '',
+                  'rvtime_error' => ''
+                  
+               ];
+            }
+            
+
+            if ($_POST['action'] == "addrv")
+            {
+               // Validate everything
+               $data['event_name_error'] = emptyCheck($data['event_name']);
+               $data['rvdate_error'] = emptyCheck($data['rvdate']);
+               $data['rvtime_error'] = emptyCheck($data['rvtime']);
+
+               if (
+                  empty($data['rv_type_error']) && empty($data['service_type_error']) && empty($data['package_type_error']) && empty($data['package_name_error']) 
+                  && empty($data['service_name_error']) && empty($data['event_name_error']) && empty($data['rvdate_error']) && empty($data['rvtime_error'])
+               )
+               {
+                  
+                  $this->reservationModel->beginTransaction();
+                  $this->reservationModel->addReservation($data);
+
+                  Toast::setToast(1, "Service Added Successfully!!!", '');
+                  $this->reservationModel->commit();
+
+                  redirect('CustomerReservation/viewReservationLog');
+                  
+               }
+               else
+               {
+                  $this->view('customer/customer-reservation', $data);
+               }
+            }
+            else
+            {
+               die("Something went wrong");
+            }
+            
+         }
+         else
+         {
+            $data = [
+               'event_name' => '',
+               'rvdate' => '',
+               'rvtime' => '',
+               'svp_id_string' => $sp_id_string,
+               'package_id' => $package_id,
+               'price' => $price->price,
 
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -361,8 +466,209 @@ class CustomerReservation extends Controller
           }
    }
 
-   public function deleteReservation($id){
+   public function viewServiceReservationDetailsHotel()
+   {
 
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $hoteldetailslist = $this->hotelModel->getServicesByServiceProvider($spid);
+         $result11 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$hoteldetailslist);
+         $this->view('customer/view-reservation-details-hotel',$result11);   
+   }
+
+   public function viewServiceReservationDetailsDeco()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $decodetailslist = $this->decoModel->getServicesByServiceProvider($spid);
+         $result12 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$decodetailslist);
+         $this->view('customer/view-reservation-details-deco',$result12);
+        
+   }
+
+
+   public function viewServiceReservationDetailsBand()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $banddetailslist = $this->bandModel->getServicesByServiceProvider($spid);
+         $result13 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$banddetailslist);
+         $this->view('customer/view-reservation-details-band',$result13);
+        
+   }
+
+   public function viewServiceReservationDetailsPhotography()
+   {
+         // $customerID = Session::getUser("id");
+         if(isset($_GET['service_id'])){
+            $serviceid=$_GET['service_id'];
+         }
+
+         if(isset($_GET['spType'])){
+            $serviceType=$_GET['spType'];
+         } 
+      
+         if(isset($_GET['sp_id'])){
+            $spid=$_GET['sp_id'];
+         }
+
+         if(isset($_GET['rv_id'])){
+            $rvid=$_GET['rv_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $serviceproviderdetailList = $this->serviceProviderModel->getServiceProviderDetails();
+         $photographydetailslist = $this->photographyModel->getServicesByServiceProvider($spid);
+         $result14 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$photographydetailslist);
+         $this->view('customer/view-reservation-details-photography',$result14);
+         
+   }
+
+   public function deleteReservation(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($reservationDetails->sp_id);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+
+         $email = $serviceProviderDetails->email;
+
+         $emailData = [
+            "sp_name" => $serviceProviderDetails->company_name,
+            "event_name" => $reservationDetails->eventName,
+            "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+         ];
+
+         $eventData = [
+            "sp_user_id" => $reservationDetails->sp_id,
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+            EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            //cancel calendar event
+            $this->reservationModel->deleteEvent($eventData);
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
+   }
+
+
+   public function deleteReservationPackage(){
+
+      if(isset($_GET['rv_id'])){
+         $rvid=$_GET['rv_id'];
+
+         $reservationDetails = $this->reservationModel->getReservationDetailsByReservationID($rvid);
+         $customerDetails = $this->customerModel->getCustomerDetailsByID($reservationDetails->customer_id);
+         $sp_id_string = $reservationDetails->sp_id;
+         $sp_id_arr = explode (",", $sp_id_string);
+
+         $eventData = [
+            "title" => $reservationDetails->eventName,
+            "start" => $reservationDetails->rvDate,
+            "end" => $reservationDetails->rvDate,
+            "rv_id" => $rvid,
+         ];
+
+         $data =[
+            "status" => "decline",
+            "rv_id" => $rvid,
+            "payment" => "not-paid"
+         ];
+
+         if($reservationDetails->status == "confirm"){
+
+            foreach ($sp_id_arr as $new_sp_id) :
+               $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetailsByID($new_sp_id);
+               $email = $serviceProviderDetails->email;
+
+               $emailData = [
+                  "sp_name" => $serviceProviderDetails->company_name,
+                  "event_name" => $reservationDetails->eventName,
+                  "customer_name" => $customerDetails->fname." ".$customerDetails->lname,
+               ];
+
+               EMAIL::sendReservationCancelToServiceProvider($email,$emailData);
+            endforeach;
+            //cancel payment data
+            $this->reservationModel->deletePayment($rvid);
+         }
+         
+         $this->reservationModel->deleteEvent($eventData);
+         $this->reservationModel->deleteFromPackageConfirmation($rvid);
+         $this->reservationModel->updateRvDetails($data);
+
+         redirect('CustomerReservation/viewReservationLog');
+
+      }
    }
 
    public function home()

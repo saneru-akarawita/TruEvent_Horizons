@@ -8,3 +8,52 @@ User Roles
 5 - Deco Company
 6 - Band Manager
 7 - Photography Company
+
+
+
+payment
+-------------------
+
+paid
+ad-paid
+not-paid
+
+
+
+status
+-------------------
+
+pending
+confirm 
+decline
+
+
+active
+------------------
+active - 1
+de active - 0
+
+
+
+payhere details
+-------------------
+
+Visa : 4916217501611292
+MasterCard : 5307732125531191
+AMEX : 346781005510225
+
+
+payhere query passing
+--------------------------
+
+advance payment 0
+full payment 1
+
+Payment Status Codes
+--------------------------
+
+2   - success
+0   - pending
+-1  - canceled
+-2  - failed
+-3  - chargedback

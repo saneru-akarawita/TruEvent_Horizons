@@ -74,5 +74,12 @@ class CustomerModel extends Model
       return $results;
     }
 
+    //test calendar function
+    public function getEvents($service_provider_id) {
+      
+      $results = $this->getResultSet("calendar_dates", ["id","title","start","end"], ["sp_user_id" => $service_provider_id]);
+      return $results;
+    }
+
 
 }

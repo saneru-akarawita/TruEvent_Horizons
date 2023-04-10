@@ -328,13 +328,17 @@ class CustomerDashboard extends Controller
       $serviceProviderDetails = $this->serviceProviderModel->getServiceProviderDetails();
       $hotelServiceNo = $this->hotelModel->getNumberofServices();
       $decoServiceNo = $this->decoModel->getNumberofServices();
+      $bandServiceNo = $this->bandModel->getNumberofServices();
+      $photographyServiceNo = $this->photographyModel->getNumberofServices();
 
       
 
       $randomServicesHotel = $this->hotelModel->getRandomServicesFromHotel($this->generateRandomArrayforEachServiceType($hotelServiceNo));
       $randomServicesDeco = $this->decoModel->getRandomServicesFromDeco($this->generateRandomArrayforEachServiceType($decoServiceNo));
+      $randomServicesBand = $this->bandModel->getRandomServicesFromBand($this->generateRandomArrayforEachServiceType($bandServiceNo));
+      $randomServicesPhotography = $this->photographyModel->getRandomServicesFromPhotography($this->generateRandomArrayforEachServiceType($photographyServiceNo));
 
-      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco);
+      $resultArray = array($serviceProviderDetails,$randomServicesHotel,$randomServicesDeco,$randomServicesBand,$randomServicesPhotography);
       
       $this->view('customer/special-offers', $resultArray);
    }
@@ -370,9 +374,44 @@ class CustomerDashboard extends Controller
       $this->view('customer/make-advance-payment', '');
    }
 
+   public function makePayment()
+   {
+      $this->view('customer/make-payment', '');
+   }
+
    public function makeFullPayment()
    {
       $this->view('customer/make-full-payment', '');
+   }
+
+   public function paymentLog()
+   {
+      $pending = $this->reservationModel->getPendingPaymentDetailsByCustomerID(Session::getUser("id"));
+      $completed = $this->reservationModel->getCompletedPaymentDetailsByCustomerID(Session::getUser("id"));
+      $rvdetails = $this->reservationModel->getReservationsByCustomer(Session::getUser("id"));
+
+      $result = array($pending, $completed, $rvdetails);
+
+      $this->view('customer/payment-log', $result);
+   }
+
+   public function calendar(){
+      $sp_ids = $_GET['sp_id'];
+
+      if(strpos($sp_ids,',') !== false){
+         $sp_ids = explode(',',$sp_ids);
+      }else{
+         $sp_ids = [$sp_ids];
+      }
+      $events = [];
+
+      foreach($sp_ids as $sp_id){
+         $events[] = $this->customerModel->getEvents($sp_id);
+      }
+
+      $merge_events = array_merge(...$events);
+
+      $this->view("calendar/cus_calendar/index", $merge_events);
    }
 
    public function totalPaymentSuccess()

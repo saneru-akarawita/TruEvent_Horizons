@@ -57,6 +57,7 @@
         <div class="box-container">
             <?php $hcount=0?>
             <?php foreach ($data2 as $hsDetails) : ?>
+            <?php if($hsDetails->active == 1) {?>
                 <?php $hcount= $hcount+1;?>
                 <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
 
@@ -65,8 +66,8 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-                <div class="box">
-                    <div class="image">
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
 
                         <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . ($hcount%7 + 1) . ".jpg'>"; ?>
 
@@ -76,12 +77,25 @@
                         <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
                         
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>" class="btn">Make Reservation</a> -->
-                        <a href="viewEachServiceHotel?service_id=<?=$hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none  border-radius:5px;">View Service</a>
+                        <a href="viewEachServiceHotel?service_id=<?=$hsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
                         <!-- <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn">Make Reservation</a> -->
                    
                     </div>
                 </div>
+            <?php }else {?>
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
+                        <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?=$spName;?></h3>
+                        <p><?= $hsDetails->service_type; ?> - <?=$hsDetails->hall_name?></p>
+                        <br>
+                        <button class="viewButton" style="height:40px; width:200px; background-color:grey; border-radius:5px;" >Service Unavailable</a></button>
 
+                    </div>
+                </div>
+            <?php }?>
             <?php endforeach; ?>
 
 
@@ -149,6 +163,7 @@
         <div class="box-container">
             <?php $dcount=0?>
             <?php foreach ($data1 as $dcDetails) : ?>
+            <?php if($dcDetails->active == 1) {?>
                 <?php $dcount= $dcount+1;?>
                 <?php $serviceProviderID = $dcDetails->service_provider_id; ?>
 
@@ -157,8 +172,8 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-                <div class="box">
-                    <div class="image">
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
@@ -170,6 +185,19 @@
                    
                     </div>
                 </div>
+            <?php }else {?>
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
+                        <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $dcDetails->service_name; ?></h3>
+                        <p>Provided by <?= $spName ?></p>
+                        <br>
+                        <button class="viewButton" style="height:40px; width:200px; background-color:grey; border-radius:5px;" >Service Unavailable</a></button>
+                    </div>
+                </div>
+            <?php }?>
             <?php endforeach; ?>
 
 
@@ -226,6 +254,7 @@
     <div class="box-container">
     <?php $dcount=0?>
             <?php foreach ($data3 as $bsDetails) : ?>
+            <?php if($bsDetails->active == 1) {?>
                 <?php $dcount= $dcount+1;?>
                 <?php $serviceProviderID = $bsDetails->service_provider_id; ?>
 
@@ -234,8 +263,8 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-                <div class="box">
-                    <div class="image">
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" .($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
@@ -245,6 +274,19 @@
                         <a href="viewEachServiceBand?service_id=<?=$bsDetails->service_id; ?>" class="btn" name="viewaction" value="view" style="text-decoration:none; border-radius:5px;">View Service</a>
                     </div>
                 </div>
+            <?php }else {?>
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
+                        <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $bsDetails->service_name; ?></h3>
+                        <p>Provided by <?= $spName ?></p>
+                        <br>
+                        <button class="viewButton" style="height:40px; width:200px; background-color:grey; border-radius:5px;" >Service Unavailable</a></button>
+                    </div>
+                </div>
+            <?php }?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -321,6 +363,7 @@
     <div class="box-container">
             <?php $dcount=0?>
             <?php foreach ($data4 as $psDetails) : ?>
+            <?php if($psDetails->active == 1) {?>
                 <?php $dcount= $dcount+1;?>
                 <?php $serviceProviderID = $psDetails->service_provider_id; ?>
 
@@ -329,8 +372,8 @@
                     <?php $spName = $spdetails->company_name;
                     } ?>
                 <?php endforeach; ?>
-                <div class="box">
-                    <div class="image">
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
@@ -341,6 +384,19 @@
                     
                     </div>
                 </div>
+            <?php }else {?>
+                <div class="box" style="border:none; border-radius:10px">
+                    <div class="image" style="border-radius:10px 10px 0px 0px">
+                        <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
+                    </div>
+                    <div class="content">
+                        <h3><?= $psDetails->service_name; ?></h3>
+                        <p>Provided by <?= $spName ?></p>
+                        <br>
+                        <button class="viewButton" style="height:40px; width:200px; background-color:grey; border-radius:5px;" >Service Unavailable</a></button>
+                    </div>
+                </div>
+            <?php }?>
             <?php endforeach; ?>
         </div>
     </div>
