@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<?php require APPROOT . "/views/customer/header-customer.php" ?>
+    <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
     <!-- header section starts -->
     <!-- <section class="header">
@@ -34,8 +34,8 @@
 
         </nav> -->
 
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
+    <!-- Gives a Menu Button -->
+    <button id="menu-btn" class="fas fa-bars"></button>
 
 
     <!-- </section> -->
@@ -75,7 +75,7 @@
                     <div class="content">
                         <span>Exclusive Events,Priceless Memories</span>
                         <h3>Pool Party</h3>
-                        <a href="#" class="btn">View Packages</a>
+
                     </div>
                 </div>
 
