@@ -18,7 +18,7 @@
             }
         </style>
 
-        <title>Jquery Fullcalandar Integration with PHP and Mysql</title>
+        <title>Calendar</title>
 
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />

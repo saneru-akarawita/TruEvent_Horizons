@@ -1,5 +1,6 @@
 <?php
 
+
 // Session validation is only applied to the constructor
 // bcz a dashboard controller 
 class AdminDashboard extends Controller
@@ -243,15 +244,31 @@ class AdminDashboard extends Controller
             $type = [];
 
          $query = $this->generate_sql_query($years, $months, $status, $payment, $type);
+         $checkBoxArray = array($years, $months, $status, $payment, $type);
+
+         $dataRows = $this->reservationModel->getReservationDetailsByQuery($query);
+         $customerdetails = $this->customerModel->getCustomerDetails();
 
          $data = [
-            'query' => $query
+            'query' => $query,
+            'checkBoxArray' => $checkBoxArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
          ];
 
          $this->view('admin/Reports', $data);
       }
       else{
-         $this->view('admin/Reports', '');
+         $dataRows = $this->reservationModel->getReservationDetails();
+         $customerdetails = $this->customerModel->getCustomerDetails();
+         $emptyArray = [[],[],[],[],[]];
+         $data = [
+            'query' => '',
+            'checkBoxArray' => $emptyArray,
+            'dataRows' => $dataRows,
+            'customerDetails' => $customerdetails
+         ];
+         $this->view('admin/Reports', $data);
       }
       
    }
@@ -295,19 +312,98 @@ class AdminDashboard extends Controller
 			
 			// Join all conditions with the AND keyword
 			$query .= implode(" AND ", $conditions);
+
+         $query .= "ORDER BY customer_id, rvDate";
 		}
 		
 		return $query;
 	}
+
+   public function downloadReport(){
+
+   }
 
    public function reservationLog()
    {
       $this->view('admin/Reservationlog', '');
    }
 
-   public function generateReports()
+   public function approveReject()
    {
-      $this->view('admin/generate-reports', '');
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         $val = explode("||", $_POST['submit']);
+         $email = $val[1];
+         if ($val[0] == 'Approve') {
+            $this->acceptServiceProvider($email);
+         } else if ($val[0] == 'Reject') {
+            $this->rejectServiceProvider($email);
+         }
+     }
+   }
+
+   public function enableDisable()
+   {
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         $val = explode("||", $_POST['submit']);
+         $email = $val[1];
+         if ($val[0] == 'Enable') {
+            $this->activateUser($email);
+         } else if ($val[0] == 'Disable') {
+            $this->disableUser($email);
+         }
+     }
+   }
+
+   public function acceptServiceProvider($email)
+   {
+
+      //call model
+      $this->userModel->updateVerificationStatus($email,"verified");
+      //call chatregisteruser
+      $serviceProviderData = $this->serviceProviderModel->getServiceProviderUserData($email);
+      //Array ( [0] => 7 [1] => Mt. Lavenia Hotel [2] => 4 )
+      $ran_id = rand(time(), 100000000);
+      $status = "Active now";
+      $this->userModel->registerChatUser($ran_id,$serviceProviderData[1],'',$email,$status);
+      EMAIL::sendUserAccVerification($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function rejectServiceProvider($email)
+   {
+
+      //call model
+      $this->userModel->removeUserAccount($email);
+      EMAIL::sendUserAccRejection($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function disableUser($email)
+   {
+      //call model
+      $this->userModel->updateVerificationStatus($email,"disable");
+      $this->userModel->setChatUserStatus($email,"disable");
+      EMAIL::sendUserAccDisable($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function activateUser($email)
+   {
+
+      //call model
+      $this->userModel->updateVerificationStatus($email,"verified");
+      $this->userModel->setChatUserStatus($email,"verified");
+      EMAIL::sendUserAccEnable($email);
+      redirect('AdminDashboard/userManagement');
+   }
+
+   public function userManagement()
+   {
+      $users = $this->userModel->getAllGeneralUsers();
+      $serviceProviders = $this->serviceProviderModel->getServiceProviderDetails();
+      $customers = $this->customerModel->getCustomerDetails();
+      $result = array($users, $serviceProviders, $customers);
+      $this->view('admin/user_management', $result);
    }
 
    public function logout()

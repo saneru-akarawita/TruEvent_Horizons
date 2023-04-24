@@ -69,7 +69,7 @@
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
 
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . $hcount%7 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . ($hcount%7 + 1) . ".jpg'>"; ?>
 
                     </div>
                     <div class="content">
@@ -174,7 +174,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>
@@ -265,7 +265,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" .($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
@@ -374,7 +374,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount%5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $psDetails->service_name; ?></h3>

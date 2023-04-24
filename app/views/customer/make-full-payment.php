@@ -65,8 +65,8 @@
         <div class="row">
                 <div class="column">
                    <div class="text-group">
-                        <label class="label" for="transfer time">Transfer Date</label>
-                        <input type="date" id="date" style="color: #777;">
+                         <label class="label" for="transfer time">Transfer Date</label>
+                         <input type="date" id="date" style="color: #777;">
                       
                    </div>
                 </div>

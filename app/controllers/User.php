@@ -14,8 +14,7 @@ class User extends Controller
    public function signin()
    {
 
-      if ($_SERVER['REQUEST_METHOD'] == 'POST')
-      {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          $data = [
             'email' => trim($_POST['email']),
             'password' => trim($_POST['password']),
@@ -26,58 +25,50 @@ class User extends Controller
          $data['email_error'] = validateEmail($data['email']);
          $data['password_error'] = emptyCheck($data['password']);
 
-         if (empty($data['email_error']) && empty($data['password_error']))
-         {
+         if (empty($data['email_error']) && empty($data['password_error'])) {
             $user = $this->userModel->getUser($data['email']);
 
-            if (!empty($user))
-            {
+            if (!empty($user)) {
                $tooManyAttempts =  $this->checkFailedAttempts($data['email']);
 
-               if ($tooManyAttempts)
-               {
+               if ($tooManyAttempts) {
                   $data['email_error'] = "Too many failed attempts.<br>Please reset the password!";
-               }
-               else
-               {
+               } else {
                   $hashedPassword = $user->password;
 
-                  if (password_verify($data['password'], $hashedPassword))
-                  {
-                     $unique_chat_id = $this->userModel->getUserByUniqueID($data['email']);
-                     $this->userModel->resetFailedAttempts($data['email']);
-                     $this->OTPModel->removeOTP($data['email'], 2);
-                     $this->createUserSession($user);
-                     Session::setSingle("unique_id", $unique_chat_id->unique_id);
-                     $msg = "Active now";
-                     $this->userModel->setChatUserOffline($unique_chat_id->unique_id,$msg);
-                     $this->provideIntialView();
+                  if (password_verify($data['password'], $hashedPassword)) {
 
-                  }
-                  else
-                  {
+                     //methanata if ekk gahapn verified nm enna nathm view ekk wait for verification
+                     if ($user->vstatus == "pending") {
+                        $this->accountState($viewtype = "pending");
+                     } elseif ($user->vstatus == "disable") {
+                        $this->accountState($viewtype = "disable");
+                     } else {
+                        $unique_chat_id = $this->userModel->getUserByUniqueID($data['email']);
+                        $this->userModel->resetFailedAttempts($data['email']);
+                        $this->OTPModel->removeOTP($data['email'], 2);
+                        $this->createUserSession($user);
+                        Session::setSingle("unique_id", $unique_chat_id->unique_id);
+                        $msg = "Active now";
+                        $this->userModel->setChatUserOffline($unique_chat_id->unique_id, $msg);
+                        $this->provideIntialView();
+                     }
+                  } else {
                      $this->userModel->incrementFailedAttempts($data['email']);
                      $data['password_error'] = "Incorrect password";
                   }
                }
-            }
-            else
-            {
+            } else {
                $data['email_error'] = "User does not exists.";
             }
 
-            if (!empty($data['email_error']) || !empty($data['password_error']))
-            {
+            if (!empty($data['email_error']) || !empty($data['password_error'])) {
                $this->view('signin', $data);
             }
-         }
-         else
-         {
+         } else {
             $this->view('signin', $data);
          }
-      }
-      else
-      {
+      } else {
          $data = [
             'email' => '',
             'password' => '',
@@ -91,8 +82,7 @@ class User extends Controller
    public function resetPassword()
    {
       // If the request is a post
-      if ($_SERVER['REQUEST_METHOD'] == 'POST')
-      {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          // Data is loaded
          $data = [
             'email' => trim($_POST['email']),
@@ -106,44 +96,34 @@ class User extends Controller
          ];
 
          // If the OTP is requested
-         if ($_POST['action'] == "getOTP")
-         {
+         if ($_POST['action'] == "getOTP") {
             $data['email_error'] = validateEmail($data['email']);
 
-            if (empty($data['email_error']))
-            {
+            if (empty($data['email_error'])) {
                // Checking if already registered
                $isLoginExists = $this->userModel->checkLoginExists($data['email']);
                // Handle already registered but inactive customers properly
-               if ($isLoginExists)
-               {
+               if ($isLoginExists) {
                   // If no issues
                   //GET otp
                   $OTP = $this->OTPModel->requestOTP($data['email'], 2);
-                  if ($OTP)
-                  {
+                  if ($OTP) {
                      // Send otp
                      $SMSResponse = EMAIL::sendPasswordResetSMS($data['email'], $OTP);
 
                      //If OTP sent successfull then store the OTP
-                     if ($SMSResponse)
-                     {
+                     if ($SMSResponse) {
                         $this->OTPModel->storeOTP($data['email'], $OTP,  2);
                         Toast::setToast(1, "Password recovery OTP sent!", "Check you email for the OTP.");
                      }
                      // If sending OTP sending fails
-                     else
-                     {
+                     else {
                         $data['email_error'] = "Check you email again";
                      }
-                  }
-                  else
-                  {
+                  } else {
                      $data['email_error'] = "OTP has been sent already";
                   }
-               }
-               else
-               {
+               } else {
                   $data['email_error'] = "User does not exists";
                }
             }
@@ -151,8 +131,7 @@ class User extends Controller
             $this->view('resetPassword', $data);
          }
          // If registration is selected
-         else if ($_POST['action'] == "save")
-         {
+         else if ($_POST['action'] == "save") {
             // Validate everything
 
             // Validating mobileNumber
@@ -167,36 +146,29 @@ class User extends Controller
             $number    = preg_match('@[0-9]@', $data['newPassword']);
             $specialChars = preg_match('@[^\w]@', $data['newPassword']);
 
-            if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['newPassword']) < 8) {
+            if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['newPassword']) < 8) {
                $data['newPassword_error'] = "Password should be at least 8 characters in length and should include at least one upper case letter, 
                                     one number, and one special character.";
             }
 
-            if (empty($data['newPassword_error']) && empty($data['confirmNewPassword_error']) && $data['newPassword'] != $data['confirmNewPassword'])
-            {
+            if (empty($data['newPassword_error']) && empty($data['confirmNewPassword_error']) && $data['newPassword'] != $data['confirmNewPassword']) {
                $data['confirmNewPassword_error'] = "New Passwords dont't match";
             }
 
             if (
                empty($data['email_error']) && empty($data['OTP_error']) && empty($data['newPassword_error']) && empty($data['confirmNewPassword_error'])
-            )
-            {
+            ) {
                // OTP verification
                $isVerified = $this->OTPModel->verifyOTP($data['email'], $data['OTP'], 2);
 
                //If OTP is not requested or previously-used or incorrect
-               if ($isVerified == 0)
-               {
+               if ($isVerified == 0) {
                   $data['OTP_error'] = "Incorrect OTP";
                   $this->view('resetPassword', $data);
-               }
-               else if ($isVerified == 2)
-               {
+               } else if ($isVerified == 2) {
                   $data['OTP_error'] = "Please generate a new OTP";
                   $this->view('resetPassword', $data);
-               }
-               else
-               {
+               } else {
                   $this->userModel->beginTransaction();
                   $this->userModel->updatePassword($data['email'], $data['newPassword']);
                   $this->userModel->resetFailedAttempts($data['email']);
@@ -209,19 +181,13 @@ class User extends Controller
                   Toast::setToast(1, "Password recovery successful!", "Sign in using new password.");
                   header('location: ' . URLROOT . '/user/signin');
                }
-            }
-            else
-            {
+            } else {
                $this->view('resetPassword', $data);
             }
-         }
-         else
-         {
+         } else {
             die("Something went wrong");
          }
-      }
-      else
-      {
+      } else {
          $data = [
             'email' => '',
             'OTP' => '',
@@ -245,17 +211,15 @@ class User extends Controller
             "type" => $user->user_type,
             "id" => $this->getUserData($user)[0],
             "name" =>  $this->getUserData($user)[1],
-            "password" => $user->password  
+            "password" => $user->password
          ]
       );
    }
 
    public function provideIntialView()
    {
-      if (Session::hasLoggedIn())
-      {
-         switch (Session::getUser("type"))
-         {
+      if (Session::hasLoggedIn()) {
+         switch (Session::getUser("type")) {
             case 1:
                redirect('superadmin/dashboard');
                break;
@@ -281,17 +245,14 @@ class User extends Controller
                redirect('User/signin');
                break;
          }
-      }
-      else
-      {
+      } else {
          redirect('home');
       }
    }
 
    public function getUserData($user)
    {
-      switch ($user->user_type)
-      {
+      switch ($user->user_type) {
          case 1:
          case 2:
             return $this->adminModel->getAdminUserData($user->email);
@@ -332,7 +293,7 @@ class User extends Controller
    public function signout()
    {
       $msg = "Offline now";
-      $this->userModel->setChatUserOffline(Session::get("unique_id"),$msg);
+      $this->userModel->setChatUserOffline(Session::get("unique_id"), $msg);
       Session::clear('user');
       session_destroy();
       redirect('User/signin');
@@ -370,4 +331,19 @@ class User extends Controller
    //    header('Content-Type: application/json; charset=utf-8');
    //    print_r(json_encode($path));
    // }
+
+   public function accountState($type)
+   {
+      if ($type == "disable") {
+         $this->view('accsuspend', '');
+      } elseif ($type == "pending") {
+         $this->view('verification', '');
+      }
+   }
+
+
+   public function policy()
+   {
+      $this->view('policy', '');
+   }
 }
