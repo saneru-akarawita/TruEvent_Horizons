@@ -78,7 +78,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                                 <td>Price </td>
-                                                                                                <td>: <?= $servicedata->price;?> per head</td>
+                                                                                                <td>: <?= $servicedata->price;?></td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                                 <td>Payments </td>

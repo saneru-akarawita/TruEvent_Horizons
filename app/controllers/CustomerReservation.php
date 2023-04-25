@@ -42,6 +42,14 @@ class CustomerReservation extends Controller
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
          $rv_type = trim($_POST['rv_type']);
+         $service_type = trim($_POST['service_type']);
+
+         if($service_type == "Hotel"){
+            $crowd =  trim($_POST['crowdcount']);
+         }
+         else{
+            $crowd = NULL;
+         }
 
          if($rv_type=='service'){
             $data = [
@@ -56,6 +64,7 @@ class CustomerReservation extends Controller
                'svp_id' => trim($_POST['sp_id']),
                'price' => trim($_POST['price']),
                'service_id' => trim($_POST['service_id']),
+               'crowdcount' => $crowd,
                
    
                'rv_type_error' => '',
@@ -140,6 +149,7 @@ class CustomerReservation extends Controller
             'event_name' => '',
             'rvdate' => '',
             'rvtime' => '',
+            'crowdcount' => '',
 
             'rv_type_error' => '',
             'service_type_error'=>'',
@@ -165,11 +175,21 @@ class CustomerReservation extends Controller
          $type=$_GET['service_type'];
          $spID=$_GET['sp_id'];
          $service_id = $_GET['service_id'];
+         if($type == "Hotel"){
+            $maxcrowd = $_GET['maxcrowd'];
+         }
+        
          $price = $this->getPriceFromServiceIDType($type, $service_id);
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST')
          {
             $rv_type = trim($_POST['rv_type']);
+            if($type == "Hotel"){
+               $crowd =  trim($_POST['crowdcount']);
+            }
+            else{
+               $crowd = NULL;
+            }
             if($rv_type=='service'){
                $data = [
 
@@ -183,7 +203,7 @@ class CustomerReservation extends Controller
                   'svp_id' => trim($_POST['sp_id']),
                   'price' => trim($_POST['price']),
                   'service_id'=>trim($_POST['service_id']),
-                  
+                  'crowdcount' => $crowd,
       
                   'rv_type_error' => '',
                   'service_type_error'=>'',
@@ -265,6 +285,7 @@ class CustomerReservation extends Controller
                'svp_id' => $spID,
                'price' => $price->price,
                'service_id' => $service_id,
+               'crowdcount' => '',
 
                'rv_type_error' => '',
                'service_type_error'=>'',
@@ -276,7 +297,12 @@ class CustomerReservation extends Controller
                'rvtime_error' => ''
             ];
 
-            $result = array($type,$name,$data);
+            
+            if($type == "Hotel"){
+               $result = array($type,$name,$data,$maxcrowd);
+            }else{
+               $result = array($type,$name,$data);
+            }
             $this->view('customer/customer-reservation', $result);
 
          }
@@ -491,7 +517,7 @@ class CustomerReservation extends Controller
          $result11 = array($serviceid,$serviceType,$spid,$rvid,$reservationsList,$serviceproviderdetailList,$hoteldetailslist);
          $this->view('customer/view-reservation-details-hotel',$result11);   
    }
-
+ 
    public function viewServiceReservationDetailsDeco()
    {
          // $customerID = Session::getUser("id");
@@ -574,6 +600,23 @@ class CustomerReservation extends Controller
          
    }
 
+   public function viewPackageReservationDetails()
+   {
+
+         if(isset($_GET['rv_id'])){
+            $rvID=$_GET['rv_id'];
+         }
+
+         if(isset($_GET['service_id'])){
+            $packageID=$_GET['service_id'];
+         }
+
+         $reservationsList = $this->reservationModel->getReservationDetails();
+         $packageDetails = $this->packageModel->getPackageDetails();
+         $resultpackage = array($rvID,$packageID,$reservationsList,$packageDetails);
+         $this->view('customer/view-package-reservationlog',$resultpackage);   
+   }
+   
    public function deleteReservation(){
 
       if(isset($_GET['rv_id'])){
