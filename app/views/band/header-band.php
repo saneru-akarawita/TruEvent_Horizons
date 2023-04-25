@@ -17,14 +17,11 @@
 
  <div class="headerdetails">
         <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
-        <!-- <div class="searchbar">
-                <input type="text">
-                <i class="fa-solid fa-magnifying-glass" style="margin-left: 10px;"></i>
-        </div> -->
+      
                 <div class="menu-bar">
                         <ul>
                         
-                                <li style="margin-left:375px;"><a href="home">Home</a>
+                                <li style="margin-left:400px;"><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
