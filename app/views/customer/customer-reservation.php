@@ -86,6 +86,13 @@
                     <span class="error"><?php echo $data[2]['rvtime_error']; ?></span>
                 </div>
 
+                <?php if($data[0]=='Hotel'){?>
+                    <div class="text-group">
+                        <label for="crowdcount">Number of People</label><br>
+                        <input class="crowdcount" type="number" name="crowdcount" min=0 max=<?=$data[3]?> capture required>
+                    </div>
+                <?php }?>
+
                 <input class="rvdate" type="hidden" name="sp_id" id="sp_id" value="<?php echo $data[2]['svp_id']?>" style="text-transform: none;">
                 <input class="rvdate" type="hidden" name="price" id="price" value="<?php echo $data[2]['price']?>" style="text-transform: none;">
                 <input class="rvdate" type="hidden" name="service_id" id="service_id" value="<?php echo $data[2]['service_id']?>" style="text-transform: none;">

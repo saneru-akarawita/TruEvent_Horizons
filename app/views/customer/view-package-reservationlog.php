@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>View Packages</title>
+        <title>View Packages Reservation Log</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,6 +42,13 @@
 <!-- </section> -->
 
 <!-- Packages Section starts -->
+<?php $rv_ID = $data[0]; ?>
+<?php $package_ID = $data[1]; ?>
+<?php $data1 = $data[2]; ?>
+<?php $data2 = $data[3]; ?>
+
+
+
 <section class="packages">
     <h1 class="heading-title">
         Package Details
@@ -53,23 +60,32 @@
                     <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image5.jpg" alt="" />
                     </div>
                     <article class="card__content">
-                    <h3 class="card__title"><?= $data->package_type;?> Package</h3><br><br>
+                    <?php foreach($data1 as $rvDetails): ?>
+                        <?php if($rvDetails->rv_id == $rv_ID) { ?>
+                            <?php if($rvDetails->service_id == $package_ID){ ?>
+                    <h3 class="card__title"><?= $rvDetails->packageType;?></h3><br><br>
+                    <label style="font-weight: bold; color:purple; margin-left:16px;"><?=$rvDetails->packageName ?></label>
                     <div class="card__body">
                         <table class="data-table">
                             <tr>
-                                <td><b>Package ID</b></td>
-                                <td>: <?= $data->package_id;?></td>
+                                <td><b>Reservation Date</b></td>
+                                <td>: <?= $rvDetails->rvDate;?></td>
                             </tr>
                             <tr>
-                                <td><b>Package Code</b></td>
-                                <td>: <?= $data->package_code;?></td>
+                                <td><b>Reservation Time</b></td>
+                                <td>: <?= $rvDetails->rvTime;?></td>
                             </tr>
                             <tr>
                                 <td><b>Price</b></td>
-                                <td>: <?= $data->price;?> LKR</td>
+                                <td>: <?= $rvDetails->price;?> LKR</td>
                             </tr>
                         </table>
                     </div>
+                    
+                    <?php } ?>
+                    <?php } ?>
+                    <?php endforeach ?>
+                        
                     </article>
                 </a>
             </li>
@@ -79,34 +95,35 @@
                     <br><br>
                     <label style="margin-left: 25px; font-weight: bold;">Services Included:</label>
                     <table class="styled-table">
+                    <?php foreach($data2 as $pcDetails): ?>
+                        <?php if($pcDetails->package_id == $package_ID) { ?>
                     <tr>
                                 <th style=" border-radius: 10px 0 0 0;">Band Option</th>
-                                <td><?php if($data->band_choice) echo $data->band_choice; else echo "not-included";?></td>
-                                <?php if($data->band_choice) { ?>
-                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackageBand?service_id=<?=$data->band_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <td><?php if($pcDetails->band_choice) echo $pcDetails->band_choice; else echo "not-included";?></td>
+                                <?php if($pcDetails->band_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackageBand?service_id=<?=$pcDetails->band_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
                                 <?php }  ?>
                             </tr>
                             <tr>
                                 <th>Decoration Option</th>
-                                <td><?php if($data->deco_choice) echo $data->deco_choice; else echo "not-included";?></td>
-                                <?php if($data->deco_choice) { ?>
-                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackageDeco?service_id=<?=$data->deco_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <td><?php if($pcDetails->deco_choice) echo $pcDetails->deco_choice; else echo "not-included";?></td>
+                                <?php if($pcDetails->deco_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackageDeco?service_id=<?=$pcDetails->deco_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
                                 <?php }  ?>
                             </tr>
                             <tr>
                                 <th style=" border-radius: 0 0 0 10px;">Photography Option</th>
-                                <td><?php if($data->photo_choice) echo $data->photo_choice; else echo "not-included";?></td>
-                                <?php if($data->photo_choice) { ?>
-                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackagPhotography?service_id=<?=$data->photo_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <td><?php if($pcDetails->photo_choice) echo $pcDetails->photo_choice; else echo "not-included";?></td>
+                                <?php if($pcDetails->photo_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackagPhotography?service_id=<?=$pcDetails->photo_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
                                 <?php }  ?>
                             </tr>
-                        </tbody>
+                        <!-- </tbody> -->
+                        <?php } ?>
+                        <?php endforeach ?>
                     </table>   
                 </a>
-                <br><br>
-                <?php if(Session::getUser('type')==3){ ?>
-                    <button class="viewButton"  style="margin-left:44px;  width:150px; background-color:black"><a href="<?php echo URLROOT; ?>/customerReservation/addReservationByPackages?package_id=<?=$data->package_id?>&package_name=<?=$data->package_name?>&package_type=<?=$data->package_type?>&sp_id_string=<?=$data->sp_id_string?>"  name="viewaction" value="view" style="color:white; font-weight:550;">Make Reservation</a></button>
-                <?php } ?>     
+                <br><br>    
                 <input type="button" class="backbutton" style="float:left; margin-left:30%" value="Go back!" onclick="history.back()">     
             </li>
         </ul>

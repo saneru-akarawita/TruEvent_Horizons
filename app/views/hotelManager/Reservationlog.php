@@ -78,7 +78,7 @@
                                                 <?php } ?>
                                         <?php endforeach; ?>
                                     <?php $formatted_price = number_format($rvDetails->price, 2, '.', '');?>
-                                    <p>LKR. <?= $formatted_price; ?> per head</p>
+                                    <p>LKR. <?= $formatted_price; ?> (for <?=$rvDetails->no_of_people?> people) </p>
                                     
                                     <div class="progress-box">
                                         <label for="progress">Status</label>
