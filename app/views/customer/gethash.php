@@ -4,7 +4,7 @@
     $order_id=$_POST['order_id'];
     $amount=$_POST['amount'];
     $currency="LKR";
-    $merchant_secret="MjQ4MzYzOTgzMzM1NDA1NTE0NzMzMzcxNDIzMjAzMjY0MTk2ODQ0Ng==";
+    $merchant_secret="MTM1MTk0NTU2Mzc3NzcxODU4NTM5MzE3OTIzOTgyNTcxNjM3NTk=";
     $hash = strtoupper(
         md5(
             $merchant_id . 

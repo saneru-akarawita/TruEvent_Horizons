@@ -19,7 +19,7 @@ inputField.onkeyup = ()=>{
 
 sendBtn.onclick = ()=>{
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/TruEvent_Horizons/ChatController/actionAddChatItem", true);
+    xhr.open("POST", "/ChatController/actionAddChatItem", true);
     xhr.onload = ()=>{
       if(xhr.readyState === XMLHttpRequest.DONE){
           if(xhr.status === 200){
@@ -41,7 +41,7 @@ chatBox.onmouseleave = ()=>{
 
 setInterval(() =>{
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/TruEvent_Horizons/ChatController/actionGetChatItem", true);
+    xhr.open("POST", "/ChatController/actionGetChatItem", true);
     xhr.onload = ()=>{
       if(xhr.readyState === XMLHttpRequest.DONE){
         

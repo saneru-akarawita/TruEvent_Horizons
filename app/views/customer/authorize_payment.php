@@ -12,7 +12,7 @@ $mode                  = $_POST['method'];
 $payment_id_db         = $_POST['custom_1'];
 $payment_type          = $_POST['custom_2'];
 
-$merchant_secret = "MjQ4MzYzOTgzMzM1NDA1NTE0NzMzMzcxNDIzMjAzMjY0MTk2ODQ0Ng=="; // Replace with your Merchant Secret
+$merchant_secret = "MTM1MTk0NTU2Mzc3NzcxODU4NTM5MzE3OTIzOTgyNTcxNjM3NTk="; // Replace with your Merchant Secret
 
 $local_md5sig = strtoupper(
     md5(
