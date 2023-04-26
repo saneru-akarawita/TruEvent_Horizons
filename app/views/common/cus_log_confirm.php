@@ -27,7 +27,7 @@
 
 <?php } else { ?>
     <div class="action-button" style="justify-content:center; margin-left:50px;">
-    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
+    <a href="viewPackageReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
     <a href="<?php echo URLROOT ?>/CustomerDashboard/paymentLog" class="buttond" style="margin-left:20px; margin-right:20px">Proceed to Pay</a>
     <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
 <?php }?>
