@@ -2,7 +2,7 @@
     //APPROOT
     define('APPROOT', dirname(dirname(__FILE__)));
     // URL RooT
-    define('URLROOT','http://localhost/TruEvent_Horizons');
+    define('URLROOT','http://trueventhorizons.me');
     //website name
     define('SITENAME','TruEvent Horizons');
 
