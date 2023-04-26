@@ -1,7 +1,7 @@
   
   .grid {
     font-size: 162.5%;
-    margin-left:10%;
+    margin-left:100px;
     display:grid;
     width:auto;
     padding:0;
@@ -25,10 +25,11 @@
     transition:transform .1s ease-in;
     display:flex;
     flex-direction:column;
-    min-height:50%;
+    min-height:85%;
     border-radius: 20px;
   }
-    
+  
+  
     .card:hover,
     .card:focus {
       box-shadow: 0 4px 10px 0 rgba(0,0,0,.16);
@@ -66,7 +67,7 @@
 
     .styled-table {
       border-collapse: collapse;
-      margin: 25px 25px 25px 25px;
+      margin: 20px 20px 20px 20px;
       font-size: 0.9em;
       font-family: sans-serif;
       min-width: 400px;
@@ -74,7 +75,7 @@
       border-radius: 20px;
     }
 
-    .styled-table thead tr {
+    .styled-table th {
       background-color: #009879;
       color: #ffffff;
       text-align: left;
@@ -84,6 +85,7 @@
     .styled-table td {
         padding: 12px 15px;
         width:200px;
+        height:60px;
         text-align: center;
     }
 
@@ -93,13 +95,17 @@
         width:200px;
     }
 
+    .data-table tr{
+      margin-top:25px;
+    }
+    
     .styled-table tbody tr.active-row {
       font-weight: bold;
       color: #009879;
     }
 
-    .backbutton {
-      background-color: #252631;;
+    .backbutton{
+      background-color: #252631;
       border: none;
       color: white;
       padding: 12px 20px;
@@ -111,14 +117,37 @@
       transition-duration: 0.4s;
       cursor: pointer;
       border-radius: 15px;
-    }
+      }
     
+      .backbutton{
+        margin-top: -20px;
+      }
+
+      .viewbutton{
+      border:#4a1e5d 2px solid;
+      color:black;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 3px 1.5px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 10px;
+      width:150px;
+      }
+
     .backbutton:hover {
       background-color: rgb(39, 41, 39);;
       color: white;
     }
     
   
+    .viewbutton:hover{
+      background-color: #4a1e5d;
+      color: white;
+    }
   
 
   

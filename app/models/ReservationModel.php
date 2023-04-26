@@ -4,6 +4,11 @@ class ReservationModel extends Model
     public function addReservation($data)
     {   
         $rv_type = $data['rv_type'];
+        if($data['crowdcount']!=null){
+            $price = $data['price']*$data['crowdcount'];
+        }else{
+            $price = $data['price'];
+        }
 
         if($rv_type=='service'){
             // print_r($data['customer_id']);
@@ -17,7 +22,8 @@ class ReservationModel extends Model
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
                 'sp_id' => $data['svp_id'],
-                'price' => $data['price'],
+                'price' => $price,
+                'no_of_people' => $data['crowdcount'],
                 'service_id' => $data['service_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"

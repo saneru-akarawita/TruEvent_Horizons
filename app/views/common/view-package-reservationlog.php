@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>View Packages</title>
+        <title>View Packages Reservation Log</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,6 +42,13 @@
 <!-- </section> -->
 
 <!-- Packages Section starts -->
+<?php $rv_ID = $data[0]; ?>
+<?php $package_ID = $data[1]; ?>
+<?php $data1 = $data[2]; ?>
+<!-- reservation details -->
+<?php $data2 = $data[3]; ?>
+<!-- package details -->
+
 <section class="packages">
     <h1 class="heading-title">
         Package Details
@@ -57,12 +64,12 @@
                     <div class="card__body">
                         <table class="data-table">
                             <tr>
-                                <td><b>Package ID</b></td>
-                                <td>: <?= $data->package_id;?></td>
+                                <td><b>Reservation Date</b></td>
+                                <td>: <?= $data->rv_date;?></td>
                             </tr>
                             <tr>
-                                <td><b>Package Code</b></td>
-                                <td>: <?= $data->package_code;?></td>
+                                <td><b>Reservation Time</b></td>
+                                <td>: <?= $data->rv_time;?></td>
                             </tr>
                             <tr>
                                 <td><b>Price</b></td>
@@ -97,16 +104,13 @@
                                 <th style=" border-radius: 0 0 0 10px;">Photography Option</th>
                                 <td><?php if($data->photo_choice) echo $data->photo_choice; else echo "not-included";?></td>
                                 <?php if($data->photo_choice) { ?>
-                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackagPhotography?service_id=<?=$data->photo_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                    <td><a href="<?php echo URLROOT ?>/CustomerDashboard/viewEachPackagePhotography?service_id=<?=$data->photo_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
                                 <?php }  ?>
                             </tr>
                         </tbody>
                     </table>   
                 </a>
-                <br><br>
-                <?php if(Session::getUser('type')==3){ ?>
-                    <button class="viewButton"  style="margin-left:44px;  width:150px; background-color:black"><a href="<?php echo URLROOT; ?>/customerReservation/addReservationByPackages?package_id=<?=$data->package_id?>&package_name=<?=$data->package_name?>&package_type=<?=$data->package_type?>&sp_id_string=<?=$data->sp_id_string?>"  name="viewaction" value="view" style="color:white; font-weight:550;">Make Reservation</a></button>
-                <?php } ?>     
+                <br><br>    
                 <input type="button" class="backbutton" style="float:left; margin-left:30%" value="Go back!" onclick="history.back()">     
             </li>
         </ul>

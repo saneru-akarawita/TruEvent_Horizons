@@ -324,6 +324,36 @@ class Packages extends Controller
 
    }
 
+   public function viewBandDetails(){
+      if(isset($_GET['band_id'])){
+         $band_id = $_GET['band_id'];
+      }   
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->bandModel->getBandServiceDetails();
+      $resultarr1 = array($band_id,$result1,$result2);
+      $this->view('admin/viewBandDetails', $resultarr1);
+   }
+
+   public function viewDecoDetails(){
+      if(isset($_GET['deco_id'])){
+         $deco_id = $_GET['deco_id'];
+      }   
+      $result3 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result4 = $this->decoModel->getDecoServiceDetails();
+      $resultarr2 = array($deco_id,$result3,$result4);
+      $this->view('admin/viewDecoDetails', $resultarr2);
+   }
+
+   public function viewPhotoDetails(){
+      if(isset($_GET['photo_id'])){
+         $photo_id = $_GET['photo_id'];
+      }   
+      $result5 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $resultarr3 = array($photo_id,$result5,$result6);
+      $this->view('admin/viewPhotoDetails', $resultarr3);
+   }
+
    public function home()
    {
       $this->view('admin/admin-home');

@@ -14,6 +14,7 @@
    <title>my profile</title>
 </head>
 
+
 <body>
 <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
 
@@ -60,8 +61,11 @@
             </div>
             <br><br>
             <label for="email">Email</label>
+                  
+
             <div class="row"> 
                 <input class="email" type="text" id="email" name="email" placeholder="<?=$data[1]->email?>" style="width:48%; text-transform:none" disabled>
+
             </div>
             <br>
             <div class="row"> 

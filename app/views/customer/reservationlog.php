@@ -44,6 +44,7 @@
                     </div>
 
                     <?php $scount = 0; $pcount=0; ?>
+
                     <?php foreach ($data as $rvdetails) : ?>
                                     <?php if($rvdetails->rvType =='service' && $rvdetails->status !='decline') { ?>
                                         <?php $scount = $scount + 1; ?>
@@ -69,7 +70,7 @@
                                             <p><?= $rvdetails->spName; ?></p>
                                             <p><?= $rvdetails->rvTime; ?></p>
                                             <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
-                                            <p>LKR. <?=$formatted_price?> <?php if($rvdetails->spType == "Hotel") echo "per head" ?></p>
+                                            <p>LKR. <?=$formatted_price?> <?php if($rvdetails->spType == "Hotel") echo "(for $rvdetails->no_of_people people)" ?></p>
 
 
                                             <div class="progress-box">
@@ -116,7 +117,7 @@
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
                                                     <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
-                                        
+
                                         <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
                                             <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
                                         <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
@@ -153,6 +154,7 @@
 
                         <?php } ?>
                     <?php endforeach; ?>
+
 
                     </div>
 
@@ -207,7 +209,8 @@
 
                                 <div class="card-body">
                                     <h6><?= $rvdetails->eventName; ?></h6>
-                                    <p>Services Provided- Band, Photography, Decoration</p>
+                                    <!-- <p>Services Provided- Band, Photography, Decoration</p> -->
+                                    <p>Package Type - <?= $rvdetails->packageType; ?></p>
                                     <p><?= $rvdetails->rvTime; ?></p>
                                     <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
                                     <p>LKR. <?=$formatted_price?> </p>
@@ -233,9 +236,10 @@
                                 <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
 
                                     <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                        <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
+
+                                        <a href="viewPackageReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id;?>" class="buttond">view</a>
+                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">cancel</a>
 
                                 <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
                                     <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>

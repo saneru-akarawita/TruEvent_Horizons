@@ -183,6 +183,42 @@ class CustomerDashboard extends Controller
    }
 
 
+   public function viewEachPackageDeco()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->decoModel->getDecoServiceDetails();
+      $result5 = array($service_id, $result1, $result2);
+      $this->view('customer/view-each-package-deco',$result5);
+   }
+
+   public function viewEachPackagPhotography()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $result7 = array($service_id, $result1, $result6);
+      $this->view('customer/view-each-package-photography',$result7);
+   }
+
+   public function viewEachPackageBand()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result8 = $this->bandModel->getBandServiceDetails();
+      $result9 = array($service_id, $result1, $result8);
+      $this->view('customer/view-each-package-band',$result9);
+   }
+
    public function provideFeedback()
    {
 
