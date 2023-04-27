@@ -68,7 +68,7 @@
 
             <div class="text-group">
                <label class="label" for="decoration">Other decorations</label>
-               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="" maxlength="25">
+               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="" maxlength="100">
             </div>
                
                   <div class="text-group">

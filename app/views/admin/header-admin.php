@@ -17,14 +17,14 @@
 
  <div class="headerdetails" style="width:101.05%">
         <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
-        <div class="searchbar">
+        <!-- <div class="searchbar">
                 <input type="text">
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 10px;"></i>
-        </div>
+        </div> -->
                 <div class="menu-bar">
                         <ul>
                         
-                                <li style="margin-left:-10px;"><a href="home">Home</a>
+                                <li style="margin-left:375px;"><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
@@ -64,7 +64,7 @@
                                 </li>
                                 <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
                                 <hr size="1px">
-                                <p style="margin-top:40px; margin-left:-140px;width:max-content"><?= Session::getUser('typeText') ?></p>  
+                                <p style="margin-top:40px; margin-left:-154px;width:max-content"><?= Session::getUser('typeText') ?></p>  
                         </ul>
                 
                 </div>
