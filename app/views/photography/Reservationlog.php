@@ -51,7 +51,7 @@
                     <?php $scount = 0; $pcount=0; ?>
 
                     <?php foreach ($rvdata as $rvDetails) : ?>
-                    <?php if($rvDetails->status !="decline") {?>
+                    <?php if($rvDetails->status !="decline" && $rvDetails->status !="canceled") {?>
                                                     <?php 
                                                         $sp_id_arr = explode (",", $rvDetails->sp_id);
                                                     ?>

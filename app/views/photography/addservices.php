@@ -60,6 +60,7 @@
                      <label for="photography6">Single-shooter</label><br>
                      <input type="checkbox" id="photography7" name="photography[]" value="Multi-shooter">
                      <label for="photography7">Multi-shooter</label><br>
+                     <span class="error"><?php echo $data['photography_error']; ?></span>
                    
                </div>
                <!-- <div class="column">

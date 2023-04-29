@@ -149,6 +149,9 @@
                         <td><p style="font-family:Verdana, Geneva, Tahoma, sans-serif;"><input type="radio" name="feedbackval5" value="Excellent">4</p></td>
                     </tr>
                 </table>
+                <?php if(!empty($data[2]['eob_error']) || !empty($data[2]['aos_error']) || !empty($data[2]['vom_error']) || !empty($data[2]['qos_error']) || !empty($data[2]['cs_error'])){?>
+                    <span class="error"><?php echo "*  Please Provide Feedback for all sections"; ?></span>
+                <?php }?>
                 <br>
                 <div class="text-group">
                     <label for="improvement">Suggestions for Improvement</label>
