@@ -7,9 +7,17 @@
  */
 ?>
 
+<?php
+    if (empty($user['img'])) {
+        $userAvatar = 'profilepic.png';
+    } else {
+        $userAvatar = $user['img'];
+    }
+?>
+
 <a href="chatWith?user_id=<?= $user['unique_id'] ?>">
     <div class="chat_content">
-        <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+    <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
         <div class="chat_details">
             <span><?= $user['fname']. " ".$user['lname'] ?></span>
             <p><?= $yourTag . $message ?></p>

@@ -18,6 +18,12 @@
     <body>
     <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
+    <?php if(!empty($data->img)){
+        $userAvatar = $data->img;
+    }else{
+        $userAvatar = 'profilepic.png';
+    }?>
+
         <!-- Gives a Menu Button -->
         <button id="menu-btn" class="fas fa-bars"></button>
 
@@ -29,7 +35,7 @@
                     <div class="chat_content">
 
                     <!-- <img src="php/images/<?php echo $data->img; ?>" alt=""> -->
-                    <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+                    <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
                     <div class="chat_details">
                         <span><?php echo $data->fname. " " . $data->lname ?></span>
                         <p style="font-size:13px"><?php echo $data->status; ?></p>

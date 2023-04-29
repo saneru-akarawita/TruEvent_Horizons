@@ -337,7 +337,7 @@
                         <td>
                             <?php if($rvdetails->payment == "not-paid"){?>
                                 <p class="status status-unpaid">Not Paid</p>
-                            <?php }elseif($rvdetails->payment == "confirm"){?>
+                            <?php }elseif($rvdetails->payment == "ad-paid"){?>
                                 <p class="status status-pending">Advance Payment</p>
                             <?php }else{?>
                                 <p class="status status-paid">Complete</p>

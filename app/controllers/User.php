@@ -211,7 +211,8 @@ class User extends Controller
             "type" => $user->user_type,
             "id" => $this->getUserData($user)[0],
             "name" =>  $this->getUserData($user)[1],
-            "password" => $user->password
+            "password" => $user->password,
+            "img" => $user->img
          ]
       );
    }
@@ -345,5 +346,39 @@ class User extends Controller
    public function policy()
    {
       $this->view('policy', '');
+   }
+
+   public function profilePictureUpload(){
+      // Check if file was uploaded successfully
+      if (isset($_FILES['profilepic']) && $_FILES['profilepic']['error'] === UPLOAD_ERR_OK) {
+         // Get file name and extension
+         $filename = basename($_FILES['profilepic']['name']);
+         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+         
+         // Generate unique file name and path
+         $newFilename = uniqid() . '.' . $ext;
+         $targetPath = APPROOT . '/../public/images/uploadimages/profilepic/' . $newFilename;
+         
+         // Move uploaded file to target path
+         if (move_uploaded_file($_FILES['profilepic']['tmp_name'], $targetPath)) {
+            // Update user's profile picture link in database
+            //    -------------------------------------------------------------------------------------------------
+            //    call the controllers to update user table and chat image table passing the nesecary img value
+                  $this->userModel->updateImageURL(Session::getUser("email"), $newFilename);
+            //    -------------------------------------------------------------------------------------------------
+            // Return JSON response with file path
+            $response = [
+               'success' => true,
+               'filepath' => '/public/images/uploadimages/profilepic/' . $newFilename
+            ];
+            echo json_encode($response);
+         } else {
+            $response = ['success' => false];
+            echo json_encode($response);
+         }
+      } else {
+            $response = ['success' => false];
+            echo json_encode($response);
+      }
    }
 }

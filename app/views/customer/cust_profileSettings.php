@@ -14,13 +14,38 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/customer.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/styles-hotel.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/style.css" />
+    <link href='https://unpkg.com/filepond@^4/dist/filepond.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap' rel='stylesheet'>
 
+    <style>
+        #profilepic{
+            margin-left:10%;
+        }
+        #abc {
+            margin-top:24%;
+            <?php if(!isset($data[0]['img_source'])){?>
+                max-width: 50%;
+                max-height: 50%;
+            <?php }?>
+        }
+        #abc:hover{
+            cursor:pointer;
+        }
+    </style>
 
 </head>
 
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
+<?php if(isset($data[0]['img_source'])){
+        $image_name = 'uploadimages/profilepic/'.$data[0]['img_source'];}
+    else{
+        $image_name = 'profilepic.png';
+    }?>
     <!-- header section starts -->
     <!-- <section class="header">
         <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
@@ -50,7 +75,9 @@
 
                 <div class="row">
                     <div class="column">
-                        <img src="<?php echo URLROOT?>/public/images/profilepic.png" class="avatar" style="margin-left:10%;">
+                        <!-- <img src="<?php echo URLROOT?>/public/images/profilepic.png" class="avatar" style="margin-left:10%;"> -->
+                        <input type="file" id="profilepic" credits='false' name="profilepic" class = "avatar" accept="image/png, image/jpeg, image/gif" />
+                        <input type="hidden" id="pplink" name="pplink">
                     </div>
                     <div class="column">
                         <br><br>
@@ -155,6 +182,45 @@
 
     <!-- custom js file link -->
     <script src="<?php echo URLROOT ?>/public/js/customer/customerscript.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <script>
+
+        FilePond.registerPlugin(FilePondPluginFileValidateType, FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageCrop, FilePondPluginImageResize, FilePondPluginImageTransform);
+        
+        FilePond.create(document.getElementById('profilepic'), {
+            server: '<?=URLROOT?>/User/profilePictureUpload',
+            labelIdle: `<img id='abc' src='<?=URLROOT?>/public/images/<?php echo $image_name?>'/><br/><br/> <span>Upload Profile Picture</span><br/>(Drag & Drop)`,
+            imagePreviewHeight: 170,
+            imageCropAspectRatio: '1:1',
+            imageResizeTargetWidth: 200,
+            imageResizeTargetHeight: 200,
+            stylePanelLayout: 'compact circle',
+            styleLoadIndicatorPosition: 'center bottom',
+            styleButtonRemoveItemPosition: 'center bottom'
+        });
+
+        // console log file path after submit
+        document.getElementById('profilepic').addEventListener('FilePond:processfile', function (e) {
+            const serverId = e.detail.file.serverId;
+            console.log(serverId);
+            // parse the JSON object
+            const jsonResponse = JSON.parse(serverId);
+            // access the filepath
+            const filepath = jsonResponse.filepath;
+            console.log(filepath);
+            if (filepath != null) {
+                document.getElementById('pplink').value = filepath;
+            }
+        });
+
+    </script>
 </body>
 
 </html>
