@@ -1,6 +1,6 @@
 <?php
 if (empty($currentUser['img'])) {
-    $userAvatar = 'user.png';
+    $userAvatar = 'profilepic.png';
 } else {
     $userAvatar = $currentUser['img'];
 }
@@ -11,7 +11,7 @@ if (empty($currentUser['img'])) {
         <header>
             <div class="chat_content">
                 <!-- <img src="/public/frontend/images/<?= $userAvatar ?>" alt=""> -->
-                <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+                <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
                 <div class="chat_details">
                     <span><?= $currentUser['fname']." ".$currentUser['lname'] ?></span>
                     <p><?= ucwords($currentUser['status']) ?></p>

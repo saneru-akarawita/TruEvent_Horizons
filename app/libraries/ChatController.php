@@ -73,6 +73,7 @@ class ChatController extends BaseChatController
             );
 
             $result = $this->chatModel->findByAttribute($model);
+            $image = $this->chatModel->getImgFromReciever($incomingId);
 
             $output = '';
             if (count($result) > 0) {
@@ -83,7 +84,8 @@ class ChatController extends BaseChatController
                         ));
                     } else {
                         $output .= $this->renderPartial('chat.chat.partial.right_chat_item', array(
-                            'item' => $item
+                            'item' => $item,
+                            'image' => $image[0],
                         ));
                     }
                 }
