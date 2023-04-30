@@ -128,7 +128,7 @@ class EMAIL
           $mail->Subject = "Admin Registration Link";
 
           $mail->Body = "Please use the following link to register as an admin in the system. \n\n
-          http://localhost/TruEvent_Horizons/admin/register";
+          http://trueventhorizons.me/admin/register";
 
           if(!$mail->send()){
             return false;

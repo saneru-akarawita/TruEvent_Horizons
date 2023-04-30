@@ -41,7 +41,12 @@
                                 <li><a href="<?php echo URLROOT ?>/DecoDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
                                 <li class="nr_li dd_main">
-                                        <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px;">
+                                <?php if(!empty(Session::getUser('img'))){
+                                                $userAvatar = Session::getUser('img');}
+                                        else{
+                                                $userAvatar = "profilepic.png";
+                                } ?>
+                                        <img src="<?php echo URLROOT ?>/public/images/uploadimages/profilepic/<?=$userAvatar?>" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px; border-radius:50%">
                                         <div class="sub-menu1">
                                                 <ul>
                                                         <li><i class="fa-solid fa-gear"></i><a href="<?php echo URLROOT ?>/DecoDashboard/profileSettings">Profile Settings</a></li>

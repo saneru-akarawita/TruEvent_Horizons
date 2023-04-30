@@ -365,6 +365,7 @@ class User extends Controller
             //    -------------------------------------------------------------------------------------------------
             //    call the controllers to update user table and chat image table passing the nesecary img value
                   $this->userModel->updateImageURL(Session::getUser("email"), $newFilename);
+                  $_SESSION['user']['img']= $newFilename;-
             //    -------------------------------------------------------------------------------------------------
             // Return JSON response with file path
             $response = [
