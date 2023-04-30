@@ -28,7 +28,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['bands']);
             $bands = $temp[0];
-            $band_sp_id = $temp[1];
+            $band_sp_id = 0;
+            if(isset($temp[1])){
+               $band_sp_id = $temp[1];
+            }
             $band_sv_id = 0;
             if(isset($temp[2])){
                $band_sv_id = $temp[2];
@@ -39,7 +42,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['decorations']);
             $decorations = $temp[0];
-            $deco_sp_id = $temp[1];
+            $deco_sp_id = 0;
+            if(isset($temp[1])){
+               $deco_sp_id = $temp[1];
+            }
             $deco_sv_id = 0;
             if(isset($temp[2])){
                $deco_sv_id = $temp[2];
@@ -50,7 +56,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['photography']);
             $photography = $temp[0];
-            $photo_sp_id = $temp[1];
+            $photo_sp_id = 0;
+            if(isset($temp[1])){
+               $photo_sp_id = $temp[1];
+            }
             $photo_sv_id = 0;
             if(isset($temp[2])){
                $photo_sv_id = $temp[2];
@@ -110,7 +119,12 @@ class Packages extends Controller
             }
             else
             {
-               $this->view('admin/admin-add-packages', $data);
+               $decoresult = $this->decoModel->getDecoServiceDetails();
+               $bandresult = $this->bandModel->getBandServiceDetails();
+               $photographyresult = $this->photographyModel->getPhotographyServiceDetails();
+               $spresult = $this->serviceProviderModel->getServiceProviderDetails();
+               $result = array($data, $decoresult,$bandresult,$photographyresult, $spresult);
+               $this->view('admin/admin-add-packages', $result);
             }
          }
          else
@@ -172,7 +186,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['bands']);
             $bands = $temp[0];
-            $band_sp_id = $temp[1];
+            $band_sp_id = 0;
+            if(isset($temp[1])){
+               $band_sp_id = $temp[1];
+            }
             $band_sv_id = 0;
             if(isset($temp[2])){
                $band_sv_id = $temp[2];
@@ -183,7 +200,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['decorations']);
             $decorations = $temp[0];
-            $deco_sp_id = $temp[1];
+            $deco_sp_id = 0;
+            if(isset($temp[1])){
+               $deco_sp_id = $temp[1];
+            }
             $deco_sv_id = 0;
             if(isset($temp[2])){
                $deco_sv_id = $temp[2];
@@ -194,7 +214,10 @@ class Packages extends Controller
          {
             $temp = explode("|",$_POST['photography']);
             $photography = $temp[0];
-            $photo_sp_id = $temp[1];
+            $photo_sp_id = 0;
+            if(isset($temp[1])){
+               $photo_sp_id = $temp[1];
+            }
             $photo_sv_id = 0;
             if(isset($temp[2])){
                $photo_sv_id = $temp[2];
@@ -237,6 +260,9 @@ class Packages extends Controller
             $data['package_type_error'] = emptyCheck($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
+            if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){
+               $data['bands_error'] = "At least one Service should be Added!";
+            }
           
             if (
                empty($data['pcode_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['bands_error']) && empty($data['package_type_error'])
@@ -254,7 +280,12 @@ class Packages extends Controller
             }
             else
             {
-               $this->view('admin/edit-packages', $data);
+               $decoresult = $this->decoModel->getDecoServiceDetails();
+               $bandresult = $this->bandModel->getBandServiceDetails();
+               $photographyresult = $this->photographyModel->getPhotographyServiceDetails();
+               $spresult = $this->serviceProviderModel->getServiceProviderDetails();
+               $result = array($data, $decoresult, $bandresult, $photographyresult, $spresult);
+               $this->view('admin/edit-packages', $result);
             }
          }
          else

@@ -51,7 +51,7 @@
 </div>
 
 <!-- Add package starts -->
-<section class="add-packages">
+<section class="add-packages" style="background-color:#f2f1f1">
    <h1 class="heading-title" >
       Edit Packages
    </h1>

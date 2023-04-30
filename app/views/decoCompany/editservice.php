@@ -131,11 +131,12 @@
                      <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers" <?php echo $checked8?>>
                      <label for="deco9">Chair covers</label><br><br>
                </div>
+               <span class="error"><?php echo $data['deco_error']; ?></span>
             </div>
 
             <div class="text-group">
                <label class="label" for="decoration">Other decorations</label>
-               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="<?php echo $data['other_deco']; ?>" maxlength="25">
+               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="<?php echo $data['other_deco']; ?>" maxlength="100">
             </div>
                
                   <div class="text-group">
