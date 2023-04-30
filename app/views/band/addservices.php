@@ -74,7 +74,7 @@
 
             <div class="text-group">
                <label class="label" for="band">Other Music Types</label>
-               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="" maxlength="25">
+               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="" maxlength="100">
             </div>
                
                   <div class="text-group">

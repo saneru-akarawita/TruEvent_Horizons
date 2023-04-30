@@ -35,14 +35,11 @@ class PhotographyService extends Controller
             'price' => trim($_POST['price']),
             'photography'=>$chk,
             'other_photography' => trim($_POST['other_photography']),
-            // 'num_players' => trim($_POST['num_players']),
             'service_provider_id' => Session::getUser("id"),
 
             'name_error' => '',
-            'description_error'=>'',
             'price_error' => '',
             'photography_error' => ''
-            // 'num_members_error' => ''
          ];
 
          if ($_POST['action'] == "addservice")
@@ -51,10 +48,8 @@ class PhotographyService extends Controller
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
             $data['photography_error'] = emptyCheck($data['photography']);
-            // $data['num_members_error'] = emptyCheck($data['num_members']);
 
             if (
-               // empty($data['num_players_error']) && 
                empty($data['name_error']) && empty($data['price_error']) && empty($data['photography_error'])
             )
             {
@@ -87,13 +82,11 @@ class PhotographyService extends Controller
             'price' => '',
             'photography'=>'',
             'other_photography' => '',
-            // 'num_members' => '',
             'service_provider_id' => '',
 
             'name_error' => '',
             'price_error' => '',
             'photography_error' => ''
-            // 'num_members_error' => ''
          ];
 
          $this->view('photography/addservices', $data);
@@ -117,12 +110,15 @@ class PhotographyService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['photography'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
+         $chk="";
+         if(isset($_POST['photography'])){
+            $checkbox1=$_POST['photography'];  
+               
+               foreach($checkbox1 as $chk1)  
+                  {  
+                     $chk .= $chk1.", ";  
+                  }
+         }   
 
          $data = [
 
@@ -133,9 +129,8 @@ class PhotographyService extends Controller
             'sv_id' => trim($_POST['sv_id']),
 
             'name_error' => '',
-            'description_error'=>'',
             'price_error' => '',
-            'other_photography_error' => ''
+            'photography_error' => ''
          ];
 
          if ($_POST['action'] == "editservice")
@@ -143,8 +138,10 @@ class PhotographyService extends Controller
             // Validate everything
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
+            $data['photography_error'] = emptyCheck($data['photography']);
+
             if (
-               empty($data['name_error']) && empty($data['price_error'])
+               empty($data['name_error']) && empty($data['price_error']) && empty($data['photography_error'])
             )
             {
                 
@@ -181,6 +178,7 @@ class PhotographyService extends Controller
 
             'name_error' => '',
             'price_error' => '',
+            'photography_error' => ''
             
          ];
 

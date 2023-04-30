@@ -155,7 +155,6 @@
             <div class="footer-container">
                <button type="submit" name="action" value="addservices" class="btn btn-filled btn-theme-purple">Add Service</button>
             </div>
-            <?php print_r($data); ?>
          </form>
       </div>
    </div>
