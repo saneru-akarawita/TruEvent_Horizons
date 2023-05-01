@@ -96,7 +96,7 @@ class ServiceProvider extends Controller
          {
             // Validate everything
             $data['business_id_error'] = emptyCheck($data['business_id']);
-            $data['company_name_error'] = emptyCheck($data['company_name']);
+            $data['companyname_error'] = emptyCheck($data['company_name']);
             $data['email_error'] = validateEmail($data['email']);
             $data['contactno_error'] = validateContactno($data['contactno']);
             $data['OTP_error'] = emptyCheck($data['OTP']);
@@ -125,7 +125,7 @@ class ServiceProvider extends Controller
             }
 
             if (
-               empty($data['business_id_error']) && empty($data['company_name_error']) && empty($data['email_error']) &&
+               empty($data['business_id_error']) && empty($data['companyname_error']) && empty($data['email_error']) &&
                empty($data['OTP_error']) && empty($data['password_error']) && empty($data['confirmPassword_error']) && 
                empty($data['accName_error']) && empty($data['accNumber_error']) && empty($data['bank_error']) && empty($data['branch_error'])
                && empty($data['contactno_error']) && empty($data['district_error']) && empty($data['service_type_error']) && empty($data['travel_flag_error'])
