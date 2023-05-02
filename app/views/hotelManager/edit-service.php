@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css" />
+   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/addservice.css">
    
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>

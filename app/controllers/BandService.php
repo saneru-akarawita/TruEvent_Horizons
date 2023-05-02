@@ -159,7 +159,7 @@ class BandService extends Controller
 
                Toast::setToast(1, "Service Edited Successfully!!!", "");
 
-               redirect('bandService/viewAllServices');
+               redirect('BandService/viewAllServices');
                
             }
             else
@@ -185,7 +185,6 @@ class BandService extends Controller
             'num_players' => $svdetails->no_of_players,
             'sv_id' => $sv_editid,
 
-            
             'name_error' => '',
             'price_error' => '',
             'num_players_error' => '',

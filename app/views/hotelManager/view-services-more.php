@@ -82,7 +82,7 @@
                     $files1 = scandir($directory);
                     $num_files = count($files1) - 2;
                 ?>
-                    <?php echo "<img src = '".URLROOT."/public/images/hotel manager/services/$hsDetails->service_type/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
+                    <?php echo "<img src = '".URLROOT."/public/images/hotel manager/services/$hsDetails->service_type/" . (rand(1,4)%$num_files +1) . ".jpg'>";?>
                 </div>
                 <div class="content">
                     <h3 style="font-size:medium">Ideal for <?= $hsDetails->service_type; ?> </h3>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Services - Photography Company</title>
+    <title>TruEvent Horizons - Edit Services - Photography</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/addservice.css">
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
@@ -16,12 +16,12 @@
 
 <body>
 <?php require APPROOT . "/views/photography/header-photography.php" ?>
-   <div class="main-container">
-      
-      <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/photographyService/editService" method="post" class="form">
-            <h1 class="title" style="font-size:3rem;">Edit Photography</h1>
-            <?php if($data['name']=='') echo "selected" ?>
+
+<div class="main-container">
+<div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px"> 
+<form action="<?php echo URLROOT; ?>/PhotographyService/editService" method="post" class="form">
+            <h1 class="title" style="font-size:3rem;">Edit Photography Service</h1>
+
             
                   <div class="text-group">
                      <label for="event name">Service Name/Type</label>        
@@ -101,26 +101,25 @@
                     {
                     $checked7 ="";
                     }
-                   
-             
+                    
                 ?>
 
-                <label for="event name">Features :</label><br>
-                  <div class="row">
+                  <label for="event name">Features :</label><br>
+               <div class="row">
                   <div class="column">
-                     <input type="checkbox" id="photography1" name="photography[]" value="Full-day photo shoots" <?php echo $checked1?>>
+                     <input type="checkbox" id="photography1" name="photography[]" value="Full-day photo shoots" <?php echo $checked1?> >
                      <label for="photography1">Full-day photo shoots</label><br>
-                     <input type="checkbox" id="photography2" name="photography[]" value="Half-day photo shoots" <?php echo $checked2?>>
+                     <input type="checkbox" id="photography2" name="photography[]" value="Half-day photo shoots" <?php echo $checked2?> >
                      <label for="photography2">Half-day photo shoots</label><br>
-                     <input type="checkbox" id="photography3" name="photography[]" value="Professional lighting setup" <?php echo $checked3?>>
+                     <input type="checkbox" id="photography3" name="photography[]" value="Professional lighting setup" <?php echo $checked3?> >
                      <label for="photography3">Professional lighting setup</label><br>
-                     <input type="checkbox" id="photography4" name="photography[]" value="Professional camera and lens kits" <?php echo $checked4?>>
+                     <input type="checkbox" id="photography4" name="photography[]" value="Professional camera and lens kits" <?php echo $checked4?> >
                      <label for="photography4">Professional camera and lens kits</label><br>
                      <input type="checkbox" id="photography5" name="photography[]" value="Photo editing - color correction and retouching" <?php echo $checked5?>>
                      <label for="photography5">Photo editing - color correction and retouching</label><br>
                      <input type="checkbox" id="photography6" name="photography[]" value="Single-shooter" <?php echo $checked6?>>
                      <label for="photography6">Single-shooter</label><br>
-                     <input type="checkbox" id="photography7" name="photography[]" value="Multi-shooter" <?php echo $checked7?>>
+                     <input type="checkbox" id="photography7" name="photography[]" value="Multi-shooter" <?php echo $checked7?> >
                      <label for="photography7">Multi-shooter</label><br>
                      <span class="error"><?php echo $data['photography_error']; ?></span>
                </div>
@@ -142,14 +141,15 @@
                 </div>
              
              </div>
-
+                    
              <input type="hidden" id="sv_id" name="sv_id" value="<?php echo $data['sv_id']; ?>">
-             
-            <div class="footer-container">
+
+             <div class="footer-container">
                <button type="submit" name="action" value="editservice" class="btn btn-filled btn-theme-purple">Update Service</button>
             </div>
 
          </form>
+         
       </div>
    </div>
 
@@ -161,7 +161,7 @@
             <h3>Quick Access</h3>
         <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
         <a href="viewservices"><i class="fas fa-angle-right"></i> Services</a>
-        <a href="addservices"><i class="fas fa-angle-right"></i> Add Services</a>
+        <a href="addservices"><i class="fas fa-angle-right"></i> Packages</a>
         </div>
 
         <div class="box">
@@ -200,7 +200,8 @@
 
 <!-- footer ends -->
     
-    <script src="<?php echo URLROOT ?>/public/js/deco company/decoscript.js"></script>
+
+    <script src="<?php echo URLROOT ?>/public/js/photography/photographyscript.js"></script>
 
 </body>
 

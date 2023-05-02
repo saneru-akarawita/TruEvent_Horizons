@@ -12,25 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
-<!-- header section starts -->
-<!-- <section class="header">
-<img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
-<a href="home" class="dashboard">Hotel</a>
-
-<nav class="navbar">
-<a href="home">Home</a>
-<a href="viewservices">Services</a>
-<a href="addservices">Add Services</a>
-<a href="logout">Logout</a>
-</nav> -->
-
-<!-- Gives a Menu Button -->
-<!-- <button id="menu-btn" class="fas fa-bars"></button>
-
-
-</section>
- -->
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
 <?php $spID = $data[0]; ?>
 <?php $serviceID = $data[1]; ?>
 <?php $rvID = $data[2]; ?>
@@ -45,7 +27,7 @@
         </div>
 
         <div class="product-info">
-                <div class="product-text" style="height:1000px; width:500px;">
+                <div class="product-text" >
                         <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
@@ -120,7 +102,7 @@
                 <?php endforeach; ?>
                 
                 <div class="product-price-btn">
-                        <button type="button" style="margin-top:60px;" onclick="history.back()">Back</button>
+                        <button type="button" onclick="history.back()">Back</button>
                 </div>
                 </div>
         </div>  
@@ -128,7 +110,7 @@
 
 
 <!-- footer start -->
-<section class="footer" style="margin-top:200px">
+<section class="footer" style="margin-top:350px">
 <div class="overlay"></div>
 <div class="box-container">
 <div class="box">

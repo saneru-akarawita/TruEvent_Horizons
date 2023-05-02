@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Services - Band Company</title>
+    <title>TruEvent Horizons - Edit Services - Band</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/addservice.css">
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
@@ -16,12 +16,13 @@
 
 <body>
 <?php require APPROOT . "/views/band/header-band.php" ?>
+
    <div class="main-container">
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/bandService/editService" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/BandService/editService" method="post" class="form">
             <h1 class="title" style="font-size:3rem;">Edit Band</h1>
-            <?php if($data['name']=='') echo "selected" ?>
+
             
                   <div class="text-group">
                      <label for="event name">Service Name/Type</label>        
@@ -38,10 +39,11 @@
                      <span class="error"><?php echo $data['name_error']; ?></span>
                   </div>
 
+
                   <?php
                     $banddata=(explode(", ",$data['band']));
 
-                    $check=array("Pop","Classic","Hip-Hop","Rap","EDM","Ballads");
+                    $check=array("Pop","Classic","Hip-Hop","Rap","EDM - (Electronic Dance Music)","Ballads");
                     if (in_array($check[0], $banddata))
                     {
                     $checked1 ="checked";
@@ -111,16 +113,6 @@
                      <label for="band6">Ballads</label><br>
                      <span class="error"><?php echo $data['band_error']; ?></span>
                </div>
-               <!-- <div class="column">
-                     <input type="checkbox" id="deco5" name="decoration[]" value="Lights" <?php echo $checked5?>>
-                     <label for="deco5">Lights</label><br>
-                     <input type="checkbox" id="deco6" name="decoration[]" value="Banners" <?php echo $checked6?>>
-                     <label for="deco6">Banners</label><br>
-                     <input type="checkbox" id="deco8" name="decoration[]" value="Table cloths" <?php echo $checked7?>>
-                     <label for="deco8">Table cloths</label><br>
-                     <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers" <?php echo $checked8?>>
-                     <label for="deco9">Chair covers</label><br><br>
-               </div> -->
             </div>
 
             <div class="text-group">
@@ -134,7 +126,6 @@
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
                   </div><br>
                   
-                  
 
 
             <div class="row">
@@ -147,10 +138,10 @@
                 </div>
              
              </div>
-
+           
              <input type="hidden" id="sv_id" name="sv_id" value="<?php echo $data['sv_id']; ?>">
-             
-            <div class="footer-container">
+
+             <div class="footer-container">
                <button type="submit" name="action" value="editservice" class="btn btn-filled btn-theme-purple">Update Service</button>
             </div>
 
@@ -166,7 +157,7 @@
             <h3>Quick Access</h3>
         <a href="home"><i class="fas fa-angle-right"></i>  Home</a>
         <a href="viewservices"><i class="fas fa-angle-right"></i> Services</a>
-        <a href="addservices"><i class="fas fa-angle-right"></i> Add Services</a>
+        <a href="addservices"><i class="fas fa-angle-right"></i> Packages</a>
         </div>
 
         <div class="box">
@@ -205,7 +196,8 @@
 
 <!-- footer ends -->
     
-    <script src="<?php echo URLROOT ?>/public/js/deco company/decoscript.js"></script>
+
+    <script src="<?php echo URLROOT ?>/public/js/band/bandscript.js"></script>
 
 </body>
 
