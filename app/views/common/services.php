@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
+    <title>TruEvent Horizons - Services</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -236,7 +236,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount % 5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount % 5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
@@ -331,7 +331,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border-color:white; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . $dcount % 5 + 1 . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount % 5 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $psDetails->service_name; ?></h3>

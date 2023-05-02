@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/logo/miniIcon.ico">
-   <title>Reset Password</title>
+   <title>TruEvent Horizons - Reset Password</title>
 </head>
 
 <body>

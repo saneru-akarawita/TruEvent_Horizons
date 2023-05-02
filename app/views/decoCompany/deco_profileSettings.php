@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png">
-    <title>my profile</title>
+    <title>TruEvent Horizons - Profile Settings - Deco Company</title>
     <link href='https://unpkg.com/filepond@^4/dist/filepond.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>

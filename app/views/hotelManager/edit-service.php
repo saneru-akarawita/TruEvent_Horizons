@@ -14,7 +14,7 @@
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
 
-   <title>TruEvent Horizons - Hotel Manager Edit Service</title>
+   <title>TruEvent Horizons - Edit Service - Hotel</title>
 </head>
 
 <body>

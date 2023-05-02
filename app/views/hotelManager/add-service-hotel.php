@@ -15,7 +15,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/header-hotel.css">
    <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
 
-   <title>TruEvent Horizons - Hotel Manager Add Service</title>
+   <title>TruEvent Horizons - Add Service - Hotel</title>
 </head>
 
 <body>
