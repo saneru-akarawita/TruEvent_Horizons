@@ -40,7 +40,7 @@
 <?php $servicedetails = $data[6]; ?>
 
 
-<div class="wrapper" style="margin-bottom:250px;">
+<div class="wrapper" style="margin-bottom:330px;">
 
         <div class="product-img" style="height:500px;">
                 <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/bdy - photo.jpg" height="100%" max-width="100%">

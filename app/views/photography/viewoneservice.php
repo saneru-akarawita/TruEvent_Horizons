@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TruEvent Horizons - Service Details - Photography</title>
 
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -14,25 +16,6 @@
 </head>
 <body>
 <?php require APPROOT . "/views/photography/header-photography.php" ?>
-
-
-            <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Decoration</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-    
-        <!-- Gives a Menu Button -->
-        <!-- <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        </section> -->
 
 
         <div class="wrapper">
@@ -43,9 +26,21 @@
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
                 <h2><?= Session::getUser('name')?></h2>
-                <p>Features:<br><?= $data->photo_features;?></p>
-                <p>Other Features:<br><?= $data->other_features;?></p>
+                <div class="description">
+                    <table id="details12">
+                    <tr>
+                        <td>Features</td>
+                        <td>: <?= $data->photo_features;?></td>
+                    </tr>
+                    <tr>
+                        <td>Other Features</td>
+                        <td>: <?php if(empty($data->other_features)) echo " None"; else  echo $data->other_features; ?> </td>
+                    </tr>
+                    </table>
+                    <br>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
+                </div>
+                <br><br>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>
               </div>

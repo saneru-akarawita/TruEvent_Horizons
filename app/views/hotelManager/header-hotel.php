@@ -24,7 +24,7 @@
                 <div class="menu-bar">
                         <ul>
                         
-                                <li style="margin-left:400px;"><a href="home">Home</a>
+                                <li style="margin-left:100px;"><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
@@ -52,9 +52,14 @@
                                                 </ul>
                                         </div>                
                                 </li>
-                                <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name')?></li> 
-                                <hr size="1px">
-                                <p style="margin-top:40px; margin-left:-116px;width:max-content"><?= Session::getUser('typeText')?></p> 
+                                </div>        
+                                <div class="company_name">
+                                        <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
+                                </div>
+                                <!-- <hr size="1px"> -->
+                                <div class="company_type">
+                                        <p style="margin-top:40px; margin-left:-184px;width:max-content"><?= Session::getUser('typeText') ?></p> 
+                                </div>
                                 <!-- <div class="nav_right">
 			                <ul>
                                                 <li class="nr_li dd_main">

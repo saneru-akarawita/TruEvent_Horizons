@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TruEvent Horizons - Service Details - Photography</title>
 
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -55,10 +57,22 @@
                     <?php if($psDetails->service_id == $serviceID) {?> 
                 <h1><?= $psDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>Features : <?= $psDetails->photo_features?><p>
-                <p>Other Features:<br><?= $psDetails->other_features;?></p>
+                <div class="description">
+                    <table id="details12">
+                    <tr>
+                        <td>Feautures</td>
+                        <td>: <?= $psDetails->photo_features;?></td>
+                    </tr><br>
+                    <tr>
+                        <td>Other Features</td>
+                        <td>: <?php if(empty($psDetails->other_features)) echo " None"; else  echo $psDetails->other_features; ?> </td>
+                    </tr>
+                    </table>
+                    <br>
                 
                 <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span>
+                    </div>
+                    <br><br>
               
               <?php } ?>
             <?php endforeach; ?>

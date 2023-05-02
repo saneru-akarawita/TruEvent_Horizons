@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TruEvent Horizons - Service Details - Photography</title>
 
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css"> -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -55,10 +58,21 @@
                     <?php if($psDetails->service_id == $serviceID) {?> 
                 <h1><?= $psDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>Features : <?= $psDetails->photo_features?><p>
-                <p>Other Features:<br><?= $psDetails->other_features;?></p>
-                
+                <div class="description">
+                  <table id="details12">
+                    <tr>
+                      <td>Features </td>
+                      <td>: <?= $psDetails->photo_features;?></td>
+                    </tr>
+                    <tr>
+                      <td>Other Features </td>
+                      <td>: <?php if(empty($psDetails->other_features)) echo " None"; else  echo $psDetails->other_features; ?> </td>
+                    </tr>
+                  </table>
+                  <br>
                 <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span>
+                </div>
+                <br>
               <div class="product-price-btn">
               <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $psDetails->service_name?>&service_type=<?php echo 'Photography'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$psDetails->service_id; ?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>

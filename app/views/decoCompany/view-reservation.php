@@ -27,7 +27,7 @@
         </div>
 
         <div class="product-info">
-                <div class="product-text" style="height:1000px; width:500px;">
+                <div class="product-text" >
                         <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
@@ -102,7 +102,7 @@
                 <?php endforeach; ?>
                 
                 <div class="product-price-btn">
-                        <button type="button" style="margin-top:60px;" onclick="history.back()">Back</button>
+                        <button type="button" onclick="history.back()">Back</button>
                 </div>
                 </div>
         </div>  
@@ -110,7 +110,7 @@
 
 
 <!-- footer start -->
-<section class="footer" style="margin-top:200px">
+<section class="footer" style="margin-top:350px">
 <div class="overlay"></div>
 <div class="box-container">
 <div class="box">
