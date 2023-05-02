@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
     <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-    <title>Deco - Chat</title>
+    <title>TruEvent Horizons - Chat - Deco Company</title>
     <!-- custom css file link -->
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/chat/style.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css">

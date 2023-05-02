@@ -2,7 +2,7 @@
 <html>
 <head>
  
-		<title>jQuery hislide Demo</title>
+		<title>Photo Carosal</title>
                     
 
 

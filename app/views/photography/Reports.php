@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/styles-hotel.css">
 
    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - Report - Photography Company</title>
+   <title>TruEvent Horizons - Report - Photography</title>
 </head>
 
 <body>

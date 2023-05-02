@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/serviceslist.css">
-    <title>TruEvent Horizons - Report - Serivces List</title>
+    <title>TruEvent Horizons - Services List - Band</title>
 
 
         <!-- font awesome cdn link -->

@@ -18,7 +18,7 @@
     <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
     <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-    <title>TruEvent Horizons - ChatBox</title>
+    <title>TruEvent Horizons - Chat - Band</title>
 
 </head>
 <body>

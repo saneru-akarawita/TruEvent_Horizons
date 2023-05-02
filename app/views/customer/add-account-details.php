@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="./css/footer.css">
    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - Hotel Manager Add Service</title>
+   <title>TruEvent Horizons - Add Account Details</title>
 </head>
 
 <body>
