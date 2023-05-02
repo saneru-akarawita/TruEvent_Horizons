@@ -19,12 +19,15 @@ class DecoService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['decoration'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
+         $chk=""; 
+         if(isset($_POST['decoration'])){
+            $checkbox1=$_POST['decoration'];  
+               
+               foreach($checkbox1 as $chk1)  
+                  {  
+                     $chk .= $chk1.", ";  
+                  }
+         }  
 
          $data = [
 
@@ -38,7 +41,7 @@ class DecoService extends Controller
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
-            'other_deco_error' => '',
+            'deco_error' => '',
             'theme_error' => ''
          ];
 
@@ -48,9 +51,10 @@ class DecoService extends Controller
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
             $data['theme_error'] = emptyCheck($data['theme']);
+            $data['deco_error'] = emptyCheck($data['decoration']);
 
             if (
-               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error'])
+               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['deco_error'])
             )
             {
                 
@@ -87,7 +91,8 @@ class DecoService extends Controller
 
             'name_error' => '',
             'price_error' => '',
-            'theme_error' => ''
+            'theme_error' => '',
+            'deco_error' => ''
          ];
 
          $this->view('decoCompany/addservices', $data);
@@ -110,12 +115,15 @@ class DecoService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['decoration'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
+         $chk=""; 
+         if(isset($_POST['decoration'])){
+            $checkbox1=$_POST['decoration'];  
+               
+               foreach($checkbox1 as $chk1)  
+                  {  
+                     $chk .= $chk1.", ";  
+                  }
+         }   
 
          $data = [
 
@@ -129,7 +137,7 @@ class DecoService extends Controller
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
-            'other_deco_error' => '',
+            'deco_error' => '',
             'theme_error' => ''
          ];
 
@@ -139,9 +147,10 @@ class DecoService extends Controller
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
             $data['theme_error'] = emptyCheck($data['theme']);
+            $data['deco_error'] = emptyCheck($data['decoration']);
 
             if (
-               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error'])
+               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['deco_error'])
             )
             {
                 
@@ -179,7 +188,8 @@ class DecoService extends Controller
 
             'name_error' => '',
             'price_error' => '',
-            'theme_error' => ''
+            'theme_error' => '',
+            'deco_error' => ''
          ];
 
          $this->view('decoCompany/editservice', $data);

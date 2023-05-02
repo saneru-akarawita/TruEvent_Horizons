@@ -64,6 +64,7 @@
                      <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers">
                      <label for="deco9">Chair covers</label><br><br>
                </div>
+               <span class="error"><?php echo $data['deco_error']; ?></span>
             </div>
 
             <div class="text-group">

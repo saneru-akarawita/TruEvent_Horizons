@@ -93,36 +93,36 @@
                     {
                     $checked6 ="";
                     }
-                    
+             
                 ?>
 
                   <label for="event name">Music Types :</label><br>
                <div class="row">
                   <div class="column">
-                     <input type="checkbox" id="band1" name="band[]" value="Pop" <?php echo $checked1?> >
+                  <input type="checkbox" id="band1" name="band[]" value="Pop" <?php echo $checked1?>>
                      <label for="band1">Pop</label><br>
-                     <input type="checkbox" id="band2" name="band[]" value="Classic" <?php echo $checked2?> >
+                     <input type="checkbox" id="band2" name="band[]" value="Classic" <?php echo $checked2?>>
                      <label for="band2">Classic</label><br>
-                     <input type="checkbox" id="band3" name="band[]" value="Hip-Hop" <?php echo $checked3?> >
+                     <input type="checkbox" id="band3" name="band[]" value="Hip-Hop" <?php echo $checked3?>>
                      <label for="band3">Hip-Hop</label><br>
-                     <input type="checkbox" id="band4" name="band[]" value="Rap" <?php echo $checked4?> >
+                     <input type="checkbox" id="band4" name="band[]" value="Rap" <?php echo $checked4?>>
                      <label for="band4">Rap</label><br>
-                     <input type="checkbox" id="band5" name="band[]" value="EDM" <?php echo $checked5?> >
+                     <input type="checkbox" id="band5" name="band[]" value="EDM" <?php echo $checked5?>>
                      <label for="band5">EDM - (Electronic Dance Music)</label><br>
-                     <input type="checkbox" id="band6" name="band[]" value="Ballads" <?php echo $checked6?> >
+                     <input type="checkbox" id="band6" name="band[]" value="Ballads" <?php echo $checked6?>>
                      <label for="band6">Ballads</label><br>
-                   
+                     <span class="error"><?php echo $data['band_error']; ?></span>
                </div>
             </div>
 
             <div class="text-group">
                <label class="label" for="band">Other Music Types</label>
-               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="<?php echo $data['other_band']; ?>" maxlength="25">
+               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="<?php echo $data['other_band']; ?>" maxlength="100">
             </div>
                
-                  <div class="text-group">
-                     <label for="num_players">No Of Players</label>        
-                     <input class="num_players" type="number" name="num_players" id="num_players" placeholder="No of Players included in band" value="<?php echo $data['num_players']; ?>" required >
+            <div class="text-group">
+                     <label for="num_players">No of players</label>        
+                     <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="<?php echo $data['num_players']; ?>" required >
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
                   </div><br>
                   

@@ -54,7 +54,7 @@
                      <label for="band5">EDM - (Electronic Dance Music)</label><br>
                      <input type="checkbox" id="band6" name="band[]" value="Ballads">
                      <label for="band6">Ballads</label><br>
-                   
+                     <span class="error"><?php echo $data['band_error']; ?></span>
                </div>
             </div>
 
@@ -65,7 +65,7 @@
                
                   <div class="text-group">
                      <label for="num_players">No of players</label>        
-                     <input class="num_players" type="number" name="num_players" id="num_players" placeholder="No of Players included in band" value="" required >
+                     <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="" required >
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
                   </div><br>
                   

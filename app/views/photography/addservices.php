@@ -54,39 +54,23 @@
                      <label for="photography3">Professional lighting setup</label><br>
                      <input type="checkbox" id="photography4" name="photography[]" value="Professional camera and lens kits">
                      <label for="photography4">Professional camera and lens kits</label><br>
-                     <input type="checkbox" id="photography5" name="photography[]" value="Photo editing, color correction and retouching">
-                     <label for="photography5">Photo editing, color correction and retouching</label><br>
+                     <input type="checkbox" id="photography5" name="photography[]" value="Photo editing - color correction and retouching">
+                     <label for="photography5">Photo editing - color correction and retouching</label><br>
                      <input type="checkbox" id="photography6" name="photography[]" value="Single-shooter">
                      <label for="photography6">Single-shooter</label><br>
                      <input type="checkbox" id="photography7" name="photography[]" value="Multi-shooter">
                      <label for="photography7">Multi-shooter</label><br>
+                     <span class="error"><?php echo $data['photography_error']; ?></span>
                    
                </div>
-               <!-- <div class="column">
-                     <input type="checkbox" id="deco5" name="band[]" value="Lights">
-                     <label for="deco5">With Dancing Group</label><br>
-                     <input type="checkbox" id="deco6" name="decoration[]" value="Banners">
-                     <label for="deco6">Banners</label><br>
-                     <input type="checkbox" id="deco8" name="decoration[]" value="Table cloths">
-                     <label for="deco8">Table cloths</label><br>
-                     <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers">
-                     <label for="deco9">Chair covers</label><br><br>
-               </div> -->
+               
             </div>
 
             <div class="text-group">
                <label class="label" for="photography">Other Features</label>
-               <input type="text" name="other_photography" id="other_photography" placeholder="If any, other than above" value="" maxlength="25">
+               <input type="text" name="other_photography" id="other_photography" placeholder="If any, other than above" value="" maxlength="100">
             </div>
-               
-                  <!-- <div class="text-group">
-                     <label for="num_members">No of members</label>        
-                     <input class="num_members" type="number" name="num_members" id="num_members" placeholder="No of Members included in team" value="" required >
-                     <span class="error"><?php echo $data['num_members_error']; ?></span>
-                  </div><br>
-                   -->
-
-
+                   
             <div class="row">
                 <div class="column">
                    <div class="text-group">

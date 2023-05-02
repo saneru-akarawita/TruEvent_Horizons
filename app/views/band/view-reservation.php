@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+<?php require APPROOT . "/views/band/header-band.php" ?>
 <!-- header section starts -->
 <!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">

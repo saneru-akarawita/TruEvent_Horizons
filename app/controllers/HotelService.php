@@ -19,11 +19,34 @@ class HotelService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
+         $targetDir = APPROOT."/../public/images/uploadimages/hotel/";
+         $fileName = basename($_FILES["hotel_image"]["name"]);
+         $completePath = $targetDir . $fileName;
+         $fileType = pathinfo($completePath,PATHINFO_EXTENSION);
+         $allowTypes = array('jpg','png','jpeg','gif','pdf');
+
+         $filename_without_ext = substr($fileName, 0, strrpos($fileName, "."));
+
+         $uniqueFileName = $filename_without_ext.time().".".$fileType;
+         $targetFilePath = $targetDir . $uniqueFileName;
+         $statusMsg = '';
+
+         if(in_array($fileType, $allowTypes)){
+            // Upload file to server
+            if(move_uploaded_file($_FILES["hotel_image"]["tmp_name"], $targetFilePath)){
+                  $statusMsg = '';
+                  
+            }else{
+                  $statusMsg = "Sorry, there was an error uploading your file.";
+            }
+         }else{
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+         }
 
          $data = [
 
             'event_name' => trim($_POST['event_name']),
-            'hotel_image' => trim($_POST['hotel_image']),
+            'hotel_image' => $uniqueFileName,
             'hall_name'=>trim($_POST['hall_name']),
             'location' => trim($_POST['location']),
             'max_crowd' => trim($_POST['max_crowd']),
@@ -34,7 +57,7 @@ class HotelService extends Controller
             'service_provider_id' => Session::getUser("id"),
 
             'event_name_error' => '',
-            'hotel_image_error'=>'',
+            'hotel_image_error'=>$statusMsg,
             'hall_name_error' => '',
             'location_error' => '',
             'max_crowd_error' => '',
@@ -48,7 +71,6 @@ class HotelService extends Controller
          {
             // Validate everything
             $data['event_name_error'] = emptyCheck($data['event_name']);
-            $data['hotel_image_error'] = emptyCheck($data['hotel_image']);
             $data['price_error'] = validatePrice($data['price']);
             $data['hall_name_error'] = emptyCheck($data['hall_name']);
             $data['location_error'] = emptyCheck($data['location']);

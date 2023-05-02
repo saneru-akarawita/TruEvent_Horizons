@@ -48,7 +48,34 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="district">District</label>
-                      <input type="text" name="district" placeholder="Enter district here" value="<?php echo $data['district'] ?>" maxlength="25">
+                      <select name="district" class="dropdownmenu">
+                        <option value="">-- Select District --</option>
+                        <option value="Ampara" <?php if($data['district'] == 'Ampara') echo 'selected'; ?>>Ampara</option>
+                        <option value="Anuradhapura" <?php if($data['district'] == 'Anuradhapura') echo 'selected'; ?>>Anuradhapura</option>
+                        <option value="Badulla" <?php if($data['district'] == 'Badulla') echo 'selected'; ?>>Badulla</option>
+                        <option value="Batticaloa" <?php if($data['district'] == 'Batticaloa') echo 'selected'; ?>>Batticaloa</option>
+                        <option value="Colombo" <?php if($data['district'] == 'Colombo') echo 'selected'; ?>>Colombo</option>
+                        <option value="Galle" <?php if($data['district'] == 'Galle') echo 'selected'; ?>>Galle</option>
+                        <option value="Gampaha" <?php if($data['district'] == 'Gampaha') echo 'selected'; ?>>Gampaha</option>
+                        <option value="Hambantota" <?php if($data['district'] == 'Hambantota') echo 'selected'; ?>>Hambantota</option>
+                        <option value="Jaffna" <?php if($data['district'] == 'Jaffna') echo 'selected'; ?>>Jaffna</option>
+                        <option value="Kalutara" <?php if($data['district'] == 'Kalutara') echo 'selected'; ?>>Kalutara</option>
+                        <option value="Kandy" <?php if($data['district'] == 'Kandy') echo 'selected'; ?>>Kandy</option>
+                        <option value="Kegalle" <?php if($data['district'] == 'Kegalle') echo 'selected'; ?>>Kegalle</option>
+                        <option value="Kilinochchi" <?php if($data['district'] == 'Kilinochchi') echo 'selected'; ?>>Kilinochchi</option>
+                        <option value="Kurunegala" <?php if($data['district'] == 'Kurunegala') echo 'selected'; ?>>Kurunegala</option>
+                        <option value="Mannar" <?php if($data['district'] == 'Mannar') echo 'selected'; ?>>Mannar</option>
+                        <option value="Matale" <?php if($data['district'] == 'Matale') echo 'selected'; ?>>Matale</option>
+                        <option value="Matara" <?php if($data['district'] == 'Matara') echo 'selected'; ?>>Matara</option>
+                        <option value="Monaragala" <?php if($data['district'] == 'Monaragala') echo 'selected'; ?>>Monaragala</option>
+                        <option value="Mullaitivu" <?php if($data['district'] == 'Mullaitivu') echo 'selected'; ?>>Mullaitivu</option>
+                        <option value="Nuwara Eliya" <?php if($data['district'] == 'Nuwara Eliya') echo 'selected'; ?>>Nuwara Eliya</option>
+                        <option value="Polonnaruwa" <?php if($data['district'] == 'Polonnaruwa') echo 'selected'; ?>>Polonnaruwa</option>
+                        <option value="Puttalam" <?php if($data['district'] == 'Puttalam') echo 'selected'; ?>>Puttalam</option>
+                        <option value="Ratnapura" <?php if($data['district'] == 'Ratnapura') echo 'selected'; ?>>Ratnapura</option>
+                        <option value="Trincomalee" <?php if($data['district'] == 'Trincomalee') echo 'selected'; ?>>Trincomalee</option>
+                        <option value="Vavuniya" <?php if($data['district'] == 'Vavuniya') echo 'selected'; ?>>Vavuniya</option>
+                      </select>
                       <span class="error"><?php echo $data['district_error']; ?></span>
                    </div>
                 </div>
