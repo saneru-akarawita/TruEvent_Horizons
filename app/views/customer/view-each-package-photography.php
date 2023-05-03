@@ -70,9 +70,7 @@
                     </table>
                     <br>
                 
-                <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span>
-                    </div>
-                    <br><br>
+                <!-- <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span> -->
               
               <?php } ?>
             <?php endforeach; ?>

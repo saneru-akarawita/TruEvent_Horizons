@@ -70,7 +70,7 @@
                     </tr>
                     </table>
                     <br>
-                <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span>
+              
                 </div>
                 <br><br>
               

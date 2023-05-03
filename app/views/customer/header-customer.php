@@ -56,7 +56,7 @@
                                         else{
                                                 $userAvatar = "profilepic.png";
                                 } ?>
-                                <img src="<?php echo URLROOT ?>/public/images/uploadimages/profilepic/<?=$userAvatar?>" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px; border-radius:50%">
+                                <img src="<?php echo URLROOT ?>/public/images/uploadimages/profilepic/<?=$userAvatar?>" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; border-radius:50%">
                                         <div class="sub-menu1">
                                                 <ul>
                                                         <li><i class="fa-solid fa-gear"></i><a href="<?php echo URLROOT ?>/CustomerDashboard/profileSettings">Profile Settings</a></li>

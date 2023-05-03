@@ -52,5 +52,83 @@ class ServiceProviderModel extends Model
     }
 
 
+    public function getTotalIncomeBasedOnSPIDForPackage($startDate, $endDate, $userID, $userType){
+      $sql = "SELECT * FROM customerrvdetails_with_prices WHERE sp_id LIKE '%".$userID."%' AND payment = 'paid' and rvDate BETWEEN '".$startDate."' AND '".$endDate."';";
+      $results = $this->customQuery($sql);
+      $total = 0; // Initialize the total to 0
+  
+      foreach ($results as $row) {
+          if($userType == 6){
+              $total += $row->price_band; // Add the price of each row to the total
+          }else if($userType == 5){
+              $total += $row->price_deco; // Add the price of each row to the total
+          }else if($userType == 7){
+              $total += $row->price_photo; // Add the price of each row to the total
+          }  
+      }
+      
+      return $total; // Return the final total
+   }
+  
+   public function getTotalIncomeBasedOnSPIDForService($startDate, $endDate, $userID){
+         $sql = "SELECT * FROM customerrvdetails WHERE sp_id =".$userID." AND rvType = 'service' AND payment = 'paid' and rvDate BETWEEN '".$startDate."' AND '".$endDate."';";
+         $results = $this->customQuery($sql);
+         $total = 0; // Initialize the total to 0
+   
+         foreach ($results as $row) {
+            $total += $row->price; // Add the price of each row to the total
+         }
+         
+         return $total; // Return the final total
+   }
+  
+   //year and month by month total income or price for SP
+   public function getTotalIncomeBasedOnSPIDForPackageMonthly($startDate, $endDate, $userID, $userType){
+         $sql = "SELECT * FROM customerrvdetails_with_prices WHERE sp_id LIKE '%".$userID."%' AND payment = 'paid' AND rvDate BETWEEN '".$startDate."' AND '".$endDate."';";
+         $results = $this->customQuery($sql);
+         $totals = array(); // Initialize the totals array
+         $start = new DateTime($startDate);
+         $end = new DateTime($endDate);
+         
+         while($start <= $end){
+            $month = $start->format('Y-m');
+            $totals[$month] = 0; // Initialize the total for this month to 0
+            $start->modify('+1 month');
+         }
+   
+         foreach ($results as $row) {
+            $month = date('Y-m', strtotime($row->rvDate));
+            if($userType == 6){
+               $totals[$month] += $row->price_band; // Add the price of each row to the total for this month
+            }else if($userType == 5){
+               $totals[$month] += $row->price_deco; // Add the price of each row to the total for this month
+            }else if($userType == 7){
+               $totals[$month] += $row->price_photo; // Add the price of each row to the total for this month
+            }  
+         }
+         
+         return $totals; // Return the final total array
+   }
+  
+   public function getTotalIncomeBasedOnSPIDForServiceMonthly($startDate, $endDate, $userID){
+         $sql = "SELECT * FROM customerrvdetails WHERE sp_id =".$userID." AND rvType = 'service' AND payment = 'paid' AND rvDate BETWEEN '".$startDate."' AND '".$endDate."';";
+         $results = $this->customQuery($sql);
+         $totals = array(); // Initialize the totals array
+         $start = new DateTime($startDate);
+         $end = new DateTime($endDate);
+         
+         while($start <= $end){
+            $month = $start->format('Y-m');
+            $totals[$month] = 0; // Initialize the total for this month to 0
+            $start->modify('+1 month');
+         }
+   
+         foreach ($results as $row) {
+            $month = date('Y-m', strtotime($row->rvDate));
+            $totals[$month] += $row->price; // Add the price of each row to the total for this month
+         }
+         
+         return $totals; // Return the final total array
+   }
 
 }
