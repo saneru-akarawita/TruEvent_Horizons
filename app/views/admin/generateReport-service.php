@@ -138,33 +138,68 @@
 </style>
 
 
-<title>TruEvent Horizons - Report - Photography Company</title>
+<title>TruEvent Horizons - Report - Admin</title>
 
 </head>
 
 <body>
-<?php require APPROOT . "/views/photography/header-photography.php" ?>
+<?php require APPROOT . "/views/admin/header-admin.php" ?>
    
-<?php $sDate = $data[0]; ?>
+ <?php $sDate = $data[0]; ?>
 <?php $eDate = $data[1]; ?>
-<?php $dataRows = $data[2]; ?>
-<?php $custDetails = $data[3]; ?>
-<?php $incomefromPackage = $data[4]; ?>
-<?php $incomefromService = $data[5]; ?>
-<?php $monthVsReservationsService = $data[6]; ?>
-<?php $monthVsReservationsPackage = $data[7]; ?>
-<?php $monthVsIncomePackage = $data[8]; ?>
-<?php $monthVsIncomeService = $data[9]; ?>
-
+<?php $spType = $data[2]; ?>
+<?php $dataRows = $data[3]; ?>
+<?php $custDetails = $data[4]; ?>
+<?php $income = $data[5]; ?>
+<?php $monthVsReservations = $data[6]; ?>
+<?php $monthVsIncome = $data[7]; ?> 
 
         <div class="main-content">
-
-       <form id="reportDatesForm" action="<?php echo URLROOT; ?>/photographyDashboard/generatereports" method="post">
+       <form id="reportDatesForm" action="<?php echo URLROOT; ?>/AdminDashboard/generatereportsforService" method="post">
                 <div class="row">
                         <div class="text-group">
-                                <label for="servicetype" style="font-size:18px; font-weight:500;">Service Type</label>
-                                <input type="text" value="Photography" name="serviceType" style="margin-top:-5px;">
-        
+                                <label for="servicetype" style="font-size:18px; font-weight:500;">Service</label>
+                                <?php if($spType == "Hotel") { ?>
+                                    <select name = "spType" class="dropdownmenu" id="event_name" required> 
+                                            <option value="">Select event name or type...</option>
+                                            <option value = "Hotel" selected>Hotel Service</option>
+                                            <option value = "Decoration">Decoration Service</option>
+                                            <option value = "Band">Band Service</option>
+                                            <option value = "Photography">Photography Service</option>
+                                    </select>
+                                <?php } else if($spType == "Decoration") { ?>
+                                    <select name = "spType" class="dropdownmenu" id="event_name" required> 
+                                            <option value="">Select event name or type...</option>
+                                            <option value = "Hotel">Hotel Service</option>
+                                            <option value = "Decoration" selected>Decoration Service</option>
+                                            <option value = "Band">Band Service</option>
+                                            <option value = "Photography">Photography Service</option>
+                                    </select>
+                                <?php } else if($spType == "Band") { ?>
+                                    <select name = "spType" class="dropdownmenu" id="event_name" required> 
+                                            <option value="">Select event name or type...</option>
+                                            <option value = "Hotel">Hotel Service</option>
+                                            <option value = "Decoration">Decoration Service</option>
+                                            <option value = "Band" selected>Band Service</option>
+                                            <option value = "Photography">Photography Service</option>
+                                    </select>
+                                <?php } else if($spType == "Photography") { ?>
+                                    <select name = "spType" class="dropdownmenu" id="event_name" required> 
+                                            <option value="">Select event name or type...</option>
+                                            <option value = "Hotel">Hotel Service</option>
+                                            <option value = "Decoration">Decoration Service</option>
+                                            <option value = "Band">Band Service</option>
+                                            <option value = "Photography" selected>Photography Service</option>
+                                    </select>
+                                <?php } else { ?>
+                                    <select name = "spType" class="dropdownmenu" id="event_name" required> 
+                                            <option value="">Select event name or type...</option>
+                                            <option value = "Hotel">Hotel Service</option>
+                                            <option value = "Decoration">Decoration Service</option>
+                                            <option value = "Band">Band Service</option>
+                                            <option value = "Photography">Photography Service</option>
+                                    </select>
+                                <?php } ?>
                         </div>
                 </div>
 
@@ -189,37 +224,24 @@
         
                         <div class="totalincome">
                                 <label for="totalincome" style="margin-left:50px;">Total Income(LKR)</label>
-                                <?php $totalVal = $incomefromPackage + $incomefromService ?>>
-                                <?php emptyCheck($totalVal)? $totalVal = '000.00' : $totalVal=number_format($totalVal,2); ?>
-                                <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($totalVal)?> </p>
+                                <?php emptyCheck($income[0]->totalPriceSelectedService)? $income[0]->totalPriceSelectedService = '000.00' : $income[0]->totalPriceSelectedService = $income[0]->totalPriceSelectedService; ?>
+                                <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($income[0]->totalPriceSelectedService)?> </p>
                         </div>
                        
                 </div>
                 <div class="charts">
-                    <div class="chart income">
-                                <label for="income">No of Reservations from Packages</label>
-                                <canvas id="col-chart1"></canvas>
-                        </div>  
-
                         <div class="chart res">
-                                <label for="reservation">No of Reservations from Service</label>
-                                <canvas id="mychart2"></canvas>
-                        </div>  
-                </div>
-
-                <div class="charts">
-                        <div class="chart res">
-                                <label for="reservation">Monthly Income from Packages</label>
-                                <canvas id="pie-chart1"></canvas>
+                                <label for="reservation">Reservations</label>
+                                <canvas id="col-chart"></canvas>
                         </div>
                         <div class="chart income">
-                                <label for="income">Monthly Income from Service</label>
-                                <canvas id="pie-chart2"></canvas>
+                                <label for="income">Income</label>
+                                <canvas id="area-chart"></canvas>
                         </div>  
                 </div>
-           
-           
+
                 <section class="container">
+   
    <table style="margin-top:25px; margin-bottom:50px;" id="myTable">
             <thead>
             <tr>
@@ -367,16 +389,17 @@
 
     </script>
 
-<script>
-        monthVsReservationsPackage = <?php echo json_encode($monthVsReservationsPackage)?>
 
-        const chart1 = new Chart(document.getElementById('col-chart1'), {
+<script>
+        monthVsResevations = <?php echo json_encode($monthVsReservations)?>
+
+        const chart = new Chart(document.getElementById('col-chart'), {
             type: 'bar',
             data: {
-                labels: monthVsReservationsPackage.label2,
+                labels: monthVsResevations.labels,
                 datasets:[{
-                    label: 'No of Reservations from Packages',
-                    data: monthVsReservationsPackage.data2,
+                    label: 'Monthly Reservations',
+                    data: monthVsResevations.data,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
@@ -387,34 +410,15 @@
 </script>
 
 <script>
-        monthVsReservationsService = <?php echo json_encode($monthVsReservationsService)?>
+        monthVsIncome = <?php echo json_encode($monthVsIncome)?>
 
-        const chart2 = new Chart(document.getElementById('mychart2'), {
-            type: 'bar',
-            data: {
-                labels: monthVsReservationsService.labels,
-                datasets:[{
-                    label: 'No of Reservations from Service',
-                    data: monthVsReservationsService.data,
-                    backgroundColor: [
-                        'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
-                    ],
-                }]
-            }
-        })
-
-</script>
-
-<script>
-        monthVsIncomePackage = <?php echo json_encode($monthVsIncomePackage)?>
-
-        const chart3 = new Chart(document.getElementById('pie-chart1'), {
+        const chart2 = new Chart(document.getElementById('area-chart'), {
             type: 'pie',
             data: {
-                labels: monthVsIncomePackage.label,
+                labels: monthVsIncome.label,
                 datasets:[{
-                    label: 'Monthly Income from Packages',
-                    data: monthVsIncomePackage.data,
+                    label: 'Monthly Income',
+                    data: monthVsIncome.dataVal,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
@@ -427,34 +431,6 @@
                 height: 100
     }
         })
-
-
-</script>
-
-<script>
-        monthVsIncomeService = <?php echo json_encode($monthVsIncomeService)?>
-
-        const chart4 = new Chart(document.getElementById('pie-chart2'), {
-            type: 'pie',
-            data: {
-                labels: monthVsIncomeService.labelVal,
-                datasets:[{
-                    label: 'Monthly Income from Servcies',
-                    data: monthVsIncomeService.dataVal,
-                    backgroundColor: [
-                        'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
-                    ],
-                }]
-            },
-            options: {
-                responsive: false,
-                maintainAspectRatio: false,
-                width: 100,
-                height: 100
-    }
-        })
-
-
 </script>
 
 </body>

@@ -56,7 +56,7 @@
                 <p>No of players : <?= $bsDetails->no_of_players;?></p>
                 <p>Music Types:<br><?= $bsDetails->band_type;?></p>
                 <p>other types of band : <?= $bsDetails->other_band_type;?></p><br>
-                <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
+                <!-- <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span> -->
              
             <?php } ?>
             <?php endforeach; ?>

@@ -319,6 +319,126 @@ class AdminDashboard extends Controller
 		return $query;
 	}
 
+
+   public function generatereportsforService(){
+      $resultofreservation = [];
+
+      $data = [
+         'startDate' => "",
+         'endDate' => "",
+         'spType' => ""
+      ];
+      
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+         if(isset($_POST['startDate']) && isset($_POST['endDate']) && isset($_POST['spType'])){
+               $data = [
+                  'startDate' => trim($_POST['startDate']),
+                  'endDate' => trim($_POST['endDate']),
+                  'spType' => trim($_POST['spType'])
+               ];
+            }
+         }
+               $reservationDetailsByService = $this->reservationModel->getReservationDetailsForSelectedServiceByDate($data['startDate'],$data['endDate'],$data['spType']);
+               $customerDetails = $this->customerModel->getCustomerDetails();
+               $reservationincomeforselectedService = $this->reservationModel->getReservationIncomeByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
+               $totalCount = $this->reservationModel->getNoOfReservationsByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
+               $totalIncome = $this->reservationModel->getIncomeByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
+      
+               $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+               $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+               for($k=0; $k<12; $k++){
+                  foreach($totalCount as $t3){
+                     if($labels[$k] == $t3->Month){
+                        $values[$k] = $t3->TotalReservationsSelectedService;
+                     }
+                  }
+               }
+            
+               $monthVsReservationsSelectedService = [
+                  'labels' => $labels,
+                  'data' => $values
+               ];
+
+               $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+               $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+               for($m=0; $m<12; $m++){
+                  foreach($totalIncome as $t4){
+                     if($label2[$m] == $t4->Month){
+                        $value2[$m] = $t4->totalPricePerMonthSelectedService;
+                     }
+                  }
+               }
+         
+               $monthVsIncomeSelectedService = [
+                  'label' => $label2,
+                  'dataVal' => $value2
+               ];
+
+      $resultofreservation = array($data['startDate'],$data['endDate'],$data['spType'],$reservationDetailsByService, $customerDetails, $reservationincomeforselectedService, $monthVsReservationsSelectedService,$monthVsIncomeSelectedService);    
+      $this->view('admin/generateReport-service',$resultofreservation);
+}
+
+public function generatereportsforPackage(){
+   $resultofreservation = [];
+
+   $data = [
+      'startDate' => "",
+      'endDate' => ""
+   ];
+   
+   if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      if(isset($_POST['startDate']) && isset($_POST['endDate'])){
+            $data = [
+               'startDate' => trim($_POST['startDate']),
+               'endDate' => trim($_POST['endDate'])
+            ];
+         }
+      }
+            $reservationDetailsByPackage = $this->reservationModel->getReservationDetailsForSelectedPackageByDate($data['startDate'],$data['endDate']);
+            $customerDetails = $this->customerModel->getCustomerDetails();
+            $reservationincomeforpackage = $this->reservationModel->getReservationIncomeByDateForPackage($data['startDate'],$data['endDate']);
+            $totalCountPackages = $this->reservationModel->getNoOfReservationsByDateForPackage($data['startDate'],$data['endDate']);
+            $totalIncomePackageMonth = $this->reservationModel->getIncomeByDateForPackage($data['startDate'],$data['endDate']);
+   
+            $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+            for($i=0; $i<12; $i++){
+               foreach($totalCountPackages as $t){
+                  if($labels[$i] == $t->Month){
+                     $values[$i] = $t->TotalReservationsPackage;
+                  }
+               }
+            }
+         
+            $monthVsReservationsPackage = [
+               'labels' => $labels,
+               'data' => $values
+            ];
+
+            $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+            for($j=0; $j<12; $j++){
+               foreach($totalIncomePackageMonth as $t2){
+                  if($label2[$j] == $t2->Month){
+                     $value2[$j] = $t2->totalPricePerMonthPackage;
+                  }
+               }
+            }
+      
+            $monthVsIncomePackage = [
+               'label' => $label2,
+               'dataVal' => $value2
+            ];
+
+            $resultofreservation = array($data['startDate'],$data['endDate'],$reservationDetailsByPackage, $customerDetails, $reservationincomeforpackage, $monthVsReservationsPackage,$monthVsIncomePackage);              
+            $this->view('admin/generateReport-package',$resultofreservation);  
+      
+}
+
    public function downloadReport(){
 
    }

@@ -37,6 +37,7 @@
 <?php $rvdata = $data[3]; ?>
 <?php $cusdata = $data[4]; ?>
 <?php $decorationservicedata = $data[5]; ?>
+<?php $decoPrice = $data[6]; ?>
 
 <div class="wrapper">
 
@@ -48,6 +49,7 @@
                 <div class="product-text" style="height:1000px; width:500px;">
                         <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == "service") { ?>
                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                         <?php if ($new_sp_id == $spID) { ?>
                                                 <?php foreach ($decorationservicedata as $decodata) : ?>
@@ -117,6 +119,82 @@
                                                 <?php endforeach; ?>
                                                 <?php } ?>
                 <?php endforeach; ?>
+                <?php } ?>
+                <?php endforeach; ?>
+
+                <?php foreach ($rvdata as $rvDetails) : ?>
+                                <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == 'package') { ?>
+                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                        <?php if ($new_sp_id == $spID) { ?>
+                                                <?php foreach ($decorationservicedata as $decodata) : ?>
+                                                <?php if ($decodata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
+                                                <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $decodata->service_name;?></h1>
+                                                <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                        
+                                                <div class="description">
+                                                        <table id="details12">
+                                                                        <tr>
+                                                                                <td>Reservation Date</td>
+                                                                                <td>: <?= $rvDetails->rvDate;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Time</td>
+                                                                                <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Decoration Items</td>
+                                                                                <td>: <?= $decodata->decoration_item;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Theme </td>
+                                                                                <td>: <?= $decodata->theme;?></td>
+                                                                        </tr>
+                                                
+                                                                        <tr>
+                                                                                <td>Other Decoration Items/Serivces </td>
+                                                                                <td>:<?php if(empty($decodata->other_decoration)) echo " None"; else  echo $decodata->other_decoration; ?> </td>
+                                                                                
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Price </td>
+                                                                                <td>: Rs, <?php echo(number_format($decoPrice[0]->price_deco,2));?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Payments </td>
+                                                                                <td>: <?= $rvDetails->payment;?></td>
+                                                                        </tr>
+                                                                
+                                                                        <?php foreach ($cusdata as $cus) : ?>
+                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
+                                                                        <tr>
+                                                                                        <td>Customer Name </td>
+                                                                                        <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Address </td>
+                                                                                        <td>: <?= $cus->district;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Contact No </td>
+                                                                                        <td>: <?= $cus->contact_no;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>E-mail </td>
+                                                                                        <td style="text-transform:none">: <?= $cus->email;?></td>
+                                                                                </tr>
+                                                                        
+                
+                                                                                <?php } ?>
+                                                                        <?php endforeach; ?>                                
+                                                        </table>
+                
+                                                </div>
+                                                <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php } ?>
+                <?php endforeach; ?>
+                <?php } ?>
                 <?php endforeach; ?>
                 
                 <div class="product-price-btn">

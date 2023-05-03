@@ -81,7 +81,12 @@
                                                 <?php } ?>
                                         <?php endforeach; ?>
                                     <?php $formatted_price = number_format($rvDetails->price, 2, '.', '');?>
-                                    <p>LKR. <?= $formatted_price; ?></p>
+                                    <?php if($rvDetails->rvType == "service") { ?>
+                                        <p>LKR. <?= $formatted_price; ?></p>
+                                     <?php } else { ?>
+                                        <p>LKR. <?= $formatted_price; ?> per package</p>
+                                        <?php } ?>
+
 
 
                                     <div class="progress-box">
@@ -115,7 +120,7 @@
                                                     <?php if($pcd->deco_confirmation == Session::getUser('id')) {?>
                                                             <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
                                                     <?php } else {?>
-                                                            <a href="#" class="buttond">view</a>
+                                                            <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                                             <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                                             <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
                                                     <?php } ?>

@@ -21,7 +21,7 @@
                 <div class="menu-bar">
                         <ul>
                         
-                                <li style="margin-left:350px;"><a href="home">Home</a>
+                                <li style="margin-left:300px;"><a href="home">Home</a>
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>

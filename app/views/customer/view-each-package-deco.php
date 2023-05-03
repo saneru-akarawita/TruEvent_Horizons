@@ -55,7 +55,7 @@
                 <p>Theme: <?= $dsDetails->theme;?></p>
                 <p>Decoration items:<br><?= $dsDetails->decoration_item;?></p>
                 <p><?= $dsDetails->other_decoration;?></p><br>
-                <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span>
+                <!-- <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span> -->
               
               <?php } ?>
             <?php endforeach; ?>

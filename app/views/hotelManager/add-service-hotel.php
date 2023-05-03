@@ -95,14 +95,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="hall name">Hall Name</label>
-                      <input type="text" name="hall_name" placeholder="Enter hall name here" value="<?php echo $data['hall_name']; ?>" maxlength="25">
+                      <input type="text" name="hall_name" placeholder="Enter hall name here" value="<?php echo $data['hall_name']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['hall_name_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                      <label class="label" for="location">Location (Floor/Wing etc.)</label>
-                     <input type="text" name="location" placeholder="Enter location here" value="<?php echo $data['location']; ?>" maxlength="25">
+                     <input type="text" name="location" placeholder="Enter location here" value="<?php echo $data['location']; ?>" maxlength="25" required>
                      <span class="error"><?php echo $data['location_error']; ?></span>
                    </div>
                 </div>
@@ -112,14 +112,14 @@
                 <div class="column">
                    <div class="text-group">
                      <label class="label" for="max_crowd">Max Crowd</label>
-                     <input type="number" name="max_crowd" placeholder="Enter maximum crowd" value="<?php echo $data['max_crowd']; ?>" maxlength="25">
+                     <input type="number" name="max_crowd" placeholder="Enter maximum crowd" value="<?php echo $data['max_crowd']; ?>" maxlength="25" required>
                      <span class="error"><?php echo $data['max_crowd_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price Per Head (Rs.)</label>
-                      <input type="text" name="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25">
+                      <input type="text" name="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>
                 </div>
@@ -129,7 +129,7 @@
              <div class="row">
                 <div class="column">
                         <label class="label" for="hall_type">Hall Type</label>
-                        <select name = "hall_type" class="dropdownmenu" id="hall_type"> 
+                        <select name = "hall_type" class="dropdownmenu" id="hall_type" required> 
                                 <option value="">Select a hall type</option>
                                 <option value = "indoor">Indoor</option>
                                 <option value = "outdoor">Outdoor</option>

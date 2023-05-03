@@ -58,7 +58,7 @@
                 <p>Features : <?= $psDetails->photo_features?><p>
                 <p>Other Features:<br><?= $psDetails->other_features;?></p>
                 
-                <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span>
+                <!-- <span style="margin-left:45px"><?= $psDetails->price;?> LKR</span> -->
               
               <?php } ?>
             <?php endforeach; ?>
