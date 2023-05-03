@@ -42,10 +42,10 @@ class PhotographyModel extends Model
 
             'service_name' => $data['name'],
             'other_features' => $data['other_photography'],
-            // 'num_members' => $data['num_members'],
             'price'=>$data['price'],
-            'photo_features' => $data['photography'],
-        
+            'photo_features' => $data['photography']
+            // 'service_provider_id' => $data['service_provider_id']
+
          ], ['service_id' => $serviceID]);
     }
 

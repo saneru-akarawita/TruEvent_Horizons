@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruEvent Horizons - Reservation Log- Photography Company</title>
+    <title>TruEvent Horizons - Reservation Log- Photography</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,7 +51,7 @@
                     <?php $scount = 0; $pcount=0; ?>
 
                     <?php foreach ($rvdata as $rvDetails) : ?>
-                    <?php if($rvDetails->status !="decline") {?>
+                    <?php if($rvDetails->status !="decline" && $rvDetails->status !="canceled") {?>
                                                     <?php 
                                                         $sp_id_arr = explode (",", $rvDetails->sp_id);
                                                     ?>

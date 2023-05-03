@@ -15,7 +15,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
 
    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - Customer Make Full Payment</title>
+   <title>TruEvent Horizons - Make Full Payment - Customer</title>
 </head>
 
 <body>

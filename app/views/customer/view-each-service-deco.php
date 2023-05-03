@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Details</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <title>TruEvent Horizons - View Each Service - Deco</title>
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css"> -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -52,10 +55,24 @@
                     <?php if($dsDetails->service_id == $serviceID) { ?> 
                 <h1><?= $dsDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>Theme: <?= $dsDetails->theme;?></p>
-                <p>Decoration items:<br><?= $dsDetails->decoration_item;?></p>
-                <p><?= $dsDetails->other_decoration;?></p><br>
+                <div class="description">
+                  <table id="details12">
+                    <tr>
+                      <td>Theme </td>
+                      <td>:<?= $dsDetails->theme;?></td>
+                    </tr>
+                    <tr>
+                      <td>Decoration items </td>
+                      <td>:<?= $dsDetails->decoration_item;?></td>
+                    </tr>
+                    <tr>
+                      <td>Other Decorations </td>
+                      <td>:<?php if(empty($dsDetails->other_decorations)) echo " None"; else  echo $dsDetails->other_decorations; ?> </td>
+                    </tr>
+                  </table>
+                  <br>
                 <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span>
+                </div>
               <div class="product-price-btn">
               <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $dsDetails->service_name ?>&service_type=<?php echo 'Decoration'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$dsDetails->service_id; ?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>

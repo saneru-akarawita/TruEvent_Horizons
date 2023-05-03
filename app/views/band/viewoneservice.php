@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TruEvent Horizons - Service Details - Band</title>
 
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -15,24 +17,6 @@
 <body>
 <?php require APPROOT . "/views/band/header-band.php" ?>
 
-
-            <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Decoration</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-    
-        <!-- Gives a Menu Button -->
-        <!-- <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        </section> -->
 
 
         <div class="wrapper">
@@ -43,10 +27,25 @@
               <div class="product-text">
                 <h1><?= $data->service_name;?></h1><br>
                 <h2><?= Session::getUser('name')?></h2>
-                <p>No of players : <?= $data->no_of_players;?></p>
-                <p>Music Types:<br><?= $data->band_type;?></p>
-                <p>other types of band : <?= $data->other_band_type;?></p><br>
+                <div class="description">
+                    <table id="details12">
+                    <tr>
+                        <td>No of Players</td>
+                        <td>: <?= $data->no_of_players;?></td>
+                    </tr>
+                    <tr>
+                        <td>Music Types</td>
+                        <td>: <?= $data->band_type;?></td>
+                    </tr>
+                    <tr>
+                        <td>Other Types of Band</td>
+                        <td>: <?php if(empty($data->other_band_type)) echo " None"; else  echo $data->other_band_type; ?> </td>
+                    </tr>
+                    </table>
+                    <br>
                 <span style="margin-left:45px"><?= $data->price;?> LKR</span>
+                </div>
+                <br><br>
               <div class="product-price-btn">
                 <button type="button" onclick="history.back()">Back</button>
               </div>

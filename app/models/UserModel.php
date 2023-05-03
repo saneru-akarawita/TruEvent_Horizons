@@ -52,6 +52,20 @@ class UserModel extends Model
    
    }
 
+   public function updateImageURL($email, $imageURL){
+      $this->update('users', [
+         'img' => $imageURL
+      ], [
+         'email' => $email
+      ]);
+
+      $this->update('chat_users', [
+         'img' => $imageURL
+      ], [
+         'email' => $email
+      ]);
+   }
+
    public function getUser($email)
    {
       $results = $this->getSingle("users", "*", ["email" => $email]);

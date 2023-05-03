@@ -18,11 +18,17 @@
     <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
     <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-    <title>TruEvent Horizons - ChatBox</title>
+    <title>TruEvent Horizons - Chat - Band</title>
 
 </head>
 <body>
 <?php require APPROOT . "/views/band/header-band.php" ?>
+
+    <?php if(!empty($data->img)){
+        $userAvatar = $data->img;
+    }else{
+        $userAvatar = 'profilepic.png';
+    }?>
 
 
     <div class="chat_div">
@@ -31,13 +37,13 @@
             <header>
                 <a href="chat" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                 
-                <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+                <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
                 <div class="chat_details">
                 <span><?php echo $data->fname. " " . $data->lname ?></span>
                 <p><?php echo $data->status; ?></p>
                 </div>
             </header>
-            <div class="chat-box">
+            <div class="chat-box" style="transition:none;background-color:#f7f7f7;padding:10px 0px 0px 30px; padding-left:12px;padding-right:12px;">
 
             </div>
             <!-- <form action="#" class="typing-area">

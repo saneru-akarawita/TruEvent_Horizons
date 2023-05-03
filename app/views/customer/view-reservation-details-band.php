@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TruEvent Horizons - View Reservation</title>
+        <title>TruEvent Horizons - View Reservation - Band</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
@@ -40,7 +40,7 @@
 <?php $servicedetails = $data[6]; ?>
 
 
-<div class="wrapper" style="margin-bottom:250px;">
+<div class="wrapper" style="margin-bottom:330px;">
 
         <div class="product-img" style="height:500px;">
                 <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/bdy - photo.jpg" height="100%" max-width="100%">

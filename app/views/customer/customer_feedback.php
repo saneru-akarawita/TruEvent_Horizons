@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Add Reservation</title>
+    <title>TruEvent Horizons - Feedback - Customer</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -149,6 +149,9 @@
                         <td><p style="font-family:Verdana, Geneva, Tahoma, sans-serif;"><input type="radio" name="feedbackval5" value="Excellent">4</p></td>
                     </tr>
                 </table>
+                <?php if(!empty($data[2]['eob_error']) || !empty($data[2]['aos_error']) || !empty($data[2]['vom_error']) || !empty($data[2]['qos_error']) || !empty($data[2]['cs_error'])){?>
+                    <span class="error"><?php echo "*  Please Provide Feedback for all sections"; ?></span>
+                <?php }?>
                 <br>
                 <div class="text-group">
                     <label for="improvement">Suggestions for Improvement</label>

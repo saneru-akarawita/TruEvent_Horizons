@@ -43,6 +43,7 @@ class PhotographyDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => trim($_POST['currentpw']),
             'newPassword1' => trim($_POST['newpw']),
             'newPassword2' => trim($_POST['confirmnewpw']),
@@ -93,6 +94,7 @@ class PhotographyDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => '',
             'newPassword1' => '',
             'newPassword2' => '',

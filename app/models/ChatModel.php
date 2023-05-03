@@ -55,4 +55,8 @@ class ChatModel extends ChatBaseModel
     {
         return $this->all(self::TABLE, $attributes);
     }
+
+    public function getImgFromReciever($userid){
+        return $this->all('chat_users', array('select' => 'img', 'where' => 'unique_id = '.$userid.''));
+    }
 }

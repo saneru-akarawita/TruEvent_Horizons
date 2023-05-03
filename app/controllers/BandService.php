@@ -19,12 +19,15 @@ class BandService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['band'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
+         $chk="";
+         if(isset($_POST['band'])){
+            $checkbox1=$_POST['band'];  
+               
+               foreach($checkbox1 as $chk1)  
+                  {  
+                     $chk .= $chk1.", ";  
+                  } 
+         } 
 
          $data = [
 
@@ -38,7 +41,7 @@ class BandService extends Controller
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
-            'other_band_error' => '',
+            'band_error' => '',
             'num_players_error' => ''
          ];
 
@@ -48,9 +51,10 @@ class BandService extends Controller
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
             $data['num_players_error'] = emptyCheck($data['num_players']);
+            $data['band_error'] = emptyCheck($data['band']);
 
             if (
-               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error'])
+               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['band_error'])
             )
             {
                 
@@ -87,7 +91,8 @@ class BandService extends Controller
 
             'name_error' => '',
             'price_error' => '',
-            'num_players_error' => ''
+            'num_players_error' => '',
+            'band_error' => ''
          ];
 
          $this->view('band/addservices', $data);
@@ -110,12 +115,14 @@ class BandService extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         $checkbox1=$_POST['band'];  
-            $chk="";  
-            foreach($checkbox1 as $chk1)  
-               {  
-                  $chk .= $chk1.", ";  
-               }  
+         $chk="";
+         if(isset($_POST['band'])){
+            $checkbox1=$_POST['band'];    
+               foreach($checkbox1 as $chk1)  
+                  {  
+                     $chk .= $chk1.", ";  
+                  } 
+         } 
 
          $data = [
 
@@ -129,7 +136,7 @@ class BandService extends Controller
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
-            'other_band_error' => '',
+            'band_error' => '',
             'num_players_error' => ''
          ];
 
@@ -139,9 +146,10 @@ class BandService extends Controller
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
             $data['num_players_error'] = emptyCheck($data['num_players']);
+            $data['band_error'] = emptyCheck($data['band']);
 
             if (
-               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error'])
+               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error']) && empty($data['band_error'])
             )
             {
                 
@@ -151,7 +159,7 @@ class BandService extends Controller
 
                Toast::setToast(1, "Service Edited Successfully!!!", "");
 
-               redirect('bandService/viewAllServices');
+               redirect('BandService/viewAllServices');
                
             }
             else
@@ -177,10 +185,10 @@ class BandService extends Controller
             'num_players' => $svdetails->no_of_players,
             'sv_id' => $sv_editid,
 
-            
             'name_error' => '',
             'price_error' => '',
-            'num_players_error' => ''
+            'num_players_error' => '',
+            'band_error' => ''
          ];
 
          $this->view('band/editservice', $data);

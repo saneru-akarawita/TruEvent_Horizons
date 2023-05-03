@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Services - Deco Company</title>
+    <title>TruEvent Horizons - Add Services - Deco Company</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/addservice.css">
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
@@ -64,11 +64,12 @@
                      <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers">
                      <label for="deco9">Chair covers</label><br><br>
                </div>
+               <span class="error"><?php echo $data['deco_error']; ?></span>
             </div>
 
             <div class="text-group">
                <label class="label" for="decoration">Other decorations</label>
-               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="" maxlength="25">
+               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="" maxlength="100">
             </div>
                
                   <div class="text-group">

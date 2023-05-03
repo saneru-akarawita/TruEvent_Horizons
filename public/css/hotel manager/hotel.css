@@ -2,6 +2,8 @@
     font-weight: 600;
     font-size: 16px;
     padding: 2px 0;
+    vertical-align: top;
+    text-align: left;
 }
 
 .description{
@@ -27,6 +29,7 @@ body {
     height: 420px;
     width: 800px;
     margin: 50px auto;
+    margin-bottom: 330px;
     border-radius: 7px 7px 7px 7px;
     /* VIA CSS MATIC https://goo.gl/cIbnS */
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -44,10 +47,12 @@ body {
   
   .product-img img {
     border-radius: 7px 0 0 7px;
+    height: 695px;
+    width: 248%;
   }
   
   .product-info {
-    height: 500px;
+    height: 695px;
     width: 60%;
     border-radius: 0 7px 7px 0;
     background-color: #ffffff;
@@ -360,7 +365,7 @@ section {
 }
 
 img.logo {
-    width: 8rem;
+    width: 7.7rem;
     position: absolute;
     top: 0rem;
     left: 4rem;

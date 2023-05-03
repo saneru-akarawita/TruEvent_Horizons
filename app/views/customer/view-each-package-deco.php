@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Details</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <title>TruEvent Horizons - View Each Package - Deco</title>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -52,10 +54,25 @@
                     <?php if($dsDetails->service_id == $serviceID) { ?> 
                 <h1><?= $dsDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>Theme: <?= $dsDetails->theme;?></p>
-                <p>Decoration items:<br><?= $dsDetails->decoration_item;?></p>
-                <p><?= $dsDetails->other_decoration;?></p><br>
-                <!-- <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span> -->
+                <div class="description">
+                    <table id="details12">
+                    <tr>
+                        <td>Theme</td>
+                        <td>: <?= $dsDetails->theme;?></td>
+                    </tr><br>
+                    <tr>
+                        <td>Decoration items</td>
+                        <td>: <?= $dsDetails->decoration_item;?></td>
+                    </tr><br>
+                    <tr>
+                        <td>Other Decorations</td>
+                        <td>: <?php if(empty($dsDetails->other_decoration)) echo " None"; else  echo $dsDetails->other_decoration; ?> </td>
+                    </tr>
+                    </table>
+                    <br>
+              
+                </div>
+                <br><br>
               
               <?php } ?>
             <?php endforeach; ?>

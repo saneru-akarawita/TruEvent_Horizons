@@ -71,6 +71,7 @@ class CustomerDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => trim($_POST['currentpw']),
             'newPassword1' => trim($_POST['newpw']),
             'newPassword2' => trim($_POST['confirmnewpw']),
@@ -121,6 +122,7 @@ class CustomerDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => '',
             'newPassword1' => '',
             'newPassword2' => '',
@@ -224,7 +226,28 @@ class CustomerDashboard extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         
+         $feedbackval1 = '';
+         $feedbackval2 = '';
+         $feedbackval3 = '';
+         $feedbackval4 = '';
+         $feedbackval5 = '';
+
+         if(isset($_POST['feedbackval1'])){
+            $feedbackval1 = $_POST['feedbackval1'];
+         }
+         if(isset($_POST['feedbackval2'])){
+            $feedbackval2 = $_POST['feedbackval2'];
+         }
+         if(isset($_POST['feedbackval3'])){
+            $feedbackval3 = $_POST['feedbackval3'];
+         }
+         if(isset($_POST['feedbackval4'])){
+            $feedbackval4 = $_POST['feedbackval4'];
+         }
+         if(isset($_POST['feedbackval5'])){
+            $feedbackval5 = $_POST['feedbackval5'];
+         }
+
          $data = [
 
             'service_type' => trim($_POST['service_type']),
@@ -232,11 +255,11 @@ class CustomerDashboard extends Controller
             'event_name' => trim($_POST['event_name']),
             'customername' => trim($_POST['customername']),
             'contactno' => trim($_POST['contactno']),
-            'eob' => trim($_POST['feedbackval1']),
-            'aos' => trim($_POST['feedbackval2']),
-            'vom' => trim($_POST['feedbackval3']),
-            'qos' => trim($_POST['feedbackval4']),
-            'cs' => trim($_POST['feedbackval5']),
+            'eob' => trim($feedbackval1),
+            'aos' => trim($feedbackval2),
+            'vom' => trim($feedbackval3),
+            'qos' => trim($feedbackval4),
+            'cs' => trim($feedbackval5),
             'complaint' => trim($_POST['improvement']),
 
             'service_type_error'=>'',
@@ -291,7 +314,11 @@ class CustomerDashboard extends Controller
             }
             else
             {
-               redirect('CustomerDashboard/provideFeedback', $data);
+               $reservations = $this->reservationModel->getReservationsByCustomer(Session::getUser("id"));
+               $customerdetails = $this ->customerModel->getCustomerDetailsByID(Session::getUser("id"));
+               $result = array($reservations, $customerdetails, $data);
+
+               $this->view('customer/customer_feedback',$result);
             }
          }
          else
