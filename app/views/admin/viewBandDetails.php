@@ -37,7 +37,7 @@
 <?php $data1 = $data[1]; ?>
 <?php $data2 = $data[2]; ?>
 
-        <div class="wrapper" style="margin-bottom: 150px;">
+        <div class="wrapper" style="margin-bottom: 330px;">
             <div class="product-img">
               <img src="<?php echo URLROOT ?>/public/images/band.jpg" height="100%" max-width="100%">
             </div>
@@ -54,11 +54,24 @@
                     <?php if($bsDetails->service_id == $serviceID) { ?> 
                 <h1><?= $bsDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>No of players : <?= $bsDetails->no_of_players;?></p>
-                <p>Music Types:<br><?= $bsDetails->band_type;?></p>
-                <p>other types of band : <?= $bsDetails->other_band_type;?></p><br>
+                <div class="description">
+                  <table id="details12">
+                    <tr>
+                      <td>No of Players </td>
+                      <td>:<?= $bsDetails->no_of_players;?></td>
+                    </tr>
+                    <tr>
+                      <td>Music Types </td>
+                      <td>:<?= $bsDetails->band_type;?></td>
+                    </tr>
+                    <tr>
+                      <td>Other Types of Band </td>
+                      <td>:<?php if(empty($bsDetails->other_band_type)) echo " None"; else  echo $bsDetails->other_band_type; ?> </td>
+                    </tr>
+                  </table>
+                  <br><br>
                 <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
-              
+              </div>
             <?php } ?>
             <?php endforeach; ?>
               </div>
