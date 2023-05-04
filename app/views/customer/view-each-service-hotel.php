@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TruEvent Horizons - Hotel Manager View Each Service</title>
+        <title>TruEvent Horizons - View Each Service - Hotel</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
@@ -95,7 +95,7 @@
 
                         <div class="product-price-btn">
         
-                                <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id; ?>" class="btn" style="width:250px; margin-top:-20px; margin-left:-50px;">Make Reservation</a>
+                                <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?=$spName;?> - <?=$hsDetails->hall_name?>&service_type=<?php echo 'Hotel'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$hsDetails->service_id;?>&maxcrowd=<?= $hsDetails->max_crowd;?>" class="btn" style="width:250px; margin-top:-20px; margin-left:-50px;">Make Reservation</a>
 
                         </div>
 

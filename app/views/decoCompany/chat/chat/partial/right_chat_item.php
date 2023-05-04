@@ -1,18 +1,19 @@
 <?php
 /**
  * @var array $item
+ * @var array $image
  */
 
-if (empty($item['img'])) {
-    $userAvatar = 'user.png';
+if (empty($image['img'])) {
+    $userAvatar = 'profilepic.png';
 } else {
-    $userAvatar = $item['img'];
+    $userAvatar = $image['img'];
 }
 ?>
 
 <div class="chat incoming">
     <!-- <img src="/public/frontend/images/<?= $userAvatar ?>" alt=""> -->
-    <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+    <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
     <div class="chat_details">
         <p><?= $item['msg'] ?></p>
     </div>

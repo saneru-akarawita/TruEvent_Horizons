@@ -44,6 +44,7 @@ class HotelDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => trim($_POST['currentpw']),
             'newPassword1' => trim($_POST['newpw']),
             'newPassword2' => trim($_POST['confirmnewpw']),
@@ -94,6 +95,7 @@ class HotelDashboard extends Controller
       {
          $data = [
             'email' => $result->email,
+            'img_source'=>$result->img,
             'currentPassword' => '',
             'newPassword1' => '',
             'newPassword2' => '',
@@ -322,7 +324,73 @@ class HotelDashboard extends Controller
 		return $query;
 	}
 
+
+
+   public function generatereports(){
+      $userID = Session::getUser("id");
+      $resultofreservation = [];
+      
+      $data = [
+         'startDate' => "",
+         'endDate' => ""
+      ];
+      
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+         if(isset($_POST['startDate']) && isset($_POST['endDate'])){
+            $data = [
+               'startDate' => trim($_POST['startDate']),
+               'endDate' => trim($_POST['endDate'])
+            ];
+         }
+      } 
+      $reservationDetails = $this->reservationModel->getReservationDetailsByDateForService($data['startDate'],$data['endDate'],$userID);
+      $customerDetails = $this->customerModel->getCustomerDetails();
+      $reservationincome = $this->reservationModel->getReservationIncomeByDateForHotelService($data['startDate'],$data['endDate'],$userID);
+      $totalCount = $this->reservationModel->getNoOfReservationsByDateForHotelService($data['startDate'],$data['endDate'],$userID);
+      $totalIncome = $this->reservationModel->getIncomeByDateForService($data['startDate'],$data['endDate'],$userID);
+
+
+      $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+      for($i=0; $i<12; $i++){
+         foreach($totalCount as $t){
+            if($labels[$i] == $t->Month){
+               $values[$i] = $t->TotalReservations;
+            }
+         }
+      }
+   
+      $monthVsReservations = [
+         'labels' => $labels,
+         'data' => $values
+      ];
+
+
+      $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+      for($j=0; $j<12; $j++){
+         foreach($totalIncome as $t2){
+            if($label2[$j] == $t2->Month){
+               $value2[$j] = $t2->totalPricePerMonth;
+            }
+         }
+      }
+  
+      $monthVsIncome = [
+         'label' => $label2,
+         'dataVal' => $value2
+      ];
+
+      $resultofreservation = array($data['startDate'],$data['endDate'],$reservationDetails, $customerDetails, $reservationincome, $monthVsReservations,$monthVsIncome);    
+      $this->view('hotelManager/Reports',$resultofreservation);
+
+   }
+
+
    public function downloadReport(){
+      $this->view('hotelManager/abc','');
 
    }
    

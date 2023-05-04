@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TruEvent Horizons - Hotel Manager View Each Service</title>
+        <title>TruEvent Horizons - View Each Service - Decoration Company</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
@@ -12,31 +12,14 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
-<!-- header section starts -->
-<!-- <section class="header">
-<img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
-<a href="home" class="dashboard">Hotel</a>
-
-<nav class="navbar">
-<a href="home">Home</a>
-<a href="viewservices">Services</a>
-<a href="addservices">Add Services</a>
-<a href="logout">Logout</a>
-</nav> -->
-
-<!-- Gives a Menu Button -->
-<!-- <button id="menu-btn" class="fas fa-bars"></button>
-
-
-</section>
- -->
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
 <?php $spID = $data[0]; ?>
 <?php $serviceID = $data[1]; ?>
 <?php $rvID = $data[2]; ?>
 <?php $rvdata = $data[3]; ?>
 <?php $cusdata = $data[4]; ?>
 <?php $decorationservicedata = $data[5]; ?>
+<?php $decoPrice = $data[6]; ?>
 
 <div class="wrapper">
 
@@ -45,9 +28,10 @@
         </div>
 
         <div class="product-info">
-                <div class="product-text" style="height:1000px; width:500px;">
+                <div class="product-text" >
                         <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == "service") { ?>
                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                         <?php if ($new_sp_id == $spID) { ?>
                                                 <?php foreach ($decorationservicedata as $decodata) : ?>
@@ -117,10 +101,86 @@
                                                 <?php endforeach; ?>
                                                 <?php } ?>
                 <?php endforeach; ?>
+                <?php } ?>
+                <?php endforeach; ?>
+
+                <?php foreach ($rvdata as $rvDetails) : ?>
+                                <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == 'package') { ?>
+                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                        <?php if ($new_sp_id == $spID) { ?>
+                                                <?php foreach ($decorationservicedata as $decodata) : ?>
+                                                <?php if ($decodata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
+                                                <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $decodata->service_name;?></h1>
+                                                <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                        
+                                                <div class="description">
+                                                        <table id="details12">
+                                                                        <tr>
+                                                                                <td>Reservation Date</td>
+                                                                                <td>: <?= $rvDetails->rvDate;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Time</td>
+                                                                                <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Decoration Items</td>
+                                                                                <td>: <?= $decodata->decoration_item;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Theme </td>
+                                                                                <td>: <?= $decodata->theme;?></td>
+                                                                        </tr>
+                                                
+                                                                        <tr>
+                                                                                <td>Other Decoration Items/Serivces </td>
+                                                                                <td>:<?php if(empty($decodata->other_decoration)) echo " None"; else  echo $decodata->other_decoration; ?> </td>
+                                                                                
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Price </td>
+                                                                                <td>: Rs, <?php echo(number_format($decoPrice[0]->price_deco,2));?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Payments </td>
+                                                                                <td>: <?= $rvDetails->payment;?></td>
+                                                                        </tr>
+                                                                
+                                                                        <?php foreach ($cusdata as $cus) : ?>
+                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
+                                                                        <tr>
+                                                                                        <td>Customer Name </td>
+                                                                                        <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Address </td>
+                                                                                        <td>: <?= $cus->district;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Contact No </td>
+                                                                                        <td>: <?= $cus->contact_no;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>E-mail </td>
+                                                                                        <td style="text-transform:none">: <?= $cus->email;?></td>
+                                                                                </tr>
+                                                                        
+                
+                                                                                <?php } ?>
+                                                                        <?php endforeach; ?>                                
+                                                        </table>
+                
+                                                </div>
+                                                <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php } ?>
+                <?php endforeach; ?>
+                <?php } ?>
                 <?php endforeach; ?>
                 
                 <div class="product-price-btn">
-                        <button type="button" style="margin-top:60px;" onclick="history.back()">Back</button>
+                        <button type="button" onclick="history.back()">Back</button>
                 </div>
                 </div>
         </div>  
@@ -128,7 +188,7 @@
 
 
 <!-- footer start -->
-<section class="footer" style="margin-top:200px">
+<section class="footer" style="margin-top:350px">
 <div class="overlay"></div>
 <div class="box-container">
 <div class="box">

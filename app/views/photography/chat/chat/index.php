@@ -1,6 +1,6 @@
 <?php
 if (empty($user_detail['img'])) {
-    $userAvatar = 'user.png';
+    $userAvatar = 'profilepic.png';
 } else {
     $userAvatar = $user_detail['img'];
 }
@@ -11,7 +11,7 @@ if (empty($user_detail['img'])) {
         <header>
             <a href="<?php echo URLROOT ?>/app/views/<?php echo Session::getUser('typeText')?>/chat/user/list" class="back-icon"><i class="fas fa-arrow-left"></i></a>
             <!-- <img src="/public/frontend/images/<?= $userAvatar ?>" alt=""> -->
-            <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+            <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
             <div class="chat_details">
                 <span><?= $user_detail['fname']." ".$user_detail['lname'] ?></span>
                 <p><?= ucwords($user_detail['status']) ?></p>

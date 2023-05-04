@@ -4,6 +4,11 @@ class ReservationModel extends Model
     public function addReservation($data)
     {   
         $rv_type = $data['rv_type'];
+        if($data['crowdcount']!=null){
+            $price = $data['price']*$data['crowdcount'];
+        }else{
+            $price = $data['price'];
+        }
 
         if($rv_type=='service'){
             // print_r($data['customer_id']);
@@ -17,7 +22,8 @@ class ReservationModel extends Model
                 'rvTime' => $data['rvtime'],
                 'customer_id' => $data['customer_id'],
                 'sp_id' => $data['svp_id'],
-                'price' => $data['price'],
+                'price' => $price,
+                'no_of_people' => $data['crowdcount'],
                 'service_id' => $data['service_id'],
                 'status'=> "pending",
                 'payment' => "not-paid"
@@ -183,4 +189,127 @@ class ReservationModel extends Model
         return $results;
     }
     
+    public function getReservationIncomeByDateForHotelService($start_date, $end_date, $userID){
+        $results = $this->customQuery("SELECT SUM(price) AS totalPrice FROM customerrvdetails WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND payment = 'paid' AND rvType = 'service' AND sp_id = '".$userID."'"); 
+        return $results;
+    }
+
+    public function getNoOfReservationsByDateForHotelService($start_date, $end_date, $user_id){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservations
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND sp_id = '".$user_id."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+
+
+       public function getReservationDetailsByDateForService($start_date, $end_date, $userID){
+        $results = $this->customQuery("SELECT * FROM customerrvdetails WHERE sp_id LIKE '%".$userID."%' AND rvDate BETWEEN '".$start_date."' AND '".$end_date."'");
+        return $results;
+    }
+
+    public function getNoOfReservationsByDateForService($start_date, $end_date, $userID){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsofService
+            FROM customerrvdetails
+            WHERE sp_id LIKE '%".$userID."%' AND rvType='Service' AND rvDate BETWEEN '".$start_date."' AND '".$end_date."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getNoOfReservationsByDateForPackages($start_date, $end_date, $userID){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsofPackages
+            FROM customerrvdetails
+            WHERE sp_id LIKE '%".$userID."%' AND rvType='Package' AND rvDate BETWEEN '".$start_date."' AND '".$end_date."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getIncomeByDateForService($start_date, $end_date, $user_id){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonth
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND sp_id = '".$user_id."' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getReservationDetailsForSelectedPackageByDate($start_date, $end_date){
+        $results = $this->customQuery(
+            "SELECT * FROM customerrvdetails WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package'" );
+         return $results;
+    }
+
+    public function getReservationIncomeByDateForPackage($start_date, $end_date){
+        $results = $this->customQuery(
+            "SELECT SUM(price) AS totalincome FROM customerrvdetails WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package' AND payment = 'paid'" );
+         return $results;
+    }
+
+    public function getNoOfReservationsByDateForPackage($start_date, $end_date){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsPackage
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getIncomeByDateForPackage($start_date, $end_date){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonthPackage
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+
+    public function getReservationDetailsForSelectedServiceByDate($start_date, $end_date,$service_type){
+        $results = $this->customQuery(
+            "SELECT * FROM customerrvdetails WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."'" );
+         return $results;
+    }
+
+    public function getReservationIncomeByDateForSelectedService($start_date, $end_date,$service_type){
+        $results = $this->customQuery(
+            "SELECT SUM(price) AS totalPriceSelectedService FROM customerrvdetails WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."' AND payment = 'paid'" );
+         return $results;
+    }
+
+    public function getNoOfReservationsByDateForSelectedService($start_date, $end_date,$service_type){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsSelectedService
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getIncomeByDateForSelectedService($start_date, $end_date,$service_type){
+        $results = $this->customQuery(
+            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonthSelectedService
+            FROM customerrvdetails
+            WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
+         return $results;
+    }
+
+    public function getReservationDetailsPackage()
+    {
+        $results = $this->getResultSet("customerrvdetails_with_prices", "*", []);
+
+        return $results;
+    }
+    
+
+    public function getPhotoPrice($rvID){
+        $results = $this->customQuery("SELECT price_photo FROM customerrvdetails_with_prices WHERE rv_id = '".$rvID."' ");
+        return $results;
+    }
+
+    public function getDecoPrice($rvID){
+        $results = $this->customQuery("SELECT price_deco FROM customerrvdetails_with_prices WHERE rv_id = '".$rvID."' ");
+        return $results;
+    }
+
+    public function getBandPrice($rvID){
+        $results = $this->customQuery("SELECT price_band FROM customerrvdetails_with_prices WHERE rv_id = '".$rvID."' ");
+        return $results;
+    }
 }

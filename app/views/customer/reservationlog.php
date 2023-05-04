@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer View Reservation</title>
+    <title>TruEvent Horizons - View Reservation - Customer</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,10 +44,10 @@
                     </div>
 
                     <?php $scount = 0; $pcount=0; ?>
+
                     <?php foreach ($data as $rvdetails) : ?>
                                     <?php if($rvdetails->rvType =='service' && $rvdetails->status !='decline') { ?>
                                         <?php $scount = $scount + 1; ?>
-                            <!-- <?= $rvdetails->rv_id; ?> -->
 
                             <div class="project">
                                 <div class="col col<?php echo $scount%4 +1 ?>">
@@ -69,23 +69,29 @@
                                             <p><?= $rvdetails->spName; ?></p>
                                             <p><?= $rvdetails->rvTime; ?></p>
                                             <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
-                                            <p>LKR. <?=$formatted_price?> <?php if($rvdetails->spType == "Hotel") echo "per head" ?></p>
+                                            <p>LKR. <?=$formatted_price?> <?php if($rvdetails->spType == "Hotel") echo "(for $rvdetails->no_of_people people)" ?></p>
 
+                                            <?php if($rvdetails->status !="canceled"){?>
+                                                <div class="progress-box">
+                                                    <label for="progress">Status</label>
+                                                    <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
+                                                    <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                                    <span><?php echo $value ?>%</span>
+                                                </div>
 
-                                            <div class="progress-box">
-                                                <label for="progress">Status</label>
-                                                <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
-                                                <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
-                                                <span><?php echo $value ?>%</span>
-                                            </div>
-
-                                            
-                                            <div class="progress-box">
-                                                <label for="progress">Payments</label>
-                                                <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
-                                                <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
-                                                <span><?php echo $value ?>%</span>
-                                            </div>
+                                                
+                                                <div class="progress-box">
+                                                    <label for="progress">Payments</label>
+                                                    <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
+                                                    <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                                    <span><?php echo $value ?>%</span>
+                                                </div>
+                                            <?php }else{ ?>
+                                                <!-- add the code here to show the remarks message -->
+                                                <div style="border: 2px solid #c00; padding: 6px; margin-top:5px;border-radius:5px;">
+                                                <p style= "font-size:16px; color:red; text-align:center; margin-top: 10px">Your Reservation Has Been Canceled Due To <?=$rvdetails->remarks?></p>
+                                                </div>
+                                            <?php } ?>
 
                                         </div>
 
@@ -116,7 +122,7 @@
                                                     <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
                                                     <a href="deleteReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
                                             <?php } ?>
-                                        
+
                                         <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
                                             <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
                                         <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
@@ -130,29 +136,32 @@
                                             <a href="#" class="buttond">cancel</a> -->
 
                                         </div>
+                                        
+                                        <!--three dots below the card ends  -->
+                                        <?php if($rvdetails->status !="canceled"){ ?>
+                                            <div class="card-footer">
+                                                <ul class="team">
+                                                    <li class="team-member">
+                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                                    </li>
+                                                    <li class="team-member">
+                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                                    </li>
+                                                    <li class="team-member">
+                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        <?php } ?>
+                                        <!--three dots below the card ends  -->
 
-                                        <div class="card-footer">
-                                            <ul class="team">
-                                                <li class="team-member">
-                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                                </li>
-
-                                                <li class="team-member">
-                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                                </li>
-
-                                                <li class="team-member">
-                                                    <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                                </li>
-
-                                            </ul>
-                                        </div> 
                                     </div>
                                 </div>
                             </div>
 
                         <?php } ?>
                     <?php endforeach; ?>
+
 
                     </div>
 
@@ -207,67 +216,75 @@
 
                                 <div class="card-body">
                                     <h6><?= $rvdetails->eventName; ?></h6>
-                                    <p>Services Provided- Band, Photography, Decoration</p>
+                                    <!-- <p>Services Provided- Band, Photography, Decoration</p> -->
+                                    <p>Package Type - <?= $rvdetails->packageType; ?></p>
                                     <p><?= $rvdetails->rvTime; ?></p>
                                     <?php $formatted_price = number_format($rvdetails->price, 2, '.', '');?>
                                     <p>LKR. <?=$formatted_price?> </p>
 
+                                    <?php if($rvdetails->status !="canceled"){?>
+                                        <div class="progress-box">
+                                            <label for="progress">Status</label>
+                                            <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
+                                            <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
+                                            <span><?php echo $value ?>%</span>
+                                        </div>
 
-                                    <div class="progress-box">
-                                        <label for="progress">Status</label>
-                                        <?php if($rvdetails->status == "pending") $value="0"; else $value="100";?>
-                                        <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
-                                        <span><?php echo $value ?>%</span>
-                                    </div>
-
-                                    
-                                    <div class="progress-box">
-                                        <label for="progress">Payments</label>
-                                        <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
-                                        <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
-                                        <span><?php echo $value ?>%</span>
-                                    </div>
+                                        
+                                        <div class="progress-box">
+                                            <label for="progress">Payments</label>
+                                            <?php if($rvdetails->payment == "not-paid") $value="0"; else if($rvdetails->payment == "ad-paid") $value="25"; else $value = "100"?>
+                                            <progress id="progress" value="<?= $value ?>" max="100" style="margin-left:5px;"><?php echo $value ?><%</progress>
+                                            <span><?php echo $value ?>%</span>
+                                        </div>
+                                    <?php }else{ ?>
+                                        <!-- add the code here to show the remark message -->
+                                        <div style="border: 2px solid #c00; padding: 6px; margin-top:5px;border-radius:5px;">
+                                        <p style= "font-size:16px; color:red; text-align:center; margin-top: 10px">Your Reservation Has Been Canceled Due To <?=$rvdetails->remarks?></p>
+                                        </div>
+                                    <?php } ?>
 
                                 </div>
                                         
                                 <?php if($rvdetails->status =="pending" && $rvdetails->payment =="not-paid"){?>
 
                                     <div class="action-button" style="justify-content:center; margin-left:100px;">
-                                        <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">view</a>
-                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond">cancel</a>
 
-                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                        <a href="viewPackageReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id;?>" class="buttond">view</a>
+                                        <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
+                                        <a href="deleteReservationPackage?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">cancel</a>
+
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="not-paid"){?> 
                                     <?php require APPROOT . "/views/common/cus_log_confirm.php" ?>
-                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> <!-- payment != "paid" dannda hithanna -->
+                                <?php } else if($rvdetails->status =="confirm" && $rvdetails->payment =="ad-paid"){?> 
                                     <?php require APPROOT . "/views/common/cus_log_adpay.php" ?>
                                 <?php } else {?>
                                     <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
                                 <?php }?>
                                     
                                     </div>
+                                
+                                <!-- three dots below the card -->
+                                <?php if($rvdetails->status !="canceled"){ ?>
+                                    <div class="card-footer">
+                                        <ul class="team">
+                                            <li class="team-member">
+                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                            </li>
+                                            <li class="team-member">
+                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                            </li>
+                                            <li class="team-member">
+                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
+                                <!-- three dots below the card ends -->
 
-                                <div class="card-footer">
-                                    <ul class="team">
-                                        <li class="team-member">
-                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                        </li>
-
-
-                                        <li class="team-member">
-                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                        </li>
-
-
-                                        <li class="team-member">
-                                            <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
 
                         <?php } ?>
                     <?php endforeach; ?>

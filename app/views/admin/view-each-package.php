@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>View Packages</title>
+        <title>TruEvent Horizons - View Each Package - Admin</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -69,22 +69,43 @@
             </li>
 
             <li class="grid__item">
-                <a href="#" class="card" style="height: 100px;">
+                <a href="#" class="card" style="height: 100px; width:850px;">
                     <br><br>
                     <label style="margin-left: 25px; font-weight: bold;">Services Included:</label>
                     <table class="styled-table">
                         <thead>
                             <tr>
-                                <th>Band Option</th>
+                                <!-- <th>Band Option</th>
                                 <th>Decoration Option</th>
-                                <th>Photography Option</th>
+                                <th>Photography Option</th> -->
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td><?php if($data->band_choice) echo $data->band_choice; else echo "not-included";?></td>
                                 <td><?php if($data->deco_choice) echo $data->deco_choice; else echo "not-included";?></td>
                                 <td><?php if($data->photo_choice) echo $data->photo_choice; else echo "not-included";?></td>
+                            </tr> -->
+                            <tr>
+                                <th style=" border-radius: 10px 0 0 0;">Band Option</th>
+                                <td><?php if($data->band_choice) echo $data->band_choice; else echo "not-included";?></td>
+                                <?php if($data->band_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/Packages/viewBandDetails?band_id=<?=$data->band_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <?php }  ?>
+                            </tr>
+                            <tr>
+                                <th>Decoration Option</th>
+                                <td><?php if($data->deco_choice) echo $data->deco_choice; else echo "not-included";?></td>
+                                <?php if($data->deco_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/Packages/viewDecoDetails?deco_id=<?=$data->deco_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <?php }  ?>
+                            </tr>
+                            <tr>
+                                <th style=" border-radius: 0 0 0 10px;">Photography Option</th>
+                                <td><?php if($data->photo_choice) echo $data->photo_choice; else echo "not-included";?></td>
+                                <?php if($data->photo_choice) { ?>
+                                    <td><a href="<?php echo URLROOT ?>/Packages/viewPhotoDetails?photo_id=<?=$data->photo_sv_id;?>"><input type="button" class="viewbutton" style="float:right; margin-right:40%; font-weight:500; letter-spacing:0.2px;" value="View Details"></a></td>
+                                <?php }  ?>
                             </tr>
                         </tbody>
                     </table>   

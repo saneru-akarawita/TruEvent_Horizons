@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Packages</title>
+        <title>TruEvent Horizons - Add Packages</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,7 +51,7 @@
 </div>
 
 <!-- Add package starts -->
-<section class="add-packages">
+<section class="add-packages" style="background-color:#f2f1f1">
    <h1 class="heading-title" >
       Add Packages
    </h1>
@@ -61,13 +61,13 @@
                <div class="column">
                   <div class="text-group">
                      <label class="label" for="pcode">Package Code</label>
-                     <input type="text" name="pcode" placeholder="Enter Package Code" value="<?php echo $data[0]['pcode'] ?>" maxlength="20" />
+                     <input type="text" name="pcode" placeholder="Enter Package Code" value="<?php echo $data[0]['pcode'] ?>" maxlength="20" required/>
                      <span class="error"><?php echo $data[0]['pcode_error']; ?></span>
                   </div>
                </div>
                <div class="column">
                         <label class="label" for="package_type">Package Type</label>
-                        <select name = "package_type" class="dropdownmenu" id="package_type"> 
+                        <select name = "package_type" class="dropdownmenu" id="package_type" required> 
                               <option value="">Select a package type</option>
                               <option value = "Birthday">Birthday Package</option>
                               <option value = "Anniversary">Anniversary Package</option>
@@ -84,14 +84,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="name">Package Name</label>
-                      <input type="text" name="name" placeholder="Enter Package Name" value="<?php echo $data[0]['name'] ?>" maxlength="100">
+                      <input type="text" name="name" placeholder="Enter Package Name" value="<?php echo $data[0]['name'] ?>" maxlength="100" required>
                       <span class="error"><?php echo $data[0]['name_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price</label>
-                      <input type="text" name="price" placeholder="Enter Package Price" value="<?php echo $data[0]['price'] ?>" maxlength="15">
+                      <input type="text" name="price" placeholder="Enter Package Price" value="<?php echo $data[0]['price'] ?>" maxlength="15" required>
                       <span class="error"><?php echo $data[0]['price_error']; ?></span>
                    </div>
                 </div>

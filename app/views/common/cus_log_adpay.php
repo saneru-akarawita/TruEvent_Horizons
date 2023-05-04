@@ -23,6 +23,6 @@
     <?php } ?>
 <?php } else { ?>
     <div class="action-button" style="justify-content:center; margin-left:30px;">
-    <a href="viewReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttond" style="margin-right:10px">View Reservation</a>
+    <a href="viewPackageReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond" style="margin-right:10px">View Reservation</a>
     <a href="<?php echo URLROOT ?>/CustomerDashboard/paymentLog" class="buttond" style="margin-left:10px">Make Full Payment</a>
 <?php }?>

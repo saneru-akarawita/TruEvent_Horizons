@@ -20,7 +20,7 @@ searchBar.onkeyup = ()=>{
     searchBar.classList.remove("active");
   }
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "/TruEvent_Horizons/ChatUserController/actionSearch", true);
+  xhr.open("POST", "/ChatUserController/actionSearch", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
@@ -35,7 +35,7 @@ searchBar.onkeyup = ()=>{
 
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "/TruEvent_Horizons/ChatUserController/actionGetList", true);
+  xhr.open("GET", "/ChatUserController/actionGetList", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){

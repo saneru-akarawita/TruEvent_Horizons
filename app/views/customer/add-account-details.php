@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="./css/footer.css">
    <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
-   <title>TruEvent Horizons - Hotel Manager Add Service</title>
+   <title>TruEvent Horizons - Add Account Details</title>
 </head>
 
 <body>
@@ -35,14 +35,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="accountno" for="account no">Account No</label>
-                      <input type="text" name="account_no" placeholder="Enter account no" maxlength="18">
+                      <input type="text" name="account_no" placeholder="Enter account no" maxlength="18" required>
       
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                      <label class="accountname" for="account name">Account Name</label>
-                     <input type="text" name="account_name" placeholder="Enter account name" maxlength="25">
+                     <input type="text" name="account_name" placeholder="Enter account name" maxlength="25" required>
                   
                    </div>
                 </div>
@@ -53,14 +53,14 @@
                 <div class="column">
                    <div class="text-group">
                      <label class="bankname" for="bank name">Bank Name</label>
-                     <input type="text" name="bank_name" placeholder="Enter bank name" maxlength="15">
+                     <input type="text" name="bank_name" placeholder="Enter bank name" maxlength="15" required>
    
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="branchcode" for="branch code">Branch Code</label>
-                      <input type="text" name="branch_code" placeholder="Enter branch code" maxlength="25">
+                      <input type="text" name="branch_code" placeholder="Enter branch code" maxlength="25" required>
    
                    </div>
                 </div>
@@ -70,14 +70,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="expirydate" for="expiry date">Expiry Date</label>
-                      <input type="date" id="date" name="date" style="color:#777 ;">
+                      <input type="date" id="date" name="date" style="color:#777 ;" required>
          
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                      <label class="cvv" for="cvv">CVV</label>
-                     <input type="text" name="cvv" placeholder="Enter cvv code" maxlength="3">
+                     <input type="text" name="cvv" placeholder="Enter cvv code" maxlength="3" required>
                      
                    </div>
                 </div>

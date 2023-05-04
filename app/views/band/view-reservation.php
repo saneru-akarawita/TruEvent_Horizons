@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TruEvent Horizons - Hotel Manager View Each Service</title>
+        <title>TruEvent Horizons - View Reservation - Band</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+<?php require APPROOT . "/views/band/header-band.php" ?>
 <!-- header section starts -->
 <!-- <section class="header">
 <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
@@ -37,6 +37,8 @@
 <?php $rvdata = $data[3]; ?>
 <?php $cusdata = $data[4]; ?>
 <?php $bandservicedata = $data[5]; ?>
+<?php $bandPrice = $data[6]; ?>
+
 
 <div class="wrapper">
 
@@ -48,6 +50,7 @@
                 <div class="product-text" style="height:1000px; width:500px;">
                         <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == "service") { ?>
                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                         <?php if ($new_sp_id == $spID) { ?>
                                                 <?php foreach ($bandservicedata as $banddata) : ?>
@@ -117,8 +120,86 @@
                                                 <?php endforeach; ?>
                                                 <?php } ?>
                 <?php endforeach; ?>
+                <?php } ?>
                 <?php endforeach; ?>
                 
+
+                <?php foreach ($rvdata as $rvDetails) : ?>
+                                <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
+                                <?php if($rvDetails->rvType == "package") { ?>
+                                <?php foreach ($sp_id_arr as $new_sp_id) : ?>
+                                        <?php if ($new_sp_id == $spID) { ?>
+                                                <?php foreach ($bandservicedata as $banddata) : ?>
+                                                <?php if ($banddata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
+                                                <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $banddata->service_name;?></h1>
+                                                <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                        
+                                                <div class="description">
+                                                        <table id="details12">
+                                                                        <tr>
+                                                                                <td>Reservation Date</td>
+                                                                                <td>: <?= $rvDetails->rvDate;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Time</td>
+                                                                                <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Band Type</td>
+                                                                                <td>: <?= $banddata->band_type;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>No of Players </td>
+                                                                                <td>: <?= $banddata->no_of_players;?></td>
+                                                                        </tr>
+                                                
+                                                                        <tr>
+                                                                                <td>Other Band Items</td>
+                                                                                <td>:<?php if(empty($banddata->other_band_type)) echo " None"; else  echo $banddata->other_band_type; ?> </td>
+                                                                                
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Price </td>
+                                                                                <td>: Rs. <?php echo(number_format($bandPrice[0]->price_band,2));?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Payments </td>
+                                                                                <td>: <?= $rvDetails->payment;?></td>
+                                                                        </tr>
+                                                                
+                                                                        <?php foreach ($cusdata as $cus) : ?>
+                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
+                                                                        <tr>
+                                                                                        <td>Customer Name </td>
+                                                                                        <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Address </td>
+                                                                                        <td>: <?= $cus->district;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>Contact No </td>
+                                                                                        <td>: <?= $cus->contact_no;?></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>E-mail </td>
+                                                                                        <td style="text-transform:none">: <?= $cus->email;?></td>
+                                                                                </tr>
+                                                                        
+                
+                                                                                <?php } ?>
+                                                                        <?php endforeach; ?>                                
+                                                        </table>
+                
+                                                </div>
+                                                <?php } ?>
+                                                <?php endforeach; ?>
+                                                <?php } ?>
+                <?php endforeach; ?>
+                <?php } ?>
+                <?php endforeach; ?>
+
+
                 <div class="product-price-btn">
                         <button type="button" style="margin-top:100px;" onclick="history.back()">Back</button>
                 </div>

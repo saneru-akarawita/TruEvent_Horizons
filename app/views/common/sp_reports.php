@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Service Provider Reports</title>
+        <title>TruEvent Horizons - Service Provider Reports</title>
 
         <!-- font awesome cdn link -->
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -127,6 +127,24 @@
                 margin-left:25px;
             }
 
+            .btn-generate{
+                width:200px; 
+                height:50px; 
+                font-weight:500; 
+                background-color:purple;
+                color:white;
+                font-size:1.7rem;
+                margin-top:-60px;
+                margin-left:1050px;
+                border-radius:10px;
+                margin-bottom:40px;
+            }
+
+            .btn-generate a{
+                text-decoration:none;
+                color:white;
+            }
+
             @media print {
                 .footer{
                     display: none;
@@ -172,8 +190,8 @@
 <main class ="main-container" style="background-color:#FFFFFF;">
         <div class="table-container" style="border-radius:10px">
 
-            <h1 style="font-size:50px; margin-top:75px;"><center>Service Provider Report Generation</center></h1>
-            <br><br>
+            <h1 style="font-size:50px; margin-top:75px; margin-left:100px;">System Report Generation</h1>
+            <button class="btn-generate"><a href="generatereports">Generate Report</a></button>
 
             <div class="ser-container form-container contentBox">
                 <form method="post" action="reports" style="margin:auto; width:90%">
@@ -337,7 +355,7 @@
                         <td>
                             <?php if($rvdetails->payment == "not-paid"){?>
                                 <p class="status status-unpaid">Not Paid</p>
-                            <?php }elseif($rvdetails->payment == "confirm"){?>
+                            <?php }elseif($rvdetails->payment == "ad-paid"){?>
                                 <p class="status status-pending">Advance Payment</p>
                             <?php }else{?>
                                 <p class="status status-paid">Complete</p>

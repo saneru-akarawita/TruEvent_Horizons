@@ -9,7 +9,7 @@
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-   <title>verification still in progress</title>
+   <title>TruEvent Horizons - verification still in progress</title>
 </head>
 
 <body class="accverification">

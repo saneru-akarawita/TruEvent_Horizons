@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruEvent Horizons - Service Details - Band</title>
+    <title>TruEvent Horizons - View Each Service - Band</title>
 
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css">
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/viewoneservice.css"> -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/hotel.css">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 
     <!-- font awesome cdn link -->
@@ -53,10 +56,25 @@
                     <?php if($bsDetails->service_id == $serviceID) { ?> 
                 <h1><?= $bsDetails->service_name;?></h1><br>
                 <h2><?php echo $spName ?></h2>
-                <p>No of players : <?= $bsDetails->no_of_players;?></p>
-                <p>Music Types:<br><?= $bsDetails->band_type;?></p>
-                <p>other types of band : <?= $bsDetails->other_band_type;?></p><br>
+                <div class="description">
+                  <table id="details12">
+                    <tr>
+                      <td>No of Players </td>
+                      <td>:<?= $bsDetails->no_of_players;?></td>
+                    </tr>
+                    <tr>
+                      <td>Music Types </td>
+                      <td>:<?= $bsDetails->band_type;?></td>
+                    </tr>
+                    <tr>
+                      <td>Other Types of Band </td>
+                      <td>:<?php if(empty($bsDetails->other_band_types)) echo " None"; else  echo $bsDetails->other_decorations; ?> </td>
+                    </tr>
+                  </table>
+                  <br>
                 <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
+                </div>
+                <br>
               <div class="product-price-btn">
               <a href="<?php echo URLROOT; ?>/customerReservation/addReservationByServices?service_name=<?= $spName; ?> - <?= $bsDetails->service_name?>&service_type=<?php echo 'Band'?>&sp_id=<?=$serviceProviderID;?>&service_id=<?=$bsDetails->service_id; ?>" class="btn" style="width:250px; margin-left:-50px; padding-left:55px; margin-top:30px;">Make Reservation</a> 
               </div>

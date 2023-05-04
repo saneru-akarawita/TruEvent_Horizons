@@ -314,7 +314,7 @@
                 }
 
             }
-            xmlhttp.open("POST", "http://localhost/temp/gethash.php", true);
+            xmlhttp.open("POST", "http://trueventhorizons.me/Customer/getHashForPayment", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             //send order_id and amount
             xmlhttp.send("order_id=" + booking_id + "&amount=" + amount);

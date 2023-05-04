@@ -7,13 +7,14 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css" />
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css" />
+   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/addservice.css">
    
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
    <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
 
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/footer.css" />
 
-   <title>TruEvent Horizons - Hotel Manager Edit Service</title>
+   <title>TruEvent Horizons - Edit Service - Hotel</title>
 </head>
 
 <body>
@@ -73,7 +74,7 @@
                 <div class="column">
                    <div class="text-group">
                      <label class="label" for="max_crowd">Max Crowd</label>
-                     <input type="number" name="max_crowd" placeholder="Enter maximum crowd" value="<?php echo $data['max_crowd']; ?>" maxlength="25">
+                     <input type="number" name="max_crowd" min = 1 placeholder="Enter maximum crowd" value="<?php echo $data['max_crowd']; ?>" maxlength="25">
                      <span class="error"><?php echo $data['max_crowd_error']; ?></span>
                    </div>
                 </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/deco company/homepage.css">
-    <title>Photography Chat</title>
+    <title>TruEvent Horizons - Chat - Photography</title>
 
     <!-- font awesome cdn link -->
     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,6 +26,11 @@
 <body>
 <?php require APPROOT . "/views/photography/header-photography.php" ?>
 
+<?php if(!empty($data->img)){
+        $userAvatar = $data->img;
+    }else{
+        $userAvatar = 'profilepic.png';
+    }?>
 
 <div class="chat_div">
         <div class="chat_wrapper"style="margin-top:75px;margin-bottom:50px;">
@@ -33,13 +38,13 @@
             <header>
                 <a href="chat" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                 
-                <?php echo "<img src = '".URLROOT."/public/images/profilepic.png'>";?>
+                <?php echo "<img src = '".URLROOT."/public/images/uploadimages/profilepic/".$userAvatar."'>";?>
                 <div class="chat_details">
                 <span><?php echo $data->fname. " " . $data->lname ?></span>
                 <p><?php echo $data->status; ?></p>
                 </div>
             </header>
-            <div class="chat-box">
+            <div class="chat-box" style="transition:none;background-color:#f7f7f7;padding:10px 0px 0px 30px; padding-left:12px;padding-right:12px;">
 
             </div>
             <!-- <form action="#" class="typing-area">

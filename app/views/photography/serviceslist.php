@@ -54,7 +54,7 @@
                 $num_files = count($files1) - 2;
             ?>
 
-                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$psDetails->service_name/" . rand(1,4)%$num_files +1 . ".jpg'>";?>
+                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$psDetails->service_name/" . (rand(1,4)%$num_files +1) . ".jpg'>";?>
 
             </div>
             <div class="content">

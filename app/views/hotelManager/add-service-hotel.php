@@ -15,7 +15,7 @@
    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/header-hotel.css">
    <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
 
-   <title>TruEvent Horizons - Hotel Manager Add Service</title>
+   <title>TruEvent Horizons - Add Service - Hotel</title>
 </head>
 
 <body>
@@ -65,7 +65,7 @@
       <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form" enctype="multipart/form-data">
             <h1 class="title">Add Venue/Location</h1>
 
             
@@ -95,14 +95,14 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="hall name">Hall Name</label>
-                      <input type="text" name="hall_name" placeholder="Enter hall name here" value="<?php echo $data['hall_name']; ?>" maxlength="25">
+                      <input type="text" name="hall_name" placeholder="Enter hall name here" value="<?php echo $data['hall_name']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['hall_name_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                      <label class="label" for="location">Location (Floor/Wing etc.)</label>
-                     <input type="text" name="location" placeholder="Enter location here" value="<?php echo $data['location']; ?>" maxlength="25">
+                     <input type="text" name="location" placeholder="Enter location here" value="<?php echo $data['location']; ?>" maxlength="25" required>
                      <span class="error"><?php echo $data['location_error']; ?></span>
                    </div>
                 </div>
@@ -112,14 +112,14 @@
                 <div class="column">
                    <div class="text-group">
                      <label class="label" for="max_crowd">Max Crowd</label>
-                     <input type="number" name="max_crowd" placeholder="Enter maximum crowd" value="<?php echo $data['max_crowd']; ?>" maxlength="25">
+                     <input type="number" name="max_crowd" placeholder="Enter maximum crowd" min = 1 value="<?php echo $data['max_crowd']; ?>" maxlength="25">
                      <span class="error"><?php echo $data['max_crowd_error']; ?></span>
                    </div>
                 </div>
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price Per Head (Rs.)</label>
-                      <input type="text" name="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25">
+                      <input type="text" name="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>
                 </div>
@@ -129,7 +129,7 @@
              <div class="row">
                 <div class="column">
                         <label class="label" for="hall_type">Hall Type</label>
-                        <select name = "hall_type" class="dropdownmenu" id="hall_type"> 
+                        <select name = "hall_type" class="dropdownmenu" id="hall_type" required> 
                                 <option value="">Select a hall type</option>
                                 <option value = "indoor">Indoor</option>
                                 <option value = "outdoor">Outdoor</option>
@@ -155,7 +155,6 @@
             <div class="footer-container">
                <button type="submit" name="action" value="addservices" class="btn btn-filled btn-theme-purple">Add Service</button>
             </div>
-
          </form>
       </div>
    </div>

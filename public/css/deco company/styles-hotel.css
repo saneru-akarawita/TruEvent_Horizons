@@ -293,6 +293,17 @@
         padding-left: 10px;
     }
 
+    .text-group select{
+        margin: 0;
+        color:black;
+        background-color: #D9D9D9;
+        border: 2px solid black;
+        padding: 5px;
+        width: 230px;
+        padding-left: 10px;
+        display: inline-flex;
+    }
+
     .row{
         display: inline-flex;
     }
@@ -346,32 +357,38 @@
 
 
     .totalres{
-        margin-top: 50px;
-        margin-left: 180px;
+        margin-top: 30px;
+        margin-left: 120px;
         background-color: #D9D9D9;
-        width: 300px;
-        height:150px;
+        width: 400px;
+        height:180px;
         display: flex;
         justify-content: center;
     }
 
     .totalincome{
-        margin-top: 50px;
-        margin-left: 500px;
+        margin-top: 30px;
+        margin-left: 420px;
         background-color: #D9D9D9;
-        width: 300px;
-        height:150px;
+        width: 400px;
+        height:180px;
         display: flex;
         justify-content: center;
     }
 
+    
     .totalres label, .totalincome label{
-        margin-top: 30px;
+        margin-top: 20px;
         font-size: 2.0rem;
         font-weight: 700;
+        margin-left:-50px;
     }
 
-    .charts{
+    .totalincome label{
+        margin-left: -80px;
+    }
+
+    /* .charts{
         display: inline-flex;
     }
 
@@ -400,7 +417,32 @@
         height:450px;
         display: flex;
         justify-content: center;
+    } */
+
+
+    .charts{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin: 2rem 4rem;
     }
+
+    .chart{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        background: rgb(223, 223, 223);
+        padding: 3rem;
+    }
+
+    .chart label {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+
 
     .tabledetails, .tabledetails2{
         margin-top: 50px;

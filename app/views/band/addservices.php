@@ -18,10 +18,6 @@
 <?php require APPROOT . "/views/band/header-band.php" ?>
 
    <div class="main-container">
-      <!-- <a href="home">
-         <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png" alt="logo" class="top-left-logo">
-      </a> -->
-      <!-- <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/bandService/addNewService" method="post" class="form">
@@ -58,28 +54,18 @@
                      <label for="band5">EDM - (Electronic Dance Music)</label><br>
                      <input type="checkbox" id="band6" name="band[]" value="Ballads">
                      <label for="band6">Ballads</label><br>
-                   
+                     <span class="error"><?php echo $data['band_error']; ?></span>
                </div>
-               <!-- <div class="column">
-                     <input type="checkbox" id="deco5" name="band[]" value="Lights">
-                     <label for="deco5">With Dancing Group</label><br>
-                     <input type="checkbox" id="deco6" name="decoration[]" value="Banners">
-                     <label for="deco6">Banners</label><br>
-                     <input type="checkbox" id="deco8" name="decoration[]" value="Table cloths">
-                     <label for="deco8">Table cloths</label><br>
-                     <input type="checkbox" id="deco9" name="decoration[]" value="Chair covers">
-                     <label for="deco9">Chair covers</label><br><br>
-               </div> -->
             </div>
 
             <div class="text-group">
                <label class="label" for="band">Other Music Types</label>
-               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="" maxlength="25">
+               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="" maxlength="100">
             </div>
                
                   <div class="text-group">
                      <label for="num_players">No of players</label>        
-                     <input class="num_players" type="number" name="num_players" id="num_players" placeholder="No of Players included in band" value="" required >
+                     <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="" required >
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
                   </div><br>
                   
