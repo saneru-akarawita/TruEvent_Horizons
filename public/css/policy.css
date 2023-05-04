@@ -8,7 +8,7 @@
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .container {
@@ -20,7 +20,7 @@ body {
 nav {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     height: 80px;
     line-height: 80px;
     z-index: 111;
@@ -36,6 +36,7 @@ nav {
     letter-spacing: 3px;
     cursor: pointer;
     text-transform: uppercase;
+    margin-left: 2rem;
 }
 
 b {
@@ -45,6 +46,8 @@ b {
 
 .navItems {
     display: flex;
+    justify-content: space-around;
+    margin-left: 280px;
 }
 
 .navItems li {
@@ -72,21 +75,21 @@ b {
     margin: 25px 10px;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     justify-content: center;
     align-items: center;
     padding: 0 10%;
     overflow: hidden;
 }
 
-.cols{
-    width: 50%;
+.cols {
+    width: 150%;
 }
 
-.topline{
+.topline {
     display: block;
     position: relative;
     font-size: 35px;
@@ -94,7 +97,7 @@ b {
     color: #3d535f;
 }
 
-.topline::after{
+.topline::after {
     position: absolute;
     content: '';
     height: 4px;
@@ -104,33 +107,59 @@ b {
 
 }
 
-h1{
+h1 {
     display: block;
     font-size: 7em;
     font-weight: 900;
     color: #3d535f;
 }
 
-.multiText{
+h3 {
+    margin-top: 2rem;
+}
+
+.multiText {
     color: #7f00ff;
     text-transform: capitalize;
 }
 
-p{
+p {
     display: block;
     width: 90%;
     font-size: 1.2rem;
     color: #3d535f;
 }
 
-.btns{
-    width: 100%;
-    position: relative;
-   left: 150px;
- 
+
+p1 {
+    display: block;
+    width: 90%;
+    font-size: 1.2rem;
+    color: #3d535f;
+    font-style: italic;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-button{
+
+/* 
+li {
+    display: block;
+    width: 90%;
+    font-size: 1.2rem;
+    color: #3d535f;
+    margin-top: 2rem;
+
+} */
+
+.btns {
+    width: 100%;
+    position: relative;
+    left: 150px;
+
+}
+
+button {
     outline: none;
     border: none;
     cursor: pointer;
@@ -145,24 +174,24 @@ button{
     box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
 }
 
-button:hover{
+button:hover {
     background-color: #7f00ff;
 
 
 }
 
-.imgbox{
+.imgbox {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.imgboximg{
+.imgboximg {
     position: relative;
     height: 100%;
     width: calc(130% -80px);
     top: -100px;
     right: 50px;
-    
+
 
 }
