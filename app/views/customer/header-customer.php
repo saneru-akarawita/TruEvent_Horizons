@@ -66,11 +66,11 @@
                                 </li>
                                 </div>        
                                 <div class="company_name">
-                                        <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
+                                        <li style="margin-top:12px; margin-left:-44px;width:max-content"><?= Session::getUser('name') ?></li> 
                                 </div>
                                 <!-- <hr size="1px"> -->
                                 <div class="company_type">
-                                        <p style="margin-top:40px; margin-left:-184px;width:max-content"><?= Session::getUser('typeText') ?></p> 
+                                        <p style="margin-top:40px; margin-left:-193px;width:max-content"><?= Session::getUser('typeText') ?></p> 
                                 </div>
                 
                 </div>
