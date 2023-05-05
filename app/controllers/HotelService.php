@@ -74,7 +74,7 @@ class HotelService extends Controller
             $data['price_error'] = validatePrice($data['price']);
             $data['hall_name_error'] = emptyCheck($data['hall_name']);
             $data['location_error'] = emptyCheck($data['location']);
-            $data['max_crowd_error'] = emptyCheck($data['max_crowd']);
+            $data['max_crowd_error'] = positiveIntegerValidation($data['max_crowd']);
             $data['hall_type_error'] = emptyCheck($data['hall_type']);
             $data['ac_status_error'] = emptyCheck($data['ac_status']);
 
@@ -179,7 +179,7 @@ class HotelService extends Controller
             $data['price_error'] = validatePrice($data['price']);
             $data['hall_name_error'] = emptyCheck($data['hall_name']);
             $data['location_error'] = emptyCheck($data['location']);
-            $data['max_crowd_error'] = emptyCheck($data['max_crowd']);
+            $data['max_crowd_error'] = positiveIntegerValidation($data['max_crowd']);
             $data['hall_type_error'] = emptyCheck($data['hall_type']);
             $data['ac_status_error'] = emptyCheck($data['ac_status']);
 

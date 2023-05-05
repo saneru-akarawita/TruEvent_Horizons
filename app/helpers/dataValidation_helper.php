@@ -52,4 +52,62 @@ function validateDate($date){
       return $emptyCheckResponse;
 }
 
+function validateNames($name){
+   
+   $emptyCheckResponse = emptyCheck($name);
+   
+   if (!preg_match("/^[a-zA-Z. ]*$/",$name)) {
+      return "Only letters and white space allowed";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
+function districtValidation($district){
+      
+   $emptyCheckResponse = emptyCheck($district);
+
+   //check if $district is in the following array
+   $districts = array("Ampara","Anuradhapura","Badulla","Batticaloa","Colombo","Galle","Gampaha","Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunegala","Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliya","Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavuniya");
+
+   if (!in_array($district, $districts)) {
+      return "Only the 25 districts in Sri Lanka are allowed!";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
+function positiveIntegerValidation($number){
+      
+   $emptyCheckResponse = emptyCheck($number);
+   
+   if (!preg_match("/^[0-9]*$/",$number)) {
+      return "Only positive integers are allowed";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
+function dateFormatValidation($date){
+         
+   $emptyCheckResponse = emptyCheck($date);
+   
+   if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/",$date)) {
+      return "Invalid date format";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
+function timeFormatValidation($time){
+            
+   $emptyCheckResponse = emptyCheck($time);
+   //seconds validation too
+   if (!preg_match("/^([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$/",$time)) {
+      return "Invalid time format";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
 ?>

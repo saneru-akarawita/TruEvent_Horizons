@@ -82,12 +82,12 @@ class Customer extends Controller
          else if ($_POST['action'] == "register")
          {
             // Validate everything
-            $data['fname_error'] = emptyCheck($data['fname']);
-            $data['lname_error'] = emptyCheck($data['lname']);
+            $data['fname_error'] = validateNames($data['fname']);
+            $data['lname_error'] = validateNames($data['lname']);
             $data['email_error'] = validateEmail($data['email']);
             $data['contactno_error'] = validateContactno($data['contactno']);
             $data['OTP_error'] = emptyCheck($data['OTP']);
-            $data['district_error'] = emptyCheck($data['district']);
+            $data['district_error'] = districtValidation($data['district']);
 
             // TODO: Check Password strength here
             $data['password_error'] = emptyCheck($data['password']);
