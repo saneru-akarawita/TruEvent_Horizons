@@ -106,6 +106,15 @@
             padding: 10px 10px 10px 10px;
         }
 
+        .logo {
+            width: 7.7rem !important; 
+            position: absolute;3
+        }
+
+        .menu-bar {
+            margin-top: -25px !important;
+        }
+
         .filter-card .container {
             padding: 2px 16px;
             font-size:14px;
