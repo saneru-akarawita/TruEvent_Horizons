@@ -328,6 +328,104 @@ class DecoDashboard extends Controller
 
    }
    
+   public function generatereports(){
+      $userID = Session::getUser("id");
+      $userType = Session::getUser("type");
+      $resultofreservation = [];
+      
+      $data = [
+         'startDate' => "",
+         'endDate' => ""
+      ];
+      
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+         if(isset($_POST['startDate']) && isset($_POST['endDate'])){
+            $data = [
+               'startDate' => trim($_POST['startDate']),
+               'endDate' => trim($_POST['endDate'])
+            ];
+         }
+      } 
+      $reservationDetails = $this->reservationModel->getReservationDetailsByDateForService($data['startDate'],$data['endDate'],$userID,$userType);
+      $customerDetails = $this->customerModel->getCustomerDetails();
+      $result1 = $this->serviceProviderModel->getTotalIncomeBasedOnSPIDForPackage($data['startDate'],$data['endDate'], $userID, $userType);
+      $result2 = $this->serviceProviderModel->getTotalIncomeBasedOnSPIDForService($data['startDate'],$data['endDate'], $userID);
+      $totalCountofService = $this->reservationModel->getNoOfReservationsByDateForService($data['startDate'],$data['endDate'],$userID);
+      $totalCountofPackage = $this->reservationModel->getNoOfReservationsByDateForPackages($data['startDate'],$data['endDate'],$userID);
+      $result3 = $this->serviceProviderModel->getTotalIncomeBasedOnSPIDForPackageMonthly($data['startDate'],$data['endDate'], $userID, $userType);
+      $result4 = $this->serviceProviderModel->getTotalIncomeBasedOnSPIDForServiceMonthly($data['startDate'],$data['endDate'], $userID);
+  
+      $start = new DateTime($data['startDate']);
+      $end = new DateTime($data['endDate']);
+      
+      while($start <= $end){
+         $month = $start->format('Y-m');
+         $totals[$month] = 0; // Initialize the total for this month to 0
+         $start->modify('+1 month');
+      }
+
+      $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+      for($i=0; $i<12; $i++){
+         foreach($totalCountofService as $t){
+            if($labels[$i] == $t->Month){
+               $values[$i] = $t->TotalReservationsofService;
+            }
+         }
+      }
+
+      $monthVsReservationsService = [
+         'labels' => $labels,
+         'data' => $values
+      ];
+
+
+      $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      $valSet = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+      for($j=0; $j<12; $j++){
+         foreach($totalCountofPackage as $tp){
+            if($label2[$j] == $tp->Month){
+               $valSet[$j] = $tp->TotalReservationsofPackages;
+            }
+         }
+      }
+   
+      $monthVsReservationsPackage = [
+         'label2' => $label2,
+         'data2' => $valSet
+      ];
+
+
+      $Dates = [];
+      $DateVal = [];
+      foreach($result3 as $key=>$val){
+         $Dates[]=$key;
+         $DateVal[]=$val;
+      }
+
+      $monthVsIncomePackage = [
+         'label' => $Dates,
+         'data' => $DateVal
+      ];
+
+      $Date = [];
+      $DateValues = [];
+      foreach($result4 as $key=>$val){
+         $Date[]=$key;
+         $DateValues[]=$val;
+      }
+
+      $monthVsIncomeService = [
+         'labelVal' => $Date,
+         'dataVal' => $DateValues
+      ];
+
+      $resultofreservation = array($data['startDate'],$data['endDate'],$reservationDetails, $customerDetails, $result1, $result2, $monthVsReservationsService,$monthVsReservationsPackage, $monthVsIncomePackage, $monthVsIncomeService);  
+      $this->view('decoCompany/Reports',$resultofreservation);
+
+   }
 
    public function reservationDetails()
    {
@@ -341,7 +439,8 @@ class DecoDashboard extends Controller
          $decodetailslist = $this->decoModel->getServicesByServiceProvider($spID);
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
-         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist);
+         $DecoPrice = $this->reservationModel-> getDecoPrice($rvid);
+         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist,$DecoPrice);
          $this->view('decoCompany/view-reservation',$result1);
    }
 

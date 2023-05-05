@@ -147,35 +147,32 @@
 </style>
 
 
-<title>TruEvent Horizons - Report - Decoration Company</title>
+<title>TruEvent Horizons - Report - Admin</title>
 
 </head>
 
 <body>
-<?php require APPROOT . "/views/decoCompany/header-deco.php" ?> 
- 
+<?php require APPROOT . "/views/admin/header-admin.php" ?>
    
 <?php $sDate = $data[0]; ?>
 <?php $eDate = $data[1]; ?>
 <?php $dataRows = $data[2]; ?>
 <?php $custDetails = $data[3]; ?>
-<?php $incomefromPackage = $data[4]; ?>
-<?php $incomefromService = $data[5]; ?>
-<?php $monthVsReservationsService = $data[6]; ?>
-<?php $monthVsReservationsPackage = $data[7]; ?>
-<?php $monthVsIncomePackage = $data[8]; ?>
-<?php $monthVsIncomeService = $data[9]; ?>
+<?php $income = $data[4]; ?>
+<?php $monthVsReservations = $data[5]; ?>
+<?php $monthVsIncome = $data[6]; ?>
 
 
         <div class="main-content">
-            
-       <form id="reportDatesForm" action="<?php echo URLROOT; ?>/DecoDashboard/generatereports" method="post">
+
+       <form id="reportDatesForm" action="<?php echo URLROOT; ?>/AdminDashboard/generatereportsforPackage" method="post">
                 <div class="row">
                         <div class="text-group">
-                                <label for="servicetype" style="font-size:18px; font-weight:500;">Service Type</label>
-                                <input type="text" value="Decoration" name="serviceType" style="margin-top:-5px;">
+                                <label for="servicetype" style="font-size:18px; font-weight:500;">Type</label>
+                                <input type="text" value="Package" name="serviceType" style="margin-top:-5px;">
                         </div>
                 </div>
+
 
                 <div class="row">
                         <div class="text-group2" style="margin-left:150px;">
@@ -197,38 +194,25 @@
                         </div>
         
                         <div class="totalincome">
-                        <label for="totalincome" style="margin-left:50px;">Total Income(LKR)</label>
-                                <?php $totalVal = $incomefromPackage + $incomefromService ?>>
-                                <?php emptyCheck($totalVal)? $totalVal = '000.00' : $totalVal=number_format($totalVal,2); ?>
-                                <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($totalVal)?> </p>
+                                <label for="totalincome" style="margin-left:50px;">Total Income(LKR)</label>
+                                <?php emptyCheck($income[0]->totalincome)? $income[0]->totalincome = '000.00' : $income[0]->totalincome = $income[0]->totalincome; ?>
+                                <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($income[0]->totalincome)?> </p>
                         </div>
                        
                 </div>
                 <div class="charts">
-                    <div class="chart income">
-                                <label for="income">No of Reservations from Packages</label>
-                                <canvas id="col-chart1"></canvas>
-                        </div>  
-
                         <div class="chart res">
-                                <label for="reservation">No of Reservations from Service</label>
-                                <canvas id="mychart2"></canvas>
-                        </div>  
-                </div>
-
-                <div class="charts">
-                        <div class="chart res">
-                                <label for="reservation">Monthly Income from Packages</label>
-                                <canvas id="pie-chart1"></canvas>
+                                <label for="reservation">Reservations</label>
+                                <canvas id="col-chart"></canvas>
                         </div>
                         <div class="chart income">
-                                <label for="income">Monthly Income from Service</label>
-                                <canvas id="pie-chart2"></canvas>
+                                <label for="income">Income</label>
+                                <canvas id="area-chart"></canvas>
                         </div>  
                 </div>
 
                 <section class="container">
-
+   
    <table style="margin-top:25px; margin-bottom:50px;" id="myTable">
             <thead>
             <tr>
@@ -376,16 +360,17 @@
 
     </script>
 
-<script>
-        monthVsReservationsPackage = <?php echo json_encode($monthVsReservationsPackage)?>
 
-        const chart1 = new Chart(document.getElementById('col-chart1'), {
+<script>
+        monthVsResevations = <?php echo json_encode($monthVsReservations)?>
+
+        const chart = new Chart(document.getElementById('col-chart'), {
             type: 'bar',
             data: {
-                labels: monthVsReservationsPackage.label2,
+                labels: monthVsResevations.labels,
                 datasets:[{
-                    label: 'No of Reservations from Packages',
-                    data: monthVsReservationsPackage.data2,
+                    label: 'Monthly Reservations',
+                    data: monthVsResevations.data,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
@@ -396,34 +381,15 @@
 </script>
 
 <script>
-        monthVsReservationsService = <?php echo json_encode($monthVsReservationsService)?>
+        monthVsIncome = <?php echo json_encode($monthVsIncome)?>
 
-        const chart2 = new Chart(document.getElementById('mychart2'), {
-            type: 'bar',
-            data: {
-                labels: monthVsReservationsService.labels,
-                datasets:[{
-                    label: 'No of Reservations from Service',
-                    data: monthVsReservationsService.data,
-                    backgroundColor: [
-                        'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
-                    ],
-                }]
-            }
-        })
-
-</script>
-
-<script>
-        monthVsIncomePackage = <?php echo json_encode($monthVsIncomePackage)?>
-
-        const chart3 = new Chart(document.getElementById('pie-chart1'), {
+        const chart2 = new Chart(document.getElementById('area-chart'), {
             type: 'pie',
             data: {
-                labels: monthVsIncomePackage.label,
+                labels: monthVsIncome.label,
                 datasets:[{
-                    label: 'Monthly Income from Packages',
-                    data: monthVsIncomePackage.data,
+                    label: 'Monthly Income',
+                    data: monthVsIncome.dataVal,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
@@ -436,35 +402,8 @@
                 height: 100
     }
         })
-
-
 </script>
 
-<script>
-        monthVsIncomeService = <?php echo json_encode($monthVsIncomeService)?>
-
-        const chart4 = new Chart(document.getElementById('pie-chart2'), {
-            type: 'pie',
-            data: {
-                labels: monthVsIncomeService.labelVal,
-                datasets:[{
-                    label: 'Monthly Income from Servcies',
-                    data: monthVsIncomeService.dataVal,
-                    backgroundColor: [
-                        'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
-                    ],
-                }]
-            },
-            options: {
-                responsive: false,
-                maintainAspectRatio: false,
-                width: 100,
-                height: 100
-    }
-        })
-
-
-</script>
 </body>
 
 

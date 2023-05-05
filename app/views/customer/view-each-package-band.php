@@ -71,7 +71,7 @@
                     </tr>
                     </table>
                     <br>
-                <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
+                <!-- <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span> -->
                 </div>
                 <br><br>
              

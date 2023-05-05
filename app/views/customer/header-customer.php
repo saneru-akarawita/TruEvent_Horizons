@@ -56,7 +56,7 @@
                                         else{
                                                 $userAvatar = "profilepic.png";
                                 } ?>
-                                <img src="<?php echo URLROOT ?>/public/images/uploadimages/profilepic/<?=$userAvatar?>" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; margin-left:-90px; border-radius:50%">
+                                <img src="<?php echo URLROOT ?>/public/images/uploadimages/profilepic/<?=$userAvatar?>" alt="profile_img" style="width: 50px;vertical-align: middle;margin-top:-13px ; border-radius:50%">
                                         <div class="sub-menu1">
                                                 <ul>
                                                         <li><i class="fa-solid fa-gear"></i><a href="<?php echo URLROOT ?>/CustomerDashboard/profileSettings">Profile Settings</a></li>
@@ -66,11 +66,11 @@
                                 </li>
                                 </div>        
                                 <div class="company_name">
-                                        <li style="margin-top:12px; margin-left:-35px;width:max-content"><?= Session::getUser('name') ?></li> 
+                                        <li style="margin-top:12px; margin-left:-44px;width:max-content"><?= Session::getUser('name') ?></li> 
                                 </div>
                                 <!-- <hr size="1px"> -->
                                 <div class="company_type">
-                                        <p style="margin-top:40px; margin-left:-184px;width:max-content"><?= Session::getUser('typeText') ?></p> 
+                                        <p style="margin-top:40px; margin-left:-193px;width:max-content"><?= Session::getUser('typeText') ?></p> 
                                 </div>
                 
                 </div>
