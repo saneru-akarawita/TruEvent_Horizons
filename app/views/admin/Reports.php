@@ -120,6 +120,8 @@
                 padding: 2px 16px;
                 font-size:14px;
             }
+
+
             .filter-card .container label {
                 margin-left:8px;
             }

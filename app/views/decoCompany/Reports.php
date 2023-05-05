@@ -106,6 +106,15 @@
             padding: 10px 10px 10px 10px;
         }
 
+        .logo {
+            width: 7.7rem !important; 
+            position: absolute;
+        }
+
+        .menu-bar {
+            margin-top: -25px !important;
+        }
+
         .filter-card .container {
             padding: 2px 16px;
             font-size:14px;
@@ -143,7 +152,8 @@
 </head>
 
 <body>
-<?php require APPROOT . "/views/decoCompany/header-deco.php" ?>  
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?> 
+ 
    
 <?php $sDate = $data[0]; ?>
 <?php $eDate = $data[1]; ?>
@@ -158,6 +168,9 @@
 
 
         <div class="main-content">
+            
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?> 
+
 
        <form id="reportDatesForm" action="<?php echo URLROOT; ?>/DecoDashboard/generatereports" method="post">
                 <div class="row">
