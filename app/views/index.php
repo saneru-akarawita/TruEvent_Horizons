@@ -19,9 +19,9 @@
                         </div>
                         <div class="menu-bar">
                                 <ul>
-                                        <li><a href=""></i>About Us</a>
-                                        <li><a href="">Services</a>
-                                        <li><a href="">Contact Us</a>
+                                        <li><a href="#aboutusdetails"></i>About Us</a>
+                                        <li><a href="#servicedetails">Services</a>
+                                        <li><a href="#footer">Contact Us</a>
                                         <li><a href="<?php echo URLROOT?>/user/signin">Login</a>
                                         <li><a href="">Sign Up</a>
 
@@ -55,7 +55,7 @@
         </div>
 
 
-<div class="aboutusdetails">
+<div class="aboutusdetails" id = "aboutusdetails">
         <h2>About Us</h2>
 
         <div class="aboutus">
@@ -80,7 +80,7 @@
         </div>
 </div>
 
-<div class="servicedetails">
+<div class="servicedetails" id ="servicedetails">
         <h2>Our Services</h2>
 
         <div class="ourservice">
@@ -110,7 +110,7 @@
 
 
   <!-- footer start -->
-  <section class="footer">
+  <section class="footer" id="footer">
         <div class="overlay"></div>
         <div class="box-container">
             <div class="box">

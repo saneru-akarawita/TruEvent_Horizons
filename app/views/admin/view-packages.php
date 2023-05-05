@@ -67,7 +67,7 @@
                             <p style="font-size:small" >Plan your <?= $pDetails->package_type; ?> </p><br>
                     
                     <button class="viewButton" style="height:40px"><a href="activate?package_id=<?=$pDetails->package_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
-                    <button class="deleteButton" style="height:40px;"><a href="deleteService?package_id=<?=$pDetails->package_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                    <!-- <button class="deleteButton" style="height:40px;"><a href="deleteService?package_id=<?=$pDetails->package_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;" disable>Delete</a></button> -->
                 </div>
             </div>
             <?php }?>
