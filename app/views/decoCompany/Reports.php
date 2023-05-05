@@ -169,9 +169,6 @@
 
         <div class="main-content">
             
-<?php require APPROOT . "/views/decoCompany/header-deco.php" ?> 
-
-
        <form id="reportDatesForm" action="<?php echo URLROOT; ?>/DecoDashboard/generatereports" method="post">
                 <div class="row">
                         <div class="text-group">
