@@ -79,7 +79,7 @@
                                                 <div class="plan" style="margin-left: 25px">
                                                     <h3 style="font-size:18px">LKR. <?=number_format($pendings->rem_price, 2, '.', '')?></h3>
                                                     <?php if($pendings->ad_flag==0){?>
-                                                        <p style="font-size:14px">Ad. <?=number_format($pendings->ad_price, 2, '.', '')?></p>
+                                                        <p style="font-size:14px">Advance Payment: <?=number_format($pendings->ad_price, 2, '.', '')?></p>
                                                     <?php }?>
                                                 </div>
                                                 
@@ -206,7 +206,7 @@
                                     <div class="plan" style="margin-left: 25px">
                                         <h3 style="font-size:18px">LKR. <?=number_format($pendings->rem_price, 2, '.', '')?></h3>
                                         <?php if($pendings->ad_flag==0){?>
-                                            <p style="font-size:14px">Ad. <?=number_format($pendings->ad_price, 2, '.', '')?></p>
+                                            <p style="font-size:14px">Advance Payment: <?=number_format($pendings->ad_price, 2, '.', '')?></p>
                                         <?php }?>
                                     </div>
                                     

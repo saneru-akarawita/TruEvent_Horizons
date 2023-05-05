@@ -50,7 +50,7 @@ class BandService extends Controller
             // Validate everything
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
-            $data['num_players_error'] = emptyCheck($data['num_players']);
+            $data['num_players_error'] = positiveIntegerValidation($data['num_players']);
             $data['band_error'] = emptyCheck($data['band']);
 
             if (
@@ -145,7 +145,7 @@ class BandService extends Controller
             // Validate everything
             $data['name_error'] = emptyCheck($data['name']);
             $data['price_error'] = validatePrice($data['price']);
-            $data['num_players_error'] = emptyCheck($data['num_players']);
+            $data['num_players_error'] = positiveIntegerValidation($data['num_players']);
             $data['band_error'] = emptyCheck($data['band']);
 
             if (
