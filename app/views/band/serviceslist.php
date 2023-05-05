@@ -74,7 +74,7 @@
                     <p style="font-size:small" >Starting from   <?= $bsDetails->service_name; ?></p><br>
                     
                     <button class="viewButton" style="height:40px"><a href="activate?service_id=<?=$bsDetails->service_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
-                    <button class="deleteButton" style="height:40px;"><a href="deleteService?service_id=<?=$bsDetails->service_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button>
+                    <!-- <button class="deleteButton" style="height:40px;"><a href="deleteService?service_id=<?=$bsDetails->service_id; ?>" name="deleteaction" value="delete" style="color:white; font-weight:550;">Delete</a></button> -->
                 </div>
             </div>
             <?php }?>

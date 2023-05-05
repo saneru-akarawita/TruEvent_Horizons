@@ -107,7 +107,7 @@
                      <select name = "bands" class="dropdownmenu" id="bands"> 
                               <option value="">Select a Band Option</option>
                               <?php foreach ($data[2] as $banddetails) :?>
-
+                              <?php if($banddetails->active==1):?>
                                  <?php $spname = "";
                                        $spid = $banddetails->service_provider_id; ?>
 
@@ -118,7 +118,7 @@
                                  <?php endforeach; ?>
 
                                  <option value = "<?php echo $spname?> - <?php echo $banddetails->service_name ?>|<?=$banddetails->service_provider_id?>|<?php echo $banddetails->service_id ?>"><?php echo $spname?> - <?php echo $banddetails->service_name ?></option>
-
+                              <?php endif; ?>
                               <?php endforeach; ?>
                      </select>
                      <span class="error"><?php echo $data[0]['bands_error']; ?></span>
@@ -130,7 +130,7 @@
                      <select name = "decorations" class="dropdownmenu" id="decorations"> 
                               <option value="">Select a Decoration Option</option>
                               <?php foreach ($data[1] as $decodetails) :?>
-
+                              <?php if($decodetails->active ==1):?>
                                  <?php $spname = "";
                                        $spid = $decodetails->service_provider_id; ?>
 
@@ -141,7 +141,7 @@
                                  <?php endforeach; ?>
 
                                  <option value = "<?php echo $spname?> - <?php echo $decodetails->service_name ?>|<?=$decodetails->service_provider_id?>|<?php echo $decodetails->service_id ?>"><?php echo $spname?> - <?php echo $decodetails->service_name ?></option>
-
+                              <?php endif; ?>
                               <?php endforeach; ?>
                      </select>
                      <span class="error"><?php echo $data[0]['decorations_error']; ?></span>
@@ -153,7 +153,7 @@
                      <select name = "photography" class="dropdownmenu" id="photography"> 
                               <option value="">Select a Photography Option</option>
                               <?php foreach ($data[3] as $photodetails) :?>
-
+                              <?php if($photodetails->active ==1):?>
                                  <?php $spname = "";
                                        $spid = $photodetails->service_provider_id; ?>
 
@@ -164,7 +164,7 @@
                                  <?php endforeach; ?>
 
                                  <option value = "<?php echo $spname?> - <?php echo $photodetails->service_name ?>|<?=$photodetails->service_provider_id?>|<?php echo $photodetails->service_id ?>"><?php echo $spname?> - <?php echo $photodetails->service_name ?></option>
-
+                              <?php endif; ?>
                               <?php endforeach; ?>
                      </select>
                      <span class="error"><?php echo $data[0]['photography_error']; ?></span>

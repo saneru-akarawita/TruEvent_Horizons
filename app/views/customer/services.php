@@ -83,6 +83,13 @@
                     </div>
                 </div>
             <?php }else {?>
+                <?php $serviceProviderID = $hsDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
@@ -97,55 +104,6 @@
                 </div>
             <?php }?>
             <?php endforeach; ?>
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image10.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Kingsbury</h3>
-                    <p>Last Minute Deals Find Your Next Getaway</p>
-                    <a href="services" class="btn">View Service</a>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image11.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Cinnamon Hotels</h3>
-                    <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <a href="services" class="btn">View Service</a>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Ramada Hotels</h3>
-                    <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <a href="services" class="btn">View Service</a>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image14.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Shangri La Hotels</h3>
-                    <p>Make Your Event More Memorable with special chinese cuisine</p>
-                    <a href="services" class="btn">View Service</a>
-                </div>
-            </div> -->
-
 
         </div>
 
@@ -186,6 +144,13 @@
                     </div>
                 </div>
             <?php }else {?>
+                <?php $serviceProviderID = $dcDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
@@ -199,42 +164,6 @@
                 </div>
             <?php }?>
             <?php endforeach; ?>
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image11.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Decoration Company</h3>
-                    <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <a href="packages.php" class="btn">View Service</a>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Band Company</h3>
-                    <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <a href="packages.php" class="btn">View Service</a>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image13.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Photography Company</h3>
-                    <p>Make Your Event More Memorable</p>
-                    <a href="packages.php" class="btn">View Service</a>
-                </div>
-            </div> -->
 
         </div>
 
@@ -265,7 +194,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" .($dcount%5 + 1) . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/band/" .($dcount%6 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
@@ -275,6 +204,13 @@
                     </div>
                 </div>
             <?php }else {?>
+                <?php $serviceProviderID = $bsDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
@@ -292,65 +228,6 @@
     </div>
 </section> 
 
-    <!-- <section class="home-packages" id="bands">
-
-        <h1 class="heading-title"> Music Band</h1>
-
-        <div class="box-container">
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image29.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Stage Revolution</h3>
-                    <p>Last Minute Deals Find Your Next Getaway</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image12.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Ecstasy</h3>
-                    <p>To Make Your Event More Beautiful And Unforgettable</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image30.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Velvet Concord</h3>
-                    <p>Make Your Event Enjoyable And Get Mesmerized</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image31.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Turning Jane</h3>
-                    <p>Make Your Event More Memorable</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-        </div>
-
-        </div> -->
-
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
-    <!-- </section> -->
 
     <!-- Music Band Section Ends -->
 
@@ -374,7 +251,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
+                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/photo/" . ($dcount%6 + 1) . ".jpg'>"; ?>
                     </div>
                     <div class="content">
                         <h3><?= $psDetails->service_name; ?></h3>
@@ -385,6 +262,13 @@
                     </div>
                 </div>
             <?php }else {?>
+                <?php $serviceProviderID = $psDetails->service_provider_id; ?>
+
+                <?php foreach ($data0 as $spdetails) : ?>
+                    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+                    <?php $spName = $spdetails->company_name;
+                    } ?>
+                <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
                         <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
@@ -402,65 +286,6 @@
     </div>
 </section>
 
-    <!-- <section class="home-packages" id="photography">
-
-        <h1 class="heading-title"> Photography</h1>
-
-        <div class="box-container">
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image32.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Image Studio</h3>
-                    <p>Our lens capture your moments in all their flavor and fancies</p>
-                    <a href="services.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image33.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Exlusion Pictures</h3>
-                    <p>The work of a photographer is to simplify reality</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image34.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>The Artsy Lens</h3>
-                    <p>Photography is the art of catching memories</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image35.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>Flutter Me Shutters </h3>
-                    <p>Capture the moments you nevr want to forget</p>
-                    <a href="packages.php" class="btn" style="border-radius:5px;">View Service</a>
-                </div>
-            </div>
-
-        </div>
-
-        </div> --> 
-
-
-        <!-- <div class="load-more"> <a href="packages.php" class="btn">load more</a></div> -->
-    <!-- </section> -->
 
     <!-- Photography Section Ends -->
 
