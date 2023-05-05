@@ -108,7 +108,7 @@
 
         .logo {
             width: 7.7rem !important; 
-            position: absolute;3
+            position: absolute;
         }
 
         .menu-bar {

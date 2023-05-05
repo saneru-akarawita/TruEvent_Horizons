@@ -108,7 +108,7 @@
 
         .logo {
             width: 7.7rem !important; 
-            position: absolute;3
+            position: absolute;
         }
 
         .menu-bar {
@@ -152,6 +152,7 @@
 </head>
 
 <body>
+<?php require APPROOT . "/views/decoCompany/header-deco.php" ?> 
  
    
 <?php $sDate = $data[0]; ?>
