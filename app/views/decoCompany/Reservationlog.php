@@ -19,7 +19,6 @@
 
 <body>
 <?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
-    
 
     <?php $spID = $data[0]; ?>
     <?php $rvdata = $data[1]; ?>
@@ -34,8 +33,7 @@
 
                 <div class="hero" style="width:2000px">
                     <div class="hero-heading">
-                        <h3>Reservation Log</h3>
-                     
+                        <h3>Reservation Log</h3>                    
                     </div>
 
 
@@ -47,20 +45,20 @@
 
 
                     <div class="hero-heading">
-                        <h3>Current Reservations - Service<i class="bx bx-chevron-down"></i> </h3>
+                        <h3>Current Reservations<i class="bx bx-chevron-down"></i> </h3>
                     </div>
 
-                     
                     <?php $scount = 0; $pcount=0; ?>
                     <?php foreach ($rvdata as $rvDetails) : ?>
-                    <?php if($rvDetails->status !="decline" && $rvDetails->status !="canceled") {?> <!--methanta != canceled uth danna -->
-                                                    <?php 
-                                                        $sp_id_arr = explode (",", $rvDetails->sp_id);
-                                                    ?>
+                    <?php if($rvDetails->status !="decline" && $rvDetails->status !="canceled") {?>
+                    
+                                                <?php 
+                                                    $sp_id_arr = explode (",", $rvDetails->sp_id);
+                                                ?>
                                                 <?php foreach ($sp_id_arr as $new_sp_id) : ?>
                                                     <?php if ($new_sp_id == $spID) { ?>
-                                                        <?php $scount = $scount + 1; ?>
 
+                                                <?php $scount = $scount + 1; ?>
                     <div class="project">
                        <div class="col col<?php echo $scount%4 +1 ?>">
                             <div class="project-card">
@@ -95,7 +93,6 @@
                                         <progress id="progress" value="<?= $value ?>" max="100"style="margin-left:35px;"><?php echo $value ?>%</progress>
                                         <span><?php echo $value ?>%</span>
                                     </div>
-
                                     
                                     <div class="progress-box">
                                         <label for="progress">Payments</label>
@@ -105,21 +102,22 @@
                                     </div>
 
                                 </div>
-                            
+                                
                                 <?php if($rvDetails->status =="pending") {?>
-                                    <div class="action-button" style="justify-content:center; margin-left:75px;">
-
-                                        <?php if($rvDetails->rvType == "service"){?> 
+                                
+                                    <?php if($rvDetails->rvType == "service"){?>
+                                        <div class="action-button" style="justify-content:center; margin-left:75px;"> 
                                             <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                             <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                             <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
                                         <?php } else {?>
-
+                                            
                                             <?php foreach($packageConfirmationData as $pcd): ?>
                                                 <?php if($pcd->rv_id == $rvDetails->rv_id){?>
                                                     <?php if($pcd->deco_confirmation == Session::getUser('id')) {?>
                                                             <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
                                                     <?php } else {?>
+                                                        <div class="action-button" style="justify-content:center; margin-left:75px;">
                                                             <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                                             <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                                             <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
@@ -131,7 +129,7 @@
                                 <?php } else { ?>
                                     <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
                                 <?php }?>
-                            </div>
+                                </div>
 
                             <div class="card-footer">
                                 <ul class="team">
