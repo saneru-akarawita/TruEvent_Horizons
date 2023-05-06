@@ -282,7 +282,7 @@ class CustomerDashboard extends Controller
             $data['event_name_error'] = emptyCheck($data['event_name']);
             $data['service_type_error'] = emptyCheck($data['service_type']);
             $data['service_name_error'] = emptyCheck($data['service_name']);
-            $data['customername_error'] = emptyCheck($data['customername']);
+            $data['customername_error'] = validateNames($data['customername']);
             $data['contactno_error'] = validateContactno($data['contactno']);
             $data['eob_error'] = emptyCheck($data['eob']);
             $data['aos_error'] = emptyCheck($data['aos']);

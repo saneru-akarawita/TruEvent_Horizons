@@ -100,11 +100,11 @@ class ServiceProvider extends Controller
             $data['email_error'] = validateEmail($data['email']);
             $data['contactno_error'] = validateContactno($data['contactno']);
             $data['OTP_error'] = emptyCheck($data['OTP']);
-            $data['accName_error'] = emptyCheck($data['accname']);
+            $data['accName_error'] = validateNames($data['accname']);
             $data['accNumber_error'] = emptyCheck($data['accnumber']);
             $data['bank_error'] = emptyCheck($data['bank']);
             $data['branch_error'] = emptyCheck($data['branch']);
-            $data['district_error'] = emptyCheck($data['district']);
+            $data['district_error'] = districtValidation($data['district']);
             $data['service_type_error'] = emptyCheck($data['service_type']);
             $data['travel_flag_error'] = emptyCheck($data['travel_flag']);
             $data['password_error'] = emptyCheck($data['password']);

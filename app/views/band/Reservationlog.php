@@ -105,9 +105,9 @@
                                 </div>
                                 
                                 <?php if($rvDetails->status =="pending") {?>
-                                    <div class="action-button" style="justify-content:center; margin-left:75px;">
 
-                                    <?php if($rvDetails->rvType == "service"){?> 
+                                    <?php if($rvDetails->rvType == "service"){?>
+                                        <div class="action-button" style="justify-content:center; margin-left:75px;"> 
                                         <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                         <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                         <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservation?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
@@ -118,6 +118,7 @@
                                                 <?php if($pcd->band_confirmation == Session::getUser('id')) {?>
                                                         <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
                                                 <?php } else {?>
+                                                    <div class="action-button" style="justify-content:center; margin-left:75px;">
                                                         <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
                                                         <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                                         <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>

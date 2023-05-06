@@ -86,11 +86,11 @@ class Admin extends Controller
          else if ($_POST['action'] == "register")
          {
             // Validate everything
-            $data['fname_error'] = emptyCheck($data['fname']);
-            $data['lname_error'] = emptyCheck($data['lname']);
+            $data['fname_error'] = validateNames($data['fname']);
+            $data['lname_error'] = validateNames($data['lname']);
             $data['email_error'] = validateEmail($data['email']);
             $data['OTP_error'] = emptyCheck($data['OTP']);
-            $data['accName_error'] = emptyCheck($data['accname']);
+            $data['accName_error'] = validateNames($data['accname']);
             $data['accNumber_error'] = emptyCheck($data['accnumber']);
             $data['bank_error'] = emptyCheck($data['bank']);
             $data['branch_error'] = emptyCheck($data['branch']);
