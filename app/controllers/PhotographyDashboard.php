@@ -434,7 +434,8 @@ class PhotographyDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $PhotoPrice = $this->reservationModel-> getPhotoPrice($rvid);
-         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$photographydetailslist,$PhotoPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$photographydetailslist,$PhotoPrice,$packageConfirmationlist);
          $this->view('photography/view-reservation',$result0);
    }
 

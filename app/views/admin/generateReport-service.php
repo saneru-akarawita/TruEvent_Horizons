@@ -240,11 +240,11 @@
                 </div>
                 <div class="charts">
                         <div class="chart res">
-                                <label for="reservation">Reservations</label>
+                                <label for="reservation">Monthly Reservations</label>
                                 <canvas id="col-chart"></canvas>
                         </div>
                         <div class="chart income">
-                                <label for="income">Income</label>
+                                <label for="income">Monthly Income</label>
                                 <canvas id="area-chart"></canvas>
                         </div>  
                 </div>
@@ -413,7 +413,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>

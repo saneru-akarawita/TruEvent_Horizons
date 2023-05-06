@@ -12,25 +12,10 @@
         <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
 <!-- header section starts -->
-<!-- <section class="header">
-<img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
-<a href="home" class="dashboard">Hotel</a>
+<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+<!-- header section ends -->
 
-<nav class="navbar">
-<a href="home">Home</a>
-<a href="viewservices">Services</a>
-<a href="addservices">Add Services</a>
-<a href="logout">Logout</a>
-</nav> -->
-
-<!-- Gives a Menu Button -->
-<!-- <button id="menu-btn" class="fas fa-bars"></button>
-
-
-</section>
- -->
 <?php $spID = $data[0]; ?>
 <?php $serviceID = $data[1]; ?>
 <?php $rvID = $data[2]; ?>
@@ -54,7 +39,7 @@
                                                 <?php if ($hoteldata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
                                                 <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $hoteldata->service_type;?></h1>
                                                 <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
-                                        
+                                                <?php $rv_id = $rvDetails->rv_id; ?>
                                                 <div class="description">
                                                         <table id="details12">
                                                                         <tr>
@@ -64,6 +49,11 @@
                                                                         <tr>
                                                                                 <td>Reservation Time</td>
                                                                                 <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Status</td>
+                                                                                <td>: <?= $rvDetails->status;?></td>
+                                                                                <?php $status_rv = $rvDetails->status; ?>
                                                                         </tr>
                                                                         <tr>
                                                                                 <td>Hall Name </td>
@@ -100,7 +90,8 @@
                                                                         </tr>
                                                                 
                                                                         <?php foreach ($cusdata as $cus) : ?>
-                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
+                                                                                <?php if ($cus->customer_id == $rvDetails->customer_id) { ?> 
+                                                                                        <?php $customer_id  = $rvDetails->customer_id; ?>
                                                                         <tr>
                                                                                         <td>Customer Name </td>
                                                                                         <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
@@ -127,12 +118,24 @@
                                                 <?php } ?>
                                                 <?php endforeach; ?>
                                                 <?php } ?>
+
+                                                     
                 <?php endforeach; ?>
                 <?php endforeach; ?>
                 
-                <div class="product-price-btn">
-                        <button type="button" onclick="history.back()">Back</button>
-                </div>
+<?php if($status_rv == 'pending'){ ?>
+        <div class="product-price-btn" style="display:flex; margin:0px;">
+        <button type="button" style = "width:100px; border-radius:5px; padding:10px; margin-left:50px;" onclick="history.back()">Back</button>
+        <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
+        <button type="button" style = "width:100px; border-radius:5px; padding:10px;"> <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
+                                                </div>
+                                        <?php }else{ ?>
+                                                <div class="product-price-btn">
+                                                        <button type="button" onclick="history.back()">Back</button>
+                                                </div>
+                                        <?php } ?> 
+               
+               
                 </div>
         </div>  
 </div>

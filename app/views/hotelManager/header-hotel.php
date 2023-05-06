@@ -65,26 +65,6 @@
                                 <div class="company_type">
                                         <p style="margin-top:40px; margin-left:-184px;width:max-content"><?= Session::getUser('typeText') ?></p> 
                                 </div>
-                                <!-- <div class="nav_right">
-			                <ul>
-                                                <li class="nr_li dd_main">
-                                                        <img src="<?php echo URLROOT ?>/public/images/profile_pic.png" alt="profile_img">
-                                                        
-                                                        <div class="sub-menu1">
-                                                               
-                                                                        <ul>
-                                                                                <li><i class="fas fa-cog"><a href="viewservices">Profile Settings</a></li>
-                                                                                <li><i class="fas fa-sign-out-alt"><a href="viewservices">Logout</a></li>
-                                                                        </ul>
-                                                                
-                                                        </div>
-                                                </li>
-
-                                                <li class="nr_li">
-                                                        <i class="fa-solid fa-envelopee-open-text"></i>
-				                </li>
-			                </ul>
-		                </div>  -->
 
                         </ul>
                 

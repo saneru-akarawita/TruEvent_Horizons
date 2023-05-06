@@ -14,25 +14,12 @@
 
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
     <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
-        <a href="#" class="dashboard">Hotels</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-    
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        <!-- </section> -->
+<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+    <!-- header section ends -->
 
+
+        <button id="menu-btn" class="fas fa-bars"></button>
 
         <!-- home section starts -->
 <section class="home">

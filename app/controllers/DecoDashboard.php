@@ -440,7 +440,8 @@ class DecoDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $DecoPrice = $this->reservationModel-> getDecoPrice($rvid);
-         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist,$DecoPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist,$DecoPrice,$packageConfirmationlist);
          $this->view('decoCompany/view-reservation',$result1);
    }
 

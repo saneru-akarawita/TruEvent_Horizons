@@ -31,6 +31,7 @@
 
 </section>
  -->
+
 <?php $spID = $data[0]; ?>
 <?php $serviceID = $data[1]; ?>
 <?php $rvID = $data[2]; ?>
@@ -38,7 +39,7 @@
 <?php $cusdata = $data[4]; ?>
 <?php $bandservicedata = $data[5]; ?>
 <?php $bandPrice = $data[6]; ?>
-
+<?php $packageConfirmationData = $data[7]; ?>
 
 <div class="wrapper">
 
@@ -57,6 +58,7 @@
                                                 <?php if ($banddata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
                                                 <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $banddata->service_name;?></h1>
                                                 <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                                <?php $rv_id = $rvDetails->rv_id; ?>
                                         
                                                 <div class="description">
                                                         <table id="details12">
@@ -67,6 +69,11 @@
                                                                         <tr>
                                                                                 <td>Reservation Time</td>
                                                                                 <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Status</td>
+                                                                                <td>: <?= $rvDetails->status;?></td>
+                                                                                <?php $status_rv = $rvDetails->status; ?>
                                                                         </tr>
                                                                         <tr>
                                                                                 <td>Band Type</td>
@@ -93,7 +100,9 @@
                                                                 
                                                                         <?php foreach ($cusdata as $cus) : ?>
                                                                                 <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
-                                                                        <tr>
+                                                                                        <?php $customer_id = $rvDetails->customer_id; ?> 
+                                                                
+                                                                                <tr>
                                                                                         <td>Customer Name </td>
                                                                                         <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
                                                                                 </tr>
@@ -123,6 +132,20 @@
                 <?php } ?>
                 <?php endforeach; ?>
                 
+                <?php if (!empty($status_rv)){ ?>
+                <?php if($status_rv == 'pending'){ ?>
+                        <div class="product-price-btn" style="display:flex; margin:0px;">
+                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; margin-left:50px;" onclick="history.back()">Back</button>
+                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
+                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>//serviceProviderReservation/cancelReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
+                        </div>
+                <?php }else{ ?>
+                                <div class="product-price-btn">
+                                        <button type="button" onclick="history.back()">Back</button>
+                                </div>
+                <?php } ?> 
+               <?php } ?>
+
 
                 <?php foreach ($rvdata as $rvDetails) : ?>
                                 <?php $sp_id_arr = explode (",", $rvDetails->sp_id);?>
@@ -133,6 +156,7 @@
                                                 <?php if ($banddata->service_id == $serviceID && $rvID == $rvDetails->rv_id) { ?>
                                                 <h1 style="margin-top:-45px; font-size:2.5rem;"><?= $banddata->service_name;?></h1>
                                                 <h2>Reservation ID - <?= $rvDetails->rv_id;?></h2>
+                                                <?php $rv_id = $rvDetails->rv_id; ?>
                                         
                                                 <div class="description">
                                                         <table id="details12">
@@ -143,6 +167,11 @@
                                                                         <tr>
                                                                                 <td>Reservation Time</td>
                                                                                 <td>: <?= $rvDetails->rvTime;?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td>Reservation Status</td>
+                                                                                <td>: <?= $rvDetails->status;?></td>
+                                                                                <?php $status_rv = $rvDetails->status; ?>
                                                                         </tr>
                                                                         <tr>
                                                                                 <td>Band Type</td>
@@ -169,7 +198,9 @@
                                                                 
                                                                         <?php foreach ($cusdata as $cus) : ?>
                                                                                 <?php if ($cus->customer_id == $rvDetails->customer_id) { ?>  
-                                                                        <tr>
+                                                                                        <?php $customer_id = $rvDetails->customer_id; ?>
+                                        
+                                                                                <tr>
                                                                                         <td>Customer Name </td>
                                                                                         <td>: <?= $cus->fname; ?> <?= $cus->lname; ?></td>
                                                                                 </tr>
@@ -199,10 +230,33 @@
                 <?php } ?>
                 <?php endforeach; ?>
 
+                <?php if (!empty($status_rv)){ ?>
+                <?php if($status_rv == 'pending'){ ?>
+                        <?php foreach($packageConfirmationData as $pcd): ?>
+                                <?php if($pcd->rv_id == $rv_id){?>
+                                        <?php if($pcd->band_confirmation == Session::getUser('id')) {?>
+                                                <div class="product-price-btn">
+                                                        <button type="button" onclick="history.back()">Back</button>
+                                                </div>
+                                        <?php } else {?>
+                                                <div class="product-price-btn" style="display:flex; margin:0px;">
+                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; margin-left:50px;" onclick="history.back()">Back</button>
+                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
+                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"> <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
+                                                </div>
+                                        <?php } ?>
+                                <?php } ?>
+                        <?php endforeach?>
+       
+                        <?php }else{ ?>
+                               
+                                <div class="product-price-btn">
+                                        <button type="button" onclick="history.back()">Back</button>
+                                </div>
+                        <?php } ?> 
+                 <?php } ?>
 
-                <div class="product-price-btn">
-                        <button type="button" style="margin-top:100px;" onclick="history.back()">Back</button>
-                </div>
+                
                 </div>
         </div>  
 </div>

@@ -186,7 +186,8 @@ class BandDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $BandPrice = $this->reservationModel-> getBandPrice($rvid);
-         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$banddetailslist,$BandPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$banddetailslist,$BandPrice,$packageConfirmationlist);
          $this->view('band/view-reservation',$result0);
    }
 

@@ -20,50 +20,14 @@
 
 <body>
 
+<!-- -------------------------------------Start header for hotel-------------------------------------------------- -->
 <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+<!-- -------------------------------------End header for hotel-------------------------------------------------- -->
 
-<!-- -------------------------------------header for hotel-------------------------------------------------- -->
-
-<!-- <div class="headerdetails">
-        <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" style="width:8rem; height:auto; margin-left:20px;" alt="logo" class="logo">
-       <div class="searchbar">
-                <input type="text">
-                <i class="fa-solid fa-magnifying-glass" style="margin-left: 10px;"></i>
-        </div>
-                <div class="menu-bar">
-                        <ul>
-                        
-                                <li><a href="home">Home</a>
-                                <li><a href="">Services</a>
-                                        <div class="sub-menu1">
-                                                <ul>
-                                                        <li><a href="viewservices">View Venues</a></li>
-                                                        <li><a href="addservices">Add Venues</a></li>
-                                                        <li><a href="">Offers/Promotions</a></li>
-                                                        <li><a href="">Reservation Log</a></li>
-                                                </ul>
-                                        </div>
-                                </li>
-                                <li><a href="">Payment</a></li>
-                                <li><a href="">Reports</a></li> 
-                                <li><a href="logout">Logout</a></li>
-                                
-                                <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
-                                <li><a href=""> <i class="fa-solid fa-comment"></i></a></li>
-                           
-                        </ul>
-                
-                </div>
-       
-        </div>  -->
 
 
    <div class="main-container">
-      <!-- <a href="#">
-         <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png" alt="logo" class="top-left-logo">
-      </a>
-      <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
-      
+     
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form" enctype="multipart/form-data">
             <h1 class="title">Add Venue/Location</h1>

@@ -204,12 +204,12 @@
                 </div>
                 <div class="charts">
                     <div class="chart income">
-                                <label for="income">No of Reservations from Packages</label>
+                                <label for="income">Monthly Reservations from Packages</label>
                                 <canvas id="col-chart1"></canvas>
                         </div>  
 
                         <div class="chart res">
-                                <label for="reservation">No of Reservations from Service</label>
+                                <label for="reservation">Monthly Reservations from Service</label>
                                 <canvas id="mychart2"></canvas>
                         </div>  
                 </div>
@@ -389,7 +389,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>
@@ -408,7 +418,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>
