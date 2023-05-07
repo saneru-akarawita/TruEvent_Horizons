@@ -134,20 +134,9 @@
 
                             <div class="card-footer">
                                 <ul class="team">
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                    <li >
+                                        <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.png" style="margin-left:-15px; margin-top:-5px; height:50px;">
                                     </li>
-
-
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                    </li>
-
-
-                                    <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
-                                    </li>
-
                                 </ul>
                             </div>
                                     </div>

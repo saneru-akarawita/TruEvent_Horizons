@@ -165,7 +165,7 @@
 
 
         <div class="main-content">
-
+        <br><br><br>
        <form id="reportDatesForm" action="<?php echo URLROOT; ?>/hotelDashboard/generatereports" method="post">
                 <div class="row">
                         <div class="text-group">
@@ -177,11 +177,11 @@
 
                 <div class="row">
                         <div class="text-group2" style="margin-left:150px;">
-                                <label for="fromdate" style="font-size:18px; font-weight:500;">From</label>
+                                <label for="fromdate" style="font-size:18px; font-weight:500;">From:</label>
                                 <input type="date" name="startDate" id="startDate" style="margin-top:-30px;" value="<?php echo($sDate) ?>" required>      
                         </div>  
                         <div class="text-group2-1" style="font-size:18px; font-weight:500;">
-                                <label for="todate" class="todate">To</label>
+                                <label for="todate" class="todate">To:</label>
                                 <input type="date" name="endDate" id="endDate" style="margin-top:-30px;" value="<?php echo($eDate) ?>" required>
                         </div>
 
@@ -189,12 +189,12 @@
                 </div>
         </form>
                 <div class="totaldetails">
-                        <div class="totalres">
+                        <div class="totalres" style="border-radius:10px;">
                                 <label for="totReservation">Total Reservation</label>
                                 <p id="preview" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-120px;">
                         </div>
         
-                        <div class="totalincome">
+                        <div class="totalincome" style="border-radius:10px;">
                                 <label for="totalincome" style="margin-left:50px;">Total Income(LKR)</label>
                                 <?php emptyCheck($income[0]->totalPrice)? $income[0]->totalPrice = '000.00' : $income[0]->totalPrice = $income[0]->totalPrice; ?>
                                 <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($income[0]->totalPrice)?> </p>
@@ -202,17 +202,17 @@
                        
                 </div>
                 <div class="charts">
-                        <div class="chart res">
+                        <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
                                 <label for="reservation">Reservations</label>
                                 <canvas id="col-chart"></canvas>
                         </div>
-                        <div class="chart income">
+                        <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
                                 <label for="income">Income</label>
                                 <canvas id="area-chart"></canvas>
                         </div>  
                 </div>
 
-                <section class="container">
+                <section class="table-container">
    
    <table style="margin-top:25px; margin-bottom:50px;" id="myTable">
             <thead>
