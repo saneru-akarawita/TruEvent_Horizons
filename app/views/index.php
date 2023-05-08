@@ -32,6 +32,7 @@
                                                         </ul>
                                                 </div>
                                         </li>
+                                        <li><a href="<?php echo URLROOT?>/user/policy">Policy</a></li>
                                 </ul>
                                 
                         </div>
