@@ -103,7 +103,7 @@ function timeFormatValidation($time){
             
    $emptyCheckResponse = emptyCheck($time);
    //seconds validation too
-   if (!preg_match("/^([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$/",$time)) {
+   if (!preg_match("/^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/",$time)) {
       return "Invalid time format";
    }
    else
