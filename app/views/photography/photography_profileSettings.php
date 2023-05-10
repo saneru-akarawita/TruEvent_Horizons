@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/add-package-service-style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png">
-    <title>TruEvent Horizons - MyProfile - Photography</title>
+    <title>TruEvent Horizons - Photography Profile Settings - Photography</title>
     <link href='https://unpkg.com/filepond@^4/dist/filepond.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
     <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-lZ74JXlJSQnvyTT8IRYc+70llQQaHYJ0HfgG8fzDZafr+Jop9XprTF0M0/hJW+OvAJl4x+PYJh+s1+qO2Zv4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         #profilepic{
@@ -138,23 +139,25 @@
             <br>
 
             <label for="currentpw">Current Password</label>
-            <div class="row"> 
-                <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:60%" required>
+            <div class="row" style="display:flex;"> 
+                <input class="currentpw" type="password" id="currentpw" name="currentpw" placeholder="enter current password" style="width:45.5%; border-radius:5px;" required>
+                <button type="button" id="showPassword" style="margin-left:-20px; background-color:white;"><i class="fas fa-eye"></i></button>
                 <span class="error"><?php echo $data[0]['currentPassword_error'];  ?></span>
-           
             </div>
             <br><br>
             <div class="row"> 
                 <div class="column">
                     <label for="newpw">New Password</label>
-                    <input class="newpw" type="password" id="newpw" name="newpw" placeholder="enter new password" required>
+                    <input class="newpw" type="password" id="newpw" name="newpw" placeholder="enter new password" style="width:90%; display:inline-flex;" required>
+                    <button type="button" id="showPassword2"  style="display:inline-flex; background-color:white;"><i class="fas fa-eye"></i></button>
                     <span class="error"><?php echo $data[0]['newPassword_error']; ?></span>
-               
                 </div>
                 <div class="column">
                     <label for="confirmnewpw">Confirm New Password</label>
-                    <input class="confirmnewpw" type="password" id="confirmnewpw" name="confirmnewpw" placeholder="re-enter new password" required>
-                </div> 
+                    <input class="confirmnewpw" type="password" id="confirmnewpw" name="confirmnewpw" placeholder="re-enter new password" style="width:90%; display:inline-flex;" required>
+                    <button type="button" id="showPassword3" style="display:inline-flex; background-color:white;"><i class="fas fa-eye"></i></button>
+                    <span class="error"><?php echo $data[0]['confirmPassword_error']; ?></span>
+                </div>
             </div>
             <br>
             <div class="footer-container">
@@ -253,5 +256,54 @@
     });
 
 </script>
+
+<script>
+const passwordInput = document.getElementById('currentpw');
+const showPasswordButton = document.getElementById('showPassword');
+
+showPasswordButton.addEventListener('click', () => {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    showPasswordButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+  } else {
+    passwordInput.type = 'password';
+    showPasswordButton.innerHTML = '<i class="fas fa-eye"></i>';
+  }
+});
+
+</script>
+
+<script>
+const passwordInput2 = document.getElementById('newpw');
+const showPasswordButton2 = document.getElementById('showPassword2');
+
+showPasswordButton2.addEventListener('click', () => {
+  if (passwordInput2.type === 'password') {
+    passwordInput2.type = 'text';
+    showPasswordButton2.innerHTML = '<i class="fas fa-eye-slash"></i>';
+  } else {
+    passwordInput2.type = 'password';
+    showPasswordButton2.innerHTML = '<i class="fas fa-eye"></i>';
+  }
+});
+
+</script>
+
+<script>
+const passwordInput3 = document.getElementById('confirmnewpw');
+const showPasswordButton3 = document.getElementById('showPassword3');
+
+showPasswordButton3.addEventListener('click', () => {
+  if (passwordInput3.type === 'password') {
+    passwordInput3.type = 'text';
+    showPasswordButton3.innerHTML = '<i class="fas fa-eye-slash"></i>';
+  } else {
+    passwordInput3.type = 'password';
+    showPasswordButton3.innerHTML = '<i class="fas fa-eye"></i>';
+  }
+});
+
+</script>
+
 </body>
 </html>

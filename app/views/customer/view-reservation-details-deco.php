@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TruEvent Horizons - View Reservation - Deco</title>
+        <title>TruEvent Horizons - View Reservation - Decoration</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/styles-hotel.css">
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/style.css">
@@ -13,24 +13,7 @@
 </head>
 <body>
 <?php require APPROOT . "/views/customer/header-customer.php" ?>
-<!-- header section starts -->
-<!-- <section class="header">
-<img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.jpg" alt="logo" class="logo">
-<a href="home" class="dashboard">Hotel</a>
 
-<nav class="navbar">
-<a href="home">Home</a>
-<a href="viewservices">Services</a>
-<a href="addservices">Add Services</a>
-<a href="logout">Logout</a>
-</nav> -->
-
-<!-- Gives a Menu Button -->
-<!-- <button id="menu-btn" class="fas fa-bars"></button>
-
-
-</section>
- -->
 <?php $serviceID = $data[0]; ?>
 <?php $serviceTYPE = $data[1]; ?>
 <?php $spID = $data[2]; ?>

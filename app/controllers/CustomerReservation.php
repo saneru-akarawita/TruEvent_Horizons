@@ -447,7 +447,7 @@ class CustomerReservation extends Controller
                // Validate everything
                $data['event_name_error'] = emptyCheck($data['event_name']);
                $data['rvdate_error'] = dateFormatValidation($data['rvdate']);
-               $data['rvtime_error'] = timeFormatValidation($data['rvtime']);
+               $data['rvtime_error'] = emptyCheck($data['rvtime']);
 
                if (
                   empty($data['event_name_error']) && empty($data['rvdate_error']) && empty($data['rvtime_error'])

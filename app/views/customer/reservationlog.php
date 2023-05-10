@@ -130,11 +130,6 @@
                                         <?php } else {?>
                                             <?php require APPROOT . "/views/common/cus_log_pay.php" ?>
                                         <?php }?>
-
-                                            <!-- <a href="viewServiceReservationDetails?rv_id=<?=$rvdetails->rv_id; ?>&spType=<?=$rvdetails->spType;?>&sp_id=<?=$rvdetails->sp_id;?>&service_id=<?=$rvdetails->service_id; ?>" class="buttond">view</a>
-                                            <a href="editReservation?rv_id=<?=$rvdetails->rv_id; ?>" class="buttone" style="margin-right:20px; margin-left: 20px;">edit</a>
-                                            <a href="#" class="buttond">cancel</a> -->
-
                                         </div>
                                         
                                         <!--three dots below the card ends  -->

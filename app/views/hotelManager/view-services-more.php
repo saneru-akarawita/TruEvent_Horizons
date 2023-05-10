@@ -12,26 +12,10 @@
 
 </head>
 <body>
-<?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
     <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/hotel manager/figma images/logo designs/logo2.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Decoration</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Venues</a>
-            <a href="addservices">Add Venues</a>
-            <a href="logout">Logout</a>
-        </nav> -->
-    
-        <!-- Gives a Menu Button -->
+    <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
+    <!-- header section ends -->
         <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        <!-- </section> -->
-
-
         <!-- home section starts -->
 <section class="home">
     <a class="prev" onclick="plusSlides(-1)">❮</a>

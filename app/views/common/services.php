@@ -12,8 +12,6 @@
 
     <!-- custom css file link -->
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/customer/services.css" />
-
-
 </head>
 
 <body>
@@ -59,6 +57,7 @@
                     <div class="content">
                         <h3><?= $spName; ?></h3>
                         <p><?= $hsDetails->service_type; ?> - <?= $hsDetails->hall_name ?></p>
+                        <!-- <a href="#" class="btn">View Service</a> -->
                     </div>
                 </div>
 

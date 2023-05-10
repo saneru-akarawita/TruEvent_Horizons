@@ -60,9 +60,56 @@ class AdminDashboard extends Controller
       $result8 = $this->bandModel->getBandServiceDetails();
       
       $result = array($result1, $result2, $result3,$result8,$result6);
-      $this->view('common/services',  $result);
+      $this->view('admin/services',  $result);
    }
 
+   public function viewEachServiceHotel()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result3 = $this->hotelModel->getHotelServiceDetails();
+      $result4 = array($service_id, $result1, $result3);
+      $this->view('admin/view-each-service-hotel',$result4);
+   }
+
+   public function viewEachServiceDeco()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result2 = $this->decoModel->getDecoServiceDetails();
+      $result5 = array($service_id, $result1, $result2);
+      $this->view('admin/view-each-service-deco',$result5);
+   }
+
+   public function viewEachServicePhotography()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result6 = $this->photographyModel->getPhotographyServiceDetails();
+      $result7 = array($service_id, $result1, $result6);
+      $this->view('admin/view-each-service-photography',$result7);
+   }
+
+   public function viewEachServiceBand()
+   {
+      
+      if(isset($_GET['service_id'])){
+         $service_id = $_GET['service_id'];
+      }
+      $result1 = $this->serviceProviderModel->getServiceProviderDetails();
+      $result8 = $this->bandModel->getBandServiceDetails();
+      $result9 = array($service_id, $result1, $result8);
+      $this->view('admin/view-each-service-band',$result9);
+   }
 
    public function profileSettings()
    {

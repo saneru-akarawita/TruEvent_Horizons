@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/table.css" />
 
         <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
+    
 
 <style>
         .table-container,
@@ -147,7 +148,7 @@
 </style>
 
 
-<title>TruEvent Horizons - Report - Admin</title>
+<title>TruEvent Horizons - Service Analysis - Admin</title>
 
 </head>
 
@@ -414,7 +415,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>

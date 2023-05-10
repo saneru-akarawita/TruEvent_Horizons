@@ -29,31 +29,6 @@
 
 <?php require APPROOT . "/views/decoCompany/header-deco.php" ?>    
 
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="images/logo/logo.jpg" alt="logo" class="logo">
-        <a href="admin-home.php" class="dashboard">Dashboard</a>
-
-        <nav class="navbar">
-            <a href="customer-home.php">Home</a>
-            <a href="services.php">Services</a>
-            <a href="packages.php">Packages</a>
-            <a href="reservationlog.php">Reservation Log</a>
-            <a href="customer-reservation.php">Add Reservation</a>
-
-        </nav>
-
-
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
-
-
-    </section> -->
-
-    <!-- header section ends -->
-
-
-
 
     <!-- Side start  -->
     <aside class="aside">

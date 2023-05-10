@@ -434,7 +434,8 @@ class PhotographyDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $PhotoPrice = $this->reservationModel-> getPhotoPrice($rvid);
-         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$photographydetailslist,$PhotoPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$photographydetailslist,$PhotoPrice,$packageConfirmationlist);
          $this->view('photography/view-reservation',$result0);
    }
 
@@ -457,7 +458,8 @@ class PhotographyDashboard extends Controller
             'sp_user_id' => trim($_POST['spID']),
             'title' => trim($_POST['eventname']),
             'start' => trim($_POST['startdate']),
-            'end' => trim($_POST['enddate'])
+            'end' => trim($_POST['enddate']),
+            'rv_id' => 0
          ];
 
          $this->reservationModel->addEvent($data);

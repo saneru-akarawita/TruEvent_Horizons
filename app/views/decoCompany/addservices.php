@@ -69,12 +69,12 @@
 
             <div class="text-group">
                <label class="label" for="decoration">Other decorations</label>
-               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="" maxlength="100">
+               <input type="text" name="other_deco" id="other_deco" placeholder="If any, other than above" value="<?php echo $data['other_deco']; ?>" maxlength="100">
             </div>
                
                   <div class="text-group">
                      <label for="theme">Theme</label>        
-                     <input class="theme" type="text" name="theme" id="theme" placeholder="Event theme" value="" required >
+                     <input class="theme" type="text" name="theme" id="theme" placeholder="Event theme" value="<?php echo $data['theme']; ?>" required >
                      <span class="error"><?php echo $data['theme_error']; ?></span>
                   </div><br>
                   
@@ -84,7 +84,7 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price</label>
-                      <input type="text" name="price" id="price" placeholder="Enter price of service" value="" maxlength="25" required>
+                      <input type="text" name="price" id="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>
                 </div>
