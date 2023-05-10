@@ -96,7 +96,7 @@ class Packages extends Controller
             // Validate everything
             $data['pcode_error'] = emptyCheck($data['pcode']);
             $data['name_error'] = emptyCheck($data['name']);
-            $data['package_type_error'] = emptyCheck($data['package_type']);
+            $data['package_type_error'] = packageTypeValidation($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){
@@ -257,7 +257,7 @@ class Packages extends Controller
             // Validate everything
             $data['pcode_error'] = emptyCheck($data['pcode']);
             $data['name_error'] = emptyCheck($data['name']);
-            $data['package_type_error'] = emptyCheck($data['package_type']);
+            $data['package_type_error'] = packageTypeValidation($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){

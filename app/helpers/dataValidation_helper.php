@@ -110,4 +110,32 @@ function timeFormatValidation($time){
       return $emptyCheckResponse;
 }
 
+function packageTypeValidation($packageType){
+      
+   $emptyCheckResponse = emptyCheck($packageType);
+
+   //check if $district is in the following array
+   $packageTypes = array("Birthday", "Anniversary", "Coparate Event", "Graduation Party", "Get-Together", "General Event");
+
+   if (!in_array($packageType, $packageTypes)) {
+      return "Only Chosen Package types are allowed";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
+function serviceTypeValidation($serviceType){
+      
+   $emptyCheckResponse = emptyCheck($serviceType);
+
+   //check if $district is in the following array
+   $serviceTypes = array("Birthday Parties", "Anniversary Parties", "Welcome Parties", "Night Functions", "Get-Togethers", "Business Gatherings", "General Events");
+
+   if (!in_array($serviceType, $serviceTypes)) {
+      return "Only Chosen Service types are allowed";
+   }
+   else
+      return $emptyCheckResponse;
+}
+
 ?>
