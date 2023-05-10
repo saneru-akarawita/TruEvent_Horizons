@@ -26,8 +26,8 @@
 
             <div class="logo">Policy <b>.</b></div>
             <ul class="navItems">
-                <li> <a href="#">Customer</a></li>
-                <li> <a href="#">Service Provider</a></li>
+                <li> <a href="#rp">Reservation Policy</a></li>
+                <li> <a href="#pp">Payment Policy</a></li>
                 <!-- <li> <a href="#">Decorations</a></li>
                 <li> <a href="#">Bands</a></li> -->
             </ul>
@@ -79,7 +79,7 @@
 
 
 
-                <h2>Reservation Policy</h2>
+                <h2 id="rp">Reservation Policy</h2>
 
                 <h3>General Guidelines</h3>
 
@@ -115,7 +115,7 @@
 
 
 
-                <h2>Payment Policy</h2>
+                <h2 id="pp">Payment Policy</h2>
 
                 <h3>General Guidelines</h3>
 
@@ -155,15 +155,6 @@
 
 
                 </ul>
-
-
-
-
-
-                <div class="btns">
-                    <button>Download Policy</button>
-                    <button>Email Policy</button>
-                </div>
 
             </div>
             <div class="cols cols1">

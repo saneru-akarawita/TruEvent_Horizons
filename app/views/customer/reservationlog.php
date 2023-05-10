@@ -136,14 +136,8 @@
                                         <?php if($rvdetails->status !="canceled"){ ?>
                                             <div class="card-footer">
                                                 <ul class="team">
-                                                    <li class="team-member">
-                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                                    </li>
-                                                    <li class="team-member">
-                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                                    </li>
-                                                    <li class="team-member">
-                                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                                    <li >
+                                                        <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.png" style="margin-left:-15px; margin-top:20px; height:50px;">
                                                     </li>
                                                 </ul>
                                             </div>
@@ -263,14 +257,8 @@
                                 <?php if($rvdetails->status !="canceled"){ ?>
                                     <div class="card-footer">
                                         <ul class="team">
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
-                                            </li>
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
-                                            </li>
-                                            <li class="team-member">
-                                                <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                            <li >
+                                                <img src="<?php echo URLROOT ?>/public/images/admin/logo/logo.png" style="margin-left:-15px; margin-top:20px; height:50px;">
                                             </li>
                                         </ul>
                                     </div>

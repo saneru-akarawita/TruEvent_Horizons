@@ -4,7 +4,7 @@ body {
     }
 
     .table-info-table{
-        width: 100%;
+        width: 90%;
         border-collapse: collapse;
         border: 1px solid #212121;
     }
@@ -36,11 +36,11 @@ table {
         margin-top: 75px;
 }
 tr:nth-of-type(odd) {
-        background: #efebe7;
+        background: #ffffffda;
 }
 tr:nth-of-type(even) {
-        background: #c8c7c8;
+        background: #b8b6b8;
 }
 thead {
-        background: #bdb9bd;
+        background: #bab7ba;
 }

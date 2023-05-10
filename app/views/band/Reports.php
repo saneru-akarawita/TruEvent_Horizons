@@ -166,7 +166,7 @@
 <?php $monthVsIncomeService = $data[9]; ?>
 
         <div class="main-content">
-
+        <br><br><br>
        <form id="reportDatesForm" action="<?php echo URLROOT; ?>/BandDashboard/generatereports" method="post">
                 <div class="row">
                         <div class="text-group">
@@ -177,11 +177,11 @@
 
                 <div class="row">
                         <div class="text-group2" style="margin-left:150px;">
-                                <label for="fromdate" style="font-size:18px; font-weight:500;">From</label>
+                                <label for="fromdate" style="font-size:18px; font-weight:500;">From:</label>
                                 <input type="date" name="startDate" id="startDate" style="margin-top:-30px;" value="<?php echo($sDate) ?>" required>      
                         </div>  
                         <div class="text-group2-1" style="font-size:18px; font-weight:500;">
-                                <label for="todate" class="todate">To</label>
+                                <label for="todate" class="todate">To:</label>
                                 <input type="date" name="endDate" id="endDate" style="margin-top:-30px;" value="<?php echo($eDate) ?>" required>
                         </div>
 
@@ -190,42 +190,42 @@
         </form>
                 <div class="totaldetails">
                         <div class="totalres">
-                                <label for="totReservation">Total Reservation</label>
+                                <label for="totReservation" style="border-radius:10px;">Total Reservation</label>
                                 <p id="preview" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-120px;">
                         </div>
         
-                        <div class="totalincome">
+                        <div class="totalincome" style="border-radius:10px;">
                         <label for="totalincome" style="margin-left:50px;">Total Income(LKR)</label>
-                                <?php $totalVal = $incomefromPackage + $incomefromService ?>>
+                                <?php $totalVal = $incomefromPackage + $incomefromService ?>
                                 <?php emptyCheck($totalVal)? $totalVal = '000.00' : $totalVal=number_format($totalVal,2); ?>
                                 <p id="preview1" style="font-size:5rem; font-weight:500; margin-top:70px; margin-left:-170px;"><?php print_r($totalVal)?> </p>
                         </div>
                        
                 </div>
                 <div class="charts">
-                    <div class="chart income">
-                                <label for="income">Monthly Reservations from Packages</label>
+                    <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
+                                <label for="income">No of Reservations from Packages</label>
                                 <canvas id="col-chart1"></canvas>
                         </div>  
 
-                        <div class="chart res">
-                                <label for="reservation">Monthly Reservations from Service</label>
+                        <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
+                                <label for="reservation">No of Reservations from Service</label>
                                 <canvas id="mychart2"></canvas>
                         </div>  
                 </div>
 
                 <div class="charts">
-                        <div class="chart res">
+                        <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
                                 <label for="reservation">Monthly Income from Packages</label>
                                 <canvas id="pie-chart1"></canvas>
                         </div>
-                        <div class="chart income">
+                        <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
                                 <label for="income">Monthly Income from Service</label>
                                 <canvas id="pie-chart2"></canvas>
                         </div>  
                 </div>
 
-                <section class="container">
+                <section class="table-container">
 
    <table style="margin-top:25px; margin-bottom:50px;" id="myTable">
             <thead>
