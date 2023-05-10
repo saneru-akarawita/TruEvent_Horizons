@@ -15,6 +15,7 @@
 </head>
 
 <body>
+   <!-- Header -->
 <?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
    <div class="main-container">
       <!-- <a href="home">
@@ -22,6 +23,7 @@
       </a> -->
       <!-- <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
       
+      <!-- Add Decorations form -->
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/decoService/addNewService" method="post" class="form">
             <h1 class="title" style="font-size:3rem;">Add Decoration</h1>
@@ -91,7 +93,7 @@
              
              </div>
            
-             
+             <!-- Footer -->
             <div class="footer-container">
                <button type="submit" name="action" value="addservice" class="btn btn-filled btn-theme-purple">Add Service</button>
             </div>
