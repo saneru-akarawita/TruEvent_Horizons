@@ -56,6 +56,7 @@
                                                                                 <td>: <?= $rvDetails->status;?></td>
                                                                                 <?php $status_rv = $rvDetails->status; ?>
                                                                         </tr>
+                                                                                <?php $rv_type = $rvDetails->rvType; ?>
                                                                         <tr>
                                                                                 <td>Decoration Items</td>
                                                                                 <td>: <?= $decodata->decoration_item;?></td>
@@ -113,19 +114,19 @@
                 <?php } ?>
                 <?php endforeach; ?>
                 
-                <?php if (!empty($status_rv)){ ?>
-                <?php if($status_rv == 'pending'){ ?>
+               <?php if(!empty($status_rv)){ ?>
+                <?php if($status_rv == 'pending' && $rv_type == 'service'){ ?>
                         <div class="product-price-btn" style="display:flex; margin:0px;">
                                 <button type="button" style = "width:100px; border-radius:5px; padding:10px; margin-left:50px;" onclick="history.back()">Back</button>
-                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
-                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>//serviceProviderReservation/cancelReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
+                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; background-color:green;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
+                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; background-color:red;"><a href="<?= URLROOT?>//serviceProviderReservation/cancelReservation?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
                         </div>
                 <?php }else{ ?>
                                 <div class="product-price-btn">
                                         <button type="button" onclick="history.back()">Back</button>
                                 </div>
                 <?php } ?> 
-               <?php } ?>
+              <?php } ?>
                
 
                 <?php foreach ($rvdata as $rvDetails) : ?>
@@ -153,6 +154,7 @@
                                                                                 <td>: <?= $rvDetails->status;?></td>
                                                                                 <?php $status_rv = $rvDetails->status; ?>
                                                                         </tr>
+                                                                                <?php $rv_type = $rvDetails->rvType; ?>
                                                                         <tr>
                                                                                 <td>Decoration Items</td>
                                                                                 <td>: <?= $decodata->decoration_item;?></td>
@@ -208,8 +210,9 @@
                 <?php endforeach; ?>
                 <?php } ?>
                 <?php endforeach; ?>
-                <?php if (!empty($status_rv)){ ?>
-                <?php if($status_rv == 'pending'){ ?>
+                
+                <?php if(!empty($status_rv)){ ?>
+                <?php if($status_rv == 'pending' &&  $rv_type == 'package'){ ?>
                         <?php foreach($packageConfirmationData as $pcd): ?>
                                 <?php if($pcd->rv_id == $rv_id){?>
                                         <?php if($pcd->deco_confirmation == Session::getUser('id')) {?>
@@ -219,15 +222,14 @@
                                         <?php } else {?>
                                                 <div class="product-price-btn" style="display:flex; margin:0px;">
                                                 <button type="button" style = "width:100px; border-radius:5px; padding:10px; margin-left:50px;" onclick="history.back()">Back</button>
-                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
-                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px;"> <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
+                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; background-color:green;"><a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttone" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Confirm</a></button>
+                                                <button type="button" style = "width:100px; border-radius:5px; padding:10px; background-color:red;"> <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rv_id; ?>&cus_id=<?=$customer_id?>" class="buttond" style="color:white; font-family: 'Raleway',sans-serif; text-transform:UPPERCASE">Decline</a></button>
                                                 </div>
                                         <?php } ?>
                                 <?php } ?>
                         <?php endforeach?>
        
-                        <?php }else{ ?>
-                               
+                        <?php }else if($status_rv != 'pending' && $rv_type == 'package'){ ?>
                                 <div class="product-price-btn">
                                         <button type="button" onclick="history.back()">Back</button>
                                 </div>

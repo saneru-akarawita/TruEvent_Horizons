@@ -191,7 +191,7 @@
         <div class="table-container" style="border-radius:10px">
 
             <h1 style="font-size:50px; margin-top:75px; margin-left:100px;">System Report Generation</h1>
-            <button class="btn-generate"><a href="generatereports">Generate Report</a></button>
+            <button class="btn-generate"><a href="generatereports">Service Analysis</a></button>
 
             <div class="ser-container form-container contentBox">
                 <form method="post" action="reports" style="margin:auto; width:90%">

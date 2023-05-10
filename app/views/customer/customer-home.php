@@ -19,29 +19,7 @@
 <body>
     <?php require APPROOT . "/views/customer/header-customer.php" ?>
 
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Dashboard</a>
-
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="#">Packages</a>
-            <a href="viewreservationlog">Reservation Log</a>
-            <a href="addreservation">Add Reservation</a>
-            <a href="logout">Logout</a>
-
-        </nav> -->
-
-    <!-- Gives a Menu Button -->
     <button id="menu-btn" class="fas fa-bars"></button>
-
-
-    <!-- </section> -->
-
-    <!-- header section ends -->
-
 
     <!-- home section starts -->
     <section class="home">
@@ -79,10 +57,6 @@
                     </div>
                 </div>
 
-
-
-
-
             </div>
         </div>
 
@@ -108,7 +82,7 @@
                 <div class="content">
                     <h3>Anniversary Package</h3>
                     <p>Plan your anniversary</p>
-                    <a href="#" class="btn">View Package</a>
+                    <a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages" class="btn">View All Package</a>
                 </div>
             </div>
 
@@ -120,7 +94,7 @@
                 <div class="content">
                     <h3>Birthdy Package</h3>
                     <p>Enjoy your birthdays</p>
-                    <a href="#" class="btn">View Package</a>
+                    <a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages" class="btn">View All Package</a>
                 </div>
             </div>
 
@@ -132,7 +106,7 @@
                 <div class="content">
                     <h3>Fair Wells Package</h3>
                     <p>Have Fun</p>
-                    <a href="#" class="btn">View Package</a>
+                    <a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages" class="btn">View All Package</a>
                 </div>
             </div>
 
@@ -143,7 +117,7 @@
 
 
 
-        <div class="load-more"> <a href="#" class="btn">load more</a></div>
+        <div class="load-more"> <a href="<?php echo URLROOT ?>/CustomerDashboard/viewpackages" class="btn">load more</a></div>
     </section>
 
     <!-- Home Package Section Ends -->

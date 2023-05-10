@@ -15,26 +15,7 @@
 <body>
 <?php require APPROOT . "/views/photography/header-photography.php" ?>
 
-
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Decoration</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
-            <a href="logout">Logout</a>
-        </nav>
-     -->
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        <!-- </section> -->
-
-
+<button id="menu-btn" class="fas fa-bars"></button>
 
 <!-- Home Package Section Ends -->
 

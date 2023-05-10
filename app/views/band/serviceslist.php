@@ -15,30 +15,8 @@
 <body>
 <?php require APPROOT . "/views/band/header-band.php" ?>
 
-
-    <!-- header section starts -->
-    <!-- <section class="header">
-        <img src="<?php echo URLROOT ?>/public/images/deco company/logo/logo.jpg" alt="logo" class="logo">
-        <a href="home" class="dashboard">Decoration</a>
-    
-        <nav class="navbar">
-            <a href="home">Home</a>
-            <a href="viewservices">Services</a>
-            <a href="addservices">Add Services</a>
-            <a href="logout">Logout</a>
-        </nav>
-     -->
-        <!-- Gives a Menu Button -->
-        <button id="menu-btn" class="fas fa-bars"></button>
-    
-    
-        <!-- </section> -->
-
-
-
-<!-- Home Package Section Ends -->
-
-
+<button id="menu-btn" class="fas fa-bars"></button>
+ 
 <section class="packages">
     <h1 class="heading-title">Your Bands</h1>
 

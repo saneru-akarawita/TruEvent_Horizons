@@ -29,7 +29,6 @@
                 <div class="text-group">
                     <input type="text" name="email" placeholder="Your email address here">
                     <span class=" error"><?php echo $data['email_error']; ?></span>
-
                 </div>
 
                 <div class="text-group">

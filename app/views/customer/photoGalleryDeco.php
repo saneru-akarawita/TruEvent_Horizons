@@ -2,7 +2,7 @@
 <html>
 <head>
  
-		<title>Photo Carosal</title>
+		<title>Photo Carosal - Decoration</title>
                     
 
 

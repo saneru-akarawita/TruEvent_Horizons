@@ -114,17 +114,21 @@
                             <div class="card-footer">
                                 <ul class="team">
                                     <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member">
+                                    <i class="fa-sharp fa-solid fa-guitar fa-beat-fade" style ="font-size:23px; color:#8e44ad"></i>
+                                    <i class="fa-duotone fa-ornament fa-2xs" style="--fa-primary-color: #450d59; --fa-secondary-color: #0061fe;"></i>
+                                        <!-- <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image21.jpg" alt="member"> -->
                                     </li>
 
 
                                     <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member">
+                                    <i class="fa-sharp fa-solid fa-holly-berry fa-beat-fade" style ="font-size:23px; margin-left:10px; margin-right:10px; color:#8e44ad" ></i>
+                                        <!-- <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/cece.jpg" alt="member"> -->
                                     </li>
 
 
                                     <li class="team-member">
-                                        <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member">
+                                    <i class="fa-solid fa-camera fa-beat-fade" style ="font-size:23px; margin-left:10px; color:#8e44ad"></i>
+                                        <!-- <img src="<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg" alt="member"> -->
                                     </li>
 
                                 </ul>

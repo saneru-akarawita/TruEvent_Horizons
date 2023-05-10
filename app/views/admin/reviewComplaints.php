@@ -38,23 +38,7 @@
 <body>
 <?php require APPROOT . "/views/admin/header-admin.php" ?>
 
-<!-- header section starts -->
-<!-- <section class="header">
-    <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
-    <a href="home" class="dashboard">Dashboard</a>
-
-    <nav class="navbar">
-        <a href="home">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Packages</a>
-        <a href="viewreservationlog">Reservation Log</a>
-        <a href="logout">Logout</a>
-    </nav> -->
-
-    <!-- Gives a Menu Button -->
-    <button id="menu-btn" class="fas fa-bars"></button>
-
-<!-- </section> -->
+<button id="menu-btn" class="fas fa-bars"></button>
 
 <div class="main-container">
 

@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/table.css" />
 
         <link rel="shortcut icon" type="image/x-icon" href="./logo/logo.png">
+        
 
 <style>
         .table-container,
@@ -147,7 +148,7 @@
 </style>
 
 
-<title>TruEvent Horizons - Report - Admin</title>
+<title>TruEvent Horizons - Package Analysis - Admin</title>
 
 </head>
 
