@@ -68,14 +68,14 @@
 
             <div class="text-group">
                <label class="label" for="photography">Other Features</label>
-               <input type="text" name="other_photography" id="other_photography" placeholder="If any, other than above" value="" maxlength="100">
+               <input type="text" name="other_photography" id="other_photography" placeholder="If any, other than above" value="<?php echo $data['other_photography']; ?>" maxlength="100">
             </div>
                    
             <div class="row">
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price</label>
-                      <input type="text" name="price" id="price" placeholder="Enter price of service" value="" maxlength="25" required>
+                      <input type="text" name="price" id="price" placeholder="Enter price of service" value="<?php echo $data['price']; ?>" maxlength="25" required>
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>
                 </div>

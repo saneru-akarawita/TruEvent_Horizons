@@ -432,21 +432,6 @@ class CustomerDashboard extends Controller
       $this->view('customer/chat', $user);
    }
 
-   public function makeAdvancePayment()
-   {
-      $this->view('customer/make-advance-payment', '');
-   }
-
-   public function makePayment()
-   {
-      $this->view('customer/make-payment', '');
-   }
-
-   public function makeFullPayment()
-   {
-      $this->view('customer/make-full-payment', '');
-   }
-
    public function paymentLog()
    {
       $pending = $this->reservationModel->getPendingPaymentDetailsByCustomerID(Session::getUser("id"));
@@ -475,11 +460,6 @@ class CustomerDashboard extends Controller
       $merge_events = array_merge(...$events);
 
       $this->view("calendar/cus_calendar/index", $merge_events);
-   }
-
-   public function totalPaymentSuccess()
-   {
-      $this->view('customer/total-payment-success', '');
    }
 
    public function logout()

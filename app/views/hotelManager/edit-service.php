@@ -21,11 +21,7 @@
 <?php require APPROOT . "/views/hotelManager/header-hotel.php" ?>
 
 <div class="main-container">
-      <!-- <a href="#">
-         <img src="<?php echo URLROOT ?>/public/images/hotel manager/logo/logo.png" alt="logo" class="top-left-logo">
-      </a>
-      <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a> -->
-      
+    
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/editService" method="post" class="form">
             <h1 class="title">Edit Venue/Location</h1>
@@ -45,14 +41,8 @@
                      </select>
                      <span class="error"><?php echo $data['event_name_error']; ?></span>
                   </div>
-<!--                
-                  <div class="text-group">
-                     <label for="hotelimage">Hall Image (Note:- Allowed only JPG, JPEG, PNG, & GIF)</label>        
-                     <input class="hotelimageinput" type="file" name="hotel_image"  required="" capture>
-                     <span class="error"><?php echo $data['hotel_image_error']; ?></span>
-                  </div> -->
-                  
 
+                  
             <div class="row">
                 <div class="column">
                    <div class="text-group">

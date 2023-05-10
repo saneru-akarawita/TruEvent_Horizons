@@ -186,7 +186,8 @@ class BandDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $BandPrice = $this->reservationModel-> getBandPrice($rvid);
-         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$banddetailslist,$BandPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result0 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$banddetailslist,$BandPrice,$packageConfirmationlist);
          $this->view('band/view-reservation',$result0);
    }
 
@@ -461,7 +462,8 @@ class BandDashboard extends Controller
             'sp_user_id' => trim($_POST['spID']),
             'title' => trim($_POST['eventname']),
             'start' => trim($_POST['startdate']),
-            'end' => trim($_POST['enddate'])
+            'end' => trim($_POST['enddate']),
+            'rv_id' => 0
          ];
 
          $this->reservationModel->addEvent($data);

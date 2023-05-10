@@ -105,7 +105,7 @@ class ReservationModel extends Model
             'title' => $data['title'],
             'start'=>$data['start'],
             'end' => $data['end'],
-            'rv_id' => $data['rv_id'],
+            'rv_id' => $data['rv_id']
             ]);
     }
 

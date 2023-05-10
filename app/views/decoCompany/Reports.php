@@ -390,7 +390,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>
@@ -409,7 +419,17 @@
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
                     ],
                 }]
-            }
+            },
+            options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
         })
 
 </script>

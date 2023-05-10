@@ -363,21 +363,32 @@
 
 
 <script>
-        monthVsResevations = <?php echo json_encode($monthVsReservations)?>
+    monthVsResevations = <?php echo json_encode($monthVsReservations)?>
 
-        const chart = new Chart(document.getElementById('col-chart'), {
-            type: 'bar',
-            data: {
-                labels: monthVsResevations.labels,
-                datasets:[{
-                    label: 'Monthly Reservations',
-                    data: monthVsResevations.data,
-                    backgroundColor: [
-                        'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
-                    ],
-                }]
-            }
-        })
+    const chart = new Chart(document.getElementById('col-chart'), {
+    type: 'bar',
+    data: {
+        labels: monthVsResevations.labels,
+        datasets:[{
+            label: 'Monthly Reservations',
+            data: monthVsResevations.data,
+            backgroundColor: [
+                'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
+            ],
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                },
+            }],
+        },
+    },
+});
+
 
 </script>
 

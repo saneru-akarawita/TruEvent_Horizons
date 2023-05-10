@@ -20,7 +20,7 @@
    <div class="main-container">
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/bandService/addNewService" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/bandService/addNewService" method="post" class="form" enctype="multipart/form-data">
             <h1 class="title" style="font-size:3rem;">Add Band</h1>
 
             
@@ -60,12 +60,12 @@
 
             <div class="text-group">
                <label class="label" for="band">Other Music Types</label>
-               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" value="" maxlength="100">
+               <input type="text" name="other_band" id="other_band" placeholder="If any, other than above" maxlength="100" value = "<?php echo $data['other_band']; ?>">
             </div>
                
                   <div class="text-group">
                      <label for="num_players">No of players</label>        
-                     <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="" required >
+                     <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="<?php echo $data['num_players']; ?>" required >
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
                   </div><br>
                   
@@ -75,7 +75,7 @@
                 <div class="column">
                    <div class="text-group">
                       <label class="label" for="price">Price</label>
-                      <input type="text" name="price" id="price" placeholder="Enter price of service" value="" maxlength="25" required>
+                      <input type="text" name="price" id="price" placeholder="Enter price of service"  maxlength="25" value = "<?php echo $data['price']; ?>" required>
                       <span class="error"><?php echo $data['price_error']; ?></span>
                    </div>
                 </div>

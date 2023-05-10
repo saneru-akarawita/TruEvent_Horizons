@@ -440,7 +440,8 @@ class DecoDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $DecoPrice = $this->reservationModel-> getDecoPrice($rvid);
-         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist,$DecoPrice);
+         $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
+         $result1 = array($spID,$serviceid,$rvid,$reservationsList,$customerlist,$decodetailslist,$DecoPrice,$packageConfirmationlist);
          $this->view('decoCompany/view-reservation',$result1);
    }
 
@@ -463,7 +464,8 @@ class DecoDashboard extends Controller
             'sp_user_id' => trim($_POST['spID']),
             'title' => trim($_POST['eventname']),
             'start' => trim($_POST['startdate']),
-            'end' => trim($_POST['enddate'])
+            'end' => trim($_POST['enddate']),
+            'rv_id' => 0
          ];
 
          $this->reservationModel->addEvent($data);
