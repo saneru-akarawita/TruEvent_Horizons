@@ -109,8 +109,8 @@ class CustomerReservation extends Controller
          {
             // Validate everything
             $data['event_name_error'] = emptyCheck($data['event_name']);
-            $data['rvdate_error'] = emptyCheck($data['rvdate']);
-            $data['rvtime_error'] = emptyCheck($data['rvtime']);
+            $data['rvdate_error'] = dateFormatValidation($data['rvdate']);
+            $data['rvtime_error'] = timeFormatValidation($data['rvtime']);
 
             if (
                empty($data['rv_type_error']) && empty($data['service_type_error']) && empty($data['package_type_error']) && empty($data['package_name_error']) 
@@ -247,8 +247,8 @@ class CustomerReservation extends Controller
             {
                // Validate everything
                $data['event_name_error'] = emptyCheck($data['event_name']);
-               $data['rvdate_error'] = emptyCheck($data['rvdate']);
-               $data['rvtime_error'] = emptyCheck($data['rvtime']);
+               $data['rvdate_error'] = dateFormatValidation($data['rvdate']);
+               $data['rvtime_error'] = timeFormatValidation($data['rvtime']);
 
                if (
                   empty($data['rv_type_error']) && empty($data['service_type_error']) && empty($data['package_type_error']) && empty($data['package_name_error']) 
@@ -356,8 +356,8 @@ class CustomerReservation extends Controller
             {
                // Validate everything
                $data['event_name_error'] = emptyCheck($data['event_name']);
-               $data['rvdate_error'] = emptyCheck($data['rvdate']);
-               $data['rvtime_error'] = emptyCheck($data['rvtime']);
+               $data['rvdate_error'] = dateFormatValidation($data['rvdate']);
+               $data['rvtime_error'] = timeFormatValidation($data['rvtime']);
 
                if (
                   empty($data['rv_type_error']) && empty($data['service_type_error']) && empty($data['package_type_error']) && empty($data['package_name_error']) 
@@ -446,7 +446,7 @@ class CustomerReservation extends Controller
             {
                // Validate everything
                $data['event_name_error'] = emptyCheck($data['event_name']);
-               $data['rvdate_error'] = emptyCheck($data['rvdate']);
+               $data['rvdate_error'] = dateFormatValidation($data['rvdate']);
                $data['rvtime_error'] = emptyCheck($data['rvtime']);
 
                if (
