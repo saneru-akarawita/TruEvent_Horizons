@@ -110,4 +110,14 @@ function timeFormatValidation($time){
       return $emptyCheckResponse;
 }
 
+function positiveDecimalValidation($number){
+   $emptyCheckResponse = emptyCheck($number);
+
+   if (!is_numeric($number) || $number <= 0) {
+      return "Only positive numbers are allowed";
+    } else {
+      return $emptyCheckResponse;
+    }
+}
+
 ?>

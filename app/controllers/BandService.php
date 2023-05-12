@@ -37,12 +37,14 @@ class BandService extends Controller
             'other_band' => trim($_POST['other_band']),
             'num_players' => trim($_POST['num_players']),
             'service_provider_id' => Session::getUser("id"),
+            'duration' => trim($_POST['duration']),
 
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
             'band_error' => '',
-            'num_players_error' => ''
+            'num_players_error' => '',
+            'duration_error' => '',
          ];
 
          if ($_POST['action'] == "addservice")
@@ -52,9 +54,10 @@ class BandService extends Controller
             $data['price_error'] = validatePrice($data['price']);
             $data['num_players_error'] = positiveIntegerValidation($data['num_players']);
             $data['band_error'] = emptyCheck($data['band']);
+            $data['duration_error'] = positiveDecimalValidation($data['duration']);
 
             if (
-               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['band_error'])
+               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['band_error'] ) && empty($data['duration_error'])
             )
             {
                 
@@ -88,11 +91,14 @@ class BandService extends Controller
             'other_band' => '',
             'num_players' => '',
             'service_provider_id' => '',
+            'duration' => '',
 
             'name_error' => '',
             'price_error' => '',
             'num_players_error' => '',
-            'band_error' => ''
+            'band_error' => '',
+            'duration_error' => ''
+
          ];
 
          $this->view('band/addservices', $data);
@@ -132,12 +138,14 @@ class BandService extends Controller
             'other_band' => trim($_POST['other_band']),
             'num_players' => trim($_POST['num_players']),
             'sv_id' => trim($_POST['sv_id']),
+            'duration' => trim($_POST['duration']),
 
             'name_error' => '',
             'description_error'=>'',
             'price_error' => '',
             'band_error' => '',
-            'num_players_error' => ''
+            'num_players_error' => '',
+            'duration_error' => '',
          ];
 
          if ($_POST['action'] == "editservice")
@@ -147,9 +155,10 @@ class BandService extends Controller
             $data['price_error'] = validatePrice($data['price']);
             $data['num_players_error'] = positiveIntegerValidation($data['num_players']);
             $data['band_error'] = emptyCheck($data['band']);
+            $data['duration_error'] = positiveDecimalValidation($data['duration']);
 
             if (
-               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error']) && empty($data['band_error'])
+               empty($data['name_error']) && empty($data['price_error']) && empty($data['num_players_error']) && empty($data['band_error']) && empty($data['duration_error'])
             )
             {
                 
@@ -184,11 +193,13 @@ class BandService extends Controller
             'other_band' => $svdetails->other_band_type,
             'num_players' => $svdetails->no_of_players,
             'sv_id' => $sv_editid,
+            'duration' => $svdetails->duration,
 
             'name_error' => '',
             'price_error' => '',
             'num_players_error' => '',
-            'band_error' => ''
+            'band_error' => '',
+            'duration_error' => ''
          ];
 
          $this->view('band/editservice', $data);

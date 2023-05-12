@@ -115,7 +115,7 @@
 
 <section class="home-packages">
 
-    <h1 class="heading-title">Your Photography Services</h1>
+    <h1 class="heading-title">My Services</h1>
 
 
     <div class="box-container">

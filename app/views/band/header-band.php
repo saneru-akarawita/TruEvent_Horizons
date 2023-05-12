@@ -25,9 +25,9 @@
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="viewservices">View Bands</a></li>
-                                                        <li><a href="addservices">Add Bands</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/BandDashboard/viewOffers">Offers/Promotions</a></li>
+                                                        <li><a href="viewservices">My Music Services</a></li>
+                                                        <li><a href="addservices">Add New Service</a></li>
+                                                        <!-- <li><a href="<?php echo URLROOT ?>/BandDashboard/viewOffers">Offers/Promotions</a></li> -->
                                                         <li><a href="<?php echo URLROOT ?>/BandDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>

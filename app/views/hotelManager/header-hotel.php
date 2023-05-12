@@ -28,9 +28,9 @@
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="viewservices">View Venues</a></li>
-                                                        <li><a href="addservices">Add Venues</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/HotelDashboard/viewOffers">Offers/Promotions</a></li>
+                                                        <li><a href="viewservices">My Venues/Halls</a></li>
+                                                        <li><a href="addservices">Add New Service</a></li>
+                                                        <!-- <li><a href="<?php echo URLROOT ?>/HotelDashboard/viewOffers">Offers/Promotions</a></li> -->
                                                         <li><a href="<?php echo URLROOT ?>/HotelDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>

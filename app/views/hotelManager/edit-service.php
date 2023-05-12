@@ -24,7 +24,7 @@
     
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/editService" method="post" class="form">
-            <h1 class="title">Edit Venue/Location</h1>
+            <h1 class="title">Edit Service</h1>
             <?php if($data['event_name']=='') echo "selected" ?>
 
                   <div class="text-group">

@@ -49,6 +49,10 @@
                       <td>Other Types of Band </td>
                       <td>:<?php if(empty($bsDetails->other_band_type)) echo " None"; else  echo $bsDetails->other_band_type; ?> </td>
                     </tr>
+                    <tr>
+                        <td>Duration(hours)</td>
+                        <td>: <?= $bsDetails->duration;?></td>
+                    </tr>
                   </table>
                   <br><br>
                 <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
