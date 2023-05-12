@@ -29,9 +29,23 @@ class DecoService extends Controller
                   }
          }  
 
+         $targetDir = APPROOT."/../public/images/uploadimages/deco/";
+         $fileName = basename($_FILES["deco_image"]["name"]);
+         $completePath = $targetDir . $fileName;
+         $fileType = pathinfo($completePath,PATHINFO_EXTENSION);
+         $allowTypes = array('jpg','png','jpeg','gif','pdf');
+
+         $filename_without_ext = substr($fileName, 0, strrpos($fileName, "."));
+
+         $uniqueFileName = $filename_without_ext.time().".".$fileType;
+         $targetFilePath = $targetDir . $uniqueFileName;
+         $statusMsg = '';
+
+
          $data = [
 
             'name' => trim($_POST['service_name']),
+            'deco_image' => $uniqueFileName,
             'price' => trim($_POST['price']),
             'decoration'=>$chk,
             'other_deco' => trim($_POST['other_deco']),
@@ -39,6 +53,7 @@ class DecoService extends Controller
             'service_provider_id' => Session::getUser("id"),
 
             'name_error' => '',
+            'deco_image_error'=>$statusMsg,
             'description_error'=>'',
             'price_error' => '',
             'deco_error' => '',
@@ -54,10 +69,32 @@ class DecoService extends Controller
             $data['deco_error'] = emptyCheck($data['decoration']);
 
             if (
-               empty($data['theme_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['deco_error'])
+               empty($data['theme_error']) && empty($data['name_error'])
+                && empty($data['price_error']) && empty($data['deco_error']) && empty($data['deco_image_error'])
             )
             {
-                
+               if(in_array($fileType, $allowTypes)){
+                  // Upload file to server
+                  if(move_uploaded_file($_FILES["deco_image"]["tmp_name"], $targetFilePath)){
+                     if($fileType == "jpg" || $fileType == "jpeg"){
+                        $image = imagecreatefromjpeg($targetFilePath); // Assuming the uploaded file is JPEG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagejpeg($resizedImage, $targetFilePath, 80);
+                        $statusMsg = '';
+                     }else if($fileType == "png"){
+                        $image = imagecreatefrompng($targetFilePath); // Assuming the uploaded file is PNG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagepng($resizedImage, $targetFilePath, 8);
+                        $statusMsg = '';
+                     }
+                        
+                  }else{
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                  }
+               }else{
+                  $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+               }
+
                $this->decoModel->beginTransaction();
                $this->decoModel->addDecoService($data);
                $this->decoModel->commit();
@@ -83,6 +120,7 @@ class DecoService extends Controller
 
          $data = [
             'name' => '',
+            'deco_image' => '',
             'price' => '',
             'decoration'=>'',
             'other_deco' => '',
@@ -92,7 +130,8 @@ class DecoService extends Controller
             'name_error' => '',
             'price_error' => '',
             'theme_error' => '',
-            'deco_error' => ''
+            'deco_error' => '',
+            'deco_image_error'=>''
          ];
 
          $this->view('decoCompany/addservices', $data);

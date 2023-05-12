@@ -291,6 +291,9 @@ showPasswordButton3.addEventListener('click', () => {
 
 </script>
 
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
+
 </body>
 
 </html>

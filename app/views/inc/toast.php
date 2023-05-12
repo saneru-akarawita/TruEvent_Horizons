@@ -1,5 +1,5 @@
-<div class="statusToast">
-    <div class="content">
+<div class="statusToast" style=" z-index: 99999999999999;">
+    <div class="content2">
         <div class="icon">
             <i class="success-icon toast-icon ci ci-success-white"></i>
             <i class="error-icon toast-icon ci ci-warning-white"></i>

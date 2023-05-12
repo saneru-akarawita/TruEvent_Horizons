@@ -204,23 +204,23 @@
                 </div>
                 <div class="charts">
                     <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="income">No of Reservations from Packages</label>
+                                <label for="income">Monthly Reservations Summary - Packages</label>
                                 <canvas id="col-chart1"></canvas>
                         </div>  
 
                         <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="reservation">No of Reservations from Service</label>
+                                <label for="reservation">Monthly Reservations Summary - Services</label>
                                 <canvas id="mychart2"></canvas>
                         </div>  
                 </div>
 
                 <div class="charts">
                         <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="reservation">Monthly Income from Packages</label>
+                                <label for="reservation">Monthly Income Summary - Packages</label>
                                 <canvas id="pie-chart1"></canvas>
                         </div>
                         <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="income">Monthly Income from Service</label>
+                                <label for="income">Monthly Income Summary - Service</label>
                                 <canvas id="pie-chart2"></canvas>
                         </div>  
                 </div>
@@ -383,7 +383,7 @@
             data: {
                 labels: monthVsReservationsPackage.label2,
                 datasets:[{
-                    label: 'No of Reservations from Packages',
+                    label: '',
                     data: monthVsReservationsPackage.data2,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
@@ -399,6 +399,11 @@
                 },
             }],
         },
+        plugins: {
+            legend: {
+                display: false,
+            },
+        },
     },
         })
 
@@ -412,7 +417,7 @@
             data: {
                 labels: monthVsReservationsService.labels,
                 datasets:[{
-                    label: 'No of Reservations from Service',
+                    label: '',
                     data: monthVsReservationsService.data,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
@@ -428,6 +433,11 @@
                 },
             }],
         },
+        plugins: {
+            legend: {
+                display: false,
+            },
+        },
     },
         })
 
@@ -441,7 +451,7 @@
             data: {
                 labels: monthVsIncomePackage.label,
                 datasets:[{
-                    label: 'Monthly Income from Packages',
+                    label: 'Monthly Income',
                     data: monthVsIncomePackage.data,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'
@@ -467,7 +477,7 @@
             data: {
                 labels: monthVsIncomeService.labelVal,
                 datasets:[{
-                    label: 'Monthly Income from Servcies',
+                    label: 'Monthly Income',
                     data: monthVsIncomeService.dataVal,
                     backgroundColor: [
                         'aqua', 'blue', 'fuchsia', 'green', 'orange', 'maroon', 'navy', 'olive', 'purple', 'red', 'teal','yellow'

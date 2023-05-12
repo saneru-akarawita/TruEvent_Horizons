@@ -227,19 +227,6 @@
 <!-- Home Package Section Ends -->
 
 
-<!-- Home offer Section starts -->
-<section class="home-offer">
-    <div class="content">
-        <h3>Upto 25% Off</h3>
-        <p>This Weekend</p>
-        <a href="addpackages" class="btn">Use Coupon Code</a>
-    </div>
-</section>
-
-
-<!-- Home offer Section ends -->
-
-
 <!-- footer start -->
 <section class="footer">
     <div class="overlay"></div>

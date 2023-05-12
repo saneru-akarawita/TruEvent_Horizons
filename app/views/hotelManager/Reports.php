@@ -203,11 +203,11 @@
                 </div>
                 <div class="charts">
                         <div class="chart res" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="reservation">Reservations</label>
+                                <label for="reservation">Monthly Reservations Summary</label>
                                 <canvas id="col-chart"></canvas>
                         </div>
                         <div class="chart income" style="border-radius:10px; border-style: solid; border-color:black">
-                                <label for="income">Income</label>
+                                <label for="income">Monthly Income Summary</label>
                                 <canvas id="area-chart"></canvas>
                         </div>  
                 </div>
@@ -385,6 +385,11 @@
                     stepSize: 1,
                 },
             }],
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
         },
     },
 });

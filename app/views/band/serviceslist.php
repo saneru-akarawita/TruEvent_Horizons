@@ -26,13 +26,7 @@
         <?php if($bsDetails->active == 1) {?>
         <div class="box">
             <div class="image">
-            <?php $directory = getcwd()."/images/deco company/services/$bsDetails->service_name/";
-                $files1 = scandir($directory);
-                $num_files = count($files1) - 2;
-            ?>
-
-                <?php echo "<img src = '".URLROOT."/public/images/deco company/services/$bsDetails->service_name/" . (rand(1,4)%$num_files +1) . ".jpg'>";?>
-
+                <img src="<?= URLROOT ?>/public/images/uploadimages/band/<?= $bsDetails->band_img ?>">
             </div>
             <div class="content">
                 <h3 style="font-size:medium">Ideal for <?= $bsDetails->service_name; ?> </h3>
@@ -110,5 +104,8 @@
         
         <!-- footer ends -->
     <script src="<?php echo URLROOT ?>/public/js/band/bandscript.js"></script>
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
+
 </body>
 </html>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/header-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/toast.css">
+
     <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
     <title>TruEvent Horizons - Header - Band</title>
 
@@ -12,7 +14,11 @@
         <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
 <body>
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
+
  <!-- -------------------------------------header for Band-------------------------------------------------- -->
 
  <div class="headerdetails">
@@ -67,6 +73,7 @@
                 </div>
        
         </div>  
+
 
 
 </body>

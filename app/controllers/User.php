@@ -296,6 +296,7 @@ class User extends Controller
       $msg = "Offline now";
       $this->userModel->setChatUserOffline(Session::get("unique_id"), $msg);
       Session::clear('user');
+      Session::clear('toast');
       session_destroy();
       redirect('User/signin');
    }

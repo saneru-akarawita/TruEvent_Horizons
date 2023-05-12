@@ -31,18 +31,6 @@ class HotelService extends Controller
          $targetFilePath = $targetDir . $uniqueFileName;
          $statusMsg = '';
 
-         if(in_array($fileType, $allowTypes)){
-            // Upload file to server
-            if(move_uploaded_file($_FILES["hotel_image"]["tmp_name"], $targetFilePath)){
-                  $statusMsg = '';
-                  
-            }else{
-                  $statusMsg = "Sorry, there was an error uploading your file.";
-            }
-         }else{
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-         }
-
          $data = [
 
             'event_name' => trim($_POST['event_name']),
@@ -83,6 +71,27 @@ class HotelService extends Controller
                && empty($data['location_error']) && empty($data['max_crowd_error']) && empty($data['hall_type_error']) && empty($data['ac_status_error'])
             )
             {
+               if(in_array($fileType, $allowTypes)){
+                  // Upload file to server
+                  if(move_uploaded_file($_FILES["hotel_image"]["tmp_name"], $targetFilePath)){
+                     if($fileType == "jpg" || $fileType == "jpeg"){
+                        $image = imagecreatefromjpeg($targetFilePath); // Assuming the uploaded file is JPEG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagejpeg($resizedImage, $targetFilePath, 80);
+                        $statusMsg = '';
+                     }else if($fileType == "png"){
+                        $image = imagecreatefrompng($targetFilePath); // Assuming the uploaded file is PNG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagepng($resizedImage, $targetFilePath, 8);
+                        $statusMsg = '';
+                     }
+                        
+                  }else{
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                  }
+               }else{
+                  $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+               }
                 
                $this->hotelModel->beginTransaction();
                $this->hotelModel->addHotelService($data);

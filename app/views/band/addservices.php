@@ -39,6 +39,12 @@
                      <span class="error"><?php echo $data['name_error']; ?></span>
                   </div>
 
+                  <div class="text-group">
+                     <label for="hotelimage">Band Image (Note:- Allowed only JPG, JPEG, PNG, & GIF)</label>        
+                     <input class="hotelimageinput" type="file" name="band_image"  required="" capture>
+                     <span class="error"><?php echo $data['band_image_error']; ?></span>
+                  </div>
+
                   <label for="event name">Music Types :</label><br>
                <div class="row">
                   <div class="column">

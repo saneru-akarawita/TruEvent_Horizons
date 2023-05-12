@@ -452,7 +452,8 @@ class DecoDashboard extends Controller
          $reservationsList = $this->reservationModel->getReservationDetails();
          $customerlist = $this->customerModel->getCustomerDetails();
          $packageConfirmationlist = $this->reservationModel->getPackageConfirmationDetails();
-         $result = array($spID, $reservationsList, $customerlist, $packageConfirmationlist);
+         $packageDetails = $this->reservationModel->getReservationDetailsPackage();
+         $result = array($spID, $reservationsList, $customerlist, $packageConfirmationlist,$packageDetails);
       $this->view('decoCompany/Reservationlog',$result);
    }
 

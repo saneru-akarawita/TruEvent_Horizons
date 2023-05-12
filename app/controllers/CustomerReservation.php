@@ -121,7 +121,7 @@ class CustomerReservation extends Controller
                $this->reservationModel->beginTransaction();
                $this->reservationModel->addReservation($data);
                
-               Toast::setToast(1, "Service Added Successfully!!!", '');
+               Toast::setToast(1, "Reservation Added Successfully!!!", '');
                $this->reservationModel->commit();
 
                redirect('CustomerReservation/viewReservationLog');
@@ -259,7 +259,7 @@ class CustomerReservation extends Controller
                   $this->reservationModel->beginTransaction();
                   $this->reservationModel->addReservation($data);
 
-                  Toast::setToast(1, "Service Added Successfully!!!", '');
+                  Toast::setToast(1, "Reservation Added Successfully!!!", '');
                   $this->reservationModel->commit();
 
                   redirect('CustomerReservation/viewReservationLog');
@@ -368,7 +368,7 @@ class CustomerReservation extends Controller
                   $this->reservationModel->beginTransaction();
                   $this->reservationModel->addReservation($data);
 
-                  Toast::setToast(1, "Service Added Successfully!!!", '');
+                  Toast::setToast(1, "Reservation Added Successfully!!!", '');
                   $this->reservationModel->commit();
 
                   redirect('CustomerReservation/viewReservationLog');

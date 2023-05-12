@@ -29,15 +29,29 @@ class PhotographyService extends Controller
                   }
          }  
 
+         $targetDir = APPROOT."/../public/images/uploadimages/photo/";
+         $fileName = basename($_FILES["photo_image"]["name"]);
+         $completePath = $targetDir . $fileName;
+         $fileType = pathinfo($completePath,PATHINFO_EXTENSION);
+         $allowTypes = array('jpg','png','jpeg','gif','pdf');
+
+         $filename_without_ext = substr($fileName, 0, strrpos($fileName, "."));
+
+         $uniqueFileName = $filename_without_ext.time().".".$fileType;
+         $targetFilePath = $targetDir . $uniqueFileName;
+         $statusMsg = '';
+
          $data = [
 
             'name' => trim($_POST['service_name']),
+            'photo_image' => $uniqueFileName,
             'price' => trim($_POST['price']),
             'photography'=>$chk,
             'other_photography' => trim($_POST['other_photography']),
             'service_provider_id' => Session::getUser("id"),
 
             'name_error' => '',
+            'photo_image_error'=>$statusMsg,
             'price_error' => '',
             'photography_error' => ''
          ];
@@ -50,10 +64,32 @@ class PhotographyService extends Controller
             $data['photography_error'] = emptyCheck($data['photography']);
 
             if (
-               empty($data['name_error']) && empty($data['price_error']) && empty($data['photography_error'])
+               empty($data['name_error']) && empty($data['price_error']) 
+               && empty($data['photography_error']) && empty($data['photo_image_error'])
             )
             {
-                
+               if(in_array($fileType, $allowTypes)){
+                  // Upload file to server
+                  if(move_uploaded_file($_FILES["photo_image"]["tmp_name"], $targetFilePath)){
+                     if($fileType == "jpg" || $fileType == "jpeg"){
+                        $image = imagecreatefromjpeg($targetFilePath); // Assuming the uploaded file is JPEG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagejpeg($resizedImage, $targetFilePath, 80);
+                        $statusMsg = '';
+                     }else if($fileType == "png"){
+                        $image = imagecreatefrompng($targetFilePath); // Assuming the uploaded file is PNG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagepng($resizedImage, $targetFilePath, 8);
+                        $statusMsg = '';
+                     }
+                        
+                  }else{
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                  }
+               }else{
+                  $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+               }
+               
                $this->photographyModel->beginTransaction();
                $this->photographyModel->addPhotographyService($data);
                $this->photographyModel->commit();
@@ -79,12 +115,14 @@ class PhotographyService extends Controller
 
          $data = [
             'name' => '',
+            'photo_image' => '',
             'price' => '',
             'photography'=>'',
             'other_photography' => '',
             'service_provider_id' => '',
 
             'name_error' => '',
+            'photo_image_error'=>'',
             'price_error' => '',
             'photography_error' => ''
          ];
