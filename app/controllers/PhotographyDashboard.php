@@ -353,20 +353,20 @@ class PhotographyDashboard extends Controller
       $start = new DateTime($data['startDate']);
       $end = new DateTime($data['endDate']);
       
-      while($start <= $end){
-         $month = $start->format('Y-m');
-         $totals[$month] = 0; // Initialize the total for this month to 0
-         $start->modify('+1 month');
+      $selectedMonthIndex = intval(date('m', strtotime($data['startDate']))) - 1;
+      $labels = [];
+      $values = [];
+
+      for ($i = 0; $i < 12; $i++) {
+         $monthIndex = ($selectedMonthIndex + $i) % 12;
+         $labels[] = date('M', mktime(0, 0, 0, $monthIndex + 1, 1));
+         $values[] = 0;
       }
 
-      $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      $values = [0,0,0,0,0,0,0,0,0,0,0,0];
-
-      for($i=0; $i<12; $i++){
-         foreach($totalCountofService as $t){
-            if($labels[$i] == $t->Month){
-               $values[$i] = $t->TotalReservationsofService;
-            }
+      foreach ($totalCountofService as $t3) {
+         $monthIndex = array_search($t3->Month, $labels);
+         if ($monthIndex !== false) {
+            $values[$monthIndex] = $t3->TotalReservationsofService;
          }
       }
 
@@ -376,14 +376,19 @@ class PhotographyDashboard extends Controller
       ];
 
 
-      $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      $valSet = [0,0,0,0,0,0,0,0,0,0,0,0];
+      $label2 = [];
+      $valSet = [];
 
-      for($j=0; $j<12; $j++){
-         foreach($totalCountofPackage as $tp){
-            if($label2[$j] == $tp->Month){
-               $valSet[$j] = $tp->TotalReservationsofPackages;
-            }
+      for ($i = 0; $i < 12; $i++) {
+         $monthIndex = ($selectedMonthIndex + $i) % 12;
+         $label2[] = date('M', mktime(0, 0, 0, $monthIndex + 1, 1));
+         $valSet[] = 0;
+      }
+
+      foreach ($totalCountofPackage as $t3) {
+         $monthIndex = array_search($t3->Month, $label2);
+         if ($monthIndex !== false) {
+            $valSet[$monthIndex] = $t3->TotalReservationsofPackages;
          }
       }
    

@@ -131,4 +131,19 @@ class ServiceProviderModel extends Model
          return $totals; // Return the final total array
    }
 
+   public function addProofDoc($email, $img){
+      $this->insert('spverifydoc', [
+         'email' => $email,
+         'img' => $img
+      ]);
+   }
+
+   public function getProofDocs(){
+      return $this->getResultSet("spverifydoc", "*", []);  
+   }
+
+   public function deleteProofDocs($email){
+      $this->delete("spverifydoc", ['email' => $email]);
+   }
+
 }

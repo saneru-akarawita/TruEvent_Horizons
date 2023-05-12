@@ -28,6 +28,8 @@ class AdminDashboard extends Controller
       $no_of_hotels = $this->hotelModel->getNumberofServices();
       $no_of_bands = $this->bandModel->getNumberofServices();
       $no_of_photographies = $this->photographyModel->getNumberofServices();
+      $no_of_services = $this->reservationModel->getNumberOfServicesMonthly();
+      $no_of_packages = $this->reservationModel->getNumberOfPackagesMonthly();
 
       $data = [
          'no_of_customers' => $no_of_customers,
@@ -37,7 +39,9 @@ class AdminDashboard extends Controller
          'no_of_hotels' => $no_of_hotels,
          'no_of_bands' => $no_of_bands,
          'no_of_photographies' => $no_of_photographies,
-         'no_of_services'=> $no_of_decos+$no_of_hotels+$no_of_bands+$no_of_photographies
+         'no_of_services'=> $no_of_decos+$no_of_hotels+$no_of_bands+$no_of_photographies,
+         'no_of_services_monthly' => $no_of_services,
+         'no_of_packages_monthly' => $no_of_packages
       ];
 
       $this->view('admin/admin-home',$data);
@@ -392,15 +396,22 @@ class AdminDashboard extends Controller
                $reservationincomeforselectedService = $this->reservationModel->getReservationIncomeByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
                $totalCount = $this->reservationModel->getNoOfReservationsByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
                $totalIncome = $this->reservationModel->getIncomeByDateForSelectedService($data['startDate'],$data['endDate'],$data['spType']);
-      
-               $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-               $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+               $selectedMonthIndex = intval(date('m', strtotime($data['startDate']))) - 1;
+               $labels = [];
+               $values = [];
 
-               for($k=0; $k<12; $k++){
-                  foreach($totalCount as $t3){
-                     if($labels[$k] == $t3->Month){
-                        $values[$k] = $t3->TotalReservationsSelectedService;
-                     }
+
+               for ($i = 0; $i < 12; $i++) {
+                  $monthIndex = ($selectedMonthIndex + $i) % 12;
+                  $labels[] = date('M', mktime(0, 0, 0, $monthIndex + 1, 1));
+                  $values[] = 0;
+               }
+            
+               // Fill in the values based on the retrieved data
+               foreach ($totalCount as $t3) {
+                  $monthIndex = array_search($t3->Month, $labels);
+                  if ($monthIndex !== false) {
+                     $values[$monthIndex] = $t3->TotalReservationsSelectedService;
                   }
                }
             
@@ -409,7 +420,7 @@ class AdminDashboard extends Controller
                   'data' => $values
                ];
 
-               $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+               $label2 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
                $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 
                for($m=0; $m<12; $m++){
@@ -450,15 +461,21 @@ public function generatereportsforPackage(){
             $reservationincomeforpackage = $this->reservationModel->getReservationIncomeByDateForPackage($data['startDate'],$data['endDate']);
             $totalCountPackages = $this->reservationModel->getNoOfReservationsByDateForPackage($data['startDate'],$data['endDate']);
             $totalIncomePackageMonth = $this->reservationModel->getIncomeByDateForPackage($data['startDate'],$data['endDate']);
-   
-            $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+            $selectedMonthIndex = intval(date('m', strtotime($data['startDate']))) - 1;
+            $labels = [];
+            $values = [];
 
-            for($i=0; $i<12; $i++){
-               foreach($totalCountPackages as $t){
-                  if($labels[$i] == $t->Month){
-                     $values[$i] = $t->TotalReservationsPackage;
-                  }
+            for ($i = 0; $i < 12; $i++) {
+               $monthIndex = ($selectedMonthIndex + $i) % 12;
+               $labels[] = date('M', mktime(0, 0, 0, $monthIndex + 1, 1));
+               $values[] = 0;
+            }
+         
+            // Fill in the values based on the retrieved data
+            foreach ($totalCountPackages as $t) {
+               $monthIndex = array_search($t->Month, $labels);
+               if ($monthIndex !== false) {
+                  $values[$monthIndex] = $t->TotalReservationsPackage;
                }
             }
          
@@ -467,7 +484,7 @@ public function generatereportsforPackage(){
                'data' => $values
             ];
 
-            $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            $label2 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 
             for($j=0; $j<12; $j++){
@@ -543,6 +560,7 @@ public function generatereportsforPackage(){
 
       //call model
       $this->userModel->removeUserAccount($email);
+      $this->serviceProviderModel->deleteProofDocs($email);
       EMAIL::sendUserAccRejection($email);
       redirect('AdminDashboard/userManagement');
    }
@@ -571,7 +589,8 @@ public function generatereportsforPackage(){
       $users = $this->userModel->getAllGeneralUsers();
       $serviceProviders = $this->serviceProviderModel->getServiceProviderDetails();
       $customers = $this->customerModel->getCustomerDetails();
-      $result = array($users, $serviceProviders, $customers);
+      $spimages = $this->serviceProviderModel->getProofDocs();
+      $result = array($users, $serviceProviders, $customers, $spimages);
       $this->view('admin/user_management', $result);
    }
 
