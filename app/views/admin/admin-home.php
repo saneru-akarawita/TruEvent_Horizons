@@ -154,7 +154,7 @@
         <div class="charts">
 
           <div class="charts-card">
-            <p class="chart-title">Number of Service Providers</p>
+            <p class="chart-title">Number of Services</p>
             <div id="bar-chart"></div>
           </div>
 
@@ -172,7 +172,8 @@
 <div id="dataContainer4" type="hidden" data-value="{<?php echo $data['no_of_decos'] ?>}"></div>
 <div id="dataContainer5" type="hidden" data-value="{<?php echo $data['no_of_bands'] ?>}"></div>
 <div id="dataContainer6" type="hidden" data-value="{<?php echo $data['no_of_photographies'] ?>}"></div>
-
+<div id="dataContainer7" type="hidden" data-value="{<?php echo json_encode($data['no_of_services_monthly'])?>}"></div>
+<div id="dataContainer8" type="hidden" data-value="{<?php echo json_encode($data['no_of_packages_monthly']) ?>}"></div>
 
 <!-- Home Package Section  starts -->
 <section class="home-packages">
@@ -225,19 +226,6 @@
 </section>
 
 <!-- Home Package Section Ends -->
-
-
-<!-- Home offer Section starts -->
-<section class="home-offer">
-    <div class="content">
-        <h3>Upto 25% Off</h3>
-        <p>This Weekend</p>
-        <a href="addpackages" class="btn">Use Coupon Code</a>
-    </div>
-</section>
-
-
-<!-- Home offer Section ends -->
 
 
 <!-- footer start -->

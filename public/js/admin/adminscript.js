@@ -54,6 +54,16 @@ var dataContainer5 = document.getElementById("dataContainer5");
 var bad = parseInt(dataContainer5.dataset.value.slice(1, -1));
 var dataContainer6 = document.getElementById("dataContainer6");
 var pho = parseInt(dataContainer6.dataset.value.slice(1, -1));
+var dataContainer7 = document.getElementById("dataContainer7");
+var ser = dataContainer7.dataset.value.slice(2, -2);
+var dataContainer8 = document.getElementById("dataContainer8");
+var pac = dataContainer8.dataset.value.slice(2, -2);
+
+var ser1 = ser.split(",");
+var pac1 = pac.split(",");
+
+console.log(ser1);
+console.log(pac1);
 
 var barChartOptions = {
     series: [{
@@ -104,10 +114,10 @@ var barChartOptions = {
   var areaChartOptions = {
     series: [{
       name: 'Services',
-      data: [31, 40, 28, 51, 42, 109, 100]
+      data: ser1
     }, {
       name: 'Packages',
-      data: [11, 32, 45, 32, 34, 52, 41]
+      data: pac1
     }],
     chart: {
       height: 350,
@@ -123,7 +133,7 @@ var barChartOptions = {
     stroke: {
       curve: 'smooth'
     },
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     markers: {
       size: 0
     },

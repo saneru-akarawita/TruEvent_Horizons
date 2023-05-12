@@ -350,14 +350,21 @@ class HotelDashboard extends Controller
       $totalIncome = $this->reservationModel->getIncomeByDateForService($data['startDate'],$data['endDate'],$userID);
 
 
-      $labels = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      $values = [0,0,0,0,0,0,0,0,0,0,0,0];
+      $selectedMonthIndex = intval(date('m', strtotime($data['startDate']))) - 1;
+      $labels = [];
+      $values = [];
 
-      for($i=0; $i<12; $i++){
-         foreach($totalCount as $t){
-            if($labels[$i] == $t->Month){
-               $values[$i] = $t->TotalReservations;
-            }
+      for ($i = 0; $i < 12; $i++) {
+         $monthIndex = ($selectedMonthIndex + $i) % 12;
+         $labels[] = date('M', mktime(0, 0, 0, $monthIndex + 1, 1));
+         $values[] = 0;
+      }
+   
+      // Fill in the values based on the retrieved data
+      foreach ($totalCount as $t) {
+         $monthIndex = array_search($t->Month, $labels);
+         if ($monthIndex !== false) {
+            $values[$monthIndex] = $t->TotalReservations;
          }
       }
    
@@ -367,7 +374,7 @@ class HotelDashboard extends Controller
       ];
 
 
-      $label2 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      $label2 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       $value2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 
       for($j=0; $j<12; $j++){

@@ -100,7 +100,10 @@ class Packages extends Controller
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){
-               $data['bands_error'] = "At least one Service should be Added!";
+               $data['bands_error'] = "At least two or more Services should be Added!";
+            }
+            else if((emptyCheck($data['bands']) && emptyCheck($data['decorations'])) || (emptyCheck($data['bands']) && emptyCheck($data['photography'])) || (emptyCheck($data['photography']) && emptyCheck($data['decorations']))){
+               $data['bands_error'] = "At least two or more Services should be Added!";
             }
 
             if (
