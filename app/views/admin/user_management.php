@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/dashboardpanel.css">
         <!-- custom css file link -->
         <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/admin/admin-add-reservation-style.css"/>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -107,6 +107,15 @@
                 background-color: #f4f6fb;
             }
 
+            .viewbtn{
+                background-color:#000000;
+                margin: 0 0.5rem;
+                padding: 0.5rem 1rem;
+            }
+            .viewbtn:hover {
+                cursor: pointer;
+            }
+
             .accbtn{
                 background-color:#007bff;
                 margin: 0 0.5rem;
@@ -156,6 +165,7 @@
         $users = $data[0];
         $serviceProviders = $data[1];
         $customers = $data[2];
+        $spimages = $data[3];
     ?>
     <!-- <?php print_r($users)?> -->
     <!-- <?php print_r($serviceProviders[0]->service_provider_id)?> -->
@@ -187,6 +197,11 @@
                                 $Cname = $sp->company_name;
                             }?>
                         <?php endforeach;?>
+                        <?php foreach($spimages as $spimg): ?>
+                            <?php if($spimg->email == $mail){
+                                $image_name = $spimg->img;
+                            }?>
+                        <?php endforeach;?>
                         <tr>
                             <td><?=$BID?></td>
                             <td><?=$Cname?></td>
@@ -198,6 +213,36 @@
                                 <p class="status status-pending">Pending</p>
                             </td>
                             <td>
+                                <!-- <button type="submit" class="viewbtn" name="submit" value="View||<?=$mail?>" style="border-radius:12px"><a style="color:white;">View</a></button> -->
+                                <button type="button" class="viewbtn" style="border-radius:12px; color:white;" data-toggle="modal" data-target="#exampleModal">View</button>
+                                <div class="modal fade"
+                                    id="exampleModal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                    style="z-index: 1050;">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                            
+                                            <!-- Add image inside the body of modal -->
+                                            <div class="modal-body">
+                                                <img id="image"
+                                                    src= "../../../public/images/uploadimages/proofdoc/<?=$image_name?>"
+                                                    alt="No Image Shown"
+                                                    style = "width:480px; height:400px;" />
+                                            </div>
+                            
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                        class="viewbtn"
+                                                        data-dismiss="modal" style="color:white;">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button type ="submit" class="accbtn" name = "submit" value="Approve||<?=$mail?>" style="border-radius:12px"><a style="color:white;">Approve</a></button>
                                 <button type ="submit" class="rejbtn" name = "submit" value ="Reject||<?=$mail?>" style="border-radius:12px"><a style="color:white;">Reject</a></button>
                             </td> 
@@ -357,9 +402,23 @@
     </div>
 
 </section>
-            <script>
-                
-            </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity=
+"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous">
+     </script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity=
+"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous">
+     </script>
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity=
+"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+     </script>
 
 <!-- footer ends -->
     </body>

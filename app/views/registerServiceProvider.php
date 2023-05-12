@@ -24,7 +24,7 @@
       <a href="<?php echo URLROOT ?>" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
       
       <div class="reg-container form-container contentBox">
-         <form action="<?php echo URLROOT; ?>/serviceprovider/register" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/serviceprovider/register" method="post" class="form" enctype="multipart/form-data">
             <h1 class="title">Sign Up</h1>
 
             <div class="row">
@@ -111,6 +111,14 @@
                          <span class="error"><?php echo $data['travel_flag_error']; ?></span>
                    </div>
                 </div>
+             </div>
+
+             <div class="row">
+               <div class="text-group">
+                  <label class="label" for="proofdoc">Proof Document (Business Reg. Certificate/NIC) [png, jpg, pdf]</label><br>
+                  <input class="proofdoc" type="file" name="proofdoc"  required capture>
+                  <span class="error"><?php echo $data['proofdoc_error']; ?></span>
+               </div>
              </div>
            
             <div class="row row-last">
