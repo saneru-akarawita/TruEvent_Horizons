@@ -29,9 +29,22 @@ class BandService extends Controller
                   } 
          } 
 
+         $targetDir = APPROOT."/../public/images/uploadimages/band/";
+         $fileName = basename($_FILES["band_image"]["name"]);
+         $completePath = $targetDir . $fileName;
+         $fileType = pathinfo($completePath,PATHINFO_EXTENSION);
+         $allowTypes = array('jpg','png','jpeg','gif','pdf');
+
+         $filename_without_ext = substr($fileName, 0, strrpos($fileName, "."));
+
+         $uniqueFileName = $filename_without_ext.time().".".$fileType;
+         $targetFilePath = $targetDir . $uniqueFileName;
+         $statusMsg = '';
+
          $data = [
 
             'name' => trim($_POST['service_name']),
+            'band_image' => $uniqueFileName,
             'price' => trim($_POST['price']),
             'band'=>$chk,
             'other_band' => trim($_POST['other_band']),
@@ -40,6 +53,7 @@ class BandService extends Controller
             'duration' => trim($_POST['duration']),
 
             'name_error' => '',
+            'band_image_error'=>$statusMsg,
             'description_error'=>'',
             'price_error' => '',
             'band_error' => '',
@@ -55,12 +69,37 @@ class BandService extends Controller
             $data['num_players_error'] = positiveIntegerValidation($data['num_players']);
             $data['band_error'] = emptyCheck($data['band']);
             $data['duration_error'] = positiveDecimalValidation($data['duration']);
+         
 
             if (
-               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error']) && empty($data['band_error'] ) && empty($data['duration_error'])
+               empty($data['num_players_error']) && empty($data['name_error']) && empty($data['price_error']) 
+               && empty($data['band_error'] ) && empty($data['duration_error']) && empty($data['band_image_error'])
             )
             {
-                
+             
+               if(in_array($fileType, $allowTypes)){
+                  // Upload file to server
+                  if(move_uploaded_file($_FILES["band_image"]["tmp_name"], $targetFilePath)){
+                     if($fileType == "jpg" || $fileType == "jpeg"){
+                        $image = imagecreatefromjpeg($targetFilePath); // Assuming the uploaded file is JPEG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagejpeg($resizedImage, $targetFilePath, 80);
+                        $statusMsg = '';
+                     }else if($fileType == "png"){
+                        $image = imagecreatefrompng($targetFilePath); // Assuming the uploaded file is PNG format
+                        $resizedImage = imagescale($image, 5500, 3667); // Resize the image to the desired dimensions
+                        imagepng($resizedImage, $targetFilePath, 8);
+                        $statusMsg = '';
+                     }
+                        
+                  }else{
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                  }
+               }else{
+                  $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+               }
+              
+
                $this->bandModel->beginTransaction();
                $this->bandModel->addBandService($data);
                $this->bandModel->commit();
@@ -86,6 +125,7 @@ class BandService extends Controller
 
          $data = [
             'name' => '',
+            'band_image' => '',
             'price' => '',
             'band'=>'',
             'other_band' => '',
@@ -94,6 +134,7 @@ class BandService extends Controller
             'duration' => '',
 
             'name_error' => '',
+            'band_image_error'=>'',
             'price_error' => '',
             'num_players_error' => '',
             'band_error' => '',
@@ -165,9 +206,7 @@ class BandService extends Controller
                $this->bandModel->beginTransaction();
                $this->bandModel->editBandServicebyID($data['sv_id'], $data);
                $this->bandModel->commit();
-
-               Toast::setToast(1, "Service Edited Successfully!!!", "");
-
+               Toast::setToast(1, "Service Edited Successfully", "");
                redirect('BandService/viewAllServices');
                
             }
@@ -206,10 +245,7 @@ class BandService extends Controller
       }
    }
 
-   public function deleteService($id){
 
-   }
- 
    public function activate(){
       if (isset($_GET['service_id'])){
 

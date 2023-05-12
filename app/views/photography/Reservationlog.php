@@ -25,6 +25,7 @@
     <?php $rvdata = $data[1]; ?>
     <?php $cusdata = $data[2]; ?>
     <?php $packageConfirmationData = $data[3]; ?>
+    <?php $packageDetails = $data[4]; ?>
 
       <!-- Main Start -->
 
@@ -60,6 +61,14 @@
                                         <?php $scount = $scount + 1; ?>
 
 
+                      
+                    <?php if($rvDetails->rvType == "package") {?>
+                    <?php foreach($packageDetails as $pDetails): ?>
+                    <?php if($pDetails -> rv_id == $rvDetails->rv_id) {?>
+                        <?php $package_id = $pDetails->photo_sv_id; ?>
+                    <?php } ?>
+                    <?php endforeach; ?>
+                    <?php } ?>
                     <div class="project">
                        <div class="col col<?php echo $scount%4 +1 ?>">
                             <div class="project-card">
@@ -119,7 +128,7 @@
                                                         <?php require APPROOT . "/views/common/sp_log_confirm.php" ?>
                                                 <?php } else {?>
                                                     <div class="action-button" style="justify-content:center; margin-left:75px;">
-                                                        <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$rvDetails->service_id;?>" class="buttond">view</a>
+                                                        <a href="ReservationDetails?rv_id=<?=$rvDetails->rv_id;?>&service_id=<?=$package_id;?>" class="buttond">view</a>
                                                         <a href="<?= URLROOT?>/serviceProviderReservation/confirmReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttone" style="margin-right:20px; margin-left: 20px;">Confirm</a>
                                                         <a href="<?= URLROOT?>/serviceProviderReservation/cancelReservationPackage?rv_id=<?=$rvDetails->rv_id; ?>&cus_id=<?=$rvDetails->customer_id?>" class="buttond">Decline</a>
                                                 <?php } ?>

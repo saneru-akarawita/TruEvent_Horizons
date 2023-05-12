@@ -25,7 +25,7 @@
       
       <!-- Add Decorations form -->
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
-         <form action="<?php echo URLROOT; ?>/decoService/addNewService" method="post" class="form">
+         <form action="<?php echo URLROOT; ?>/decoService/addNewService" method="post" class="form"  enctype="multipart/form-data">
             <h1 class="title" style="font-size:3rem;">Add New Service</h1>
 
             
@@ -42,6 +42,13 @@
                         <option value = "General Events">General Events</option>
                      </select>
                      <span class="error"><?php echo $data['name_error']; ?></span>
+                  </div>
+
+                  
+                  <div class="text-group">
+                     <label for="hotelimage">Decoration Image (Note:- Allowed only JPG, JPEG, PNG, & GIF)</label>        
+                     <input class="hotelimageinput" type="file" name="deco_image"  required="" capture>
+                     <span class="error"><?php echo $data['deco_image_error']; ?></span>
                   </div>
 
                   <label for="event name">Decorations :</label><br>

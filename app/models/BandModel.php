@@ -6,6 +6,7 @@ class BandModel extends Model
         $this->insert('bandservicedetails', [
 
             'service_name' => $data['name'],
+            'band_img' => $data['band_image'],
             'other_band_type' => $data['other_band'],
             'no_of_players' => $data['num_players'],
             'price'=>$data['price'],

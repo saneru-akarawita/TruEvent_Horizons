@@ -198,12 +198,8 @@
 
 </section>
 
-
 <!-- footer ends -->
-    
-
     <script src="<?php echo URLROOT ?>/public/js/band/bandscript.js"></script>
 
 </body>
-
 </html>

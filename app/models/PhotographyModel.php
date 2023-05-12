@@ -6,12 +6,11 @@ class PhotographyModel extends Model
         $this->insert('photographyservicedetails', [
 
             'service_name' => $data['name'],
+            'photo_img'=> $data['photo_image'],
             'other_features' => $data['other_photography'],
-            // 'num_members' => $data['num_members'],
             'price'=>$data['price'],
             'photo_features' => $data['photography'],
             'service_provider_id' => $data['service_provider_id']
-
          ]);
     }
 

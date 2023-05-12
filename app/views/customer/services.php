@@ -47,7 +47,8 @@
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
 
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/hotel/" . ($hcount%7 + 1) . ".jpg'>"; ?>
+                    <img src="<?= URLROOT ?>/public/images/uploadimages/hotel/<?= $hsDetails->hall_image ?>">
+
 
                     </div>
                     <div class="content">
@@ -110,7 +111,8 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/deco/" . ($dcount%5 + 1) . ".jpg'>"; ?>
+                    <img src="<?= URLROOT ?>/public/images/uploadimages/deco/<?= $dcDetails->deco_img ?>">
+                        
                     </div>
                     <div class="content">
                         <h3><?= $dcDetails->service_name; ?></h3>
@@ -172,7 +174,8 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/band/" .($dcount%6 + 1) . ".jpg'>"; ?>
+                         <img src="<?= URLROOT ?>/public/images/uploadimages/band/<?= $bsDetails->band_img ?>">
+                       
                     </div>
                     <div class="content">
                         <h3><?= $bsDetails->service_name; ?></h3>
@@ -229,7 +232,7 @@
                 <?php endforeach; ?>
                 <div class="box" style="border:none; border-radius:10px">
                     <div class="image" style="border-radius:10px 10px 0px 0px">
-                        <?php echo "<img src = '" . URLROOT . "/public/images/customer/services/photo/" . ($dcount%6 + 1) . ".jpg'>"; ?>
+                            <img src="<?= URLROOT ?>/public/images/uploadimages/photo/<?= $psDetails->photo_img ?>">
                     </div>
                     <div class="content">
                         <h3><?= $psDetails->service_name; ?></h3>
@@ -318,5 +321,6 @@
     <!-- custom js file link -->
     <script src="./js/adminscript.js"></script>
 </body>
-
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
 </html>

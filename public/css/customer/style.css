@@ -442,7 +442,7 @@ footer p {
 
 /* styles of status toast */
 .statusToast {
-  z-index: 100;
+  z-index: 99999999999999;
   background-color: var(--white);
   padding: 20px 15px 20px 20px;
   border-radius: 10px;

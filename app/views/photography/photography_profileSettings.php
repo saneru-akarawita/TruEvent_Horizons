@@ -46,24 +46,6 @@
         $image_name = 'profilepic.png';
     }?>
 
-<!-- header section starts -->
-<!-- <section class="header">
-    <img src="<?php echo URLROOT ?>/public/images/customer/logo/logo.jpg" alt="logo" class="logo">
-    <a href="home" class="dashboard">Dashboard</a>
-
-    <nav class="navbar">
-        <a href="home">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Packages</a>
-        <a href="viewreservationlog">Reservation Log</a>
-        <a href="logout">Logout</a>
-    </nav> -->
-
-    <!-- Gives a Menu Button -->
-    <!-- <button id="menu-btn" class="fas fa-bars"></button>
-
-</section> -->
-
 <div class="main-container">
 
     <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
@@ -304,6 +286,9 @@ showPasswordButton3.addEventListener('click', () => {
 });
 
 </script>
+
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
 
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/hotel manager/header-hotel.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/toast.css">
     <script src="https://kit.fontawesome.com/c02eb7591c.js" crossorigin="anonymous"></script>
     <title>TruEvent Horizons - Header - Admin</title>
 
@@ -13,6 +14,8 @@
 
 </head>
 <body>
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
  <!-- -------------------------------------header for Admin-------------------------------------------------- -->
 
  <div class="headerdetails" style="width:101.05%">

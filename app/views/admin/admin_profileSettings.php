@@ -52,8 +52,6 @@
     <!-- Gives a Menu Button -->
     <button id="menu-btn" class="fas fa-bars"></button>
 
-
-
 <div class="main-container">
 
     <a href="home" class="top-right-closeBtn white-red-hover"><i class="fal fa-times fa-2x "></i></a>
@@ -273,6 +271,8 @@ showPasswordButton3.addEventListener('click', () => {
 
 </script>
 
+<!-- Code segment required for toast notifications -->
+<?php require APPROOT . "/views/inc/toast.php" ?>
 </body>
 
 </html>

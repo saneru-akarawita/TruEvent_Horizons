@@ -357,3 +357,4 @@ class ReservationModel extends Model
         return $reservations;
     }
 }
+

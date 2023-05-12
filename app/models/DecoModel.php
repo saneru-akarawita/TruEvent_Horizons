@@ -6,12 +6,12 @@ class DecoModel extends Model
         $this->insert('decoservicedetails', [
 
             'service_name' => $data['name'],
+            'deco_img' => $data['deco_image'],
             'other_decoration' => $data['other_deco'],
             'theme' => $data['theme'],
             'price'=>$data['price'],
             'decoration_item' => $data['decoration'],
             'service_provider_id' => $data['service_provider_id']
-
          ]);
     }
 

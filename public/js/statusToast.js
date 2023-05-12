@@ -5,9 +5,12 @@ const toastCloseBtn =  document.querySelector(".statusToast .close-icon");
 
 
 function displayToast(state, titleText, subtitleText){
+    // toast.style.marginTop = "500px"; 
+    // set margin top value to 20 pixels
     let btnVisible = 1;
     title.innerText = titleText;
     subtitle.innerText = subtitleText;
+    
 
     if(state == 1){
         toastState = "success";
