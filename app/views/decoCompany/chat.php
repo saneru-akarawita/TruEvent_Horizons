@@ -21,6 +21,7 @@
 
 </head>
 <body>
+    <!-- Header -->
 <?php require APPROOT . "/views/decoCompany/header-deco.php" ?>
 
 <?php if(!empty($data->img)){

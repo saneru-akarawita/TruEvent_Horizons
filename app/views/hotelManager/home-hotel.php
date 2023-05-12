@@ -63,7 +63,7 @@
 
 <!-- <-------------------------------------------------------Home Page Services Start------------------------------------------------------->   
 <section class="home-packages">
-    <h1 class="heading-title">Your Available Venues</h1>
+    <h1 class="heading-title">My Services</h1>
 
     <div class="box-container">
 

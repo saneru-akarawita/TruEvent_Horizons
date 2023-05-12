@@ -20,7 +20,7 @@
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/decoService/editService" method="post" class="form">
-            <h1 class="title" style="font-size:3rem;">Edit Decoration</h1>
+            <h1 class="title" style="font-size:3rem;">Edit Service</h1>
             <?php if($data['name']=='') echo "selected" ?>
             
                   <div class="text-group">

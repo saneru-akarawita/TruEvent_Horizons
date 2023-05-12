@@ -21,7 +21,7 @@
 
 
 <section class="packages">
-    <h1 class="heading-title">Your Photographies</h1>
+    <h1 class="heading-title">My Photography Services</h1>
 
     <div class="box-container">
 

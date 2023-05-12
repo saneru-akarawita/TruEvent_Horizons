@@ -10,7 +10,8 @@ class BandModel extends Model
             'no_of_players' => $data['num_players'],
             'price'=>$data['price'],
             'band_type' => $data['band'],
-            'service_provider_id' => $data['service_provider_id']
+            'service_provider_id' => $data['service_provider_id'],
+            'duration' => $data['duration']
          ]);
     }
 
@@ -44,6 +45,7 @@ class BandModel extends Model
             'no_of_players' => $data['num_players'],
             'price'=>$data['price'],
             'band_type' => $data['band'],
+            'duration' => $data['duration'],
 
          ], ['service_id' => $serviceID]);
     }

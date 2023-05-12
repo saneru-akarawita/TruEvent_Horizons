@@ -28,7 +28,7 @@
 
                 <div class="hero" style="width:2000px">
                     <div class="hero-heading">
-                        <h3>Reservation Log</h3>
+                        <h3>My Reservations</h3>
                     </div>
 
 

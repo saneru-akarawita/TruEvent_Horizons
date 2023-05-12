@@ -21,7 +21,7 @@
       
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/BandService/editService" method="post" class="form">
-            <h1 class="title" style="font-size:3rem;">Edit Band</h1>
+            <h1 class="title" style="font-size:3rem;">Edit Service</h1>
 
             
                   <div class="text-group">
@@ -124,9 +124,14 @@
                      <label for="num_players">No of players</label>        
                      <input class="num_players" type="number" name="num_players" id="num_players" min = 1 placeholder="No of Players included in band" value="<?php echo $data['num_players']; ?>" required >
                      <span class="error"><?php echo $data['num_players_error']; ?></span>
-                  </div><br>
-                  
+                  </div>
 
+                  <div class="text-group">
+                     <label for="duration">Duration (hours)</label>        
+                     <input class="duration" type="text" name="duration" id="duration"  maxlength='50' placeholder="Playing time duration" value="<?php echo $data['duration']; ?>" required >
+                     <span class="error"><?php echo $data['duration_error']; ?></span>
+                  </div>
+      
 
             <div class="row">
                 <div class="column">

@@ -30,7 +30,7 @@
      
       <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px">
          <form action="<?php echo URLROOT; ?>/hotelService/addNewService" method="post" class="form" enctype="multipart/form-data">
-            <h1 class="title">Add Venue/Location</h1>
+            <h1 class="title">Add New Service</h1>
 
             
                   <div class="text-group">
