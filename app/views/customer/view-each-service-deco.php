@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                       <td>Other Decorations </td>
-                      <td>:<?php if(empty($dsDetails->other_decorations)) echo " None"; else  echo $dsDetails->other_decorations; ?> </td>
+                      <td>:<?php if(empty($dsDetails->other_decoration)) echo " None"; else  echo $dsDetails->other_decoration; ?> </td>
                     </tr>
                   </table>
                   <br>

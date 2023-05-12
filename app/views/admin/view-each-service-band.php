@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                       <td>Other Types of Band </td>
-                      <td>:<?php if(empty($bsDetails->other_band_types)) echo " None"; else  echo $bsDetails->other_decorations; ?> </td>
+                      <td>:<?php if(empty($bsDetails->other_band_type)) echo " None"; else  echo $bsDetails->other_band_type; ?> </td>
                     </tr>
                     <tr>
                         <td>Duration(hours)</td>
