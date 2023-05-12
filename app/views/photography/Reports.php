@@ -172,7 +172,7 @@
                 <div class="row">
                         <div class="text-group">
                                 <label for="servicetype" style="font-size:18px; font-weight:500;">Service Type</label>
-                                <input type="text" value="Photography" name="serviceType" style="margin-top:-5px;">
+                                <input type="text" value="Photography" name="serviceType" style="margin-top:-5px;" disabled>
         
                         </div>
                 </div>

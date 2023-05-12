@@ -96,11 +96,14 @@ class Packages extends Controller
             // Validate everything
             $data['pcode_error'] = emptyCheck($data['pcode']);
             $data['name_error'] = emptyCheck($data['name']);
-            $data['package_type_error'] = emptyCheck($data['package_type']);
+            $data['package_type_error'] = packageTypeValidation($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){
-               $data['bands_error'] = "At least one Service should be Added!";
+               $data['bands_error'] = "At least two or more Services should be Added!";
+            }
+            else if((emptyCheck($data['bands']) && emptyCheck($data['decorations'])) || (emptyCheck($data['bands']) && emptyCheck($data['photography'])) || (emptyCheck($data['photography']) && emptyCheck($data['decorations']))){
+               $data['bands_error'] = "At least two or more Services should be Added!";
             }
 
             if (
@@ -257,7 +260,7 @@ class Packages extends Controller
             // Validate everything
             $data['pcode_error'] = emptyCheck($data['pcode']);
             $data['name_error'] = emptyCheck($data['name']);
-            $data['package_type_error'] = emptyCheck($data['package_type']);
+            $data['package_type_error'] = packageTypeValidation($data['package_type']);
             $data['price_error'] = validatePrice($data['price']);
 
             if(emptyCheck($data['bands']) && emptyCheck($data['decorations']) && emptyCheck($data['photography'])){

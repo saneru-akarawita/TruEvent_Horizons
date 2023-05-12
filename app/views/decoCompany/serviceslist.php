@@ -19,7 +19,7 @@
 
 
 <section class="packages">
-    <h1 class="heading-title">Your Decorations</h1>
+    <h1 class="heading-title">My Decoration Services</h1>
 
     <div class="box-container">
 

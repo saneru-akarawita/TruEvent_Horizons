@@ -196,7 +196,7 @@ class ReservationModel extends Model
 
     public function getNoOfReservationsByDateForHotelService($start_date, $end_date, $user_id){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservations
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month , COUNT(*) AS TotalReservations
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND sp_id = '".$user_id."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -211,7 +211,7 @@ class ReservationModel extends Model
 
     public function getNoOfReservationsByDateForService($start_date, $end_date, $userID){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsofService
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month , COUNT(*) AS TotalReservationsofService
             FROM customerrvdetails
             WHERE sp_id LIKE '%".$userID."%' AND rvType='Service' AND rvDate BETWEEN '".$start_date."' AND '".$end_date."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -219,7 +219,7 @@ class ReservationModel extends Model
 
     public function getNoOfReservationsByDateForPackages($start_date, $end_date, $userID){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsofPackages
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month , COUNT(*) AS TotalReservationsofPackages
             FROM customerrvdetails
             WHERE sp_id LIKE '%".$userID."%' AND rvType='Package' AND rvDate BETWEEN '".$start_date."' AND '".$end_date."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -227,7 +227,7 @@ class ReservationModel extends Model
 
     public function getIncomeByDateForService($start_date, $end_date, $user_id){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonth
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month ,SUM(price) AS totalPricePerMonth
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND sp_id = '".$user_id."' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -247,7 +247,7 @@ class ReservationModel extends Model
 
     public function getNoOfReservationsByDateForPackage($start_date, $end_date){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsPackage
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month , COUNT(*) AS TotalReservationsPackage
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -255,7 +255,7 @@ class ReservationModel extends Model
 
     public function getIncomeByDateForPackage($start_date, $end_date){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonthPackage
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month ,SUM(price) AS totalPricePerMonthPackage
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND rvType = 'package' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -276,7 +276,7 @@ class ReservationModel extends Model
 
     public function getNoOfReservationsByDateForSelectedService($start_date, $end_date,$service_type){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month , COUNT(*) AS TotalReservationsSelectedService
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month , COUNT(*) AS TotalReservationsSelectedService
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -284,7 +284,7 @@ class ReservationModel extends Model
 
     public function getIncomeByDateForSelectedService($start_date, $end_date,$service_type){
         $results = $this->customQuery(
-            "SELECT DATE_FORMAT(rvDate,'%M') AS Month ,SUM(price) AS totalPricePerMonthSelectedService
+            "SELECT DATE_FORMAT(rvDate,'%b') AS Month ,SUM(price) AS totalPricePerMonthSelectedService
             FROM customerrvdetails
             WHERE rvDate BETWEEN '".$start_date."' AND '".$end_date."' AND spType = '".$service_type."' AND payment = 'paid' GROUP BY YEAR(rvDate), MONTH(rvDate)" );
          return $results;
@@ -311,6 +311,50 @@ class ReservationModel extends Model
     public function getBandPrice($rvID){
         $results = $this->customQuery("SELECT price_band FROM customerrvdetails_with_prices WHERE rv_id = '".$rvID."' ");
         return $results;
+    }
+
+    public function getNumberOfServicesMonthly() {
+        $months = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+        ];
+        
+        $results = $this->customQuery("SELECT MONTH(rvDate) AS month, COUNT(*) AS totalServices FROM customerrvdetails WHERE rvType = 'service' GROUP BY month");
+        
+        $reservations = [];
+        
+        foreach ($months as $month) {
+            $reservations[$month-1] = 0;
+        }
+        
+        foreach ($results as $row) {
+            $month = $row->month;
+            $reservations[$month-1] = $row->totalServices;
+        }
+        
+        return $reservations;
+    }
+
+    public function getNumberOfPackagesMonthly(){
+        $months = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+        ];
+
+        $results = $this->customQuery("SELECT MONTH(rvDate) AS month, COUNT(*) AS totalPackages FROM customerrvdetails WHERE rvType = 'package' GROUP BY month");
+        
+        
+        $reservations = [];
+        
+        foreach ($months as $month) {
+            $reservations[$month-1] = 0;
+        }
+        
+
+        foreach ($results as $row) {
+            $month = $row->month;
+            $reservations[$month-1] = $row->totalPackages;
+        }
+        
+        return $reservations;
     }
 }
 

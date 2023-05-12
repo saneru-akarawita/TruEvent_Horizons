@@ -20,7 +20,7 @@
 
         <div class="wrapper">
             <div class="product-img">
-              <img src="<?php echo URLROOT ?>/public/images/deco company/deco-add-services/deco1.jpg" height="100%" max-width="100%">
+              <img src="<?php echo URLROOT ?>/public/images/deco company/deco-add-services/photo1.jpg" height="100%" max-width="100%">
             </div>
             <div class="product-info">
               <div class="product-text">

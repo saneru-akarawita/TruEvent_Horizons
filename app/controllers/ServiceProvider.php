@@ -13,6 +13,18 @@ class ServiceProvider extends Controller
       // If the request is a post
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
+         $targetDir = APPROOT."/../public/images/uploadimages/proofdoc/";
+         $fileName = basename($_FILES["proofdoc"]["name"]);
+         $completePath = $targetDir . $fileName;
+         $fileType = pathinfo($completePath,PATHINFO_EXTENSION);
+         $allowTypes = array('jpg','png','jpeg','gif','pdf');
+
+         $filename_without_ext = substr($fileName, 0, strrpos($fileName, "."));
+
+         $uniqueFileName = $filename_without_ext.time().".".$fileType;
+         $targetFilePath = $targetDir . $uniqueFileName;
+         $statusMsg = '';
+
          // Data is loaded
          $data = [
     
@@ -33,6 +45,7 @@ class ServiceProvider extends Controller
             'business_id_error' => '',
             'companyname_error' => '',
             'email_error' => '',
+            'proofdoc_error' => $statusMsg,
             'OTP_error' => '',
             'password_error' => '',
             'confirmPassword_error' => '',
@@ -125,7 +138,7 @@ class ServiceProvider extends Controller
             }
 
             if (
-               empty($data['business_id_error']) && empty($data['companyname_error']) && empty($data['email_error']) &&
+               empty($data['business_id_error']) && empty($data['companyname_error']) && empty($data['email_error']) && empty($data['proofdoc']) &&
                empty($data['OTP_error']) && empty($data['password_error']) && empty($data['confirmPassword_error']) && 
                empty($data['accName_error']) && empty($data['accNumber_error']) && empty($data['bank_error']) && empty($data['branch_error'])
                && empty($data['contactno_error']) && empty($data['district_error']) && empty($data['service_type_error']) && empty($data['travel_flag_error'])
@@ -147,12 +160,24 @@ class ServiceProvider extends Controller
                }
                else
                {
+                  if(in_array($fileType, $allowTypes)){
+                     // Upload file to server
+                     if(move_uploaded_file($_FILES["proofdoc"]["tmp_name"], $targetFilePath)){
+                           $statusMsg = '';
+                           
+                     }else{
+                           $statusMsg = "Sorry, there was an error uploading your file.";
+                     }
+                  }else{
+                     $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                  }
                   // $ran_id = rand(time(), 100000000);
                   // $status = "Active now";
                   $this->userModel->beginTransaction();
                   $this->userModel->registerUser($data['email'], $data['password'], $data['service_type']);
                   // $this->userModel->registerChatUser($ran_id,$data['company_name'],'',$data['email'],$status);
                   $this->serviceProviderModel->registerServiceProvider($data);
+                  $this->serviceProviderModel->addProofDoc($data['email'], $uniqueFileName);
                   $this->OTPModel->removeOTP($data['email'], 1);
 
                   //System log
@@ -199,6 +224,7 @@ class ServiceProvider extends Controller
             'business_id_error' => '',
             'companyname_error' => '',
             'email_error' => '',
+            'proofdoc_error' => '',
             'OTP_error' => '',
             'password_error' => '',
             'confirmPassword_error' => '',

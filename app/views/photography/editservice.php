@@ -20,7 +20,7 @@
 <div class="main-container">
 <div class="ser-container form-container contentBox" style="margin-top: 100px; margin-bottom:100px"> 
 <form action="<?php echo URLROOT; ?>/PhotographyService/editService" method="post" class="form">
-            <h1 class="title" style="font-size:3rem;">Edit Photography Service</h1>
+            <h1 class="title" style="font-size:3rem;">Edit Service</h1>
 
             
                   <div class="text-group">

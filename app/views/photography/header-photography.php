@@ -29,9 +29,9 @@
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="viewservices">View Photographies</a></li>
-                                                        <li><a href="addservices">Add Photographies</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/viewOffers">Offers/Promotions</a></li>
+                                                        <li><a href="viewservices">My Photo Services</a></li>
+                                                        <li><a href="addservices">Add New Service</a></li>
+                                                        <!-- <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/viewOffers">Offers/Promotions</a></li> -->
                                                         <li><a href="<?php echo URLROOT ?>/PhotographyDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>

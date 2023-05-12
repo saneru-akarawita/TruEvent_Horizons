@@ -17,7 +17,6 @@
     // define('DB_PASSWORD', '');
     // define('DB_NAME', 'trueventhorizons_db');
 
-
     define('MINIMUM_EVENT_BOOK_DATE',14);
 
 

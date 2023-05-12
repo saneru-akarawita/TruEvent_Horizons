@@ -29,9 +29,9 @@
                                 <li><a href="">Services</a>
                                         <div class="sub-menu1">
                                                 <ul>
-                                                        <li><a href="viewservices">View Decorations</a></li>
-                                                        <li><a href="addservices">Add Decorations</a></li>
-                                                        <li><a href="<?php echo URLROOT ?>/DecoDashboard/viewOffers">Offers/Promotions</a></li>
+                                                        <li><a href="viewservices">My Decorations</a></li>
+                                                        <li><a href="addservices">Add New Service</a></li>
+                                                        <!-- <li><a href="<?php echo URLROOT ?>/DecoDashboard/viewOffers">Offers/Promotions</a></li> -->
                                                         <li><a href="<?php echo URLROOT ?>/DecoDashboard/reservationLog">Reservation Log</a></li>
                                                 </ul>
                                         </div>

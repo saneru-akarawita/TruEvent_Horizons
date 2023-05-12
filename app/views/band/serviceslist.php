@@ -18,7 +18,7 @@
 <button id="menu-btn" class="fas fa-bars"></button>
  
 <section class="packages">
-    <h1 class="heading-title">Your Bands</h1>
+    <h1 class="heading-title">My Music Services</h1>
 
     <div class="box-container">
 

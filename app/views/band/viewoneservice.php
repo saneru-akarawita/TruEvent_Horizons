@@ -21,7 +21,7 @@
 
         <div class="wrapper">
             <div class="product-img">
-              <img src="<?php echo URLROOT ?>/public/images/deco company/deco-add-services/deco1.jpg" height="100%" max-width="100%">
+              <img src="<?php echo URLROOT ?>/public/images/deco company/deco-add-services/band1.jpg" height="100%" max-width="100%">
             </div>
             <div class="product-info">
               <div class="product-text">
@@ -40,6 +40,10 @@
                     <tr>
                         <td>Other Types of Band</td>
                         <td>: <?php if(empty($data->other_band_type)) echo " None"; else  echo $data->other_band_type; ?> </td>
+                    </tr>
+                    <tr>
+                        <td>Duration(hours)</td>
+                        <td>: <?= $data->duration;?></td>
                     </tr>
                     </table>
                     <br>
