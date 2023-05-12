@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/style.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/icons.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/login-reg.css" />
+   <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/toast.css" />
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo URLROOT ?>/logo/miniIcon.ico">
     <title>TruEvent Horizons - Sign In</title>
