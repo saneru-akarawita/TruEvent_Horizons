@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td>Other Decorations</td>
-                        <td>: <?php if(empty($data->other_decorations)) echo " None"; else  echo $data->other_decorations; ?> </td>
+                        <td>: <?php if(empty($data->other_decoration)) echo " None"; else  echo $data->other_decoration; ?> </td>
                     </tr>
                     </table>
                     <br>
