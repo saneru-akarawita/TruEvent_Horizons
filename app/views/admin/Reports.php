@@ -318,6 +318,7 @@
             </thead>
             <tbody>
                 <?php foreach($data['dataRows'] as $rvdetails):
+                    if($rvdetails->rvType =="service" || $rvdetails->rvType =="package"){
                     $customer_id = $rvdetails->customer_id;
 
                     foreach($data['customerDetails'] as $customerDetails):
@@ -354,6 +355,7 @@
                         </td>
                         <td class="amount">LKR. <?=number_format($rvdetails->price, 2, '.', '')?></td>
                     </tr>
+                    <?php }?>
                 <?php endforeach;?>
             </tbody>
         </table>
