@@ -95,6 +95,8 @@ class DecoDashboard extends Controller
                   $this->view('decoCompany/deco_profileSettings', $resArr);
                }
             }
+
+            //if the current password doesn't match, set error and display form with errors
             else
             {
                $data['currentPassword_error'] = "Incorrect password";
@@ -105,6 +107,7 @@ class DecoDashboard extends Controller
             $this->view('decoCompany/deco_profileSettings', $resArr);
          }
       }
+      //if HTTP method is not POST, display form with input fields
       else
       {
          $data = [
