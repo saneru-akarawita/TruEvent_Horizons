@@ -52,6 +52,7 @@
                         <td>Other Types of Band</td>
                         <td>: <?php if(empty($bsDetails->other_band_type)) echo " None"; else  echo $bsDetails->other_band_type; ?> </td>
                     </tr>
+                    <?php $relvantServiceProviderID = $bsDetails->service_provider_id; ?>
                     </table>
                     <br>
                 <!-- <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span> -->
@@ -72,7 +73,7 @@
 
  <!-- footer start -->
 <?php foreach ($data1 as $spdetails) : ?>
-        <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+        <?php if ($spdetails->service_provider_id == $relvantServiceProviderID) { ?>
                 <?php require APPROOT . "/views/customer/bandServiceFooter.php" ?>
                 <?php } ?>
  <?php endforeach; ?>
