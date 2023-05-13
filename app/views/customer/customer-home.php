@@ -44,7 +44,7 @@
                 <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/customer/admin-add-packages/image3.jpg) no-repeat; display:none;">
                     <div class="content">
                         <span>Exclusive Events,Priceless Memories</span>
-                        <h3>'Make your event Memorable</h3>
+                        <h3>Make your event Memorable</h3>
                     </div>
                 </div>
 

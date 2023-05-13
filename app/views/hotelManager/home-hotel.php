@@ -44,7 +44,7 @@
             <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/hotel\ manager/figma\ images/hotel2-homepage.jpeg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
-                    <h3>'Make your event Memorable</h3>
+                    <h3>Make your event Memorable</h3>
             </div>
         </div>
     </div>
