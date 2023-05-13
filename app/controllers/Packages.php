@@ -390,7 +390,7 @@ class Packages extends Controller
 
    public function home()
    {
-      $this->view('admin/admin-home');
+      redirect('AdminDashboard/home');
    }
    public function addpackages()
    {

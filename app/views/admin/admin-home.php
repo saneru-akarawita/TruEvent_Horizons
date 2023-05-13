@@ -54,7 +54,7 @@
             <div class="swiper-slide slide hidden" style="background:url(<?php echo URLROOT ?>/public/images/admin/admin-add-packages/image12.jpg) no-repeat; display:none;">
                     <div class="content">
                     <span>Exclusive Events,Priceless Memories</span>
-                    <h3>'Make your event Memorable</h3>
+                    <h3>Make your event Memorable</h3>
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">Total Number of Hotels</p>
+              <p class="text-primary">Total Number of Halls/Venues</p>
               <span class="material-icons-outlined text-blue">hotel</span>
             </div>
             <span class="text-primary font-weight-bold"><?php echo $data['no_of_hotels']?></span>
@@ -117,7 +117,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">Total Number of Decoration Companies</p>
+              <p class="text-primary">Total Number of Decoration Services</p>
               <span class="material-icons-outlined text-red">celebration</span>
             </div>
             <span class="text-primary font-weight-bold"><?php echo $data['no_of_decos']?></span>
@@ -125,7 +125,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">Total Number of Bands</p>
+              <p class="text-primary">Total Number of Musical Services</p>
               <span class="material-icons-outlined text-green">library_music</span>
             </div>
             <span class="text-primary font-weight-bold"><?php echo $data['no_of_bands']?></span>
@@ -133,7 +133,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">Total Number of Photography Companies</p>
+              <p class="text-primary">Total Number of Photography Services</p>
               <span class="material-icons-outlined text-orange">photo_camera</span>
             </div>
             <span class="text-primary font-weight-bold"><?php echo $data['no_of_photographies']?></span>
