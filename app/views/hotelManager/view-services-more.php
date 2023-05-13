@@ -70,7 +70,7 @@
                     
                 </div>
                 <div class="content">
-                    <h3 style="font-size:medium">Ideal for <?= $hsDetails->service_type; ?> </h3>
+                    <h3 style="font-size:medium; text-transform: uppercase;"><?= $hsDetails->hall_name; ?> </h3>
                     <p style="font-size:small" >Starting from   <?= $hsDetails->price; ?> LKR </p><br>
                     <button class="viewButton" style="margin-left:-4px; height:40px"><a href="viewEachService?service_id=<?=$hsDetails->service_id; ?>" name="viewaction" value="view" style="color:white; font-weight:550;">View</a></button>
                     <button class="editButton" style="height:40px"><a href="editService?service_id=<?=$hsDetails->service_id; ?>" name="editaction" value="edit" style="color:white; font-weight:550;">Edit</a></button>
@@ -83,7 +83,7 @@
                     <?php echo "<img src = '".URLROOT."/public/images/disable". ".jpg'>";?>
                 </div>
                 <div class="content">
-                    <h3 style="font-size:medium">Ideal for <?= $hsDetails->service_type; ?> </h3>
+                    <h3 style="font-size:medium; text-transform: uppercase;"><?= $hsDetails->hall_name; ?></h3>
                     <p style="font-size:small" >Starting from   <?= $hsDetails->price; ?> LKR </p><br>
                     
                     <button class="viewButton" style="height:40px"><a href="activate?service_id=<?=$hsDetails->service_id; ?>" name="enableaction" value="enable" style="color:white; font-weight:550;">Enable</a></button>
