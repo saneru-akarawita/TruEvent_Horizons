@@ -81,7 +81,7 @@ class ReservationModel extends Model
 
     public function getReservationsByCustomerOrdered($customerID)
     {
-        $results = $this->customQuery("select * from customerrvdetails where customer_id = $customerID order by rvDate asc");
+        $results = $this->customQuery("select * from customerrvdetails where customer_id = $customerID order by rvDate desc");
 
         return $results;
     }

@@ -68,6 +68,8 @@
                                          
                                         
                                 </tr>
+                                <?php $relvantServiceProviderID = $hsDetails->service_provider_id; ?>
+
                                 </table>
                                 <span style="margin-left:45px">LKR <?= $hsDetails->price;?> per head</span>
                                 <p style="margin-top:15px; margin-left:-0.5px">**Food Menu will be discussed and decided manually</p>
@@ -95,7 +97,7 @@
 </div>
 
 <?php foreach ($data1 as $spdetails) : ?>
-        <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+        <?php if ($spdetails->service_provider_id == $relvantServiceProviderID) { ?>
                 <?php require APPROOT . "/views/customer/hotelServiceFooter.php" ?>
                 <?php } ?>
  <?php endforeach; ?>

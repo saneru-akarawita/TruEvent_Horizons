@@ -50,6 +50,7 @@
                       <td>Other Decorations </td>
                       <td>:<?php if(empty($dsDetails->other_decorations)) echo " None"; else  echo $dsDetails->other_decorations; ?> </td>
                     </tr>
+                    <?php $relvantServiceProviderID = $dsDetails->service_provider_id; ?>
                   </table>
                   <br><br>
                 <span style="margin-left:45px"><?= $dsDetails->price;?> LKR</span>
@@ -63,7 +64,7 @@
 
 
 <?php foreach ($data1 as $spdetails) : ?>
-    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+    <?php if ($spdetails->service_provider_id == $relvantServiceProviderID) { ?>
                 <?php require APPROOT . "/views/customer/decoServiceFooter.php" ?>
                 <?php } ?>
 <?php endforeach; ?>
