@@ -417,7 +417,7 @@ class CustomerReservation extends Controller
 
    public function viewReservationLog(){
       $customerID = Session::getUser("id");
-      $reservationsList = $this->reservationModel->getReservationsByCustomer($customerID);
+      $reservationsList = $this->reservationModel->getReservationsByCustomerOrdered($customerID);
       //$result = $this->reservationModel->getReservationDetails();
       $this->view('customer/reservationlog', $reservationsList);
 
