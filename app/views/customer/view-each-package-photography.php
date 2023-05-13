@@ -48,6 +48,7 @@
                         <td>Other Features</td>
                         <td>: <?php if(empty($psDetails->other_features)) echo " None"; else  echo $psDetails->other_features; ?> </td>
                     </tr>
+                    <?php $relvantServiceProviderID = $psDetails->service_provider_id; ?>
                     </table>
                     <br>
                 
@@ -71,7 +72,7 @@
 <!-- footer start -->
 
 <?php foreach ($data1 as $spdetails) : ?>
-    <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+    <?php if ($spdetails->service_provider_id == $relvantServiceProviderID) { ?>
                 <?php require APPROOT . "/views/customer/photographyServiceFooter.php" ?>
                 <?php } ?>
 <?php endforeach; ?>

@@ -53,6 +53,8 @@
                         <td>Duration(hours)</td>
                         <td>: <?= $bsDetails->duration;?></td>
                     </tr>
+                    <?php $relvantServiceProviderID = $bsDetails->service_provider_id; ?>
+
                   </table>
                   <br><br>
                 <span style="margin-left:45px"><?= $bsDetails->price;?> LKR</span>
@@ -67,7 +69,7 @@
 
  <!-- footer start -->
 <?php foreach ($data1 as $spdetails) : ?>
-        <?php if ($spdetails->service_provider_id == $serviceProviderID) { ?>
+        <?php if ($spdetails->service_provider_id == $relvantServiceProviderID) { ?>
                 <?php require APPROOT . "/views/customer/bandServiceFooter.php" ?>
                 <?php } ?>
  <?php endforeach; ?>
