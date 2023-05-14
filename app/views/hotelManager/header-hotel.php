@@ -41,7 +41,7 @@
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/reports">Reports</a></li> 
         
                                 <!-- <div class="icons"> -->
-                                <li><a href=""> <i class="fa-sharp fa-solid fa-bell"></i></a></li>
+                                <li><a href=""> </i></a></li>
                                 <li><a href="<?php echo URLROOT ?>/HotelDashboard/chat"> <i class="fa-solid fa-comment" style="margin-left:-70px;"></i></a></li>
                                 <!-- </div> -->  
                                 <li class="nr_li dd_main">
