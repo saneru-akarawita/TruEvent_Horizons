@@ -128,7 +128,10 @@
                   </div>
                </div>
             </div>
-        
+
+            <input type="checkbox" id="policy" name="policy" required>
+            <label for="policy">I agree to the <a href="<?php echo URLROOT ?>/user/policy">policy</a></label>
+
             <div class="footer-container">
                <button type="submit" name="action" value="register" class="btn btn-filled btn-theme-purple">Register</button>
                <p>Already have an account? <a href="<?php echo URLROOT ?>/user/signin">Sign in</a></p>
