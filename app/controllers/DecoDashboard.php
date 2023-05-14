@@ -34,14 +34,20 @@ class DecoDashboard extends Controller
 
    public function profileSettings()
    {
+      //validate user session with required user types
       Session::validateSession([5]);
+
+      //get user data and profile ID from the database
       $result = $this->userModel->getUser(Session::getUser("email"));
       $profile_id = Session::getUser("id");
       $profiledata = $this->serviceProviderModel->getServiceProviderDetailsByID($profile_id);
+
+      //get hashed password from the database
       $hashedPassword = $result->password;
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
+         //prepare data array with input from form fields
          $data = [
             'email' => $result->email,
             'img_source'=>$result->img,
@@ -53,12 +59,15 @@ class DecoDashboard extends Controller
             'confirmPassword_error' => ''
          ];
 
+         //check if input fields are empty and set corresponding errors
          $data['currentPassword_error'] = emptyCheck($data['currentPassword']);
          $data['newPassword_error'] = emptyCheck($data['newPassword1']);
          $data['confirmPassword_error'] = emptyCheck($data['newPassword2']);
 
+         //create a result array with data and profile information 
          $resArr = array($data,$profiledata);
 
+         //check if ant error exists and display form with errors
          if (!empty($data['currentPassword_error']) || !empty($data['newPassword_error']) || !empty($data['confirmPassword_error'])) //have errors
          {
             $this->view('decoCompany/deco_profileSettings', $resArr);
@@ -66,14 +75,19 @@ class DecoDashboard extends Controller
 
          else //no errors
          {
+            //check if current password matches the hashed password
             if (password_verify($data['currentPassword'], $hashedPassword))
             {
+
+               //check if new password matches the confirm password
                if ($data['newPassword1'] != $data['newPassword2'])
                {
+                  //set error for mismatched new passwords and display form with errors
                   $data['confirmPassword_error'] = "New Passwords dont't match";
                   $resArr = array($data,$profiledata);
                   $this->view('decoCompany/deco_profileSettings', $resArr);
                }
+               //if all conditions pass, update the user password 
                if (empty($data['currentPassword_error']) && empty($data['newPassword_error']) && empty($data['confirmPassword_error']))
                {
                   $this->userModel->updatePassword($data['email'], $data['newPassword1']);
@@ -81,6 +95,8 @@ class DecoDashboard extends Controller
                   $this->view('decoCompany/deco_profileSettings', $resArr);
                }
             }
+
+            //if the current password doesn't match, set error and display form with errors
             else
             {
                $data['currentPassword_error'] = "Incorrect password";
@@ -91,6 +107,7 @@ class DecoDashboard extends Controller
             $this->view('decoCompany/deco_profileSettings', $resArr);
          }
       }
+      //if HTTP method is not POST, display form with input fields
       else
       {
          $data = [

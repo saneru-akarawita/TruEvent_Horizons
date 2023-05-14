@@ -6,7 +6,7 @@
     //website name
     define('SITENAME','TruEvent Horizons');
 
-    //database configuration
+    // database configuration
     define('DB_HOST', 'second-year-project-database.cua1qjpx4s4g.ap-southeast-1.rds.amazonaws.com');
     define('DB_USER', 'root');
     define('DB_PASSWORD', 'password123');
