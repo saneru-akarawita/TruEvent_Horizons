@@ -23,13 +23,13 @@
         </div>
         <div class="product-info">
                 <div class="product-text">
-                        <h1><?= $data->service_type;?></h1>
+                        <h1><?= $data->hall_name;?></h1>
                         <h2><?= Session::getUser('name')?></h2>
                         <div class="description">
                                 <table id="details12">
                                 <tr>
-                                        <td>Hall Name </td>
-                                        <td>: <?= $data->hall_name;?></td>
+                                        <td>Most Suitable For </td>
+                                        <td>: <?= $data->service_type;?></td>
                                 </tr>
                                 <tr>
                                         <td>Location </td>
