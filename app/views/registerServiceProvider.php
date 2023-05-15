@@ -199,7 +199,7 @@
                </div>
             </div>
             
-            <input type="checkbox" id="policy" name="policy" required>
+            <input type="checkbox" id="policy" name="policy">
             <label for="policy">I agree to the <a href="<?php echo URLROOT ?>/user/policy">policy</a></label>
     
             <div class="footer-container">
