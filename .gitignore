@@ -1,2 +1,4 @@
-composer.phar
-/vendor/
+PHPMailer-master/
+vendor/
+composer.json
+composer.lock
