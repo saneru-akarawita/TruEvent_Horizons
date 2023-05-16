@@ -57,3 +57,27 @@ Payment Status Codes
 -1  - canceled
 -2  - failed
 -3  - chargedback
+
+
+User Credentials
+----------------------------
+
+Admin 
+2020cs007@stu.ucsc.cmb.ac.lk
+
+Customer
+2020cs118@stu.ucsc.cmb.ac.lk
+
+Hotel Manager
+2020cs197@stu.ucsc.cmb.ac.lk
+
+Decoration Company
+2020cs088@stu.ucsc.cmb.ac.lk
+
+Band Manager
+chirasiamaya99@gmail.com 
+
+Photography Company
+harij2822@gmail.com
+
+Password: Password@123 (for all users)
