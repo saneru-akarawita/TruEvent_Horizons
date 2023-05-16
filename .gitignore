@@ -1,3 +1,2 @@
-.json
-.lock
-.DS_Store
+composer.phar
+/vendor/
